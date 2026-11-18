@@ -34,5 +34,7 @@ jobs:
         run: python code/configuration_symmetry_v218.py
       - name: Audit v219 quotient and collision link
         run: python code/collision_quotient_v219.py
+      - name: Audit v220 fixed-curve collision-link obstruction
+        run: python code/accumulating_notches_v220.py
       - name: Verify original ZIP archives
         run: sha256sum --check archive/SHA256SUMS.txt
