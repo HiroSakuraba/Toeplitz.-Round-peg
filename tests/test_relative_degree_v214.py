@@ -119,6 +119,30 @@ class RelativeDegreeTests(unittest.TestCase):
         self.assertEqual(len(d.roots),0)
 
 
+    def test_singular_no_root_yields_degree_but_no_robustness_bound(self):
+        gs=tuple(PeriodicGraph((Point(F(0),F(h)),Point(F(1),F(h))))
+                 for h in (1,0,-1,0))
+        ws=((F(7,16),F(9,16)),)*4
+        cert=relative_degree(gs,ws)
+        self.assertEqual(cert.degree,0)
+        self.assertEqual(len(cert.roots),0)
+        self.assertGreater(cert.singular_empty_cells,0)
+        self.assertIsNone(cert.vertical_perturbation_bound)
+
+    def test_internal_knot_root_is_rejected_not_double_counted(self):
+        gs,ws=make_example()
+        gs=list(gs)
+        l,c,r=F(15,32),F(1,2),F(17,32)
+        d=F(1,100)
+        line=lambda x:F(1,4)-2*(x-F(1,2))
+        yl=line(l)-d
+        yc=line(c)
+        yr=line(r)-d
+        gs[2]=PeriodicGraph((Point(F(0),yl),Point(l,yl),
+                             Point(c,yc),Point(r,yr),Point(F(1),yl)))
+        with self.assertRaises(InadmissibleDegreeDomain):
+            relative_degree(gs,ws)
+
     def test_two_squares_cancel_exact_signed_degree(self):
         # The first three source arcs remain unchanged; graph 2 has a
         # two-segment tent crossing the required p2 locus twice. Both
