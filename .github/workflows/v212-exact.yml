@@ -32,5 +32,7 @@ jobs:
         run: python code/multiscale_degree_v217.py
       - name: Audit v218 cyclic sign, six sectors and collision strata
         run: python code/configuration_symmetry_v218.py
+      - name: Audit v219 quotient and collision link
+        run: python code/collision_quotient_v219.py
       - name: Verify original ZIP archives
         run: sha256sum --check archive/SHA256SUMS.txt
