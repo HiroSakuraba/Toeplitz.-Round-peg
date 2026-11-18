@@ -1,11 +1,11 @@
-name: Toeplitz v212 exact checks
+name: Toeplitz research exact checks
 on:
   pull_request:
   push:
     branches: [main]
   workflow_dispatch:
 jobs:
-  exact-rational-v212:
+  exact-rational-research:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -16,5 +16,5 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Print reproducible counterexample
         run: python code/periodic_bridge_v212.py
-      - name: Verify original ZIP archives
+      - name: Run exact v213 periodic-lift audit\n        run: python code/periodic_square_cert_v213.py\n      - name: Verify original ZIP archives
         run: sha256sum --check archive/SHA256SUMS.txt
