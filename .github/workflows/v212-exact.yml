@@ -26,5 +26,7 @@ jobs:
         run: python code/relative_degree_v214.py
       - name: Audit v215 knot-robust relative degree
         run: python code/relative_degree_v215.py
+      - name: Audit v216 boundary-only degree and polygon selection
+        run: python code/boundary_degree_v216.py
       - name: Verify original ZIP archives
         run: sha256sum --check archive/SHA256SUMS.txt
