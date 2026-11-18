@@ -24,5 +24,7 @@ jobs:
         run: python code/periodic_square_cert_v213.py
       - name: Audit v214 relative degree
         run: python code/relative_degree_v214.py
+      - name: Audit v215 knot-robust relative degree
+        run: python code/relative_degree_v215.py
       - name: Verify original ZIP archives
         run: sha256sum --check archive/SHA256SUMS.txt
