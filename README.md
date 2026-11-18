@@ -42,3 +42,10 @@ See the [November literature review](research/2026-11-literature-and-v212-plan.m
 - [Periodic-bridge theorem and obstruction note](research/v212-periodic-bridge-theorems.md) proves a sharp collective-intersection-gap lower bound on square size (with a Hausdorff stability estimate).
 - [Exact-rational periodic-graph model](code/periodic_bridge_v212.py) demonstrates that balanced periodic extensions can have a nondegenerate square while **none** has all four vertices in the specified original-piece windows. [Eight tests](tests/test_periodic_bridge_v212.py) and GitHub Actions cover the construction.
 - **Open bridge:** To derive the Toeplitz conjecture, one still must construct four area-balanced periodic strands from an *arbitrary* Jordan curve, preserve non-collapse, and force a square wholly on its original pieces. The October 2026 Floer theorems do not supply this localization automatically.
+
+## v213: exact PL square-localization and lift-coherence audit
+
+- [Mathematical note and proof obligations](research/v213-exact-PL-localization-and-lift-audit.md): complete finite decision for labeled squares on rational piecewise-linear periodic graphs, including both square orientations, all bounded integer deck translates, and rank-deficient families.
+- [Exact-rational solver](code/periodic_square_cert_v213.py) distinguishes **periodic quotient witnesses** from squares using the **prescribed physical lifts** of four original planar arcs. The latter distinction adds a second transfer obstruction beyond v212's connector-only witnesses.
+- A strict local exclusion-margin certificate is stable under small coordinate perturbations; a separate exact transverse-square certificate yields a quantified persistence threshold via Brouwer's theorem.
+- [New regression suite](tests/test_periodic_square_cert_v213.py) joins the existing tests under CI. **Neither these finite PL results nor the periodic Floer theorems prove the general Toeplitz square-peg conjecture.**
