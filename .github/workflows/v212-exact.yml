@@ -1,0 +1,20 @@
+name: Toeplitz v212 exact checks
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+jobs:
+  exact-rational-v212:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run exact-rational regression suite
+        run: python -m unittest discover -s tests -v
+      - name: Print reproducible counterexample
+        run: python code/periodic_bridge_v212.py
+      - name: Verify original ZIP archives
+        run: sha256sum --check archive/SHA256SUMS.txt
