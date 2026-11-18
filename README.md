@@ -57,3 +57,11 @@ See the [November literature review](research/2026-11-literature-and-v212-plan.m
 - [Regression tests](tests/test_relative_degree_v214.py) cover lift mismatch, a root exiting the source boundary, two transverse squares with cancelling degrees, and 48 perturbations independently cross-checked against the v213 exhaustive solver.
 - Example: signed degree **−1**, one square of side-squared **1/32**, certified perturbation threshold **ε < 55/8736**. **Degree zero does not imply absence of squares.**
 - **Outstanding:** Neither the periodic Floer theorems nor this degree calculator provide a nonzero relative degree for four source arcs extracted from an arbitrary Jordan curve. This is *not* a relative Floer-homology construction or a proof of the unrestricted Toeplitz conjecture.
+
+## v215: knot-robust boundary-certified source/lift degree
+
+- [Mathematical proof and falsifiers](research/v215-knot-robust-relative-degree.md): exact Brouwer degree for fixed physical lifts of four rational piecewise-linear graph arcs, even if true squares lie on **internal PL knots** or isolated-chart methods fail on singular affine cells.
+- [Exact degree evaluator](code/relative_degree_v215.py) checks for zeros on the **external source-arc boundary**, obtains an explicit rational boundary residual margin, and computes degree via a nearby rational **regular target**. Regular-target preimages are *not* actual squares; their signed sum computes degree.
+- [16 new tests](tests/test_relative_degree_v215.py): knot/refinement invariance, singular empty cells, positive and negative degree cases, source/lift mismatch, degree cancellation, boundary escape at exactly `t=55/624`, and randomized continuation checks. The full test suite is also run by CI.
+- For the original planted square: degree **−1**, certified external-boundary margin **1/384**, and guaranteed persistence under continuous vertical arc perturbations **ε < 1/768**. This is more generally applicable but more conservative than the earlier single-chart v214 threshold.
+- **Outstanding:** There is still no theorem producing a nonzero relative degree from every Jordan curve or transporting the October periodic Floer existence results through connector and deck-lift localization. The universal Toeplitz square-peg conjecture remains open.
