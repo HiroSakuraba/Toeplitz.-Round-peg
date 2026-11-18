@@ -55,6 +55,21 @@ where `s` is its side length. Furthermore, if `K'_j` are nonempty compact sets w
 
 **Consequence for approximations.** If a sequence of balanced periodic systems has `d_n >= d_* >0` (or converges in Hausdorff distance to a compact four-strand system having no common intersection), the corresponding square witnesses **cannot shrink to zero**. No fixed `d_*` follows merely from the word “nonintersecting” at each approximation level; `d_n` could tend to zero.
 
+### An essential qualification: gap at each stage is not a uniform gap
+
+There is a separate exact degenerating model. For each integer `n>=1`,
+use four horizontal unit-period strands at heights `(1/n,0,-1/n,0)`.
+They are embedded, satisfy the alternating area equality, and have
+empty fourfold intersection for every individual `n`. Their collective
+gap is `d_n=2/n`, while the square
+
+`(x,1/n), (x−1/n,0), (x,−1/n), (x+1/n,0)`
+
+has side `√2/n`. Thus both the geometric lower bound and the square
+side collapse to zero. **Per-approximation nonintersection is not a
+uniform non-collapse theorem.** A usable bridge must prove `inf_n d_n>0`
+or an independent size invariant. The exact checker tests this family.
+
 ## 4. Proposition B — balanced periodicization does not localize witnesses
 
 We construct four *piecewise-linear graph* embeddings in the horizontal-period cylinder (so the hypotheses of [V] hold) which:
