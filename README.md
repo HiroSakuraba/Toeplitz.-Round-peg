@@ -1,15 +1,38 @@
 # Toeplitz square-peg research
 
-Research archive of Benjamin John Schulz (HiroSakuraba) concerning the Toeplitz square-peg conjecture, half-square completion, and constructive sufficient criteria for inscribed squares.
+**Research program:** Benjamin John Schulz (GitHub: HiroSakuraba)  
+**Status as of 2026-11-18:** Research in progress. The general square-peg conjecture for arbitrary Jordan curves is **not proved** here.
 
-> **Research status:** The general square-peg conjecture for arbitrary Jordan curves remains open. This repository documents partial theorems, computational witnesses, obstructions to attempted proof strategies, and reproducible verification scripts. No full proof is claimed.
+The [Toeplitz square-peg problem](https://en.wikipedia.org/wiki/Inscribed_square_problem) asks whether every Jordan curve contains four distinct vertices of a nondegenerate Euclidean square. This is a versioned research archive of constructive half-square approaches, local certificates, geometric obstructions, analytic energy methods, and supporting computation.
 
-## Latest research
+## Repository contents
 
-The latest recovered numbered work is **v211, September 23, 2026: Shape sphere and tangent escape**. The preceding v206–v210 stages develop a critical review, finite-coil square forcing, distorted coils, four-arc crossing certificates, and an obstruction to a proposed similarity-flow extraction.
+- **[archive/](archive/)**: preserved original ZIP research bundles, versions **v202–v211**, with original internal source code, notes, experiments, and selected verifiers.
+- **[archive/early/](archive/early/)**: independently developed local rough-Toeplitz recognizer and preconditioned certificate bundles.
+- **[related/](related/)**: *separately scoped* exploratory Toeplitz Gram-matrix/SOS work in Extremal Geometry Lab. This is not a result about Jordan-curve square inscription.
+- **[research/2026-11-literature-and-v212-plan.md](research/2026-11-literature-and-v212-plan.md)**: current literature review and research plan, explicitly distinguishing established results from proposed lemmas.
+- **[archive/SHA256SUMS.txt](archive/SHA256SUMS.txt)**: integrity hashes of the archived ZIP files.
 
-Research bundles, source files, detailed theorem ledgers, and their checksums are being assembled in `archive/` and `research/`. Each version retains its own provenance and limitations. The computational checkers establish their specified algebraic/finite claims; they are not formal verification of every analytic theorem.
+## Reading order
 
-## Scope
+1. **v211** — shape sphere, quantitative tangent escape, and the remaining non-collapse obstruction.
+2. **v210** — counterexample to a proposed extraction of strict v209 four-arc certificates.
+3. **v209** — valid local four-arc square-forcing theorem under directional compatibility.
+4. **v208–v207** — controlled finite-coil models.
+5. **v206** — proof-route critique and Liouville/Abel-curve audit.
+6. **v202–v205** — earlier energy, boundary response, stress localization, and fjord/mouth analysis.
+7. **November 2026 literature plan** — how recent Floer-homology and Liouville-regularity results may alter the next attack.
 
-This is the geometric Toeplitz *square-peg* problem, not the operator-theoretic study of Toeplitz matrices. Files on Toeplitz Gram-matrix/SOS experiments, when present, are separately labeled as related exploratory mathematics.
+Each research bundle preserves its own assertions, proof audit, and checker limitations. A passing numerical or exact-rational checker establishes only the statements it actually tests. Analytic and topological arguments are **not** automatically proof-assistant-certified.
+
+## Scientific caveat
+
+None of these manuscripts, finite checks, examples, or literature findings constitutes a proof of the unrestricted Toeplitz conjecture. Not every proposed intermediate implication survived scrutiny: in particular, v210 refutes a universal strict crossing-certificate extraction hypothesis while leaving the valid v209 sufficient criterion intact.
+
+## Reproduction
+
+Download the relevant ZIP, extract it, read its `README.md` and `notes/`, and run its verifier exactly as documented. Toolchains vary across versions. Where methods use Arb or external dependencies, verify those tools are installed before claiming certified output.
+
+## External research
+
+See the [November literature review](research/2026-11-literature-and-v212-plan.md) for primary sources including October 2026 proofs of periodic area-balanced inscriptions and the November update of Asano–Ike's rectifiable rectangular-peg work.
