@@ -30,5 +30,7 @@ jobs:
         run: python code/boundary_degree_v216.py
       - name: Audit v217 multiscale relative-degree ledger
         run: python code/multiscale_degree_v217.py
+      - name: Audit v218 cyclic sign, six sectors and collision strata
+        run: python code/configuration_symmetry_v218.py
       - name: Verify original ZIP archives
         run: sha256sum --check archive/SHA256SUMS.txt
