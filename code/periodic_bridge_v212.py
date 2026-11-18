@@ -136,6 +136,19 @@ def no_square_inside_all_windows(amplitude: F = F(1, 16)) -> bool:
             2 * amplitude < minimum_mod1_separation(0, 2))
 
 
+def shrinking_balanced_square(n: int) -> Tuple[Point, ...]:
+    """Exact degeneration under balanced, pairwise separated periodic levels.
+
+    Four lines at heights (1/n,0,-1/n,0) have no common point for
+    every positive n and exact balance, but their square side is sqrt(2)/n.
+    """
+    if n < 1:
+        raise ValueError("n must be positive")
+    t, x = F(1, n), F(7, 8)
+    return (Point(x, t), Point(x - t, F(0)),
+            Point(x, -t), Point(x + t, F(0)))
+
+
 def audit() -> dict:
     strands = four_strands()
     witness = square_at_unmodified_period(strands)
