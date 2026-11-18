@@ -4,6 +4,10 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+
+permissions:
+  contents: read
+
 jobs:
   exact-rational-research:
     runs-on: ubuntu-latest
@@ -14,7 +18,11 @@ jobs:
           python-version: '3.12'
       - name: Run exact-rational regression suite
         run: python -m unittest discover -s tests -v
-      - name: Print reproducible counterexample
+      - name: Audit v212 periodic counterexample
         run: python code/periodic_bridge_v212.py
-      - name: Run exact v213 periodic-lift audit\n        run: python code/periodic_square_cert_v213.py\n      - name: Verify original ZIP archives
+      - name: Audit v213 periodic-lift counterexample
+        run: python code/periodic_square_cert_v213.py
+      - name: Audit v214 relative degree
+        run: python code/relative_degree_v214.py
+      - name: Verify original ZIP archives
         run: sha256sum --check archive/SHA256SUMS.txt
