@@ -49,3 +49,11 @@ See the [November literature review](research/2026-11-literature-and-v212-plan.m
 - [Exact-rational solver](code/periodic_square_cert_v213.py) distinguishes **periodic quotient witnesses** from squares using the **prescribed physical lifts** of four original planar arcs. The latter distinction adds a second transfer obstruction beyond v212's connector-only witnesses.
 - A strict local exclusion-margin certificate is stable under small coordinate perturbations; a separate exact transverse-square certificate yields a quantified persistence threshold via Brouwer's theorem.
 - [New regression suite](tests/test_periodic_square_cert_v213.py) joins the existing tests under CI. **Neither these finite PL results nor the periodic Floer theorems prove the general Toeplitz square-peg conjecture.**
+
+## v214: source/lift-relative signed degree and controlled continuation
+
+- [Conditional Brouwer-degree theorem and proof](research/v214-relative-degree-source-lifts.md): exact signed count of oriented square configurations on four designated physical source arcs with a fixed deck-translation tuple. A **nonzero degree** forces a nondegenerate square *on those arcs* under the stated positive vertical-separation guard.
+- [Exact rational degree evaluator](code/relative_degree_v214.py): sums local signs of isolated PL squares, rejects boundary or singular roots explicitly, and returns a sufficient perturbation threshold for **arbitrary continuous vertical deformations** preserving the marked windows and physical lifts.
+- [Regression tests](tests/test_relative_degree_v214.py) cover lift mismatch, a root exiting the source boundary, two transverse squares with cancelling degrees, and 48 perturbations independently cross-checked against the v213 exhaustive solver.
+- Example: signed degree **−1**, one square of side-squared **1/32**, certified perturbation threshold **ε < 55/8736**. **Degree zero does not imply absence of squares.**
+- **Outstanding:** Neither the periodic Floer theorems nor this degree calculator provide a nonzero relative degree for four source arcs extracted from an arbitrary Jordan curve. This is *not* a relative Floer-homology construction or a proof of the unrestricted Toeplitz conjecture.
