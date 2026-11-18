@@ -9,7 +9,7 @@ from periodic_bridge_v212 import (  # noqa: E402
     Point, PeriodicGraph, SOURCE_WINDOWS, alternating_area, audit,
     four_strands, is_labeled_square, minimum_mod1_separation,
     no_square_inside_all_windows, rotate90, squared_length,
-    square_at_unmodified_period, strand,
+    square_at_unmodified_period, shrinking_balanced_square, strand,
 )
 
 
@@ -61,6 +61,17 @@ class PeriodicBridgeTests(unittest.TestCase):
         base[0] = shifted
         self.assertEqual(alternating_area(tuple(base)), F(1, 8))
         self.assertFalse(is_labeled_square(square_at_unmodified_period(tuple(base))))
+
+    def test_balance_and_nonintersection_do_not_give_uniform_size(self):
+        # In each member four horizontal periodic lines at heights
+        # (+1/n, 0, -1/n, 0) are nonconcurrent and area balanced.
+        # Nevertheless the exact square side is sqrt(2)/n.
+        for n in (1, 2, 3, 7, 100, 10000):
+            p = shrinking_balanced_square(n)
+            self.assertTrue(is_labeled_square(p))
+            self.assertEqual(squared_length(p[1] - p[0]), F(2, n * n))
+            self.assertNotEqual(p[0].y, p[2].y)
+            self.assertEqual(p[0].y - p[1].y + p[2].y - p[3].y, 0)
 
     def test_exact_audit(self):
         r = audit()
