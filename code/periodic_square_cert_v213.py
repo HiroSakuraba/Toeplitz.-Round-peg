@@ -404,9 +404,18 @@ def find_labeled_square(graphs: Sequence[PeriodicGraph],
 if __name__ == "__main__":
     from periodic_bridge_v212 import four_strands, SOURCE_WINDOWS
     fs = four_strands()
-    orig = find_labeled_square(fs,SOURCE_WINDOWS)
+    orig = find_labeled_square(fs, SOURCE_WINDOWS)
     full = find_labeled_square(fs)
-    print("original windows:","absent" if orig.no_square else orig.witness)
-    print("all completed strands:",full.witness)
-    print("counts:","window",orig.solved_cases,orig.rejected_cases,
-          "/ completed",full.solved_cases,full.rejected_cases)
+    certificate = source_window_exclusion(fs, SOURCE_WINDOWS)
+    print("v212 original windows:","NO LABELED SQUARE" if orig.no_square else "square found")
+    print("exact exclusion margin:", certificate.margin)
+    print("completed periodic graphs:", "square side²=" + str(full.witness.side_squared)
+          if full.witness else "no square")
+
+    levels = tuple(PeriodicGraph((Point(F(0), F(h)), Point(F(1), F(h))))
+                   for h in (1, 0, -1, 0))
+    window = ((F(7,16), F(9,16)),) * 4
+    periodic = find_labeled_square(levels, window)
+    physical = find_labeled_square(levels, window, relative_lifts=(0,0,0,0))
+    print("marked quotient windows:",periodic.witness.shifts if periodic.witness else "none")
+    print("same physical lifts:","NO SQUARE" if physical.no_square else "square found")
