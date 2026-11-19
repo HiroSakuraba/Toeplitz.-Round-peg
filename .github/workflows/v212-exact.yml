@@ -66,5 +66,7 @@ jobs:
         run: python code/log_spiral_exclusion_v236.py
       - name: Audit v238 improved open log spiral exclusion
         run: python code/log_spiral_exclusion_v238.py
+      - name: Audit v239 improved log spiral exclusion (a >= 9/10)
+        run: python code/log_spiral_exclusion_v239.py
       - name: Verify original ZIP archives
         run: sha256sum --check archive/SHA256SUMS.txt

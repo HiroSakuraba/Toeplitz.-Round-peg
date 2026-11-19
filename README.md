@@ -232,3 +232,7 @@ See the [November literature review](research/2026-11-literature-and-v212-plan.m
 
 - [v238 elementary proof](research/v238-log-spiral-threshold-one.md) sharpens the **sufficient exclusion threshold** for the compactified open logarithmic spiral from a >= 4 (v236) to **a >= 1**. It uses the strict transverse envelope R/(ae) for three outer vertices and rotates the Lipschitz graph axis to the midpoint of the tangent-angle range for four outer vertices.
 - [Exact rational regression auditor](code/log_spiral_exclusion_v238.py) and [tests](tests/test_log_spiral_exclusion_v238.py) verify the exponential inequalities, the a = 1 endpoint, monotonicity, and fail-closed behavior below 1. Numerical geometry checks are *sanity tests*, not substitutes for the written proof. No Jordan-curve counterexample or claim for 0 < a < 1 follows.
+
+## v239: square-free open logarithmic spirals at a >= 9/10
+
+- [Elementary v239 proof](research/v239-log-spiral-nine-tenths.md) improves v238's sufficient exclusion threshold from a>=1 to **a>=9/10**, using cutoff 13R/50 and the exact transverse envelope of the spiral. [Fraction-based checker](code/log_spiral_exclusion_v239.py) and [16 tests](tests/test_log_spiral_exclusion_v239.py) audit the strict rational inequalities and fail closed for a<9/10. This is **only a theorem for an open arc**; no classification of smaller pitches and no counterexample to Toeplitz is claimed.
