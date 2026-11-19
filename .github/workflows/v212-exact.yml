@@ -54,5 +54,7 @@ jobs:
         run: python code/singular_event_feasibility_v228.py
       - name: Audit v229 singular Cramer branch continuation
         run: python code/singular_continuation_v229.py
+      - name: Audit v230 irregular power-spiral thresholds and conditional bound
+        run: python code/irregular_spiral_frontier_v230.py
       - name: Verify original ZIP archives
         run: sha256sum --check archive/SHA256SUMS.txt
