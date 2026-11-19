@@ -44,16 +44,16 @@ Let `A`, `u*`, `m`, `M=||A^-1||_infty` denote the same rational matrix, rational
 \boxed{4(E_p+\eta)<m/M}
 \]
 
-implies that the perturbed four-arc square residual has nonzero Brouwer degree **with the same sign** as v231. Therefore it contains a genuine square, without any smallness assumption on `phi'` (which need not exist). The original strict squared side and radius lower bounds remain valid whenever the **stronger** exact inequalities
+implies that the perturbed four-arc square residual has nonzero Brouwer degree **with the same sign** as v231, without any smallness assumption on `phi'`. For the side floor, set \(D_i=\max(u^*_i,1-u^*_i)\|L_i(1)-L_i(0)\|_1+2(E_p+\eta)\). This bounds displacement from the affine root's vertex to any point on the perturbed source arc. The side and radius checks are
 
 \[
- |L_1(u^*_1)-L_0(u^*_0)|^2>(s_p+4(E_p+\eta))^2,
+ |L_1(u^*_1)-L_0(u^*_0)|^2>(s_p+D_0+D_1)^2,
 \]
 \[
- |L_i(u^*_i)|^2>(r_p+2(E_p+\eta))^2 \quad(i=0,...,3)
+ \min_{i=0,\ldots,3}\min I_i>r_p,
 \]
 
-hold. All quantities to be compared are **rational** because v231's endpoint phases have explicit rational enclosures.
+where \(I_i\) is the \(i\)-th physical radius interval. The radius comparison uses \(|\gamma_{p,\phi}(t)|=t\). All quantities compared are rational.
 
 **Executable claim for v232:** these comparisons hold for the common rational allowance
 

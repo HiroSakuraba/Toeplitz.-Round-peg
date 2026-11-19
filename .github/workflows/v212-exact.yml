@@ -60,5 +60,7 @@ jobs:
         run: python code/spiral_pruned_v231.py
       - name: Audit v232 multi-candidate search and exact C0 phase perturbation degree
         run: python code/spiral_multicandidate_v232.py
+      - name: Replay v233 mixed-power spiral square certificates
+        run: python code/mixed_power_spiral_v233.py
       - name: Verify original ZIP archives
         run: sha256sum --check archive/SHA256SUMS.txt
