@@ -1,0 +1,120 @@
+{
+  "name": "v247 rational 10-gon: tighter actual square-to-inradius ratio than v245",
+  "provenance": {
+    "research_program": "Benjamin John Schulz, Toeplitz square-peg research",
+    "derived_from": "research/v245-improved-ten-gon.json",
+    "baseline_repo_commit": "f451c8813ae7d4e0a3a95dfa8e01fcf715415038",
+    "original_counterexample_author": "Grisha Pochuev",
+    "original_reference": "https://github.com/Grisha-Pochuev/sharp-big-peg-counterexample",
+    "search_method": "Floating-point complete edge-chart ranking, greedy rational-grid coordinate descent at steps 1/12000, 1/120000, 1/1200000; all final claims independently checked with exact arithmetic.",
+    "coordinate_denominator": 1200000,
+    "vertex_deltas_from_v245_in_grid_units": [
+      [
+        0,
+        0
+      ],
+      [
+        -510,
+        1
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        -10
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        -1,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        234,
+        -110
+      ],
+      [
+        1401,
+        -200
+      ]
+    ],
+    "claim_limit": "This is a new, attributed perturbation of the v245 polygon; no optimality among ten-gons or unrestricted Jordan curves is claimed."
+  },
+  "vertices": [
+    [
+      "4114000/1200000",
+      "-558000/1200000"
+    ],
+    [
+      "2021390/1200000",
+      "1568001/1200000"
+    ],
+    [
+      "-1234100/1200000",
+      "1006000/1200000"
+    ],
+    [
+      "-868000/1200000",
+      "2516000/1200000"
+    ],
+    [
+      "-1089000/1200000",
+      "2813990/1200000"
+    ],
+    [
+      "-3767999/1200000",
+      "1167900/1200000"
+    ],
+    [
+      "-3459001/1200000",
+      "81100/1200000"
+    ],
+    [
+      "140000/1200000",
+      "-1348000/1200000"
+    ],
+    [
+      "571334/1200000",
+      "-1449110/1200000"
+    ],
+    [
+      "1106401/1200000",
+      "-485200/1200000"
+    ]
+  ],
+  "disk": {
+    "center": [
+      "114334619/100000000000",
+      "-7507522/100000000000"
+    ],
+    "radius_squared": "984883927824703700502571706090888809/982265423769090000000000000000000000"
+  },
+  "global_radius_upper": "100133200316/100000000000",
+  "claimed_exact_invariants": {
+    "maximum_square_side_squared": "407200306394224630512330297939647665150234737979752892405301/204751870350371073185004616046232753607402236547022400000000",
+    "minimum_distance_squared_at_disk_center": "984883927824703700502571706090888809/982265423769090000000000000000000000",
+    "positive_oriented_edge_assignments": 4,
+    "geometric_square_orbits": 1,
+    "global_radius_cover_boxes": 1257,
+    "maximizing_edge_assignment": [
+      1,
+      4,
+      5,
+      6
+    ],
+    "previous_v245_global_radius_upper": "100109166/100000000",
+    "previous_v245_maximum_square_side_squared": "2263154862866037715637393248853633089/1137974336077532830058267809922880000"
+  }
+}
