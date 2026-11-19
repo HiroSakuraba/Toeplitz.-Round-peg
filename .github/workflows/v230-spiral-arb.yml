@@ -1,0 +1,40 @@
+name: Spiral v99 and v101 independent proof checks
+on:
+  pull_request:
+    paths:
+      - 'related/power-spiral-v99-v102/**'
+      - 'code/irregular_spiral_frontier_v230.py'
+      - 'tests/test_irregular_spiral_frontier_v230.py'
+      - 'research/v230-*'
+      - '.github/workflows/v230-spiral-arb.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'related/power-spiral-v99-v102/**'
+      - 'code/irregular_spiral_frontier_v230.py'
+      - 'tests/test_irregular_spiral_frontier_v230.py'
+      - 'research/v230-*'
+      - '.github/workflows/v230-spiral-arb.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  recovered-spiral-certificates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install independent interval and numerical locator dependencies
+        run: python -m pip install 'python-flint>=0.6,<1' 'mpmath>=1.2,<2'
+      - name: Audit recovered original file checksums
+        working-directory: related/power-spiral-v99-v102
+        run: sha256sum --check SHA256SUMS.txt
+      - name: Re-run v99 rational inequalities (numerical locator non-proof)
+        run: python related/power-spiral-v99-v102/verify_v99_small_exponent_log_spiral.py
+      - name: Re-run all eight v101 independent Arb face-sign certificates (strict exit)
+        run: python related/power-spiral-v99-v102/verify_v230_arb_strict.py
