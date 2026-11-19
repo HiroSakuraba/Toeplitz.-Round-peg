@@ -178,6 +178,14 @@ def exhaustive_cutoff_classification(P,cutoff,a,b):
         raise ValueError("exact rational time bounds required")
     if type(cutoff) is not Q or cutoff<=0:
         raise ValueError("exact positive squared-side cutoff required")
+    # The exceptional-chart ledger and expected orbit identities below
+    # have been proved only for this canonical v250 family, interval and
+    # cutoff. Refuse unrelated input instead of silently generalizing.
+    if (tuple(P)!=family_vertices() or cutoff!=HIGH_S2
+            or (a,b)!=(WINDOW_START,WINDOW_END)):
+        raise ValueError("v252 complete ledger is scoped to its exact v250 family/window/cutoff")
+    if not prove_jordan_family(P)["strictly_convex_and_jordan_for_all_times"]:
+        raise ValueError("strict convexity premise not verified")
     n=len(P)
     if n<4:
         raise ValueError("need at least four polygon edges")
