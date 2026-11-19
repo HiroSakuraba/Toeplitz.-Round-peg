@@ -50,5 +50,7 @@ jobs:
         run: python code/algebraic_orbit_events_v226.py
       - name: Audit v227 local algebraic orbit germs
         run: python code/local_orbit_germs_v227.py
+      - name: Audit v228 algebraic singular event-slice feasibility
+        run: python code/singular_event_feasibility_v228.py
       - name: Verify original ZIP archives
         run: sha256sum --check archive/SHA256SUMS.txt
