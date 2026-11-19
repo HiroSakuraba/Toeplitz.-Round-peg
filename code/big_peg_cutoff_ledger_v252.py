@@ -343,7 +343,7 @@ def audit():
         "geometric_orbit_counts_strictly_above_cutoff_in_time_order":[1,2,1],
         "filtered_orbit_parities_in_time_order":[1,0,1],
         "filter_parity_is_not_invariant":True,
-        "separate_same-size_crossing_bracket":[str(xlo),str(xhi)],
+        "separate_same_size_crossing_bracket":[str(xlo),str(xhi)],
         "same_size_crossing_does_not_change_filtered_count":True,
         "scope":"EXHAUSTIVE only for size²>94257/10000 on this affine 9-gon interval; no assertion on smaller square orbits, all-square homotopy parity, generic singular births, universal Big Peg c, or Toeplitz.",
     }
