@@ -236,3 +236,9 @@ See the [November literature review](research/2026-11-literature-and-v212-plan.m
 ## v239: square-free open logarithmic spirals at a >= 9/10
 
 - [Elementary v239 proof](research/v239-log-spiral-nine-tenths.md) improves v238's sufficient exclusion threshold from a>=1 to **a>=9/10**, using cutoff 13R/50 and the exact transverse envelope of the spiral. [Fraction-based checker](code/log_spiral_exclusion_v239.py) and [16 tests](tests/test_log_spiral_exclusion_v239.py) audit the strict rational inequalities and fail closed for a<9/10. This is **only a theorem for an open arc**; no classification of smaller pitches and no counterexample to Toeplitz is claimed.
+
+## v240: classification of log-spiral squares for a >= 3/50
+
+- [Computer-assisted v240 proof](research/v240-log-spiral-classification.md): for real a in [3/50, 9/10], the open spiral S_a has an inscribed square **if and only if** a = a\* ≈ 0.1002746561 (certified to a 2·10⁻¹⁰ window), and then exactly one up to self-similarity. With v239 this covers all a >= 3/50, so v99's special pitch is the **largest** pitch with a square.
+- Method: normalise the farthest vertex to 1; both of its neighbours have radius at least √2−1, which bounds the search; a tangent-turning lemma rules out tiny squares; an [Arb branch-and-bound](code/log_spiral_classification_v240.py) excludes every other (t₁, a) box (39,626 boxes, under a second), and a Krawczyk test proves the one remaining square is unique.
+- [10 tests](tests/test_log_spiral_classification_v240.py) include negative controls: without its Krawczyk box the search gets stuck exactly at a\*; shifted or wrong-orientation Krawczyk boxes fail; the search independently re-derives v239's range on [0.9, 2.0]. Below 3/50 the search stalls near 0.05507 and 0.05134; those are not analysed. Open arc only, no Toeplitz claim.
