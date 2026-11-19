@@ -1,0 +1,38 @@
+name: v246 global rational inradius certificates
+
+on:
+  pull_request:
+    paths:
+      - 'code/big_peg_inradius_v246.py'
+      - 'tests/test_big_peg_inradius_v246.py'
+      - 'research/v246-*'
+      - '.github/workflows/v246-big-peg-inradius.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'code/big_peg_inradius_v246.py'
+      - 'tests/test_big_peg_inradius_v246.py'
+      - 'research/v246-*'
+      - '.github/workflows/v246-big-peg-inradius.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  global-radius-cover:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact whole-polygon inradius enclosure and J separation
+        run: python code/big_peg_inradius_v246.py
+      - name: Complete exact-cover and negative-control test suite
+        run: python -m unittest -v tests.test_big_peg_inradius_v246
+      - name: Recheck original max-square and source-invariant certificates
+        run: python code/pochuev_big_peg_v244.py
+      - name: Recheck modified max-square and source-invariant certificates
+        run: python code/big_peg_improvement_v245.py
