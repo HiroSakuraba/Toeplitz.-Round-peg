@@ -50,11 +50,11 @@ Each scalar component of `F_sigma` contains at most four signed coordinates of t
 \boxed{4E<\frac{m}{M}},
 \]
 
-then `F_Gamma` has at least one zero in `(0,1)^4`. If, in addition, the rational polygonal root's squared side `s_L^2` and each of its four squared point radii satisfy
+then `F_Gamma` has at least one zero in `(0,1)^4`. For each chord, set \(D_i=\max(u_{*,i},1-u_{*,i})\|L_i(1)-L_i(0)\|_1+2E\). If the affine root's squared side and point radii satisfy
 
 \[
-s_L^2>(s_0+4E)^2,\qquad
-|L_i(u_{*,i})|^2>(r_0+2E)^2,
+s_L^2>(s_0+D_0+D_1)^2,\qquad
+|L_i(u_{*,i})|^2>(r_0+D_i)^2,
 \]
 
 then the true smooth-curve square has **side length strictly greater than `s_0`** and **all four point radii strictly greater than `r_0`**.
@@ -65,7 +65,7 @@ then the true smooth-curve square has **side length strictly greater than `s_0`*
 \|F_L(u)\|_\infty=\|A(u-u_*)\|_\infty\ge m/M.
 \]
 
-The straight-line homotopy `F_s=(1-s)F_L+sF_Gamma` has no zero on the source boundary because its perturbation is bounded by `4E`. Its Brouwer degree therefore agrees with that of the invertible affine map `F_L`, namely `sgn det A` in `{+1,-1}`. Nonzero degree supplies a zero. The source arcs are actual parts of the curve, so this is an inscribed square. At the zero, each true corner is within `sqrt(2) E < 2E` of its chord point, and the first edge differs by less than `2 sqrt(2) E < 4E`. The additional strict inequalities give the claimed radius and side floors. QED.
+The straight-line homotopy `F_s=(1-s)F_L+sF_Gamma` has no zero on the source boundary because its perturbation is bounded by `4E`. Its Brouwer degree therefore agrees with that of the invertible affine map `F_L`, namely `sgn det A` in `{+1,-1}`. Nonzero degree supplies a zero on the true curve. The true and affine roots may have different source parameters. At the true zero each corner is within \(2E\) of its chord point and that chord point is at most \(D_i-2E\) from the affine root's corner. Triangle inequalities give the strict floors. For the power spirals one can instead verify the radius floor directly from the minimum source radius. A positive side floor makes the square nondegenerate. QED.
 
 **Important:** The existence proof does not rely on a polygonal square *converging* under arbitrarily many refinements. It uses the topological degree of one **specified four-dimensional source box** and a validated perturbation margin. This method is applicable to other curves whenever four local source arcs admit suitable certified chord errors.
 

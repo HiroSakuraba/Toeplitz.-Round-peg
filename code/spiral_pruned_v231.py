@@ -159,7 +159,7 @@ def _trig_rational_enclosure(theta,terms=20):
     """
     theta=Q(theta)
     pl,pu=_pi_interval();pm=(pl+pu)/2
-    k=round(float(theta/(2*pm)))
+    k=round(theta/(2*pm))
     raw=theta-2*k*pm
     x=_round_fraction(raw,2**34)
     arg_err=abs(raw-x)+abs(k)*(pu-pl)
@@ -220,6 +220,17 @@ def _inverse_and_root(A,b):
     return tuple(row[-1] for row in M),max(sum(abs(v) for v in row[4:8]) for row in M)
 
 
+def _side_floor_holds(starts, ends, root, error, floor):
+    """Bound the side uniformly over the first two source intervals."""
+    vertices = []
+    allowance = 4*error
+    for a, b, v in zip(starts[:2], ends[:2], root[:2]):
+        vertices.append(tuple(x+v*(y-x) for x, y in zip(a, b)))
+        allowance += max(v, 1-v) * sum(abs(y-x) for x, y in zip(a, b))
+    (x0, y0), (x1, y1) = vertices
+    return (x1-x0)**2 + (y1-y0)**2 > (Q(floor)+allowance)**2
+
+
 def _chord_error(t0,t1,p):
     """Sup coordinate error for linear interpolation in rational radius t.
 
@@ -267,10 +278,10 @@ def certify_on_smooth_spiral(candidate, radius_floor=Q(1,5),side_floor=Q(1,8)):
                   pa[i][1]+u[i]*(pb[i][1]-pa[i][1])) for i in range(4))
     assert _R_residual(square,sg)==(0,0,0,0)
     side2=(square[1][0]-square[0][0])**2+(square[1][1]-square[0][1])**2
-    # True point deviations <= E coordinatewise, hence <= 2E in Euclidean norm.
-    if side2<=(Q(side_floor)+4*E)**2:
+    # The affine and true zeros need not have the same source parameters.
+    if not _side_floor_holds(pa,pb,u,E,side_floor):
         return {'certified':False,'reason':'side-floor-insufficient','edge_indices':ids}
-    if any(x*x+y*y<=(Q(radius_floor)+2*E)**2 for x,y in square):
+    if any(min(samples[j].t,samples[j+1].t)<=Q(radius_floor) for j in ids):
         return {'certified':False,'reason':'radius-floor-insufficient','edge_indices':ids}
     return {'certified':True,'p':str(P),'inner_search_radius':candidate['inner'],
             'edge_indices':ids,'orientation':sg,'degree_boundary_margin':float(boundary),
@@ -311,13 +322,20 @@ def smooth_spiral_derivative(t,p):
 
 def newton_square(candidate,max_iterations=18):
     """Numerical locator ONLY; all proof later uses rational degree certificate."""
-    samples=candidate['samples_data'];ids=candidate['ids'];sigma=candidate['sigma'];p=float(candidate['p'])
+    p=float(candidate['p'])
+    return refine_square(candidate, lambda t:smooth_spiral(t,p),
+                         lambda t:smooth_spiral_derivative(t,p), max_iterations)
+
+
+def refine_square(candidate, point, tangent, max_iterations=18):
+    """Refine a chord-chart square on a differentiable parameterized arm."""
+    samples=candidate['samples_data'];ids=candidate['ids'];sigma=candidate['sigma']
     ts=[float(samples[j].t)*(1-u)+float(samples[j+1].t)*u for j,u in zip(ids,candidate['parameters'])]
     for k in range(max_iterations):
-        pts=[smooth_spiral(t,p) for t in ts];F=square_residual(pts,sigma)
+        pts=[point(t) for t in ts];F=square_residual(pts,sigma)
         err=max(map(abs,F))
         if err<5e-14:return tuple(ts),err,k
-        dirs=[smooth_spiral_derivative(t,p) for t in ts]
+        dirs=[tangent(t) for t in ts]
         zero=(0.,0.);cols=[]
         for j in range(4):
             z=[zero]*4;z[j]=dirs[j]
@@ -330,7 +348,7 @@ def newton_square(candidate,max_iterations=18):
             scale=2.**(-m)
             nxt=[x+scale*y for x,y in zip(ts,dt)]
             if any(not 0.05<x<1 for x in nxt):continue
-            e=max(map(abs,square_residual([smooth_spiral(x,p) for x in nxt],sigma)))
+            e=max(map(abs,square_residual([point(x) for x in nxt],sigma)))
             if e<err:
                 ts=nxt;done=True;break
         if not done:raise ValueError('Newton line search failed')

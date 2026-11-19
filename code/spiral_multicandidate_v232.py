@@ -19,7 +19,7 @@ from spiral_pruned_v231 import (
     Sample, SpatialEdges, spiral_samples, solve_chart,
     local_arcs_at_newton, certify_on_smooth_spiral,
     STORED_WITNESSES, STORED_STRONG_FLOORS,
-    _certified_point, _chord_error, _R_matrix, _inverse_and_root,
+    _certified_point, _chord_error, _R_matrix, _inverse_and_root, _side_floor_holds,
 )
 
 
@@ -45,6 +45,14 @@ def _midpoint(a, b):
 def scan_candidates(p, inner=.45, step=.12, max_pairs=30000,
                     topk=4, max_candidates=16, min_side=.18,
                     min_radius=.20, min_margin=.003):
+    pts=spiral_samples(p,inner,step)
+    return scan_sampled_candidates(pts,p,inner,step,max_pairs,topk,
+                                   max_candidates,min_side,min_radius,min_margin)
+
+
+def scan_sampled_candidates(pts, p, inner, step, max_pairs=30000, topk=4,
+                           max_candidates=16, min_side=.18, min_radius=.20,
+                           min_margin=.003):
     """Rank multiple, spatially pruned square charts within hard budgets.
 
     Crucially, unlike v231 discover(), this does NOT return the first
@@ -57,7 +65,6 @@ def scan_candidates(p, inner=.45, step=.12, max_pairs=30000,
         raise ValueError('positive search budgets required')
     if not (0<min_margin<.5) or min_side<=0 or min_radius<0:
         raise ValueError('invalid numerical discovery filters')
-    pts=spiral_samples(p,inner,step)
     index=SpatialEdges(pts)
     n=len(pts)-1
     pairs=0; matches=0; exhausted=False
@@ -210,11 +217,8 @@ def certify_phase_neighborhood(p, eta=Q(1,10**6)):
                for j,e in zip((0,2,4,6),ends))
     total_E=base_E+eta
     margin=m/inv_norm
-    square=tuple((a[j][0]+u[j]*(b[j][0]-a[j][0]),
-                  a[j][1]+u[j]*(b[j][1]-a[j][1])) for j in range(4))
-    side2=(square[1][0]-square[0][0])**2+(square[1][1]-square[0][1])**2
-    side_ok=side2>(side_floor+4*total_E)**2
-    radius_ok=all(x*x+y*y>(radius_floor+2*total_E)**2 for x,y in square)
+    side_ok=_side_floor_holds(a,b,u,total_E,side_floor)
+    radius_ok=all(sample.t>radius_floor for sample in src)
     valid=(4*total_E<margin and side_ok and radius_ok)
     return PhasePerturbationCertificate(p,eta,side_floor,radius_floor,
                                         margin,4*total_E,valid)
