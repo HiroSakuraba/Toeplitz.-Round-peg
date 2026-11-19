@@ -236,3 +236,7 @@ See the [November literature review](research/2026-11-literature-and-v212-plan.m
 ## v239: square-free open logarithmic spirals at a >= 9/10
 
 - [Elementary v239 proof](research/v239-log-spiral-nine-tenths.md) improves v238's sufficient exclusion threshold from a>=1 to **a>=9/10**, using cutoff 13R/50 and the exact transverse envelope of the spiral. [Fraction-based checker](code/log_spiral_exclusion_v239.py) and [16 tests](tests/test_log_spiral_exclusion_v239.py) audit the strict rational inequalities and fail closed for a<9/10. This is **only a theorem for an open arc**; no classification of smaller pitches and no counterexample to Toeplitz is claimed.
+
+## v240: square-free open logarithmic spirals at a >= 17/20
+
+- [Geometric proof and exact rational constants](research/v240-log-spiral-seventeen-twentieths.md) improve the sufficient exclusion threshold from v239's a>=9/10 to **a>=17/20 (0.85)**. The proof uses cutoff 4R/15, the adjacency restriction on pairs of inner square vertices, a rigorous 24-gon lower bound pi>25/8, and an exact upper bound on the spiral's transverse envelope. The [Fraction-only verifier](code/log_spiral_exclusion_v240.py) and [17 regression tests](tests/test_log_spiral_exclusion_v240.py) audit strict endpoint margins. This remains an **open-arc theorem**, not a Jordan-curve counterexample or a classification of all logarithmic-spiral pitches.
