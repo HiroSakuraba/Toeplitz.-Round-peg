@@ -208,3 +208,7 @@ See the [November literature review](research/2026-11-literature-and-v212-plan.m
 
 - Three new double spirals carry squares with strict side floors `1/2`, `1/4`, and `2/5`, respectively. Their phases are `r^-2 + r^-1`, `r^(-5/2) + (1/2)r^-2`, and `r^-3 + (3/2)r^(-3/2)`. The proof gives exact chord bounds and shows that the three curves lie outside Liouville regularity. [Proof note](research/v233-mixed-power-spiral-certificates.md)
 - The checker replays newly discovered rational source intervals. Its optional `--rediscover` flag runs bounded numerical search and exact verification. [Checker](code/mixed_power_spiral_v233.py) · [Regression tests](tests/test_mixed_power_spiral_v233.py)
+
+## v234: a square-size floor across an entire spiral family
+
+- Every phase `r^-2 + lambda/r` for `0 <= lambda <= 1` has an inscribed square of side **strictly greater than 1/2** on its first spiral arm. A cover of 512 rational coefficient intervals verifies the bound, including continuous perturbations up to `10^-9` per coordinate on the certified source arcs. [Proof and reproduction](research/v234-uniform-spiral-family.md) · [SageMath verifier](code/spiral_family_v234.py)
