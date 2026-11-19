@@ -59,7 +59,7 @@ EXPECTED_CLASSIFICATION={
 }
 EXPECTED_ORBITS=(BRANCH_A,BRANCH_B)
 B_ENTER_BRACKET=(Q(50053,100000),Q(50054,100000))
-A_EXIT_BRACKET=(Q(50055,100000),Q(50056,100000))
+A_EXIT_BRACKET=(Q(500551,1000000),Q(50056,100000))
 
 
 def _strict_sign_by_bernstein(poly,a,b):
@@ -230,8 +230,6 @@ def exhaustive_cutoff_classification(P,cutoff,a,b):
         # including a (they may cross the larger cutoff internally).
         for q in params:
             checks+=certify_sign(q,a,b,strict=False)
-        checks+=certify_sign(G if peval(G,a)>0 else pneg(G),
-                             a,a+(b-a)/100,strict=False) if False else 0
         active.add(ids)
         classes["active"]+=1
     if sum(classes.values())!=comb(n,4):
@@ -293,7 +291,7 @@ def audit():
         P,BRANCH_B,HIGH_S2,a,b,B_ENTER_BRACKET,direction=1)
     exits=unique_cutoff_event(
         P,BRANCH_A,HIGH_S2,a,b,A_EXIT_BRACKET,direction=-1)
-    if enters["bracket"][1]>=exits["bracket"][0] is True:
+    if enters["bracket"][1]>=exits["bracket"][0]:
         raise AssertionError("size-filtered events not strictly separated")
 
     # Both possible high-size orbits are distinct throughout W.
