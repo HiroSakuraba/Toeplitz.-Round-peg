@@ -1,0 +1,38 @@
+name: v252 complete size-filtered square-orbit event ledger
+
+on:
+  pull_request:
+    paths:
+      - 'code/big_peg_cutoff_ledger_v252.py'
+      - 'tests/test_big_peg_cutoff_ledger_v252.py'
+      - 'research/v252-*'
+      - '.github/workflows/v252-cutoff-ledger.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'code/big_peg_cutoff_ledger_v252.py'
+      - 'tests/test_big_peg_cutoff_ledger_v252.py'
+      - 'research/v252-*'
+      - '.github/workflows/v252-cutoff-ledger.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  complete-cutoff-ledger:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact 126-chart classification and independently audited endpoint counts
+        run: python code/big_peg_cutoff_ledger_v252.py
+      - name: Exact completeness, cutoff-event, and negative-control tests
+        run: python -m unittest -v tests.test_big_peg_cutoff_ledger_v252
+      - name: Recheck size-aware multi-square existence guarantee
+        run: python code/big_peg_size_atlas_v251.py
+      - name: Recheck genuine noncollinear corner homotopy
+        run: python code/big_peg_corner_v250.py
