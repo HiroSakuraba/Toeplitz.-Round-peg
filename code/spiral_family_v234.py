@@ -53,6 +53,28 @@ def path_acceleration(u, coefficient, speed, phase_slope=0, phase_intercept=0):
     return real*c-imag*s, real*s+imag*c
 
 
+def preconditioned_rows(data, orientation):
+    """Return the exact rows of B R for an invertible rational B, or None."""
+    zero = (FIELD(0), FIELD(0))
+    nominal = matrix(RDF, [[x.center() for x in row]
+                           for row in derivatives(data, orientation, zero)])
+    try:
+        numerical_inverse = nominal.inverse()
+    except (ArithmeticError, ValueError):
+        return None
+    inverse = matrix(QQ, 4, 4, [QQ(round(float(x)*SCALE)) / SCALE
+                                 for x in numerical_inverse.list()])
+    if not inverse.det():
+        return None
+    basis = []
+    for j in range(4):
+        for axis in ((1, 0), (0, 1)):
+            unit = [(0, 0)] * 4
+            unit[j] = axis
+            basis.append(inverse * vector(QQ, square_residual(unit, orientation)))
+    return matrix(QQ, basis).transpose().rows()
+
+
 def verify_box(lo, hi, orientation, numerators, speed_numerators, width_numerators,
                position_tolerance=POSITION_TOLERANCE, phase_enclosure=None):
     """Prove a distinct square above the side floor for all lambda in [lo, hi]."""
@@ -92,30 +114,13 @@ def verify_box(lo, hi, orientation, numerators, speed_numerators, width_numerato
     path = [u+v*delta for u, v in zip(point, speed)]
     box = [FIELD(a, b) for a, b in bounds]
     trig = (lambda v: v.cos(), lambda v: v.sin())
-    zero = (FIELD(0), FIELD(0))
     mid_data = [geometry(u, FIELD(mid), *trig, *extra) for u, extra in zip(point, affine)]
     acceleration = [path_acceleration(u, coefficient, v, *extra)
                     for u, v, extra in zip(path, speed, affine)]
     full = [geometry(u, coefficient, *trig, *extra) for u, extra in zip(box, affine)]
-    nominal = matrix(RDF, [[x.center() for x in row]
-                           for row in derivatives(mid_data, orientation, zero)])
-    try:
-        numerical_inverse = nominal.inverse()
-    except (ArithmeticError, ValueError):
-        return "singular-nominal-jacobian"
-    inverse = matrix(QQ, 4, 4, [QQ(round(float(x)*SCALE)) / SCALE
-                                 for x in numerical_inverse.list()])
-    if not inverse.det():
+    rows = preconditioned_rows(mid_data, orientation)
+    if rows is None:
         return "singular-preconditioner"
-    # Compose the exact linear square residual with the preconditioner before
-    # evaluating intervals. Each column depends on just one vertex tangent.
-    basis = []
-    for j in range(4):
-        for axis in ((1, 0), (0, 1)):
-            unit = [(0, 0)] * 4
-            unit[j] = axis
-            basis.append(inverse * vector(QQ, square_residual(unit, orientation)))
-    rows = matrix(QQ, basis).transpose().rows()
     for i, width in enumerate(widths):
         row = rows[i]
         weights = tuple((row[2*j], row[2*j+1]) for j in range(4))
