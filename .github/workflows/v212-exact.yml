@@ -46,5 +46,7 @@ jobs:
         run: python code/moving_polygon_events_v224.py
       - name: Audit v225 persistent edge strata
         run: python code/persistent_strata_v225.py
+      - name: Audit v226 exact algebraic clustering and geometric orbit chambers
+        run: python code/algebraic_orbit_events_v226.py
       - name: Verify original ZIP archives
         run: sha256sum --check archive/SHA256SUMS.txt
