@@ -4,6 +4,8 @@
 **19 November 2026**  
 **Status:** Numerical experiment plus a first-order calculation. **Not a proof.** No counterexample found.
 
+> **v243 correction (19 November 2026):** The phrase “no counterexample” below means **none was found in this numerical experiment**, not that the sharp constant is true. Daniel Bernier [reported on August 17, 2026](https://dbernier.ca/2026/06/16/the-sharp-big-peg-conjecture/) that Grisha Pochuev supplied a **10-sided counterexample** to the **sharp** sqrt(2) polygonal Big Peg conjecture. This repo has not independently verified that polygon, since exact coordinates were not available in machine-readable form during v243. The unrestricted **some c>0** Big Peg question remains open. See [v243 exact polygon method](v243-exact-polygon-big-peg-census.md). The floor shapes and first-order expansion are numerical/local observations, not universal theorems.
+
 ## The question
 
 Write J(γ) = (side of the largest square inscribed in γ) / (inradius of γ), where the inradius is the radius of the largest disk inside γ. A circle has J = √2.
