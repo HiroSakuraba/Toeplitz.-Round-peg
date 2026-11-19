@@ -64,5 +64,7 @@ jobs:
         run: python code/mixed_power_spiral_v233.py
       - name: Audit v236 square-free logarithmic spiral exclusion
         run: python code/log_spiral_exclusion_v236.py
+      - name: Audit v238 improved open log spiral exclusion
+        run: python code/log_spiral_exclusion_v238.py
       - name: Verify original ZIP archives
         run: sha256sum --check archive/SHA256SUMS.txt
