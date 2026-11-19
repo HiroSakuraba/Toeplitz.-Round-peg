@@ -209,6 +209,10 @@ See the [November literature review](research/2026-11-literature-and-v212-plan.m
 - Three new double spirals carry squares with strict side floors `1/2`, `1/4`, and `2/5`, respectively. Their phases are `r^-2 + r^-1`, `r^(-5/2) + (1/2)r^-2`, and `r^-3 + (3/2)r^(-3/2)`. The proof gives exact chord bounds and shows that the three curves lie outside Liouville regularity. [Proof note](research/v233-mixed-power-spiral-certificates.md)
 - The checker replays newly discovered rational source intervals. Its optional `--rediscover` flag runs bounded numerical search and exact verification. [Checker](code/mixed_power_spiral_v233.py) · [Regression tests](tests/test_mixed_power_spiral_v233.py)
 
+## v234: a square-size floor across an entire spiral family
+
+- Every phase `r^-2 + lambda/r` for `0 <= lambda <= 1` has an inscribed square of side **strictly greater than 1/2** on its first spiral arm. A cover of 512 rational coefficient intervals verifies the bound, including continuous perturbations up to `10^-9` per coordinate on the certified source arcs. [Proof and reproduction](research/v234-uniform-spiral-family.md) · [SageMath verifier](code/spiral_family_v234.py)
+
 ## v236: square-free open log spirals and an audit of eleven proposed Toeplitz attacks
 
 - [Analytical theorem with an exact rational regression audit](research/v236-open-logarithmic-spiral-square-exclusion.md): the compactified **open** logarithmic spiral `S_a = {exp((-a+i)t):t>=0} ∪ {0}` contains **NO nondegenerate inscribed square whenever `a>=4`**. The proof uses a radial cutoff at `R/4`: two inner square corners would be too close, one inner corner forces a three-corner minimum strip width `>=3R/8` but the spiral annulus has transverse width **<3R/8**, and four outer corners would lie on a strict Lipschitz-1 graph, impossible for a square. The strict angular bound `log(4)/a<3/8` follows from exact rational `exp(3/2)>67/16>4`.
