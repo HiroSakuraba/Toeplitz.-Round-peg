@@ -42,5 +42,7 @@ jobs:
         run: python code/multibranch_incidence_v222.py
       - name: Audit v223 complete single-polygon square-orbit census
         run: python code/polygon_orbit_census_v223.py
+      - name: Audit v224 moving polygon algebraic events
+        run: python code/moving_polygon_events_v224.py
       - name: Verify original ZIP archives
         run: sha256sum --check archive/SHA256SUMS.txt
