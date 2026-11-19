@@ -1,0 +1,38 @@
+name: v244 original Pochuev 10-gon exact independent certificate
+
+on:
+  pull_request:
+    paths:
+      - 'code/pochuev_big_peg_v244.py'
+      - 'code/big_peg_exact_v243.py'
+      - 'tests/test_pochuev_big_peg_v244.py'
+      - 'research/v244-*'
+      - '.github/workflows/v244-pochuev-exact.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'code/pochuev_big_peg_v244.py'
+      - 'code/big_peg_exact_v243.py'
+      - 'tests/test_pochuev_big_peg_v244.py'
+      - 'research/v244-*'
+      - '.github/workflows/v244-pochuev-exact.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  independent-exact-polygon-certificate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run new independent exact 2-parameter maximum square audit
+        run: python code/pochuev_big_peg_v244.py
+      - name: Crosscheck with pre-existing 4-parameter v223 geometric orbit census
+        run: python code/pochuev_big_peg_v244.py --crosscheck-v223
+      - name: Test exact source, disk containment and strict gap
+        run: python -m unittest -v tests.test_pochuev_big_peg_v244
