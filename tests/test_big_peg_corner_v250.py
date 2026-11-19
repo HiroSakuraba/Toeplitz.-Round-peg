@@ -110,16 +110,15 @@ class ExactKinkHandoff(unittest.TestCase):
         with self.assertRaises(ValueError):
             exact_global_coordinate_separation(tuple(vertices))
 
-    def test_collapsing_kink_detected(self):
+    def test_collinear_kink_is_rejected(self):
         vertices=list(self.vertices)
-        original=vertices[1]
-        # Move the kink onto the old segment: zero turn at the new vertex.
-        vertices[1]=(padd(original[0],pol(0,F(0))),
-                     original[1])
-        # This is a no-op control for the exact geometry.
-        self.assertEqual(tuple(vertices),self.vertices)
-        flat=tuple(pt(p.x,p.y) for p in OCTAGON)
-        self.assertGreater(minimum_nonadjacent_distance_squared(flat),0)
+        midpoint=pt((OCTAGON[0].x+OCTAGON[1].x)/2,
+                    (OCTAGON[0].y+OCTAGON[1].y)/2)
+        # A subdivision point on the original straight edge is NOT
+        # a genuine noncollinear corner; strict-turn proof must reject it.
+        vertices[1]=(pol(midpoint.x),pol(midpoint.y))
+        with self.assertRaises(ValueError):
+            prove_jordan_family(tuple(vertices))
 
     def test_restricted_big_peg_ratio_gt_one(self):
         self.assertGreater(SQUARE_SIDE_SQUARED_THRESHOLD/F(3)**2,F(0))
