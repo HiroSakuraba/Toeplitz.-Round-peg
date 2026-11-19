@@ -284,6 +284,15 @@ def prove_jordan_family(P):
     old=[P[0],*P[2:]]
     assert len(old)==8
     delta=F(1,20)
+    # Verify that the ACTUAL supplied moving family satisfies the motion
+    # hypothesis used in the global nonintersection proof. Merely checking
+    # the fixed reference octagon would not make this lemma fail closed.
+    for i,p in enumerate(old):
+        for t in (F(0),F(1)):
+            v=ppoint_at(p,t)
+            ref=OCTAGON[i]
+            if max(abs(v.x-ref.x),abs(v.y-ref.y))>delta:
+                raise ValueError("family leaves the proved vertex-motion envelope")
     margin=None
     for i in range(8):
         a=OCTAGON[i];b=OCTAGON[(i+1)%8]
