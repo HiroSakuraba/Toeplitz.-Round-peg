@@ -56,5 +56,7 @@ jobs:
         run: python code/singular_continuation_v229.py
       - name: Audit v230 irregular power-spiral thresholds and conditional bound
         run: python code/irregular_spiral_frontier_v230.py
+      - name: Audit v231 blind spiral search and exact four-arc degree certificates
+        run: python code/spiral_pruned_v231.py
       - name: Verify original ZIP archives
         run: sha256sum --check archive/SHA256SUMS.txt
