@@ -1,0 +1,13 @@
+{
+  "version": "v231",
+  "curve": "gamma_p(t)=t exp(i/t^p), subset of the Jordan double spiral D_p",
+  "certification": "Brouwer degree of a four-dimensional source-box residual; all final comparisons use exact rational arithmetic",
+  "common_exact_separator": "4*E < 1/20000 < min_source_margin / infinity_norm_inverse_A",
+  "source_parameter_encoding": "t_i=(u_i/2^30)^2",
+  "witnesses": [
+    {"p":"2", "sigma":-1, "u":[818567386,819260064,621854659,622029681,535397360,535480134,786041032,786606421], "side_strict_floor":"1/4", "radius_strict_floor":"6/25"},
+    {"p":"5/2", "sigma":-1, "u":[855020987,855569551,706339249,706513403,598989141,599053883,802365853,802740285], "side_strict_floor":"3/5", "radius_strict_floor":"3/10"},
+    {"p":"3", "sigma":1, "u":[855337675,855702480,662377952,662438811,764627192,764793505,909516016,910077141], "side_strict_floor":"7/10", "radius_strict_floor":"3/8"}
+  ],
+  "scope_limitations": ["the three stated exponents only", "not a universal Toeplitz proof", "numerical discovery is separate from the exact proof replay", "all-square enumeration not claimed"]
+}
