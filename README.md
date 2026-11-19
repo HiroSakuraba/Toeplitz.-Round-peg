@@ -216,3 +216,7 @@ See the [November literature review](research/2026-11-literature-and-v212-plan.m
 ## v235: a square-size floor on nowhere differentiable source arcs
 
 - Adding the explicit infinite base-32 Takagi phase preserves the **strict side bound of 1/2** for every coefficient in `[0,1]`. The perturbation moves the curve more than the previous tolerance on all four certified source arcs. The verifier uses exact rational chord bounds for six tent terms and a uniform bound for the full tail. [Proof and reproduction](research/v235-takagi-spiral-certificates.md) · [SageMath verifier](code/rough_spiral_family_v235.py)
+
+## v236: a uniform square-size bound for either sign of the rough phase
+
+- The **strict side bound of 1/2** holds for every pair of spiral coefficient `lambda in [0,1]` and Takagi phase amplitude `a in [-1/100,1/100]`. SageMath verifies moving source boxes on a partition of the entire parameter rectangle, including the full phase tail and the extra coordinate allowance from v235. [Proof and reproduction](research/v236-spiral-parameter-rectangle.md) · [SageMath verifier](code/spiral_parameter_rectangle_v236.py)

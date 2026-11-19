@@ -18,7 +18,7 @@ MANIFEST = SEED_MANIFEST.with_name("v235-rough-spiral-family.json")
 BASE = 32
 TERMS = 6
 AMPLITUDE = QQ(1)/100
-TAIL_BOUND = AMPLITUDE/(2*BASE**TERMS*(1-QQ(1)/BASE))
+UNIT_TAIL_BOUND = 1/(2*BASE**TERMS*(1-QQ(1)/BASE))
 MIN_U, MAX_U = QQ(1)/3, QQ(5)/6
 
 
@@ -50,26 +50,40 @@ def tent_chord_error(a, b, frequency):
     return start, end, max(errors)
 
 
-def phase_enclosure(a, b):
-    """Affine reference angle and uniform Cartesian error for the full series."""
+def unit_phase_enclosure(a, b):
+    """Affine chord and phase error for the unit Takagi series on [a,b]."""
     if not MIN_U <= a < b <= MAX_U:
         return None
     rows = [tent_chord_error(a, b, BASE**k) for k in range(TERMS)]
-    start = AMPLITUDE*sum(row[0] for row in rows)
-    end = AMPLITUDE*sum(row[1] for row in rows)
+    start = sum(row[0] for row in rows)
+    end = sum(row[1] for row in rows)
     slope = (end-start)/(b-a)
-    angle_error = AMPLITUDE*sum(row[2] for row in rows) + TAIL_BOUND
-    return slope, start-slope*a, b*b*angle_error
+    angle_error = sum(row[2] for row in rows) + UNIT_TAIL_BOUND
+    return slope, start-slope*a, angle_error
 
 
-def _rough_geometry(u, coefficient):
-    """A floating-point locator using the truncated phase and one-sided slopes."""
+def phase_enclosure(a, b):
+    """Affine reference angle and uniform Cartesian error for the full series."""
+    model = unit_phase_enclosure(a, b)
+    if model is None:
+        return None
+    slope, intercept, angle_error = model
+    return AMPLITUDE*slope, AMPLITUDE*intercept, b*b*AMPLITUDE*angle_error
+
+
+def _tent_terms(u):
     value, slope = 0., 0.
     for k in range(TERMS):
         frequency = BASE**k
         frac = u*frequency-floor(u*frequency)
         value += min(frac, 1-frac)/frequency
         slope += 1 if frac < .5 else -1
+    return value, slope
+
+
+def _rough_geometry(u, coefficient):
+    """A floating-point locator using the truncated phase and one-sided slopes."""
+    value, slope = _tent_terms(u)
     amplitude = float(AMPLITUDE)
     return geometry(u, coefficient, cos, sin, amplitude*slope,
                     amplitude*(value-slope*u))
