@@ -62,6 +62,15 @@ class ChangingJordanFamily(unittest.TestCase):
         self.assertEqual(proof["minimal_nonadjacent_coordinate_separation"],"9/10")
         self.assertGreater(proof["turn_and_edge_sign_certificates"],0)
 
+    def test_unverified_vertex_motion_cannot_pass_jordan_cover(self):
+        # The global separation proof requires a verified L-infinity
+        # displacement envelope for EVERY supplied moving vertex.
+        tampered=list(self.vertices)
+        vertex=tampered[4]
+        tampered[4]=(padd(vertex[0],pol(Q(1,10))),vertex[1])
+        with self.assertRaises(ValueError):
+            prove_jordan_family(tuple(tampered))
+
     def test_exact_jordan_sample_regressions(self):
         for t in (Q(0),Q(1,10),Q(1,2),Q(2,3),Q(1)):
             with self.subTest(t=t):
