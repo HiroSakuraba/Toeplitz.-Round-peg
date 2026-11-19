@@ -1,0 +1,34 @@
+name: v243 exact polygon Big Peg census
+
+on:
+  pull_request:
+    paths:
+      - 'code/big_peg_exact_v243.py'
+      - 'tests/test_big_peg_exact_v243.py'
+      - 'research/v243-*'
+      - '.github/workflows/v243-big-peg-exact.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'code/big_peg_exact_v243.py'
+      - 'tests/test_big_peg_exact_v243.py'
+      - 'research/v243-*'
+      - '.github/workflows/v243-big-peg-exact.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-polygon-census:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Replay exact square and disk benchmark
+        run: python code/big_peg_exact_v243.py
+      - name: Exact polygon degeneracy and inradius tests
+        run: python -m unittest -v tests.test_big_peg_exact_v243
