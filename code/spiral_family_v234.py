@@ -21,12 +21,12 @@ POSITION_TOLERANCE = QQ(1) / 10**9
 MANIFEST = Path(__file__).resolve().parents[1] / "research" / "v234-spiral-family.json"
 
 
-def geometry(u, coefficient, cosine, sine):
+def geometry(u, coefficient, cosine, sine, phase_slope=0, phase_intercept=0):
     inverse = 1 / u
-    theta = inverse**4 + coefficient * inverse**2
+    theta = inverse**4 + coefficient * inverse**2 + phase_slope*u + phase_intercept
     radial = u*u
     c, s = cosine(theta), sine(theta)
-    angular_speed = -4 * inverse**3 - 2 * coefficient * inverse
+    angular_speed = -4 * inverse**3 - 2 * coefficient * inverse + radial*phase_slope
     return ((radial*c, radial*s),
             (2*u*c-angular_speed*s, 2*u*s+angular_speed*c),
             (-s, c))
@@ -41,11 +41,11 @@ def derivatives(data, orientation, zero):
     return tuple(zip(*cols))
 
 
-def path_acceleration(u, coefficient, speed):
+def path_acceleration(u, coefficient, speed, phase_slope=0, phase_intercept=0):
     inv = 1/u
     radial = u*u
-    theta = inv**4 + coefficient*inv**2
-    rate = inv**2 - speed*(4*inv**5 + 2*coefficient*inv**3)
+    theta = inv**4 + coefficient*inv**2 + phase_slope*u + phase_intercept
+    rate = inv**2 + speed*(phase_slope - 4*inv**5 - 2*coefficient*inv**3)
     acceleration = speed**2*(20*inv**6 + 6*coefficient*inv**4) - 4*speed*inv**3
     real = 2*speed**2 - radial*rate**2
     imag = 4*u*speed*rate + radial*acceleration
@@ -54,7 +54,7 @@ def path_acceleration(u, coefficient, speed):
 
 
 def verify_box(lo, hi, orientation, numerators, speed_numerators, width_numerators,
-               position_tolerance=POSITION_TOLERANCE):
+               position_tolerance=POSITION_TOLERANCE, phase_enclosure=None):
     """Prove a distinct square above the side floor for all lambda in [lo, hi]."""
     if not (0 <= lo < hi <= 1 and orientation in (-1, 1)
             and len(numerators) == len(speed_numerators) == len(width_numerators) == 4
@@ -73,6 +73,18 @@ def verify_box(lo, hi, orientation, numerators, speed_numerators, width_numerato
     ordered = sorted(bounds)
     if any(b >= c for (_, b), (c, _) in zip(ordered, ordered[1:])):
         return "overlapping-source-intervals"
+    # A phase enclosure supplies an affine reference phase and a Cartesian
+    # error bound on the full source interval. Its error need only be continuous.
+    if phase_enclosure is None:
+        models = [(QQ(0), QQ(0), QQ(0))]*4
+    else:
+        models = [phase_enclosure(a, b) for a, b in bounds]
+        if any(model is None for model in models):
+            return "phase-outside-certified-domain"
+    affine = [(slope, intercept) for slope, intercept, _ in models]
+    coordinate_errors = [position_tolerance + error for _, _, error in models]
+    if any(error < 0 for _, _, error in models):
+        raise ValueError("negative phase enclosure error")
     coefficient = FIELD(lo, hi)
     delta = FIELD(-half, half)
     remainder = FIELD(0, half**2/2)
@@ -81,9 +93,10 @@ def verify_box(lo, hi, orientation, numerators, speed_numerators, width_numerato
     box = [FIELD(a, b) for a, b in bounds]
     trig = (lambda v: v.cos(), lambda v: v.sin())
     zero = (FIELD(0), FIELD(0))
-    mid_data = [geometry(u, FIELD(mid), *trig) for u in point]
-    acceleration = [path_acceleration(u, coefficient, v) for u, v in zip(path, speed)]
-    full = [geometry(u, coefficient, *trig) for u in box]
+    mid_data = [geometry(u, FIELD(mid), *trig, *extra) for u, extra in zip(point, affine)]
+    acceleration = [path_acceleration(u, coefficient, v, *extra)
+                    for u, v, extra in zip(path, speed, affine)]
+    full = [geometry(u, coefficient, *trig, *extra) for u, extra in zip(box, affine)]
     nominal = matrix(RDF, [[x.center() for x in row]
                            for row in derivatives(mid_data, orientation, zero)])
     try:
@@ -116,11 +129,12 @@ def verify_box(lo, hi, orientation, numerators, speed_numerators, width_numerato
         bound = (abs(offset)
                  + sum(abs(int(i == j)-dot(j, d[1]))*widths[j]
                        for j, d in enumerate(full))
-                 + position_tolerance*sum(map(abs, row)))
+                 + sum(abs(weight)*coordinate_errors[j//2] for j, weight in enumerate(row)))
         if not bound.upper().exact_rational() < width:
             return "inclusion-failed"
     a, b = full[0][0], full[1][0]
-    side_error = FIELD(-2*position_tolerance, 2*position_tolerance)
+    side_budget = coordinate_errors[0] + coordinate_errors[1]
+    side_error = FIELD(-side_budget, side_budget)
     length_sq = sum((y-x+side_error)**2 for x, y in zip(a, b))
     if not length_sq.lower().exact_rational() > SIDE_FLOOR**2:
         return "insufficient-side-bound"
@@ -220,13 +234,13 @@ def generate():
     return rows[::-1]
 
 
-def replay(rows):
+def replay(rows, verifier=verify_box):
     through = QQ(0)
     for i, (a, b, sign, center, speed, widths) in enumerate(rows):
         lo, hi = QQ(a), QQ(b)
         if lo != through:
             raise ValueError(f"interval {i} does not start at {through}")
-        outcome = verify_box(lo, hi, sign, center, speed, widths)
+        outcome = verifier(lo, hi, sign, center, speed, widths)
         if outcome != "certified":
             raise ValueError(f"interval {i} [{lo}, {hi}]: {outcome}")
         through = hi
