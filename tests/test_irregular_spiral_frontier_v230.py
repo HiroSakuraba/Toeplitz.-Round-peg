@@ -58,7 +58,8 @@ class ProtectedWitness(unittest.TestCase):
         for p in (2,F(5,2),3,7,1000):
             x=conditional_box_a_bounds(p)
             self.assertEqual(x.min_vertex_radius_strictly_greater_than,F(1,5))
-            self.assertEqual(x.side_length_strictly_greater_than,F(1,8))
+            self.assertEqual(x.side_length_strictly_greater_than,F(1,4))
+            self.assertEqual(x.max_vertex_radius_strictly_less_than,F(1))
             self.assertEqual(x.cutoff_radius_that_preserves_all_vertices,F(1,5))
             self.assertTrue(x.needs_external_face_certificate)
     def test_only_box_a(self):
@@ -76,7 +77,8 @@ class ProtectedWitness(unittest.TestCase):
         self.assertFalse(protected_by_box_a(2,-1))
     def test_report_labels_proof_dependency(self):
         d=report()
-        self.assertEqual(d['conditional_uniform_square_side_floor'],'>1/8')
+        self.assertEqual(d['conditional_uniform_square_side_floor'],'>1/4')
+        self.assertEqual(d['conditional_outer_vertex_radius_ceiling'],'<1')
         self.assertIn('not computed by this script',d['source_of_square_existence'])
         self.assertEqual(d['profiles']['2']['liouville_regular'],False)
 

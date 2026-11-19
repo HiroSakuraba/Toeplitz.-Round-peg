@@ -4,7 +4,10 @@ on:
     paths:
       - 'related/power-spiral-v99-v102/**'
       - 'code/irregular_spiral_frontier_v230.py'
+      - 'code/spiral_box_a_audit_v230.py'
       - 'tests/test_irregular_spiral_frontier_v230.py'
+      - 'tests/test_spiral_box_a_audit_v230.py'
+      - 'tests/test_iv230_interval_layer.py'
       - 'research/v230-*'
       - '.github/workflows/v230-spiral-arb.yml'
   push:
@@ -12,7 +15,10 @@ on:
     paths:
       - 'related/power-spiral-v99-v102/**'
       - 'code/irregular_spiral_frontier_v230.py'
+      - 'code/spiral_box_a_audit_v230.py'
       - 'tests/test_irregular_spiral_frontier_v230.py'
+      - 'tests/test_spiral_box_a_audit_v230.py'
+      - 'tests/test_iv230_interval_layer.py'
       - 'research/v230-*'
       - '.github/workflows/v230-spiral-arb.yml'
   workflow_dispatch:
@@ -38,3 +44,13 @@ jobs:
         run: python related/power-spiral-v99-v102/verify_v99_small_exponent_log_spiral.py
       - name: Re-run all eight v101 independent Arb face-sign certificates (strict exit)
         run: python related/power-spiral-v99-v102/verify_v230_arb_strict.py
+      - name: Arb-certify the Theorem 2 inequalities on all of Box A, identity and square tracking
+        run: python code/spiral_box_a_audit_v230.py
+      - name: v230 audit tests with dependencies required (no silent skips)
+        env:
+          REQUIRE_SPIRAL_AUDIT_DEPS: '1'
+        run: >-
+          python -m unittest -v
+          tests.test_spiral_box_a_audit_v230
+          tests.test_iv230_interval_layer
+          tests.test_irregular_spiral_frontier_v230

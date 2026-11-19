@@ -10,9 +10,11 @@
 | Greene–Lobb two Lipschitz graphs | Curves that are union of two uniformly Lipschitz graphs with specified slope bound | Not established | NO (would imply finite length) | NO (would imply finite length) | Do not assume generic spiral has any two-graph representation |
 | Asano–Ike Hölder-domain/quasicircle criterion | Certain domain classes implying Liouville regularity | Not independently checked | Not independently checked | NO | Contrapositive: D_p non-Liouville for p≥2 cannot be in these sufficient subclasses |
 | Chambers near-C² theorem | Specific geometric `C²`-closeness hypotheses | Unchecked | Unchecked | Unchecked | Ordinary Hausdorff closeness to a circle is not the stated certificate; audit the theorem before using it |
-| v100/v101 power-spiral computer-assisted square theorem | Exact `gamma_p` for all p>0 | CONDITIONAL YES | CONDITIONAL YES | CONDITIONAL YES with uniform >1/8 side | Separate direct existence construction, not an all-Jordan sufficiency criterion |
+| v100/v101 power-spiral computer-assisted square theorem | Exact `gamma_p` for all p>0 | CONDITIONAL YES | CONDITIONAL YES | CONDITIONAL YES with uniform >1/4 side (audit; was >1/8) | Separate direct existence construction, not an all-Jordan sufficiency criterion |
 
 **Important logic:** 'NO' in the third column means **not covered by the sufficient hypothesis**, not square-free. `D_p` is expected to contain squares for all p>0 by the recovered spiral theorem. Thus it is a *positive control outside some theorem classes*, not a plausible counterexample to Toeplitz.
+
+*[audit]* `D_p` is Asano–Ike's §6.1 curve with a different truncation (`t<=1` here, `θ>=e` there). For large `p` (numerically from about `p=23.75`) the Box-A square uses the part of the spiral that their truncation removes, so the table's third column is about `D_p`, not their exact curve.
 
 ## Backlog triage
 
@@ -25,6 +27,6 @@
 
 ## Recommended v231 experiment
 
-Use a fixed p>=2 (start p=2, 5/2 and 3). Take finite spiral truncations at `epsilon<1/5`; by the conditional v230 theorem they retain at least one original spiral square of side `>1/8`. Build geometric pruning for four-edge candidates before calling v223's rational algebraic solver. Produce a **separate a priori certificate** that finds a positive-square without using the original v100 point parameters; otherwise the experiment merely re-encodes the known witness.
+Use a fixed p>=2 (start p=2, 5/2 and 3). Take finite spiral truncations at `epsilon<1/5`; by the conditional v230 theorem they retain at least one original spiral square of side `>1/4`. Build geometric pruning for four-edge candidates before calling v223's rational algebraic solver. Produce a **separate a priori certificate** that finds a positive-square without using the original v100 point parameters; otherwise the experiment merely re-encodes the known witness.
 
 Check its assumptions against v220's known tiny-square sequence and v210's source-window counterexample. An oracle that merely finds a square in every finite polygon has made no progress on the unrestricted limit.
