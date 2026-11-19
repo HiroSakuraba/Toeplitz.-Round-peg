@@ -38,4 +38,6 @@ At that zero, the parameter of each vertex can differ from its value at the affi
 
 Run the exact replay with `python code/mixed_power_spiral_v233.py`. Add `--rediscover` to run angle-spaced numerical sampling and bounded candidate search before exact verification. The stored source endpoints are integer numerators over \(2^{30}\) in \(u\). Run the focused regressions with `python -m unittest tests.test_mixed_power_spiral_v233 -v`.
 
+With the SageMath Conda environment active, run `python code/verify_mixed_power_spiral_sage_v233.py` for a second calculation. It uses 160-bit interval trig and curvature bounds and solves the affine system over SageMath's rational field.
+
 The proved instances are the three specified phase laws. The degree criterion for other laws remains conditional on finding a box that passes its inequalities. The unrestricted square-peg conjecture remains open.
