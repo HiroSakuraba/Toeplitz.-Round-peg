@@ -4,6 +4,9 @@
 **Date:** 19 November 2026  
 **Scope:** An independently modified ten-vertex rational Jordan polygon with a *strictly smaller certified upper bound* on maximal-square-side / inradius than the original Pochuev origin-disk certificate. This is a concrete numerical-to-exact optimization result, **not** a proof that the true optimal ratio of this new polygon is lower than the true optimal ratio of Pochuev's polygon, and **not** a universal Big Peg theorem.
 
+
+> **v246 update (19 November 2026):** The v245 limitation below has now been resolved. [Complete exact global inradius bounds](v246-true-inradius-global-cover.md) prove **the actual maximum-square/inradius ratio of v245 is strictly smaller than Pochuev's original actual ratio**. The numerical-to-exact interval theorem places the original ratio in (1.40898288313781,1.40898289277737) and v245 in (1.40869527908545,1.40869528263098). The earlier uncertainty below is historical.
+
 ## What changed
 
 v244 imported and independently confirmed Grisha Pochuev's exact rational ten-gon. The original has a contained disk centered at the origin with squared radius
