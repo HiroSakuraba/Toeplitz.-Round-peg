@@ -4,6 +4,8 @@
 **Date:** 19 November 2026  
 **Status:** Exact-arithmetic verifier for **rational simple polygons**, with a complete finite maximum-square census and an independently certified contained disk. The reported ten-sided counterexample has **not** yet been verified here because its original coordinates have not been obtained.
 
+> **Later v244 update:** Pochuev's [original exact ten-vertex dataset](v244-pochuev-original-ten-gon.json) has since been recovered from [his own public repository](https://github.com/Grisha-Pochuev/sharp-big-peg-counterexample) and an [independent v243-based exact certificate](v244-independent-pochuev-certificate.md) has been implemented. The sourcing gap and future-task language below describe **the state when v243 was originally written**.
+
 ## Correction to v242 and source provenance
 
 The v242 numerical search found no counterexample **among the curves it tested**. This must not be interpreted as evidence that the sharp sqrt(2) Big Peg conjecture is true.
