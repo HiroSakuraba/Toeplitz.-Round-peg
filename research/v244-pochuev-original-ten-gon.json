@@ -1,0 +1,94 @@
+{
+  "name": "Grisha Pochuev, 10-vertex sharp polygonal Big Peg counterexample (original rational coordinates)",
+  "provenance": {
+    "author": "Grisha Pochuev",
+    "repository": "https://github.com/Grisha-Pochuev/sharp-big-peg-counterexample",
+    "pinned_commit": "b9e0c95cbab888405692c9efa7e592f2a0807ae4",
+    "source_blob_sha": "0f8b70e9aab72ca2c62e2e9713049e1558ba013f",
+    "source_file": "counterexample.json",
+    "coordinate_denominator": 1200,
+    "coordinate_notation": "Each input coordinate is an integer numerator over 1200; exact Fraction strings, not floats."
+  },
+  "vertices": [
+    [
+      "4114/1200",
+      "-558/1200"
+    ],
+    [
+      "2022/1200",
+      "1568/1200"
+    ],
+    [
+      "-1234/1200",
+      "1006/1200"
+    ],
+    [
+      "-868/1200",
+      "2516/1200"
+    ],
+    [
+      "-1089/1200",
+      "2814/1200"
+    ],
+    [
+      "-3769/1200",
+      "1169/1200"
+    ],
+    [
+      "-3459/1200",
+      "81/1200"
+    ],
+    [
+      "141/1200",
+      "-1348/1200"
+    ],
+    [
+      "571/1200",
+      "-1449/1200"
+    ],
+    [
+      "1105/1200",
+      "-485/1200"
+    ]
+  ],
+  "disk": {
+    "center": [
+      "0",
+      "0"
+    ],
+    "radius_squared": "1"
+  },
+  "claimed_exact_invariants": {
+    "minimum_boundary_distance_squared": "2403854890969/2400326560000",
+    "maximum_square_side_squared": "56381275521625791352241234309/28343589374868261752462760000",
+    "gap_to_two": "305903228110732152684285691/28343589374868261752462760000",
+    "original_valid_nonsingular_oriented_edge_assignments": 144,
+    "original_positive_oriented_edge_assignments": 4,
+    "original_positive_assignments": [
+      [
+        2,
+        4,
+        5,
+        6
+      ],
+      [
+        4,
+        5,
+        6,
+        2
+      ],
+      [
+        5,
+        6,
+        2,
+        4
+      ],
+      [
+        6,
+        2,
+        4,
+        5
+      ]
+    ]
+  }
+}
