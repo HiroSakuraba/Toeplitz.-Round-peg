@@ -1,0 +1,36 @@
+name: v249 exact multichart square continuation
+
+on:
+  pull_request:
+    paths:
+      - 'code/big_peg_multichart_v249.py'
+      - 'tests/test_big_peg_multichart_v249.py'
+      - 'research/v249-*'
+      - '.github/workflows/v249-multichart.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'code/big_peg_multichart_v249.py'
+      - 'tests/test_big_peg_multichart_v249.py'
+      - 'research/v249-*'
+      - '.github/workflows/v249-multichart.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-chart-atlas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prove all-time Jordan family and 2-chart square continuation
+        run: python code/big_peg_multichart_v249.py
+      - name: Exact Bernstein and fail-closed interval-cover tests
+        run: python -m unittest -v tests.test_big_peg_multichart_v249
+      - name: Preserve earlier nonsmooth local square persistence theorem
+        run: python code/big_peg_persistence_v248.py
