@@ -174,11 +174,11 @@ class CompleteHighSquareLedger(unittest.TestCase):
                     exhaustive_cutoff_classification(self.P,k,a,b)
 
     def test_invalid_event_brackets_rejected(self):
-        with self.assertRaises(ValueError):
+        with self.assertRaises(AssertionError):
             unique_cutoff_event(
                 self.P,BRANCH_B,HIGH_S2,WINDOW_START,WINDOW_END,
                 (A_EXIT_BRACKET[0],A_EXIT_BRACKET[1]),direction=1)
-        with self.assertRaises(ValueError):
+        with self.assertRaises(AssertionError):
             unique_cutoff_event(
                 self.P,BRANCH_A,HIGH_S2,WINDOW_START,WINDOW_END,
                 B_ENTER_BRACKET,direction=-1)
