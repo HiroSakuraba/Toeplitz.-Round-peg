@@ -52,5 +52,7 @@ jobs:
         run: python code/local_orbit_germs_v227.py
       - name: Audit v228 algebraic singular event-slice feasibility
         run: python code/singular_event_feasibility_v228.py
+      - name: Audit v229 singular Cramer branch continuation
+        run: python code/singular_continuation_v229.py
       - name: Verify original ZIP archives
         run: sha256sum --check archive/SHA256SUMS.txt
