@@ -160,6 +160,52 @@ def minimum_nonadjacent_distance_squared(vertices):
     return value
 
 
+
+def toothed_square(delta):
+    """Fixed-angle small outward tooth; large interior disk still exists.
+
+    Its tip angle is 90 degrees and both adjacent foot angles are 225
+    degrees for EVERY 0<delta<1/4. Yet the minimum separation of
+    nonadjacent edges is <=sqrt(2)*delta, while the unit disk is contained.
+    This refutes only an ANGLE-ONLY uniform lower bound on feature gap,
+    NOT the existence of an inscribed square of significant size.
+    """
+    if type(delta) is not F or not F(0)<delta<F(1,4):
+        raise ValueError("tooth scale must be an exact Fraction in (0,1/4)")
+    P=(
+        pt(-1,-1),pt(1,-1),pt(1,1),pt(delta,1),
+        pt(0,1+delta),pt(-delta,1),pt(-1,1),
+    )
+    validate_jordan_polygon(P)
+    return P
+
+
+def tooth_diagnostic():
+    """Exact failure mode of feature-size argument with invariant angles."""
+    from big_peg_exact_v243 import contained_disk
+    evidence=[]
+    for n in (8,16,32,64):
+        delta=F(1,n)
+        polygon=toothed_square(delta)
+        if not contained_disk(polygon,pt(0,0),F(1)):
+            raise AssertionError("claimed interior unit disk is absent")
+        d2=minimum_nonadjacent_distance_squared(polygon)
+        if not (F(0)<d2<=2*delta*delta):
+            raise AssertionError("tooth should generate a fine feature gap")
+        # Tip edges are (-delta,+delta) and (-delta,-delta):
+        # their dot product vanishes exactly for every scale.
+        e1=sub(polygon[4],polygon[3])
+        e2=sub(polygon[5],polygon[4])
+        if dot(e1,e2)!=0:
+            raise AssertionError("tooth's fixed right angle changed")
+        evidence.append({
+            "delta":str(delta),
+            "exact_nonadjacent_gap_squared":str(d2),
+            "interior_unit_disk":True,
+            "right_angle_tip":True,
+        })
+    return evidence
+
 def verify_three_edge_kernel():
     """Check stored exact vector satisfies ALL THREE unchanged edge rows."""
     base=tuple(ppoint(p.x,p.y) for p in OCTAGON)
@@ -247,6 +293,7 @@ def audit():
         "algebraically_distinct_square_branches_join_at_kink":True,
         "jordan":{k:str(v) for k,v in jordan.items()},
         "sampled_feature_gap_rechecks":observed,
+        "angle_only_feature_gap_counterexample":tooth_diagnostic(),
         "limits":"Quantitative result for this restricted affine convex nine-gon family; no universal c for arbitrary Jordan curves, no general singular orbit transition, and no Toeplitz proof.",
     }
 
