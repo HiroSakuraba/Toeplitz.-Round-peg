@@ -141,7 +141,7 @@ class ChangingJordanFamily(unittest.TestCase):
         self.assertTrue(0<q0<ALPHA<q1<1)
 
     def test_restricted_big_peg_bound_proved(self):
-        self.assertGreater(S2_LIMIT,Q(3)*Q(9,10)**2) # 7.29 > 2.43
+        self.assertEqual(S2_LIMIT,Q(3)**2*Q(9,10)**2) # (2.7)^2 = 9*(0.9)^2
         self.assertEqual(S2_LIMIT,Q(27,10)**2)
         self.assertIn("9/10",self.report["restricted_family_big_peg_ratio_strictly_above"])
 
