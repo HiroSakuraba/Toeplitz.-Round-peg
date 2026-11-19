@@ -38,5 +38,7 @@ jobs:
         run: python code/accumulating_notches_v220.py
       - name: Audit v221 positive-size cutoff incidence
         run: python code/cutoff_incidence_v221.py
+      - name: Audit v222 multibranch PL incidence
+        run: python code/multibranch_incidence_v222.py
       - name: Verify original ZIP archives
         run: sha256sum --check archive/SHA256SUMS.txt
