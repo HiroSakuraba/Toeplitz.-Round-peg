@@ -213,6 +213,10 @@ See the [November literature review](research/2026-11-literature-and-v212-plan.m
 
 - Every phase `r^-2 + lambda/r` for `0 <= lambda <= 1` has an inscribed square of side **strictly greater than 1/2** on its first spiral arm. A cover of 512 rational coefficient intervals verifies the bound, including continuous perturbations up to `10^-9` per coordinate on the certified source arcs. [Proof and reproduction](research/v234-uniform-spiral-family.md) · [SageMath verifier](code/spiral_family_v234.py)
 
+## v235: a square-size floor on nowhere differentiable source arcs
+
+- Adding the explicit infinite base-32 Takagi phase preserves the **strict side bound of 1/2** for every coefficient in `[0,1]`. The perturbation moves the curve more than the previous tolerance on all four certified source arcs. The verifier uses exact rational chord bounds for six tent terms and a uniform bound for the full tail. [Proof and reproduction](research/v235-takagi-spiral-certificates.md) · [SageMath verifier](code/rough_spiral_family_v235.py)
+
 ## v236: square-free open log spirals and an audit of eleven proposed Toeplitz attacks
 
 - [Analytical theorem with an exact rational regression audit](research/v236-open-logarithmic-spiral-square-exclusion.md): the compactified **open** logarithmic spiral `S_a = {exp((-a+i)t):t>=0} ∪ {0}` contains **NO nondegenerate inscribed square whenever `a>=4`**. The proof uses a radial cutoff at `R/4`: two inner square corners would be too close, one inner corner forces a three-corner minimum strip width `>=3R/8` but the spiral annulus has transverse width **<3R/8**, and four outer corners would lie on a strict Lipschitz-1 graph, impossible for a square. The strict angular bound `log(4)/a<3/8` follows from exact rational `exp(3/2)>67/16>4`.
