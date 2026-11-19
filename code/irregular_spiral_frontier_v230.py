@@ -47,8 +47,10 @@ class UniformSquareBenchmark:
     """Rational bounds, CONDITIONALLY transferred from v100 Box A.
 
     Mathematically: every p>=2 Box-A Miranda square has minimum vertex
-    radius STRICTLY > 1/5 and side length STRICTLY > 1/8. No floating-point
-    approximation or unverified root coordinate is used in these inequalities.
+    radius STRICTLY > 1/5, maximum vertex radius STRICTLY < 1 (v100 section 9),
+    and side length STRICTLY > 1/4. (The original v230 statement was > 1/8;
+    the audit strengthened it.) No floating-point approximation or unverified
+    root coordinate is used in these inequalities.
     """
     min_vertex_radius_strictly_greater_than: F
     side_length_strictly_greater_than: F
@@ -58,14 +60,15 @@ class UniformSquareBenchmark:
     d_min: F
     d_max: F
     needs_external_face_certificate: bool
+    max_vertex_radius_strictly_less_than: F = F(1)
 
 
 def conditional_box_a_bounds(p):
     if F(p) < 2:
         raise ValueError('v230 uniform bounds only cover p>=2 (v100 Box A)')
     return UniformSquareBenchmark(
-        F(1, 5), F(1, 8), F(1, 5),
-        F(1), F(19, 10), F(9, 20), F(18, 25), True)
+        F(1, 5), F(1, 4), F(1, 5),
+        F(1), F(19, 10), F(9, 20), F(18, 25), True, F(1))
 
 
 def protected_by_box_a(p, cutoff_radius):
@@ -83,17 +86,32 @@ def proof_inequality_checks():
     Set q=1/(p+1), p>=2: 1-q>=2/3, c>=1, Delta<3*pi<10.
     exp(-x)<=1/(1+x), so 1-exp(-c(1-q))>=2/5;
     t0**p=(1-exp(-c(1-q)))/Delta>1/25.
-    Thus t0>25**(-1/p)>=1/5. Epsilon=d*q<=6/25<pi/2;
-    cos epsilon>0 implies side>=t0/sqrt(2)>1/(5sqrt(2))>1/8.
+    Thus t0>25**(-1/p)>=1/5. delta=d*q<=6/25<pi/2.
+
+    Side (audit, replaces the original >1/8 step): with rho>=1 and
+    cos(delta)>=1-delta^2/2>0,
+        |1+rho e^(i delta)|^2 = 1+rho^2+2 rho cos(delta) >= 2+2cos(delta)
+                               >= 4-delta^2 >= 4-(6/25)^2 = 2464/625 > 25/8,
+    so side^2 = t0^2 |1+rho e^(i delta)|^2 / 2 > (1/25)(25/8)/2 = 1/16.
+
+    Outer vertex (v100 section 9): t3^p = (exp(c(1-q))-1)/Delta with
+    exp(c(1-q)) <= exp(19/10) < e^2 < (272/100)^2 < 37/5 and
+    Delta = 3*pi - d*q > 9 - 6/25 = 219/25, so t3^p < (32/5)/(219/25) < 1.
     """
     assert F(18, 25) / 3 == F(6, 25)
     assert F(2, 3) / (1 + F(2, 3)) == F(2, 5)
     assert F(2, 5) / F(10) == F(1, 25)
-    # 1/(5 sqrt(2)) > 1/8 iff 64 > 50.
-    assert 8 * 8 > 5 * 5 * 2
     # pi>3 and 3*pi<10 are standard Archimedean estimates.
     assert F(6, 25) < F(3, 2)
     assert 3 * F(22, 7) < 10
+    # side > 1/4
+    assert 4 - F(6, 25) ** 2 == F(2464, 625)
+    assert F(2464, 625) > F(25, 8)
+    assert F(1, 25) * F(25, 8) / 2 == F(1, 16)
+    # outer vertex radius < 1  (e < 2.72 is a standard estimate)
+    assert F(272, 100) ** 2 < F(37, 5)
+    assert 3 * 3 - F(6, 25) == F(219, 25)
+    assert (F(37, 5) - 1) / F(219, 25) < 1
     return True
 
 
@@ -106,7 +124,8 @@ def report():
                      for p in (F(1, 2), F(1), F(3, 2), F(2), F(5, 2), F(3))},
         'non_liouville_family': 'p>=2',
         'conditional_uniform_radius_floor': '>1/5',
-        'conditional_uniform_square_side_floor': '>1/8',
+        'conditional_uniform_square_side_floor': '>1/4',
+        'conditional_outer_vertex_radius_ceiling': '<1',
         'source_of_square_existence': 'v100 theorem, corrected/reproduced by v101 Arb (not computed by this script)',
         'scope': 'double spiral D_p and powers; NOT arbitrary Jordan curves',
     }
