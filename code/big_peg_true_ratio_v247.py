@@ -139,7 +139,7 @@ def audit(crosscheck_v223=False):
         ("previous_v245_global_radius_upper",OLD_GLOBAL_RADIUS_UPPER),
         ("previous_v245_maximum_square_side_squared",OLD_MAX_SQUARE_SIDE2),
     ):
-        if str(invariants[key]) != str(truth):
+        if Q(invariants[key]) != Q(truth):
             raise AssertionError("discrepant JSON claimed invariant: "+key)
 
     return {
