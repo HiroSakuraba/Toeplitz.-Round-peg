@@ -1,0 +1,114 @@
+{
+  "name": "v245: exact rational 10-gon derived by integer-grid perturbations of Grisha Pochuev's original 10-gon",
+  "provenance": {
+    "baseline": "research/v244-pochuev-original-ten-gon.json",
+    "original_author": "Grisha Pochuev",
+    "original_repo": "https://github.com/Grisha-Pochuev/sharp-big-peg-counterexample",
+    "original_commit": "b9e0c95cbab888405692c9efa7e592f2a0807ae4",
+    "candidate_status": "independently derived perturbation, not attributed to Pochuev",
+    "coordinate_denominator": 12000,
+    "integer_deltas_from_original_times_10": [
+      [
+        0,
+        0
+      ],
+      [
+        -1,
+        0
+      ],
+      [
+        -1,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        0
+      ],
+      [
+        10,
+        -11
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        -10,
+        0
+      ],
+      [
+        1,
+        0
+      ],
+      [
+        0,
+        0
+      ]
+    ]
+  },
+  "vertices": [
+    [
+      "41140/12000",
+      "-5580/12000"
+    ],
+    [
+      "20219/12000",
+      "15680/12000"
+    ],
+    [
+      "-12341/12000",
+      "10060/12000"
+    ],
+    [
+      "-8680/12000",
+      "25160/12000"
+    ],
+    [
+      "-10890/12000",
+      "28140/12000"
+    ],
+    [
+      "-37680/12000",
+      "11679/12000"
+    ],
+    [
+      "-34590/12000",
+      "811/12000"
+    ],
+    [
+      "1400/12000",
+      "-13480/12000"
+    ],
+    [
+      "5711/12000",
+      "-14490/12000"
+    ],
+    [
+      "11050/12000",
+      "-4850/12000"
+    ]
+  ],
+  "disk": {
+    "center": [
+      "3/10000",
+      "0"
+    ],
+    "radius_squared": "1352506475516588161/1349561502900000000"
+  },
+  "claimed_exact_invariants": {
+    "minimum_boundary_distance_squared": "1352506475516588161/1349561502900000000",
+    "maximum_square_side_squared": "2263154862866037715637393248853633089/1137974336077532830058267809922880000",
+    "maximum_square_edge_assignment_hint": [
+      1,
+      4,
+      5,
+      6
+    ],
+    "candidate_squared_ratio_bound": "43286092375636809252886667578815515500510338125/21812891985778816953208198388629401097244304578",
+    "original_source_origin_disk_squared_ratio_bound": "3383336828030906034095073755976898676/1703346898659851305592623020175820361"
+  }
+}
