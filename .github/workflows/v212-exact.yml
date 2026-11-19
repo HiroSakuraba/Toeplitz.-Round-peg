@@ -48,5 +48,7 @@ jobs:
         run: python code/persistent_strata_v225.py
       - name: Audit v226 exact algebraic clustering and geometric orbit chambers
         run: python code/algebraic_orbit_events_v226.py
+      - name: Audit v227 local algebraic orbit germs
+        run: python code/local_orbit_germs_v227.py
       - name: Verify original ZIP archives
         run: sha256sum --check archive/SHA256SUMS.txt
