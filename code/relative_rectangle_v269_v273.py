@@ -251,6 +251,73 @@ def cyclic_square_residual_equivariance():
             "labeled_index_character":"(-1)^k"}
 
 
+
+
+def nonconvex_four_arc_rectangle_atlas(anchor=Q(3,4), eps=Q(1,10)):
+    """Actual full rectangle equations in one four-edge cell of a nonconvex polygon.
+
+    The polygon is the unit square with an outward upper-edge bump.
+    Four distinct source arcs are right, upper-left horizontal, left,
+    and bottom; parametrized corners are
+        (1,t), (u,1), (0,1-t), (1-u,0).
+    For all 2/5<=t,u<=3/5 these lie strictly on those four arcs.
+
+    The diagonal squared difference factors as
+        4*(t-u)*(t+u-1),
+    so genuine rectangles form two *complete* algebraic branches in
+    this four-arc cell: u=t or u=1-t. The perpendicularity dot is
+        2*(t+u-1).
+    Branch u=t has one square t=1/2; the other branch u=1-t is a
+    positive-dimensional interval of squares. The intersection at
+    (t,u)=(1/2,1/2) is singular as a rectangle-locus crossing.
+
+    These are exact polynomial identities, explained analytically in
+    v271. Finite checks below verify geometry and adversarial bounds;
+    they are *not* the proof of the universal two-variable identities.
+    """
+    anchor,eps=_q(anchor),_q(eps)
+    if not (Q(3,5)<anchor<1) or not (0<eps<1-anchor):
+        raise ValueError("bump must be disjoint from the closed four-arc cell")
+    polygon=((Q(0),Q(0)),(Q(1),Q(0)),(Q(1),Q(1)),
+             (anchor+eps,Q(1)),(anchor+eps,Q(1)+eps),
+             (anchor,Q(1)+eps),(anchor,Q(1)),(Q(0),Q(1)))
+    if not is_simple_polygon(polygon):
+        raise AssertionError("nonconvex reference polygon is not Jordan")
+    def points(t,u):
+        t,u=_q(t),_q(u)
+        if not (Q(2,5)<=t<=Q(3,5) and Q(2,5)<=u<=Q(3,5)):
+            raise ValueError("outside the selected four-arc chart")
+        return ((Q(1),t),(u,Q(1)),(Q(0),Q(1)-t),(Q(1)-u,Q(0)))
+    def residual(t,u):
+        p=points(t,u)
+        d0,d1=_vsub(p[2],p[0]),_vsub(p[3],p[1])
+        return (_vsub(_vadd(p[0],p[2]),_vadd(p[1],p[3])),
+                _dot(d0,d0)-_dot(d1,d1),_dot(d0,d1))
+    for t in (Q(2,5),Q(1,2),Q(3,5)):
+        for u in (t,Q(1)-t):
+            p=points(t,u)
+            mid,diag,dot=residual(t,u)
+            if mid!=(0,0) or diag!=0 or dot!=2*(t+u-1):
+                raise AssertionError("two-branch algebra fails")
+            for i in range(4):
+                e=_vsub(p[(i+1)%4],p[i])
+                if _dot(e,e)<Q(8,25):
+                    raise AssertionError("strict noncollapse floor failed")
+    return {
+        "simple_nonconvex_Jordan_polygon":True,
+        "four_arcs_distinct_and_internal":True,
+        "chart_parameter_range":(Q(2,5),Q(3,5)),
+        "equal_diagonal_factorization":"4*(t-u)*(t+u-1)",
+        "dot_factorization":"2*(t+u-1)",
+        "all_rectangle_branches_in_chart":("u=t","u=1-t"),
+        "transverse_nonsquare_branch_unique_square_time":Q(1,2),
+        "other_branch_entirely_squares":True,
+        "branches_intersect_at":(Q(1,2),Q(1,2)),
+        "side_squared_lower_bound":Q(8,25),
+        "restricted_to_single_four_arc_cell":True,
+    }
+
+
 def rectangle_boundary_stratum(side1_squared, side2_squared):
     """Classification of any Euclidean rectangle limit with finite side lengths."""
     x, y = _q(side1_squared), _q(side2_squared)
@@ -354,5 +421,6 @@ def spectral_axiom_countermodel(area_over_radius_squared):
 if __name__ == "__main__":
     print("v269 ellipse:",ellipse_relative_certificate(3,4))
     print("v271 six-sector counts:", {k:v for k,v in permutation_sector_ledger().items() if k!='rows'})
+    print("v271 nonconvex four-arc atlas:",nonconvex_four_arc_rectangle_atlas())
     print("v272 collapse:",notch_square_certificate(100)['side_squared'])
     print("v273 angle floors:",ellipse_angle_band_floors(3,4,Q(1,2)))
