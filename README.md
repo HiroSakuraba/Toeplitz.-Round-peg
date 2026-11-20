@@ -400,3 +400,10 @@ See the [November literature review](research/2026-11-literature-and-v212-plan.m
 - [Exact standard-library code](code/relative_rectangle_v269_v273.py), [31 regression tests](tests/test_relative_rectangle_v269_v273.py), and [dedicated CI](.github/workflows/v269-v273-relative-rectangle.yml).
 
 **Limit:** This tranche does **not** prove a universal relative Euler/degree class, a filtered Floer nonescape theorem, a full geometric sector atlas, or the unrestricted Toeplitz conjecture. The next target is a compactified rectangle/binormal relative class that survives generic perturbations **and** cannot escape through total four-corner collapse.
+
+## v274–v279: a full concave-polygon atlas and a protected local continuation
+
+- [Program ledger](research/v274-v279-program-ledger.md) and [exact atlas](research/v274-full-rectangle-binormal-atlas.md). The verifier glues 168 ordered edge charts on a specified concave quadrilateral and agrees with independent square and angle-slice checks.
+- [Relative sign line](research/v275-relative-class-and-cobordism.md). Both quotient intervals force a square, even though their individual parities sum to zero.
+- [Liouville primitive controls](research/v276-liouville-sheaf-rough-frontier.md), [localized spectral slope](research/v277-localized-spectral-slope.md), and [eight adversarial tests](research/v278-adversarial-program.md). They isolate the extra hypotheses needed for a common size or action bound.
+- [Restricted continuation theorem](research/v279-global-continuation-synthesis.md). The larger square selected by the atlas persists with side **greater than 1** for every Jordan embedding within coordinate sup norm `1/1000` of the parameterized polygon. The general carrier comparison and nonescape gates remain open.
