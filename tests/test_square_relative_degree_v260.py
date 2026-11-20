@@ -84,9 +84,8 @@ class SignedGluedSquareDegree(unittest.TestCase):
         self.assertGreater(peval(q,Q(0)),0)
         self.assertLess(peval(q,Q(1)),0)
         self.assertEqual(len(q),3)
-        self.assertEqual(tuple(QPOLY),tuple(self.report["algebraic_collision_polynomial"]
-                                            and Q(x) for x in
-                                            self.report["algebraic_collision_polynomial"]))
+        self.assertEqual(tuple(QPOLY),
+                         tuple(Q(x) for x in self.report["algebraic_collision_polynomial"]))
 
     def test_both_critical_parameters_have_unique_common_event_factor(self):
         q=_normalized_event_polynomial()
