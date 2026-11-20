@@ -10,7 +10,7 @@ sys.path.insert(0,str(ROOT/"code"))
 
 from big_peg_pair_death_v254 import family_vertices
 from square_relative_degree_v260 import (
-    START,END,C0_EPSILON,BOX as PAIR_BOX,
+    START,END,C0_EPSILON,BOX as PAIR_BOX,_snapshot,
 )
 from square_oriented_atlas_v261 import (
     PERSISTENT_BOX,CYCLIC_RESIDUAL_TRANSFORM,
@@ -95,9 +95,9 @@ class ExactCyclicQuotientAtlas(unittest.TestCase):
         for k in range(4):
             pts=cyclic_sector_points(self.P,START,
                                      rotate_unwrapped(q,k))
-            self.assertEqual(pts,(pts[:]+pts[:])[0:4])
+            self.assertEqual(pts[(1-k)%4],_snapshot(self.P,START)[2])
 
-    def test_quoitent_degree_survives_root_pair_death(self):
+    def test_quotient_degree_survives_root_pair_death(self):
         r=self.report
         self.assertEqual(
             (r["quotient_relative_degree_before_event_mod2"],
@@ -105,6 +105,10 @@ class ExactCyclicQuotientAtlas(unittest.TestCase):
              r["quotient_relative_degree_after_event_mod2"]),
             (1,1,1))
         self.assertEqual(r["quotient_pair_at_event_mod2"],0)
+        self.assertTrue(r["all_real_time_convex_Jordan_pentagon_certified"])
+        self.assertEqual(r["exact_four_source_parameter_gluing_identities"],4)
+        self.assertGreater(Q(r["pair_noncollapse_squared_side_floor"]),1)
+        self.assertGreater(Q(r["persistent_noncollapse_squared_side_floor"]),1)
 
     def test_transported_signed_index_flips_on_odd_cyclic_sheets(self):
         signs=self.report["signed_indices_in_four_labeled_sheets"]
