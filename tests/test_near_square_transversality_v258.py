@@ -95,14 +95,13 @@ class TransverseNearSquareLifting(unittest.TestCase):
         self.assertNotEqual(c.exact_square_parameters,
                             c.ideal_square_parameters)
         self.assertGreater(c.actual_parameter_displacement,0)
-        self.assertGreater(c.max_corner_error_squared if hasattr(c,'max_corner_error_squared')
-                           else c.maximum_observed_corner_error_squared,Q(0))
+        self.assertGreater(c.maximum_observed_corner_error_squared,Q(0))
 
     def test_derived_rational_square_root_matches_independent_census(self):
         # Independent v223 complete ORBIT census, not the same 4-line solver.
         result=census_polygon(self.P)
-        expected=frozenset(c.exact_square_corners for c in [self.lift])
-        self.assertTrue(any(frozenset(s.vertices) in expected
+        expected=frozenset(self.lift.exact_square_corners)
+        self.assertTrue(any(frozenset(s.vertices)==expected
                             for s in result.squares))
         self.assertGreaterEqual(result.count,1)
 
