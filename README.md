@@ -387,3 +387,16 @@ See the [November literature review](research/2026-11-literature-and-v212-plan.m
   - Pochuev's hidden corner is a near corner;
   - moving-disk certificates for five families.
 - [14 tests](tests/test_convex_lemmas_v266.py) and dedicated CI. **Limits:** the convex statements are classical in spirit; nothing here gives existence or noncollapse for nonconvex curves.
+
+
+## v269–v273: relative index, spectral countermodel, sector completeness, degeneration and angle continuation
+
+- [Five-version research ledger](research/v269-v273-program-overview.md): precise verified results versus unproved universal obligations.
+- **v269:** [Relative-interval square forcing and the nonzero ellipse square Jacobian](research/v269-relative-index-ellipse-stability.md); local C0 persistence for Jordan embeddings near any noncircular ellipse, without a global index claim.
+- **v270:** [Spectral axiom countermodel](research/v270-spectral-axiom-no-go.md), strictly monotone, R²-Lipschitz and subadditive, yet with zero derivative at 90°. This is an analytic model, **not** an actual Jordan Floer invariant.
+- **v271:** [All 24 labelings / six C4 sectors / three D4 classes](research/v271-six-sector-equivariant-ledger.md) and exact residual source/target equivariance. It is **combinatorial**, not a whole-curve rectangle-branch atlas.
+- **v272:** [Rectangle degeneration trichotomy](research/v272-degeneration-trichotomy-and-shrinkout.md) and selected shrinking squares on rational simple Jordan polygons approximating the unit square.
+- **v273:** [Exact ellipse rectangle-angle formulas and sharp positive-radius floors](research/v273-ellipse-angle-continuation.md), together with a conditional protected-angle compactness criterion.
+- [Exact standard-library code](code/relative_rectangle_v269_v273.py), [29 regression tests](tests/test_relative_rectangle_v269_v273.py), and [dedicated CI](.github/workflows/v269-v273-relative-rectangle.yml).
+
+**Limit:** This tranche does **not** prove a universal relative Euler/degree class, a filtered Floer nonescape theorem, a full geometric sector atlas, or the unrestricted Toeplitz conjecture. The next target is a compactified rectangle/binormal relative class that survives generic perturbations **and** cannot escape through total four-corner collapse.
