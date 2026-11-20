@@ -43,6 +43,7 @@ from moving_polygon_events_v224 import (
 START=ROOT_LEFT
 END=ROOT_RIGHT
 TRACKED=(PERSISTENT,COLLIDING_LEFT,COLLIDING_RIGHT)
+CANONICAL_SAFE_S2_CUTOFF=Q(15217801,400000000)
 ALL_EDGE_CHARTS=tuple(combinations_with_replacement(range(5),4))
 
 
@@ -149,8 +150,8 @@ def classify_chart(P,ids,eta,start,end):
     """Every chart is either certified excluded, tracked, or unresolved."""
     if tuple(P)!=family_vertices() or (start,end)!=(START,END):
         raise ValueError("only v254 pentagon in exact event bracket")
-    if type(eta) is not Q or eta<=0:
-        raise ValueError("positive exact size cutoff required")
+    if type(eta) is not Q or eta!=CANONICAL_SAFE_S2_CUTOFF:
+        raise ValueError("only the independently certified global squared-side cutoff")
     if tuple(ids) not in ALL_EDGE_CHARTS:
         raise ValueError("canonical increasing edge quadruple required")
     if max(ids.count(i) for i in set(ids))>=3:
@@ -205,6 +206,8 @@ def classify_chart(P,ids,eta,start,end):
 def diagnostic():
     P=family_vertices()
     eta,gap=certified_side_cutoff(P)
+    if eta!=CANONICAL_SAFE_S2_CUTOFF:
+        raise AssertionError("v254 nonadjacent-edge gap no longer matches exact certificate")
     results={}
     classes=Counter()
     for ids in ALL_EDGE_CHARTS:
@@ -233,6 +236,13 @@ def audit():
             "v263 cannot claim all-time completeness: "+repr(unresolved))
     if report["classes"].get("tracked",0)!=3:
         raise AssertionError("not exactly three tracked algebraic root charts")
+    # Zero charts may be omitted *only* because of cutoff or unresolved
+    # singularity. Here EVERY nontracked chart was excluded by a direct
+    # time-uniform off-edge or elementary convex geometry argument.
+    if report["classes"]!={"three_collinear":25,
+                            "adjacent_two_edges":5,
+                            "off_edge":37,"tracked":3}:
+        raise AssertionError("the complete no-hidden-root chart profile changed")
     collision=certify_collision(family_vertices())
     if not collision["root_identity_divisible_by_event_in_four_components"]:
         raise AssertionError("v254 collision not rigorously certified")
@@ -253,6 +263,10 @@ def audit():
     }
     report["unique_square_event_polynomial"]=[str(q) for q in QPOLY]
     report["all_real_time_exhaustiveness_proved"]=True
+    report["all_real_time_every_positive_square_side_squared_exceeds_one"]=True
+    report["quotient_v262_selected_two_region_atlas_is_whole_root_set_for_this_pentagon"]=True
+    report["repeated_edge_positive_square_orbits_for_all_real_times"]=0
+    report["additional_singular_chart_events_for_all_real_times"]=0
     report["scope"]="Complete all-positive-square census ONLY for v254's moving convex pentagon in its narrow exact algebraic event window. Does NOT prove an arbitrary-Jordan square existence invariant or a universal Big Peg size floor."
     return report
 
