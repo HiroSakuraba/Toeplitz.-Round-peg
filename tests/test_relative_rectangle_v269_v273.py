@@ -10,7 +10,8 @@ from relative_rectangle_v269_v273 import (
     _det, square_residual, ellipse_square_jacobian, ellipse_relative_certificate,
     relative_interval_parity, cyclic_dot_character, ellipse_angle_certificate,
     ellipse_angle_band_floors, permutation_sector_ledger,
-    cyclic_square_residual_equivariance, dihedral_sector_ledger, rectangle_boundary_stratum,
+    cyclic_square_residual_equivariance, dihedral_sector_ledger,
+    nonconvex_four_arc_rectangle_atlas, rectangle_boundary_stratum,
     is_simple_polygon, notch_square_certificate, spectral_axiom_countermodel,
 )
 
@@ -105,6 +106,21 @@ class V271SixSectorAudit(unittest.TestCase):
         self.assertEqual(d["basis_checks"],8)
         self.assertEqual(d["target_determinant"],1)
         self.assertEqual(d["source_determinant"],-1)
+
+    def test_nonconvex_polygon_real_four_arc_rectangle_atlas(self):
+        d=nonconvex_four_arc_rectangle_atlas()
+        self.assertTrue(d["simple_nonconvex_Jordan_polygon"])
+        self.assertEqual(d["all_rectangle_branches_in_chart"],("u=t","u=1-t"))
+        self.assertEqual(d["side_squared_lower_bound"],Q(8,25))
+        self.assertTrue(d["other_branch_entirely_squares"])
+        self.assertEqual(d["transverse_nonsquare_branch_unique_square_time"],Q(1,2))
+        self.assertEqual(d["branches_intersect_at"],(Q(1,2),Q(1,2)))
+
+    def test_adversarial_bump_intersection_rejected(self):
+        with self.assertRaises(ValueError):
+            nonconvex_four_arc_rectangle_atlas(Q(1,2),Q(1,10))
+        with self.assertRaises(ValueError):
+            nonconvex_four_arc_rectangle_atlas(Q(3,4),Q(1,3))
 
     def test_simple_permutation_determinants(self):
         self.assertEqual(_det(((0,1),(1,0))),-1)
