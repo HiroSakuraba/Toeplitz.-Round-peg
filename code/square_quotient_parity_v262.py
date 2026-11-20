@@ -26,7 +26,8 @@ from big_peg_pair_death_v254 import (
 from square_relative_degree_v260 import (
     BOX as PAIR_BOX, START, END, C0_EPSILON,
     BOUNDARY_RESIDUAL_FLOOR as PAIR_RESIDUAL_FLOOR,
-    certify_cell, certify_interface_gluing,\n    certify_sides_and_robust_boundary, _square_points,
+    certify_cell, certify_interface_gluing,
+    certify_sides_and_robust_boundary, _square_points,
 )
 from square_oriented_atlas_v261 import (
     PERSISTENT_BOX, PERSISTENT_RESIDUAL_FLOOR,
