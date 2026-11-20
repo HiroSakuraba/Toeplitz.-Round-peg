@@ -278,6 +278,22 @@ def complete_v264_vertex_event(P0,P1,left,right,corner,width=Q(1,2**18)):
     if factors!=expected:
         raise UnresolvedVertexEvent(
             "other algebraic chart events may coexist in this bracket")
+    # A permanently vertex-locked third branch could coincide with
+    # the singular pair at the event without creating another *time*
+    # candidate wall. The ordinary isolated-death case certifies that
+    # all nonparticipating roots belong to distinct STRICT INTERIOR
+    # square charts. Refuse unsupported boundary-locked coincidences.
+    permitted={
+        "excluded_three_collinear","excluded_two_adjacent_edges",
+        "excluded_off_edge","excluded_singular_inconsistent",
+        "excluded_below_side_cutoff","excluded_coincident_corners",
+        "stable_interior","possible_event",
+    }
+    others=set(atlas["chart_classification"])-permitted
+    if others or atlas["chart_classification"].get("stable_boundary",0):
+        raise UnresolvedVertexEvent(
+            "unresolved nonparticipating zero, possibly vertex locked: "+
+            repr(sorted(others)))
     lo,hi=cert.event_bracket
     if not (Q(e["lower"])<hi and lo<Q(e["upper"])):
         raise UnresolvedVertexEvent("pair contact root outside global event cluster")
@@ -288,11 +304,19 @@ def complete_v264_vertex_event(P0,P1,left,right,corner,width=Q(1,2**18)):
     after=chamber[1]["geometric_square_orbits"]
     if before<2 or after!=before-2:
         raise UnresolvedVertexEvent("global census disagrees with isolated 2-to-0 pair death")
+    if atlas["chart_classification"].get("stable_interior",0)!=after:
+        raise UnresolvedVertexEvent(
+            "remaining roots are not individually certified stable interior charts")
     if (not chamber[0]["all_sample_squares_regular_in_open_positive_sector"]
         or not chamber[1]["all_sample_squares_regular_in_open_positive_sector"]):
         raise UnresolvedVertexEvent("unresolved regular index at a rational chamber")
+    if (chamber[0]["regular_oriented_index_sum"]
+            !=chamber[1]["regular_oriented_index_sum"]):
+        raise UnresolvedVertexEvent(
+            "global signed index is not conserved by the opposite-index pair")
     # The shared pair is ONE positive square at the singular instant;
-    # every remaining root lies on a stable chart, with no other walls.
+    # every remaining root lies on a stable strictly interior chart,
+    # with no other wall or vertex-locked collision.
     event_count=before-1
     out={
         "status":"PASS: complete three-slice whole-polygon positive-square census from exact generic irrational vertex gluing",
@@ -308,6 +332,9 @@ def complete_v264_vertex_event(P0,P1,left,right,corner,width=Q(1,2**18)):
         "event_after_geometric_squares":after,
         "all_real_time_pre_event_count":before,
         "all_real_time_post_event_count":after,
+        "stable_nonparticipating_square_orbits":after,
+        "regular_oriented_degree_in_both_chambers":
+            chamber[0]["regular_oriented_index_sum"],
         "relative_unlabeled_parity_before":before%2,
         "relative_unlabeled_parity_after":after%2,
         "complete_whole_polygon_all_time_ledger":True,
