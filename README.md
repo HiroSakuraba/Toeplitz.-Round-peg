@@ -407,3 +407,9 @@ See the [November literature review](research/2026-11-literature-and-v212-plan.m
 - [Relative sign line](research/v275-relative-class-and-cobordism.md). Both quotient intervals force a square, even though their individual parities sum to zero.
 - [Liouville primitive controls](research/v276-liouville-sheaf-rough-frontier.md), [localized spectral slope](research/v277-localized-spectral-slope.md), and [eight adversarial tests](research/v278-adversarial-program.md). They isolate the extra hypotheses needed for a common size or action bound.
 - [Restricted continuation theorem](research/v279-global-continuation-synthesis.md). The larger square selected by the atlas persists with side **greater than 1** for every Jordan embedding within coordinate sup norm `1/1000` of the parameterized polygon. The general carrier comparison and nonescape gates remain open.
+
+## v280–v283 — A moving relative class and uniform spiral witness
+
+- The moving concave atlas certifies all 168 ordered contact charts for `|t| <= 1/100`. A persistent interval and a folded pair of intervals give geometric square counts of **1, 2, 3** across the event. All its rectangles have circumradius at least **99/200**.
+- The shrinking-notch square belongs to a local rectangle triangle with zero relative class. On the diamond spirals, a relative witness uses three fixed edges and remains valid for every admissible inner replacement, including the non-Liouville-regular limit. The squared circumradius stays at least **1/512** along that path, which contains a common square of squared side **101252/58081**.
+- [Proof and replay instructions](research/v280-v283-moving-relative-class.md) · [Moving atlas](results/v280/moving-concave-atlas.json) · [Refinement audit](results/v282-v283/refinement-witnesses.json)

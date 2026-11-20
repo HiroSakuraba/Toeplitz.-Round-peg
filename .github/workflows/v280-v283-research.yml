@@ -1,0 +1,49 @@
+name: v280–v283 moving rectangle class
+
+on:
+  pull_request:
+    paths:
+      - 'code/*v280.py'
+      - 'code/*v282_v283.py'
+      - 'code/rectangle_atlas_v274.py'
+      - 'code/liouville_primitive_experiments_v276.py'
+      - 'code/adversarial_rectangles_v278.py'
+      - 'code/relative_rectangle_v269_v273.py'
+      - 'tests/*v280.py'
+      - 'tests/*v282_v283.py'
+      - 'research/v280-v283*'
+      - 'results/v280/**'
+      - 'results/v282-v283/**'
+      - '.github/workflows/v280-v283-research.yml'
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  moving-atlas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rebuild the moving atlas and audit the fold
+        run: |
+          docker run --rm --mount "type=bind,src=$PWD,dst=/work,readonly" \
+            --workdir /work --env PYTHONDONTWRITEBYTECODE=1 --entrypoint /usr/bin/sage \
+            sagemath/sagemath:10.10 -c \
+            "import unittest; suite = unittest.defaultTestLoader.discover('tests', pattern='test_moving_rectangle_atlas_v280.py'); assert unittest.TextTestRunner(verbosity=2).run(suite).wasSuccessful()"
+  refinement:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify the notch, spiral and adversarial controls
+        run: |
+          python -m unittest discover -s tests -p 'test_relative_witness_refinement_v282_v283.py' -v
+          python code/relative_witness_refinement_v282_v283.py --check
+          python code/adversarial_rectangles_v278.py --check
