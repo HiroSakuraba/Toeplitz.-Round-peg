@@ -3,6 +3,7 @@ from fractions import Fraction as Q
 from pathlib import Path
 import sys
 import unittest
+from unittest.mock import patch
 
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/"code"))
@@ -18,7 +19,7 @@ from square_relative_degree_v260 import (
     BOUNDARY_RESIDUAL_FLOOR as V260_FLOOR,
     _normalized_event_polynomial,
 )
-from convex_square_event_atlas_v264 import InconclusiveAtlas
+from convex_square_event_atlas_v264 import InconclusiveAtlas, audit_moving_convex_polygon
 from square_irrational_vertex_gluing_v265 import (
     UnresolvedVertexEvent,_positive_min,_strict_sign,
     certify_vertex_pair,complete_v264_vertex_event,
@@ -175,6 +176,23 @@ class ExactIrrationalVertexGluing(unittest.TestCase):
         self.assertIsNone(_strict_sign((Q(-1,2),Q(1))))
         with self.assertRaises(UnresolvedVertexEvent):
             _positive_min((Q(-1,2),Q(1)))
+
+    def test_v264_third_party_vertex_locked_root_must_be_rejected(self):
+        atlas=audit_moving_convex_polygon(self.A,self.B)
+        ledger=dict(atlas)
+        ledger["chart_classification"]=dict(atlas["chart_classification"])
+        ledger["chart_classification"]["stable_boundary"]=1
+        with patch(
+            "square_irrational_vertex_gluing_v265.audit_moving_convex_polygon",
+            return_value=ledger,
+        ):
+            with self.assertRaises(UnresolvedVertexEvent):
+                complete_v264_vertex_event(
+                    self.A,self.B,COLLIDING_LEFT,COLLIDING_RIGHT,1)
+
+    def test_remaining_global_root_matches_stable_interior_chart(self):
+        self.assertEqual(self.all["stable_nonparticipating_square_orbits"],1)
+        self.assertEqual(self.all["regular_oriented_degree_in_both_chambers"],1)
 
     def test_perturbed_polygon_does_not_silently_inherit_exact_event(self):
         altered=list(self.B)
