@@ -19,11 +19,14 @@ import json
 from polygon_orbit_census_v223 import pt
 from near_square_transversality_v258 import det4
 from square_degree_cube_v259 import square_defect
-from big_peg_pair_death_v254 import family_vertices, COLLIDING_LEFT, COLLIDING_RIGHT
+from big_peg_pair_death_v254 import (
+    family_vertices, COLLIDING_LEFT, COLLIDING_RIGHT,
+    certify_jordan_family, certify_collision,
+)
 from square_relative_degree_v260 import (
     BOX as PAIR_BOX, START, END, C0_EPSILON,
     BOUNDARY_RESIDUAL_FLOOR as PAIR_RESIDUAL_FLOOR,
-    certify_cell, _square_points,
+    certify_cell, certify_interface_gluing,\n    certify_sides_and_robust_boundary, _square_points,
 )
 from square_oriented_atlas_v261 import (
     PERSISTENT_BOX, PERSISTENT_RESIDUAL_FLOOR,
@@ -302,6 +305,16 @@ def certify_regular_root_orbits(P,persistent,pair_left,pair_right):
 
 def certify_quotient_atlas():
     P=family_vertices()
+    jordan=certify_jordan_family(P)
+    if not jordan["convex_Jordan_for_all_real_times"]:
+        raise AssertionError("underlying moving polygon not certified Jordan")
+    collision=certify_collision(P)
+    if not collision["determinants_nonzero_at_event"]:
+        raise AssertionError("v254 noncollinear collision proof lost")
+    glue=certify_interface_gluing(P)
+    if len(glue)!=4:
+        raise AssertionError("four source-parameter gluing identities lost")
+    pair_robust=certify_sides_and_robust_boundary(P)
     persistent=certify_persistent_box(P)
     left=certify_cell(P,COLLIDING_LEFT)
     right=certify_cell(P,COLLIDING_RIGHT)
@@ -350,6 +363,12 @@ def certify_quotient_atlas():
         "status":"PASS: Z/2 quotient relative degree 1 on an exactly C4-saturated selected two-region atlas",
         "interval":[str(START),str(END)],
         "singular_event":"v254 algebraic positive-size pair death, inner vertex interface",
+        "all_real_time_convex_Jordan_pentagon_certified":True,
+        "exact_four_source_parameter_gluing_identities":len(glue),
+        "pair_noncollapse_squared_side_floor":
+            str(pair_robust["certified_side_squared_floor"]),
+        "persistent_noncollapse_squared_side_floor":
+            str(persistent.side_squared_floor),
         "cyclic_representation":symmetry,
         "saturation":saturation,
         "actual_polygon_equivariance_checks":checks,
