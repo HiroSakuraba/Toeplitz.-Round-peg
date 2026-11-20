@@ -118,6 +118,19 @@ is the orientation-local-system transition law. It does **not** provide a canoni
 
 **Crucial caveat:** the mod-2 degree of all the *labeled* roots is still zero, since every geometric orbit has four labels. Only the **quotient** count is the meaningful parity.
 
+### The quotient is a bundle section, not an ordinary globally valued map
+
+Because $F(Tq)=RF(q)$ rather than $F(Tq)=F(q)$, the quotient does **not** carry a globally defined map to a fixed $\mathbb R^4$ with this formula. Define the associated rank-four bundle
+
+\[
+E=(\mathcal U\times\mathbb R^4)/\bigl((q,v)\sim(Tq,Rv)\bigr)
+\longrightarrow\mathcal U/C_4,
+\]
+
+where $\mathcal U$ is the disjoint eight-box saturation. The square residual descends to the section $s_t([q])=[q,F_t(q)]$. The local mod-2 index is the Brouwer degree in any chosen representative box, reduced modulo two. The exact source and target transition determinant calculations prove that this definition is independent of the cyclic representative. The external box boundaries are zero-free by the v260/v261 time-uniform certificates.
+
+At a regular time, this mod-2 degree counts transverse *geometric orbits* once. At the collision, it is defined by the same relative homotopy-invariant local degree, **not** by directly counting the singular roots. On these two contractible quotient regions the degree is represented by the pair of mod-2 local indices; their sum is the atlas's relative invariant. No canonical integer trivialization is asserted globally.
+
 ## 4. Degree and orbit ledger on both sides of the irrational collision
 
 The original v254 exact algebraic collision time \(\alpha\) lies strictly inside
@@ -168,7 +181,7 @@ The program computes the **exact** \(\infty\)-norm of each integer \(4\times4\) 
 \varepsilon=10^{-9}
 \]
 
-is strictly smaller than the resulting cyclic-cover boundary budget. Therefore the quotient mod-2 degree remains one under these arbitrary continuous but uniformly small coordinatewise perturbations.
+is strictly smaller than the resulting cyclic-cover boundary budget. Therefore the quotient mod-2 degree remains one for any common continuous perturbation of the underlying boundary parameterization that moves each of its points by at most this coordinatewise amount. The perturbed eight-sheet atlas must be constructed by cyclically relabeling that **same** perturbed curve. If each sheet is perturbed independently, the equivariant bundle section may cease to exist and no quotient-degree claim follows.
 
 The inherited v260/v261 **positive side-length bounds** also survive each cyclic relabeling, since cyclically rotating a square does not change its side length. Hence the protected root remains a positive-size square for these perturbations.
 
