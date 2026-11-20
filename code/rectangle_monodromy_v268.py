@@ -30,6 +30,7 @@ of universal Jordan square forcing or Floer theory.
 """
 from dataclasses import dataclass
 from fractions import Fraction as Q
+from math import isqrt
 from moving_polygon_events_v224 import (
     polynomial,plus,minus,neg,times,evaluate,divide,poly_gcd,
     iszero,isolate_roots,
@@ -40,6 +41,22 @@ import json
 
 def P(*z):
     return polynomial(z)
+
+
+def rational_square_root_if_any(x):
+    """Exact rational-square test using integer roots, never float.
+
+    A small rational square (e.g. 25) can yield a true rational
+    event at time 1/3 that Sturm dyadic bisection merely *brackets*.
+    A nonzero-width isolating bracket does NOT by itself establish
+    algebraic irrationality.
+    """
+    x=Q(x)
+    if x<0:
+        return None
+    nr=isqrt(x.numerator)
+    dr=isqrt(x.denominator)
+    return Q(nr,dr) if nr*nr==x.numerator and dr*dr==x.denominator else None
 
 
 @dataclass(frozen=True,eq=False)
@@ -482,6 +499,19 @@ def certify_ellipse_relative_rectangle_path(major=Q(3),minor=Q(2)):
             not (roots[0].lower<basic[0].upper and
                  basic[0].lower<roots[0].upper)):
         raise AssertionError("not one exact positive-size ellipse square")
+    # Sturm brackets need NOT be point brackets for rational times:
+    # u=1/3 is never a dyadic split point. Determine rationality
+    # separately from the quadratic discriminant using exact integer
+    # square roots and verify the candidate root by substitution.
+    sqrt_a2b2=rational_square_root_if_any(a*a+b*b)
+    exact_event_time=(sqrt_a2b2-b)/a if sqrt_a2b2 is not None else None
+    if exact_event_time is not None:
+        if not (0<exact_event_time<1 and
+                evaluate(event_poly,exact_event_time)==0):
+            raise AssertionError("false exact rational ellipse square time")
+        event_bracket=(exact_event_time,exact_event_time)
+    else:
+        event_bracket=(roots[0].lower,roots[0].upper)
     # All inscribed rectangles are axis-parallel: their geometric
     # moduli x in (0,a) is HOMEOMORPHIC TO AN OPEN INTERVAL.
     # Its fundamental group is zero. Hence NO essential odd
@@ -500,8 +530,10 @@ def certify_ellipse_relative_rectangle_path(major=Q(3),minor=Q(2)):
         "diagonal_dot_endpoint_limits":[str(f.at(0)),str(f.at(1))],
         "first_second_boundary_diagonal_squared":[str(4*a*a),str(4*b*b)],
         "event_minimal_or_defining_polynomial":[str(q) for q in event_poly],
-        "unique_square_event_bracket":[str(roots[0].lower),str(roots[0].upper)],
-        "square_event_rational":roots[0].rational,
+        "unique_square_event_bracket":[str(z) for z in event_bracket],
+        "square_event_rational":exact_event_time is not None,
+        "square_event_exact_rational_time":(
+            str(exact_event_time) if exact_event_time is not None else None),
         "square_side_squared":str(side_sq),
         "uniform_positive_side_floor_on_CLOSED_rectangle_interval":False,
         "square_is_strictly_inside_noncollapsed_rectangle_locus":True,
