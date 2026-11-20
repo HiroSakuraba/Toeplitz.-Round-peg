@@ -1,0 +1,39 @@
+name: v256-v257 symmetric Jordan squares and near-symmetry witnesses
+
+on:
+  pull_request:
+    paths:
+      - 'code/central_symmetry_square_v256.py'
+      - 'tests/test_central_symmetry_square_v256.py'
+      - 'research/v256-*'
+      - 'research/v257-*'
+      - 'research/v255-convex-sharp-big-peg.md'
+      - '.github/workflows/v256-v257-central-symmetry.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'code/central_symmetry_square_v256.py'
+      - 'tests/test_central_symmetry_square_v256.py'
+      - 'research/v256-*'
+      - 'research/v257-*'
+      - '.github/workflows/v256-v257-central-symmetry.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-symmetry-and-near-square:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact nonconvex centered square and near-symmetry witnesses
+        run: python code/central_symmetry_square_v256.py
+      - name: Exact geometry, Jordan and defect-bound negative controls
+        run: python -m unittest -v tests.test_central_symmetry_square_v256
+      - name: Recheck original v255 hidden-corner exact experiment
+        run: python code/convex_big_peg_v255.py
