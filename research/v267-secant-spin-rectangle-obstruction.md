@@ -145,7 +145,37 @@ The checker proves both transformations as **universal rational polynomial ident
 
 has **45** elements and uniquely determines every constant, linear, square and mixed quadratic coefficient. Evaluating the two proposed identities at these 45 exact rational nodes verifies all coefficients. **90 exact polynomial-identity probes** cover both generators.
 
-**Conclusion:** A different square-defect formula does **not** evade the v218/v219 labeled signed-degree cancellation or the explicit nowhere-zero *absolute* equivariant section of [v219](v219-equivariant-quotient-collision-link.md). The Möbius sign twist is genuine, but the naive inference **“odd secant winding therefore a square” is unproved**.
+### An explicit nowhere-zero section for this *new* target representation
+
+We should not simply transfer v219's section to the diagonal residual, because their target representations are not identical. Instead, construct a **new section directly**.
+
+On the positive cyclic-order four-point configuration component, v219 established a center coordinate \(c\in\mathbb R/\mathbb Z\) satisfying
+
+\[
+c(Tx)=c(x)+\tfrac14.
+\]
+
+Our new target generator is precisely \(R_{\mathrm{target}}=-I_4\). Define
+
+\[
+\boxed{s(x)=\bigl(\cos(4\pi c(x)),\ \sin(4\pi c(x)),\ 0,\ 0\bigr).}
+\]
+
+Then
+
+\[
+s(Tx)=\bigl(-\cos(4\pi c(x)),-\sin(4\pi c(x)),0,0\bigr)
+      =R_{\mathrm{target}}s(x),
+\]
+\[
+\boxed{\|s(x)\|^2=1\quad\text{for every configuration }x.}
+\]
+
+Thus the rank-four associated bundle for the **diagonal** square residual on this cyclic quotient also admits a **globally nowhere-zero equivariant section**, entirely independently of the specific section constructed for v219's other residual. Its absolute top \(w_4\) obstruction is zero.
+
+The code verifies this quarter-turn equivariance and unit norm with exact rational unit-phase pairs; the full all-phase formula and nonvanishing follow analytically from trigonometry. As in v219, this says nothing about a *relative* section constrained by physically meaningful collision-boundary data and makes no assertion about an all-sector compactification.
+
+**Conclusion:** A different square-defect formula does **not** evade the v218 signed-degree cancellation or the v219-style absolute-bundle no-go. The Möbius sign twist is genuine, but the naive inference **“odd secant winding therefore a square” is unproved**.
 
 ## 4. The relevant twist for perpendicularity is a tensor product
 
@@ -287,7 +317,7 @@ The [v267 code](../code/secant_spin_rectangle_v267.py) uses only rational arithm
 
 - exact antipodal reversal, odd secant winding, and curve-dependent positive secant length floors on CCW, CW, triangular, and **nonconvex simple polygons**;
 - all three square-diagonal pairings, collapsed-square exclusion and wrong pairing controls;
-- all **90** universally sufficient polynomial identity evaluations of the two dihedral symmetry generators;
+- all **90** universally sufficient polynomial identity evaluations of the two dihedral symmetry generators, plus a separate **explicit nowhere-zero equivariant section** for this diagonal target representation;
 - tensor line-sign monodromy, including the cancellation under reversing **both** diagonals;
 - a strictly nondegenerate, complete one-parameter inscribed-rectangle family with a sign-forced square at \(x=1\);
 - the six exact notch polygons with secant floor exactly **1** and chosen square side **\(1/n\)**;
