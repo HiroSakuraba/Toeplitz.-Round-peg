@@ -441,3 +441,10 @@ See the [November literature review](research/2026-11-literature-and-v212-plan.m
 - Four finite-coil insertions at the concave flat contacts leave both flats on the same connected witness, with circumradius **at least 1/3**. The central square persists with the original interior geometry.
 - A cubic control preserves the flat points and tangent directions while removing the stipulated flat from the closure of genuine rectangles on those arcs.
 - [Proof and replay instructions](research/v296-v299-rough-flat-contacts.md) · [Exact sample bounds](results/v296-v299/rough-flat-contacts.json)
+
+## v300 — A bounded-density sweep from wide to tall rectangles
+
+- For any parametrized Jordan curve, interpolating between two bounded boundary densities gives a compact connected family of balanced inscribed rectangles. Both side lengths have an explicit positive lower bound.
+- Two prescribed dyadic densities force a square on a class of curves built from pairs of equal-height sections. The same sweep works at every polygonal refinement and on an infinite-length Jordan limit, with square side at least **1/9**. Its contact positions can move.
+- An independent midline drift removes all rectangles using the selected vertical pairs. The unrestricted square-angle crossing remains open.
+- [Proof and replay](research/v300-bounded-density-square-crossing.md) · [Exact refinement records](results/v300/balanced-sweep.json)
