@@ -228,10 +228,10 @@ This is not a failure of the v260/v261 certificates. It is a **structural restri
 
 The program and regression tests depend only on the Python standard library and the pre-existing exact Fraction/Bernstein modules.
 
-\`\`\`sh
+```sh
 python code/square_oriented_atlas_v261.py
 python -m unittest -v tests.test_square_oriented_atlas_v261
-\`\`\`
+```
 
 The [new tests](../tests/test_square_oriented_atlas_v261.py) verify the time-uniform strict root enclosure, exact endpoint squares, the common global ordered-coordinate convention, the genuine vertex-glued pair, disjointness of source regions, strict determinant and residual bounds, noncollapse, signed index addition, the cyclic source/target orientation discrepancy, and fail-closed controls for altered geometry, boxes and perturbation budgets.
 
