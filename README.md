@@ -420,3 +420,10 @@ See the [November literature review](research/2026-11-literature-and-v212-plan.m
 - The diamond path continues through independently moving cap and arm supports with circumradius **greater than 1/25**. A construction rounds the four flat contacts and preserves the full path and its opposite endpoint signs.
 - The concave angle band also applies to a finite-coil Jordan curve outside Liouville regularity and to its finite truncations.
 - [Proof and replay instructions](research/v284-v287-rectangle-family-stability.md) · [Angle-band records](results/v284-v287/protected-angle-bands.json) · [Moving-support records](results/v284-v287/moving-spiral-supports.json)
+
+## v288–v291 — Full continuation through rough arc replacements
+
+- The concave finite-coil curve and every truncation have a flat-to-flat rectangle path with circumradius **at least 1/2**. Exact contact roots allow a second replacement on the opposite edge while preserving the path.
+- A coupled degree argument extends the witness through overlapping replacements with circumradius **at least 499/1000**. For two anchored finite-coil copies, the same connected set contains the exact reference square at both rough accumulation points.
+- An exact tent fixture shows how the sequential lift can demand a contact on a deleted segment while the coupled path survives. The original polygon vertices can also be rounded by the v286 construction.
+- [Proof and replay instructions](research/v288-v291-rough-arc-continuation.md) · [Exact certificate](results/v288-v291/rough-arc-continuation.json)
