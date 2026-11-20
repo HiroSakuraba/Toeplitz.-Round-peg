@@ -1,0 +1,747 @@
+{
+  "specimens": [
+    {
+      "candidate": "Every positive-size rectangle component has finitely many square zeros.",
+      "evidence": {
+        "evidence": "rational rotation over a quarter turn, with every parameter a square",
+        "radius_squared": "2",
+        "square_side_squared": "4",
+        "square_zero_count": null
+      },
+      "gate": "G2",
+      "id": "circle-continuum",
+      "status": "DISPROVED_CANDIDATE"
+    },
+    {
+      "candidate": "Every Jordan curve has an odd-monodromy geometric rectangle loop.",
+      "evidence": {
+        "labelled_flat_signs": [
+          -1,
+          1
+        ],
+        "proof_source": "research/v268-rectangle-monodromy-and-protected-square-criterion.md",
+        "relative_interval_parity": 1,
+        "semiaxes": [
+          "3",
+          "2"
+        ],
+        "whole_locus": "open interval"
+      },
+      "gate": "G3",
+      "id": "ellipse-interval",
+      "status": "DISPROVED_CANDIDATE"
+    },
+    {
+      "candidate": "Equal center, radius and perpendicularity value certify rectangle-loop closure.",
+      "evidence": {
+        "both_centers": [
+          "0",
+          "0"
+        ],
+        "both_diagonal_dots": "28",
+        "both_squared_radii": "25",
+        "end": [
+          [
+            "-7/5",
+            "24/5"
+          ],
+          [
+            "-5",
+            "0"
+          ],
+          [
+            "7/5",
+            "-24/5"
+          ],
+          [
+            "5",
+            "0"
+          ]
+        ],
+        "start": [
+          [
+            "3",
+            "4"
+          ],
+          [
+            "-3",
+            "4"
+          ],
+          [
+            "-3",
+            "-4"
+          ],
+          [
+            "3",
+            "-4"
+          ]
+        ]
+      },
+      "gate": "G1",
+      "id": "false-closure",
+      "status": "DISPROVED_CANDIDATE"
+    },
+    {
+      "candidate": "Complete analysis in one four-edge cell exhausts the whole polygon.",
+      "evidence": {
+        "entire_square_orbit_count": null,
+        "outside_square_side_squared": "1",
+        "polygon": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0"
+          ],
+          [
+            "1",
+            "1"
+          ],
+          [
+            "17/20",
+            "1"
+          ],
+          [
+            "17/20",
+            "11/10"
+          ],
+          [
+            "3/4",
+            "11/10"
+          ],
+          [
+            "3/4",
+            "1"
+          ],
+          [
+            "0",
+            "1"
+          ]
+        ],
+        "selected_cell_parameter_interval": [
+          "2/5",
+          "3/5"
+        ],
+        "square_branch": "u=1-t",
+        "square_outside_selected_cell": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0"
+          ],
+          [
+            "1",
+            "1"
+          ],
+          [
+            "0",
+            "1"
+          ]
+        ],
+        "square_side_squared_polynomial": [
+          "1",
+          "-2",
+          "2"
+        ],
+        "whole_rectangle_atlas_verified_here": false
+      },
+      "gate": "G1",
+      "id": "bump-cell",
+      "status": "DISPROVED_CANDIDATE"
+    },
+    {
+      "candidate": "Every finite positive geometric-square orbit census is odd.",
+      "evidence": {
+        "Jordan_nonadjacent_edge_coordinate_gaps": [
+          "99/100",
+          "1"
+        ],
+        "at_event_raw_orbit_count": 2,
+        "at_event_total_support_labels": 40,
+        "certified_branch_time_window": [
+          "-1/100",
+          "1/100"
+        ],
+        "exact_selected_branches": [
+          {
+            "corner_numerators_in_ascending_order": [
+              [
+                [
+                  "0"
+                ],
+                [
+                  "0",
+                  "3"
+                ]
+              ],
+              [
+                [
+                  "12"
+                ],
+                [
+                  "0",
+                  "3"
+                ]
+              ],
+              [
+                [
+                  "12"
+                ],
+                [
+                  "12",
+                  "3"
+                ]
+              ],
+              [
+                [
+                  "0"
+                ],
+                [
+                  "12",
+                  "3"
+                ]
+              ]
+            ],
+            "critical_contact_indices": [
+              [
+                0,
+                0
+              ],
+              [
+                2,
+                1
+              ]
+            ],
+            "denominator_in_ascending_order": [
+              "12",
+              "1"
+            ],
+            "edge_choices": [
+              3,
+              0,
+              2,
+              3
+            ]
+          },
+          {
+            "corner_numerators_in_ascending_order": [
+              [
+                [
+                  "0",
+                  "12"
+                ],
+                [
+                  "0",
+                  "0",
+                  "3"
+                ]
+              ],
+              [
+                [
+                  "48",
+                  "12"
+                ],
+                [
+                  "0",
+                  "12",
+                  "3"
+                ]
+              ],
+              [
+                [
+                  "48"
+                ],
+                [
+                  "48",
+                  "12",
+                  "3"
+                ]
+              ],
+              [
+                [
+                  "0"
+                ],
+                [
+                  "48",
+                  "0",
+                  "3"
+                ]
+              ]
+            ],
+            "critical_contact_indices": [
+              [
+                0,
+                0
+              ],
+              [
+                2,
+                1
+              ]
+            ],
+            "denominator_in_ascending_order": [
+              "48",
+              "4",
+              "1"
+            ],
+            "edge_choices": [
+              0,
+              0,
+              2,
+              3
+            ]
+          }
+        ],
+        "geometric_double_vertex_event_square": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0"
+          ],
+          [
+            "1",
+            "1"
+          ],
+          [
+            "0",
+            "1"
+          ]
+        ],
+        "independent_whole_polygon_slices": [
+          {
+            "geometric_orbits": [
+              {
+                "can_use_repeated_edge": false,
+                "diagonal_pairing": [
+                  [
+                    0,
+                    2
+                  ],
+                  [
+                    1,
+                    3
+                  ]
+                ],
+                "size_squared": "2866576921/2390134321",
+                "source_order_sector": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "source_positions": [
+                  "551179/146667",
+                  "10000/48889",
+                  "88878/48889",
+                  "111078/48889"
+                ],
+                "support_labels": 8,
+                "vertex_contact": false,
+                "vertices_ccw": [
+                  [
+                    "0",
+                    "35489/48889"
+                  ],
+                  [
+                    "40000/48889",
+                    "-100/48889"
+                  ],
+                  [
+                    "75589/48889",
+                    "39900/48889"
+                  ],
+                  [
+                    "35589/48889",
+                    "75489/48889"
+                  ]
+                ]
+              }
+            ],
+            "orbit_count": 1,
+            "time": "-1/100"
+          },
+          {
+            "geometric_orbits": [
+              {
+                "can_use_repeated_edge": true,
+                "diagonal_pairing": [
+                  [
+                    0,
+                    2
+                  ],
+                  [
+                    1,
+                    3
+                  ]
+                ],
+                "size_squared": "1",
+                "source_order_sector": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "source_positions": [
+                  "0",
+                  "1/4",
+                  "2",
+                  "11/3"
+                ],
+                "support_labels": 32,
+                "vertex_contact": true,
+                "vertices_ccw": [
+                  [
+                    "0",
+                    "0"
+                  ],
+                  [
+                    "1",
+                    "0"
+                  ],
+                  [
+                    "1",
+                    "1"
+                  ],
+                  [
+                    "0",
+                    "1"
+                  ]
+                ]
+              },
+              {
+                "can_use_repeated_edge": false,
+                "diagonal_pairing": [
+                  [
+                    0,
+                    2
+                  ],
+                  [
+                    1,
+                    3
+                  ]
+                ],
+                "size_squared": "145/121",
+                "source_order_sector": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "source_positions": [
+                  "124/33",
+                  "9/44",
+                  "20/11",
+                  "25/11"
+                ],
+                "support_labels": 8,
+                "vertex_contact": false,
+                "vertices_ccw": [
+                  [
+                    "0",
+                    "8/11"
+                  ],
+                  [
+                    "9/11",
+                    "0"
+                  ],
+                  [
+                    "17/11",
+                    "9/11"
+                  ],
+                  [
+                    "8/11",
+                    "17/11"
+                  ]
+                ]
+              }
+            ],
+            "orbit_count": 2,
+            "time": "0"
+          },
+          {
+            "geometric_orbits": [
+              {
+                "can_use_repeated_edge": true,
+                "diagonal_pairing": [
+                  [
+                    0,
+                    2
+                  ],
+                  [
+                    1,
+                    3
+                  ]
+                ],
+                "size_squared": "1440000/1442401",
+                "source_order_sector": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "source_positions": [
+                  "4803/1201",
+                  "300/1201",
+                  "2403/1201",
+                  "4403/1201"
+                ],
+                "support_labels": 8,
+                "vertex_contact": false,
+                "vertices_ccw": [
+                  [
+                    "0",
+                    "3/1201"
+                  ],
+                  [
+                    "1200/1201",
+                    "3/1201"
+                  ],
+                  [
+                    "1200/1201",
+                    "1203/1201"
+                  ],
+                  [
+                    "0",
+                    "1203/1201"
+                  ]
+                ]
+              },
+              {
+                "can_use_repeated_edge": false,
+                "diagonal_pairing": [
+                  [
+                    0,
+                    2
+                  ],
+                  [
+                    1,
+                    3
+                  ]
+                ],
+                "size_squared": "25756525489/21511208889",
+                "source_order_sector": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "source_positions": [
+                  "1653137/440001",
+                  "10000/48889",
+                  "800102/440001",
+                  "333434/146667"
+                ],
+                "support_labels": 8,
+                "vertex_contact": false,
+                "vertices_ccw": [
+                  [
+                    "0",
+                    "106867/146667"
+                  ],
+                  [
+                    "40000/48889",
+                    "100/48889"
+                  ],
+                  [
+                    "226567/146667",
+                    "40100/48889"
+                  ],
+                  [
+                    "106567/146667",
+                    "226867/146667"
+                  ]
+                ]
+              },
+              {
+                "can_use_repeated_edge": true,
+                "diagonal_pairing": [
+                  [
+                    0,
+                    2
+                  ],
+                  [
+                    1,
+                    3
+                  ]
+                ],
+                "size_squared": "230401440000/230785120801",
+                "source_order_sector": [
+                  0,
+                  1,
+                  2,
+                  3
+                ],
+                "source_positions": [
+                  "1761603/480401",
+                  "300/480401",
+                  "120300/480401",
+                  "961203/480401"
+                ],
+                "support_labels": 8,
+                "vertex_contact": false,
+                "vertices_ccw": [
+                  [
+                    "0",
+                    "480003/480401"
+                  ],
+                  [
+                    "1200/480401",
+                    "3/480401"
+                  ],
+                  [
+                    "481200/480401",
+                    "1203/480401"
+                  ],
+                  [
+                    "480000/480401",
+                    "481203/480401"
+                  ]
+                ]
+              }
+            ],
+            "orbit_count": 3,
+            "time": "1/100"
+          }
+        ],
+        "selected_branch_counts_negative_zero_positive": [
+          0,
+          1,
+          2
+        ],
+        "selected_side_squared_strict_lower": "9/10"
+      },
+      "gate": "G3",
+      "id": "concave-vertex-pair",
+      "status": "DISPROVED_CANDIDATE"
+    },
+    {
+      "candidate": "A positive-size polygonal square pair can die only at matrix rank loss or a size cutoff.",
+      "evidence": {
+        "all_time_positive_orbits": {
+          "after_algebraic_collision": 1,
+          "at_algebraic_collision": 2,
+          "before_algebraic_collision": 3
+        },
+        "event_isolating_interval": [
+          "32361/50000",
+          "64723/100000"
+        ],
+        "event_polynomial": [
+          "291143052416293",
+          "-496738335230000",
+          "72468080000000"
+        ],
+        "proof_source": "code/pentagon_complete_ledger_v263.py",
+        "strict_lower_for_all_side_squared": "1"
+      },
+      "gate": "G2",
+      "id": "convex-pair-death",
+      "status": "DISPROVED_CANDIDATE"
+    },
+    {
+      "candidate": "Uniform convergence of Jordan embeddings keeps every selected square above a size floor.",
+      "evidence": {
+        "common_limit": "unit-square Jordan embedding",
+        "n": 16,
+        "other_square": [
+          [
+            "0",
+            "0"
+          ],
+          [
+            "1",
+            "0"
+          ],
+          [
+            "1",
+            "1"
+          ],
+          [
+            "0",
+            "1"
+          ]
+        ],
+        "other_square_side_squared": "1",
+        "selected_square_side_squared": "1/256",
+        "top_edge_parameter_nodes": [
+          [
+            "0",
+            "1",
+            "1"
+          ],
+          [
+            "29/54",
+            "19/48",
+            "1"
+          ],
+          [
+            "16/27",
+            "19/48",
+            "17/16"
+          ],
+          [
+            "35/54",
+            "1/3",
+            "17/16"
+          ],
+          [
+            "19/27",
+            "1/3",
+            "1"
+          ],
+          [
+            "1",
+            "0",
+            "1"
+          ]
+        ],
+        "uniform_coordinate_error_upper": "1/8"
+      },
+      "gate": "G5",
+      "id": "moving-notch",
+      "status": "DISPROVED_CANDIDATE"
+    },
+    {
+      "candidate": "The bare normalized parameter-gap direction determines the normalized residual at collision.",
+      "evidence": {
+        "checked_levels": [
+          1,
+          4,
+          8
+        ],
+        "curve_length": "37/6",
+        "flat_control_limit": [
+          "37/18",
+          "-37/18",
+          "37/6",
+          "-37/18"
+        ],
+        "gap_direction": [
+          "1/3",
+          "1/3",
+          "1/3"
+        ],
+        "proof_source": "research/v220-fixed-rectifiable-collision-link-obstruction.md",
+        "square_limit": [
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      "gate": "G2",
+      "id": "fixed-collision-link",
+      "status": "DISPROVED_CANDIDATE"
+    }
+  ],
+  "status": "PROVED_RESTRICTED",
+  "unrestricted_toeplitz": "OPEN",
+  "whole_curve_limit_claim": "OPEN"
+}

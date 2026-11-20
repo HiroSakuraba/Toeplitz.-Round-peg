@@ -1,0 +1,169 @@
+{
+  "notch": [
+    {
+      "flat_dot": "-1/16",
+      "local_relative_index": 0,
+      "n": 4,
+      "other_square_side_squared": "1",
+      "uniform_coordinate_error_upper": "1/2",
+      "upper_squared_radius_on_local_triangle": "1/32"
+    },
+    {
+      "flat_dot": "-1/256",
+      "local_relative_index": 0,
+      "n": 16,
+      "other_square_side_squared": "1",
+      "uniform_coordinate_error_upper": "1/8",
+      "upper_squared_radius_on_local_triangle": "1/512"
+    },
+    {
+      "flat_dot": "-1/16384",
+      "local_relative_index": 0,
+      "n": 128,
+      "other_square_side_squared": "1",
+      "uniform_coordinate_error_upper": "1/64",
+      "upper_squared_radius_on_local_triangle": "1/32768"
+    }
+  ],
+  "spiral": {
+    "fixed_support_segments": [
+      [
+        [
+          "-1",
+          "0"
+        ],
+        [
+          "0",
+          "-7/8"
+        ]
+      ],
+      [
+        [
+          "-1",
+          "0"
+        ],
+        [
+          "0",
+          "-1"
+        ]
+      ],
+      [
+        [
+          "0",
+          "-1"
+        ],
+        [
+          "1",
+          "0"
+        ]
+      ]
+    ],
+    "flat_dot_products": [
+      "4",
+      "-1/64"
+    ],
+    "fourth_corner_outer_vertices": [
+      [
+        "1",
+        "0"
+      ],
+      [
+        "0",
+        "7/8"
+      ],
+      [
+        "-3/4",
+        "0"
+      ],
+      [
+        "0",
+        "-5/8"
+      ],
+      [
+        "1/2",
+        "0"
+      ],
+      [
+        "-1/2",
+        "0"
+      ],
+      [
+        "0",
+        "5/8"
+      ],
+      [
+        "3/4",
+        "0"
+      ],
+      [
+        "0",
+        "-7/8"
+      ]
+    ],
+    "inner_replacement_l1_radius_upper": "1/2",
+    "one_shared_square_corners_ccw": [
+      [
+        "-225/241",
+        "-14/241"
+      ],
+      [
+        "-1/241",
+        "-240/241"
+      ],
+      [
+        "225/241",
+        "-16/241"
+      ],
+      [
+        "1/241",
+        "210/241"
+      ]
+    ],
+    "one_shared_square_fourth_corner_edge_parameter": "240/241",
+    "one_shared_square_squared_side": "101252/58081",
+    "relative_index_on_witness": 1,
+    "squared_radius_lower_on_entire_witness": "1/512"
+  },
+  "truncations": [
+    {
+      "blocks": 1,
+      "changed_arc_vertices": 3,
+      "counterwinding": false
+    },
+    {
+      "blocks": 2,
+      "changed_arc_vertices": 35,
+      "counterwinding": false
+    },
+    {
+      "blocks": 3,
+      "changed_arc_vertices": 163,
+      "counterwinding": false
+    },
+    {
+      "blocks": 4,
+      "changed_arc_vertices": 675,
+      "counterwinding": false
+    },
+    {
+      "blocks": 1,
+      "changed_arc_vertices": 3,
+      "counterwinding": true
+    },
+    {
+      "blocks": 2,
+      "changed_arc_vertices": 35,
+      "counterwinding": true
+    },
+    {
+      "blocks": 3,
+      "changed_arc_vertices": 163,
+      "counterwinding": true
+    },
+    {
+      "blocks": 4,
+      "changed_arc_vertices": 675,
+      "counterwinding": true
+    }
+  ]
+}

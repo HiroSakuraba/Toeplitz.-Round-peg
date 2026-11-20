@@ -1,0 +1,63 @@
+{
+  "v296_rescaled_examples": {
+    "ends": {
+      "0": {
+        "dimensionless_quadratic_jets": [
+          "24/5",
+          "0",
+          "-12/5",
+          "0"
+        ],
+        "first_retained_index_for_sample_length": 38,
+        "sample_coil_source_length": "22775/12297204736",
+        "sample_coil_weighted_error_upper": "19481165506223727033278196275468730105856/2479400942116148531957941499135338600084599375",
+        "scaled_box": {
+          "circumradius_lower_in_units_of_flat_chord": "3/8",
+          "half_ratio_upper_before_source_domain_cutoff": "25/3356224",
+          "inverse_infinity_norm": "229/144",
+          "limiting_jacobian_determinant": "1584/25",
+          "parameter_box_halfwidth": "5/916",
+          "quadratic_error_tolerance": "15/839056",
+          "side_margin_after_preconditioning": "25/7328"
+        }
+      },
+      "1": {
+        "dimensionless_quadratic_jets": [
+          "1",
+          "0",
+          "2/5",
+          "0"
+        ],
+        "first_retained_index_for_sample_length": 33,
+        "sample_coil_source_length": "6175/256048128",
+        "sample_coil_weighted_error_upper": "163557351043847070298710634370433024/8470621781755787399664938789875900086175",
+        "scaled_box": {
+          "circumradius_lower_in_units_of_flat_chord": "3/8",
+          "half_ratio_upper_before_source_domain_cutoff": "25/254016",
+          "inverse_infinity_norm": "9/4",
+          "limiting_jacobian_determinant": "-28/5",
+          "parameter_box_halfwidth": "5/252",
+          "quadratic_error_tolerance": "5/108864",
+          "side_margin_after_preconditioning": "25/2016"
+        }
+      }
+    },
+    "illustrative_dimensionless_curvature": "1"
+  },
+  "v297_coil_envelope": {
+    "normalized_centers": "2^-n",
+    "normalized_radii": "2^-3n",
+    "tagged_position_error_vanishes_relative_to_squared_source_distance": true,
+    "uniform_bound_on_local_shear_lipschitz_constant": "2"
+  },
+  "v298_connected_concave_witness": {
+    "certified_flat_contacts_that_can_carry_coil_accumulation_points": 4,
+    "gate_control": "fixed reference arc windows or sufficiently small C1 changes at the gates",
+    "whole_witness_circumradius_lower": "1/3"
+  },
+  "v299_first_order_control": {
+    "genuine_rectangles_in_the_tagged_flat_collar": 0,
+    "right_minus_left_short_secant_slopes": "3*v^2+r^2",
+    "same_flat_chord_and_tangent_directions": true
+  }
+}

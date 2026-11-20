@@ -387,3 +387,57 @@ See the [November literature review](research/2026-11-literature-and-v212-plan.m
   - Pochuev's hidden corner is a near corner;
   - moving-disk certificates for five families.
 - [14 tests](tests/test_convex_lemmas_v266.py) and dedicated CI. **Limits:** the convex statements are classical in spirit; nothing here gives existence or noncollapse for nonconvex curves.
+
+
+## v269–v273: relative index, spectral countermodel, sector completeness, degeneration and angle continuation
+
+- [Five-version research ledger](research/v269-v273-program-overview.md): precise verified results versus unproved universal obligations.
+- **v269:** [Relative-interval square forcing and the nonzero ellipse square Jacobian](research/v269-relative-index-ellipse-stability.md); local C0 persistence for Jordan embeddings near any noncircular ellipse, without a global index claim.
+- **v270:** [Spectral axiom countermodel](research/v270-spectral-axiom-no-go.md), strictly monotone, R²-Lipschitz and subadditive, yet with zero derivative at 90°. This is an analytic model, **not** an actual Jordan Floer invariant.
+- **v271:** [All 24 labelings / six C4 sectors / three D4 classes](research/v271-six-sector-equivariant-ledger.md), exact residual equivariance, **and a complete two-branch rectangle solution on one four-edge cell of an actual nonconvex Jordan polygon**, including a positive-dimensional square branch. This is not yet a whole-curve atlas.
+- **v272:** [Rectangle degeneration trichotomy](research/v272-degeneration-trichotomy-and-shrinkout.md) and selected shrinking squares on rational simple Jordan polygons approximating the unit square.
+- **v273:** [Exact ellipse rectangle-angle formulas and sharp positive-radius floors](research/v273-ellipse-angle-continuation.md), together with a conditional protected-angle compactness criterion.
+- [Exact standard-library code](code/relative_rectangle_v269_v273.py), [31 regression tests](tests/test_relative_rectangle_v269_v273.py), and [dedicated CI](.github/workflows/v269-v273-relative-rectangle.yml).
+
+**Limit:** This tranche does **not** prove a universal relative Euler/degree class, a filtered Floer nonescape theorem, a full geometric sector atlas, or the unrestricted Toeplitz conjecture. The next target is a compactified rectangle/binormal relative class that survives generic perturbations **and** cannot escape through total four-corner collapse.
+
+## v274–v279: a full concave-polygon atlas and a protected local continuation
+
+- [Program ledger](research/v274-v279-program-ledger.md) and [exact atlas](research/v274-full-rectangle-binormal-atlas.md). The verifier glues 168 ordered edge charts on a specified concave quadrilateral and agrees with independent square and angle-slice checks.
+- [Relative sign line](research/v275-relative-class-and-cobordism.md). Both quotient intervals force a square, even though their individual parities sum to zero.
+- [Liouville primitive controls](research/v276-liouville-sheaf-rough-frontier.md), [localized spectral slope](research/v277-localized-spectral-slope.md), and [eight adversarial tests](research/v278-adversarial-program.md). They isolate the extra hypotheses needed for a common size or action bound.
+- [Restricted continuation theorem](research/v279-global-continuation-synthesis.md). The larger square selected by the atlas persists with side **greater than 1** for every Jordan embedding within coordinate sup norm `1/1000` of the parameterized polygon. The general carrier comparison and nonescape gates remain open.
+
+## v280–v283 — A moving relative class and uniform spiral witness
+
+- The moving concave atlas certifies all 168 ordered contact charts for `|t| <= 1/100`. A persistent interval and a folded pair of intervals give geometric square counts of **1, 2, 3** across the event. All its rectangles have circumradius at least **99/200**.
+- The shrinking-notch square belongs to a local rectangle triangle with zero relative class. On the diamond spirals, a relative witness uses three fixed edges and remains valid for every admissible inner replacement, including the non-Liouville-regular limit. The squared circumradius stays at least **1/512** along that path, which contains a common square of squared side **101252/58081**.
+- [Proof and replay instructions](research/v280-v283-moving-relative-class.md) · [Moving atlas](results/v280/moving-concave-atlas.json) · [Refinement audit](results/v282-v283/refinement-witnesses.json)
+
+## v284–v287 — Moving supports, smooth flat collars, and near-square bands
+
+- Two rational degree certificates give a compact connected family of rectangles under continuous perturbations of all four tagged contact arcs. The diamond and concave charts give circumradius bounds **greater than 9/10** and **greater than 7/10**, respectively, throughout their near-square angle bands.
+- The diamond path continues through independently moving cap and arm supports with circumradius **greater than 1/25**. A construction rounds the four flat contacts and preserves the full path and its opposite endpoint signs.
+- The concave angle band also applies to a finite-coil Jordan curve outside Liouville regularity and to its finite truncations.
+- [Proof and replay instructions](research/v284-v287-rectangle-family-stability.md) · [Angle-band records](results/v284-v287/protected-angle-bands.json) · [Moving-support records](results/v284-v287/moving-spiral-supports.json)
+
+## v288–v291 — Full continuation through rough arc replacements
+
+- The concave finite-coil curve and every truncation have a flat-to-flat rectangle path with circumradius **at least 1/2**. Exact contact roots allow a second replacement on the opposite edge while preserving the path.
+- A coupled degree argument extends the witness through overlapping replacements with circumradius **at least 499/1000**. For two anchored finite-coil copies, the same connected set contains the exact reference square at both rough accumulation points.
+- An exact tent fixture shows how the sequential lift can demand a contact on a deleted segment while the coupled path survives. The original polygon vertices can also be rounded by the v286 construction.
+- [Proof and replay instructions](research/v288-v291-rough-arc-continuation.md) · [Exact certificate](results/v288-v291/rough-arc-continuation.json)
+
+## v292–v295 — Moving flats through a rough interior
+
+- Quadratic rounding makes the two concave flat chords isolated and keeps the selected rectangle path regular at every genuine angle.
+- With small **C¹** perturbations on the endpoint arcs and compatible **C⁰** perturbations throughout, both moving ends join the same connected witness. Its circumradius stays **at least 1/3**. The neighborhood includes curves with two finite-coil singularities. Stronger **C²** control gives unique local branches at the two ends.
+- A tiny tilt eliminates the local flat between the previously parallel straight arcs, and the time-fold control records cancellation of transverse degree.
+- [Proof and replay instructions](research/v292-v295-moving-flat-endpoints.md) · [Exact endpoint records](results/v292-v295/moving-flat-endpoints.json)
+
+## v296–v299 — Roughness at all four flat contacts
+
+- A rescaled four-contact degree calculation uses quadratic positional envelopes on continuous endpoint arcs. It reaches a genuine flat limit even when the arcs double back in transverse projection.
+- Four finite-coil insertions at the concave flat contacts leave both flats on the same connected witness, with circumradius **at least 1/3**. The central square persists with the original interior geometry.
+- A cubic control preserves the flat points and tangent directions while removing the stipulated flat from the closure of genuine rectangles on those arcs.
+- [Proof and replay instructions](research/v296-v299-rough-flat-contacts.md) · [Exact sample bounds](results/v296-v299/rough-flat-contacts.json)

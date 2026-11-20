@@ -1,0 +1,130 @@
+{
+  "flat_collar_inputs": {
+    "0": {
+      "inward_longitudinal_projections": [
+        "60",
+        "30"
+      ],
+      "short_side_derivative": [
+        "3",
+        "4"
+      ]
+    },
+    "1": {
+      "inward_longitudinal_projections": [
+        "1",
+        "2/5"
+      ],
+      "short_side_derivative": [
+        "-1",
+        "1"
+      ]
+    }
+  },
+  "reference": {
+    "flat_diagonal_dot_products": [
+      "25",
+      "-2"
+    ],
+    "reference_square_squared_side": "145/121",
+    "source_coordinate_monotonicity": [
+      -1,
+      1,
+      -1,
+      1
+    ],
+    "unaltered_circumradius_lower": "1/2"
+  },
+  "v288_bottom_lift": {
+    "anchor_rectangle": [
+      [
+        "2",
+        "3"
+      ],
+      [
+        "-1/8",
+        "1/8"
+      ]
+    ],
+    "circumradius_lower_on_inserted_arc": "1",
+    "maximum_at_upper_wall": "-9/16",
+    "minimum_at_lower_wall": "35/8",
+    "other_contact_edge2_parameter_strict_lower": "1/2",
+    "scalar_root_interval": [
+      "0",
+      "1/2"
+    ],
+    "strict_derivative_upper": "-145/8"
+  },
+  "v289_opposite_lift": {
+    "anchor_rectangle": [
+      [
+        "22/25",
+        "23/25"
+      ],
+      [
+        "117/100",
+        "123/100"
+      ]
+    ],
+    "circumradius_lower_on_inserted_arc": "117/200",
+    "maximum_at_upper_wall": "-2471/40000",
+    "minimum_at_lower_wall": "189/5000",
+    "other_contact_edge0_parameter_strict_upper": "1/8",
+    "scalar_root_interval": [
+      "3/20",
+      "1/2"
+    ],
+    "source_interval": [
+      "9/100",
+      "11/100"
+    ],
+    "strict_derivative_upper": "-16/75"
+  },
+  "v290_overlapping_arc_continuation": {
+    "angle_interval": [
+      "2/5",
+      "3/5"
+    ],
+    "arc_coordinate_error_upper": "1/1000",
+    "lateral_margin_after_preconditioning": "1/500",
+    "matrix_inverse_infinity_upper": "2",
+    "minimum_end_parameter_gap_from_patch_center": "205/3476",
+    "moving_contact_box_halfwidth": "1/100",
+    "opposite_edge_coordinate_gap_lower": "1",
+    "patched_edges": [
+      0,
+      2
+    ],
+    "patches_centered_at_square_with_halfwidth": "1/100",
+    "tagged_aspect_ratios_from_flats": "all positive ratios",
+    "whole_witness_circumradius_lower": "499/1000"
+  },
+  "v290_two_coil_square": {
+    "copy_source_length": "1/100",
+    "first_retained_coil_index": 4,
+    "physical_pointwise_error_over_source_distance_upper": "8/255",
+    "preconditioned_square_fiber_error_factor_upper": "64/255",
+    "same_square_meets_both_coil_accumulation_points": true,
+    "unique_square_in_tube_is_reference_square": true
+  },
+  "v291_sequential_obstruction_and_fold": {
+    "fold_control_additional_interval_counts": [
+      0,
+      1,
+      2
+    ],
+    "fold_control_regular_time_parity": 0,
+    "preconditioned_tent_contraction_upper": "2/5",
+    "sequential_straight_root_bracket": [
+      "789/1100",
+      "811/1100"
+    ],
+    "sequential_straight_root_wall_signs": [
+      1,
+      -1
+    ],
+    "square_in_coupled_tube_meets_both_tents": true,
+    "straight_root_contact_deleted_on_edge": 2
+  }
+}
