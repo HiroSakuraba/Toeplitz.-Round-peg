@@ -269,9 +269,11 @@ def certify_rectangle_orthogonality_crossing(left,right):
 
 def notch_shrinkout_comparison(n):
     """Same odd universal secant winding, but a *chosen* square shrinks."""
-    P=notch_polygon(n)
+    # v219 and v223 define distinct Point dataclasses; normalize into
+    # v223's exact polygon vertex type, without changing coordinates.
+    P=tuple(pt(p.x,p.y) for p in notch_polygon(n))
     v=exact_secant_winding(P)
-    sq=notch_square(n)
+    sq=tuple(pt(p.x,p.y) for p in notch_square(n))
     if not is_positive_square_diagonals(sq):
         raise AssertionError("notch's four corners not a square")
     size=notch_square_side_squared(n)
