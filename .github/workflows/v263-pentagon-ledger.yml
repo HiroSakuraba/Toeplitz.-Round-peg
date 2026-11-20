@@ -1,0 +1,36 @@
+name: v263 complete moving-pentagon all-real-time ledger
+
+on:
+  pull_request:
+    paths:
+      - 'code/pentagon_complete_ledger_v263.py'
+      - 'tests/test_pentagon_complete_ledger_v263.py'
+      - 'research/v263-*'
+      - '.github/workflows/v263-pentagon-ledger.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'code/pentagon_complete_ledger_v263.py'
+      - 'tests/test_pentagon_complete_ledger_v263.py'
+      - 'research/v263-*'
+      - '.github/workflows/v263-pentagon-ledger.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  complete-real-time-census:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Print every exact chart exclusion and unresolved diagnostic
+        run: python code/pentagon_complete_ledger_v263.py --diagnostic
+      - name: Enforce fail-closed exhaustive all-real-time proof
+        run: python code/pentagon_complete_ledger_v263.py
+      - name: Verify algebraic event certificates and all-time census
+        run: python -m unittest -v tests.test_pentagon_complete_ledger_v263
