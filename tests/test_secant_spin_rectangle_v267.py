@@ -21,6 +21,7 @@ from secant_spin_rectangle_v267 import (
     rectangle_family,certify_rectangle_orthogonality_crossing,
     notch_shrinkout_comparison,audit,
     tensor_perpendicularity_character,tensor_w1_on_loop,
+    diagonal_nowherezero_section_formal,certify_diagonal_absolute_no_go,
 )
 
 
@@ -141,6 +142,20 @@ class SecantSpinAudit(unittest.TestCase):
             "local_index_transport":1,
         })
         self.assertEqual(_source_sign(REFLECT),-1)
+
+    def test_diagonal_target_has_its_own_explicit_nonzero_equivariant_section(self):
+        for a,b in ((Q(1),Q(0)),(Q(3,5),Q(4,5)),
+                    (Q(-5,13),Q(12,13))):
+            section=diagonal_nowherezero_section_formal(a,b)
+            shifted=diagonal_nowherezero_section_formal(-a,-b)
+            self.assertEqual(shifted,tuple(-x for x in section))
+            self.assertEqual(sum(x*x for x in section),1)
+        audit=certify_diagonal_absolute_no_go()
+        self.assertEqual(audit[
+            "absolute_top_w4_obstruction_on_one_cyclic_quotient"],0)
+        self.assertTrue(audit["no_unrestricted_Jordan_square_conclusion"])
+        with self.assertRaises(ValueError):
+            diagonal_nowherezero_section_formal(Q(1),Q(1))
 
     def test_twist_in_one_diagonal_but_not_other_forces_dot_sign_flip(self):
         self.assertEqual(tensor_perpendicularity_character(True,False),-1)
