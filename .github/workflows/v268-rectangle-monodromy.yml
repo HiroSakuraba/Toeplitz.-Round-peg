@@ -1,0 +1,36 @@
+name: v268 rectangle-locus odd/even monodromy audit
+
+on:
+  pull_request:
+    paths:
+      - 'code/rectangle_monodromy_v268.py'
+      - 'tests/test_rectangle_monodromy_v268.py'
+      - 'research/v268-*'
+      - '.github/workflows/v268-rectangle-monodromy.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'code/rectangle_monodromy_v268.py'
+      - 'tests/test_rectangle_monodromy_v268.py'
+      - 'research/v268-*'
+      - '.github/workflows/v268-rectangle-monodromy.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-rectangle-monodromy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact rational-function loop identities and algebraic square event
+        run: python code/rectangle_monodromy_v268.py
+      - name: Complete exact cyclic monodromy, noncollapse and negative-control tests
+        run: python -m unittest -v tests.test_rectangle_monodromy_v268
+      - name: Inherited polynomial roots and dihedral source-sector checks
+        run: python -m unittest -v tests.test_moving_polygon_events_v224 tests.test_configuration_symmetry_v218
