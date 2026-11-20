@@ -2,13 +2,13 @@
 
 **Research program:** Benjamin John Schulz  
 **Date:** 20 November 2026  
-**Status:** A general **conditional topological forcing proposition**, a reusable **exact rational-function certificate** for continuous nondegenerate inscribed-rectangle loops, and two rigorously distinguished nontrivial loops on a **single fixed circle**. The first shows that two individual Möbius chord twists need **not** force a square; the second uses an **odd cyclic monodromy** to force a unique square at an irrational parameter. This is not an all-Jordan Toeplitz proof.
+**Status:** A conditional topological forcing proposition, a reusable exact rational-function certificate for closed nondegenerate inscribed-rectangle loops, **two exact circle loops**, and a decisive **global noncircular-ellipse counterexample to the attempted universal odd-loop premise**. The ellipse's entire rectangle locus is an open interval, not a circle, but its relative **binormal-endpoint** sign change still forces a square. Thus the viable direction is relative boundary data, not a claim that every Jordan curve has an odd-loop component. This is **not** an all-Jordan Toeplitz proof.
 
 ## 1. From secant spin to the *actual* rectangle locus
 
 [v267](v267-secant-spin-rectangle-obstruction.md) proved that every continuous Jordan embedding has nonzero antipodal secants of odd winding and a nontrivial unoriented-chord Möbius line. It also showed that the square-perpendicularity equation lives in a **tensor sign line** of *two* diagonal chords and that the new diagonal residual's absolute rank-four obstruction still vanishes.
 
-The missing hypothesis was concrete: on every Jordan curve, does the space of **actual inscribed nondegenerate rectangles** contain a closed component whose diagonal-perpendicularity sign line has nonzero first Stiefel–Whitney class?
+The initial proposed hypothesis was concrete: on every Jordan curve, does the space of **actual inscribed nondegenerate rectangles** contain a closed component whose diagonal-perpendicularity sign line has nonzero first Stiefel–Whitney class? **Section 7 proves the answer is NO**: an ordinary noncircular ellipse has no essential rectangle loop whatsoever. This turns the next milestone toward a **relative interval/end-stratum obstruction** instead.
 
 v268 distinguishes two algebraically explicit closed rectangle loops with **different** monodromy. This proves the individual line twists are insufficient and isolates the *additional* topological property needed for a square-forcing route.
 
@@ -79,7 +79,7 @@ A nowhere-vanishing real section trivializes a real line bundle; thus odd \(k\) 
 
 For even \(k=2\), both individual diagonal orientations can reverse after one circuit. Then each \(w_1(L_i)\) may be 1, while their tensor has \(w_1=1+1=0\). This is exhibited exactly in §3.
 
-**The missing Toeplitz theorem:** Nothing here constructs an odd-\(k\) nondegenerate rectangle loop for **every** Jordan curve. The theorem is **conditional on such a loop actually existing**; the nontriviality of *arbitrary unordered chord space* cannot replace that hypothesis.
+**Sharp universal limitation:** The presence of such an odd-\(k\) loop for **every** Jordan curve is not merely unproved; **it is false**, as the global noncircular-ellipse classification in §7 shows. This theorem is useful as a **conditional certificate** when odd loops occur, but cannot by itself be the universal existence premise.
 
 ## 3. Sharp negative example: a non-square loop with two genuine Möbius diagonal twists
 
@@ -280,21 +280,140 @@ And size-selected rectangles at many **different angles** need not lie on **one 
 
 For **rectifiable** Jordan curves, Greene–Lobb's Theorem B is stronger: the curve inscribes \(\theta\)-rectangles for **all** \(0<\theta<A/R^2\), which in particular includes \(\pi/2\) when \(A/R^2>\pi/2\). That restricted theorem is already covered by their paper. We must not claim it anew.
 
-## 7. What would make this a genuine Toeplitz proof strategy?
+## 7. A decisive smooth counterexample to the *universal odd-loop premise*: a noncircular ellipse
+
+A closed odd-monodromy rectangle component **does not have to exist even for a smooth, strictly convex Jordan curve that has an inscribed square**. Consider any noncircular ellipse
+
+\[
+E_{a,b}:\quad\frac{x^2}{a^2}+\frac{y^2}{b^2}=1,\qquad
+a,b>0,\quad a\neq b.
+\]
+
+### Proposition 3 (complete ellipse rectangle-locus classification)
+
+**Every nondegenerate Euclidean rectangle inscribed in \(E_{a,b}\) is centered at the origin, with sides parallel to the ellipse axes.** Its geometric moduli space is
+
+\[
+\boxed{
+\mathcal R(E_{a,b})
+\cong\left\{(x,y):0<x<a,\quad
+y=b\sqrt{1-\frac{x^2}{a^2}}>0\right\}
+\cong (0,a).
+}
+\]
+
+In particular, its fundamental group is trivial. It admits **no essential nontrivial cyclic-monodromy loop**; in particular, no odd-\(T\) square-forcing loop. Nonetheless, it contains a positive inscribed square.
+
+**Proof of completeness.** An inscribed rectangle is a parallelogram. Apply the invertible affine transformation \(A(x,y)=(x/a,y/b)\), taking the ellipse to the unit circle. Its image is a **parallelogram inscribed in a circle**, hence a cyclic parallelogram, which is a rectangle centered at the circle center. Pulling back shows the original rectangle is **centered at the origin**.
+
+Let its two oriented half-diagonals be \(u=(u_x,u_y)\) and \(v=(v_x,v_y)\), so the four vertices are \(\pm u,\pm v\). Both \(u\) and \(v\) lie on the ellipse, and the two full diagonals of a Euclidean rectangle have equal length. Define \(X=u_x^2-v_x^2\) and \(Y=u_y^2-v_y^2\). We have
+
+\[
+X+Y=0,\qquad \frac{X}{a^2}+\frac{Y}{b^2}=0.
+\]
+
+The determinant is
+
+\[
+\boxed{\frac1{b^2}-\frac1{a^2}\neq0}
+\]
+
+because \(a\neq b\). Therefore \(X=Y=0\). Thus the \(x\)- and \(y\)-coordinates of \(u\) and \(v\) have equal absolute values. Since all **four corners are distinct**, \(v\) must differ from \(u\) by changing the sign of **exactly one** coordinate (up to an overall reversal). The four vertices are
+
+\[
+\boxed{(\pm x,\pm y),\qquad x>0,\ y>0.}
+\]
+
+They form an axis-aligned rectangle. Their ellipse equation gives \(x^2/a^2+y^2/b^2=1\), so \(x\in(0,a)\) uniquely determines the geometric rectangle and establishes the claimed open-interval homeomorphism. QED.
+
+This is an elementary classical ellipse fact; it is recorded because it directly **falsifies** the proposed "every Jordan curve has an odd-monodromy rectangle loop" intermediate lemma. Although one can trace a closed **contractible** path back and forth inside an interval, it cannot carry odd cyclic monodromy.
+
+### The correct forcing event is *relative to two degenerate boundary ends*
+
+The open interval has two distinct limiting configurations:
+
+- as \(x\to a\), \(y\to0\), the rectangle collapses into **two pairs of coincident vertices** at \((\pm a,0)\);
+- as \(x\to0\), \(y\to b\), the rectangle collapses into two pairs of coincident vertices at \((0,\pm b)\).
+
+These are **not all-four-corner collisions**. The limiting full diagonals retain strictly positive squared lengths \(4a^2\) and \(4b^2\), respectively. Both are precisely the type of **flat/binormal boundary configurations** that a full relative rectangle-locus theory must represent.
+
+With the same cyclic geometric labeling as above,
+
+\[
+d_0=(-2x,-2y),\qquad
+d_1=(2x,-2y),\qquad
+f=d_0\cdot d_1=4(y^2-x^2).
+\]
+
+The two endpoint signs are
+
+\[
+\boxed{\lim_{x\to a}f=-4a^2<0,\qquad
+\lim_{x\to0}f=+4b^2>0.}
+\]
+
+Thus the **relative endpoint sign change**, not any odd closed-loop monodromy, forces an interior rectangle with \(f=0\). At that unique point \(x=y\),
+
+\[
+\boxed{x^2=y^2=\frac{a^2b^2}{a^2+b^2}},
+\qquad
+\boxed{\text{square side}^2=\frac{4a^2b^2}{a^2+b^2}>0}.
+\]
+
+The intermediate-value argument is valid despite the absence of a **uniform positive side-length floor over the entire closed interval**, because the sign change occurs **strictly in the interior**, where the rectangle is nondegenerate. This illustrates a viable *relative boundary* strategy.
+
+### An exact one-parameter checker, including rational and irrational event times
+
+For rational \(a,b>0\), \(a\ne b\), the new function \`certify_ellipse_relative_rectangle_path(a,b)\` uses the *entire* rational parametrized first-quadrant ellipse arc
+
+\[
+x(t)=a\,\frac{1-t^2}{1+t^2},\qquad
+y(t)=\frac{2bt}{1+t^2},\qquad 0\le t\le1.
+\]
+
+It proves exact rational-function ellipse incidence for all four corners, the complete rectangle equations for every real \(t\), strictly positive side lengths in the **open** interval via the factors \(x/(1-t)>0\) and \(y/t>0\), both distinct nonzero-diagonal boundary limits, and all roots of the signed perpendicularity via exact Sturm isolation.
+
+The **unique** crossing is characterized by
+
+\[
+a(1-t^2)=2bt,\qquad
+\boxed{a t^2+2bt-a=0}.
+\]
+
+This polynomial is strictly increasing on \([0,1]\), negative at \(t=0\), positive at \(t=1\), so exactly one root lies inside. Crucially, a non-point **dyadic Sturm bracket does not prove a root irrational**. The checker separately applies an exact integer-square test to \(a^2+b^2\):
+
+\[
+\boxed{t_*=\frac{\sqrt{a^2+b^2}-b}{a}},
+\]
+
+which is rational exactly when \(a^2+b^2\) is a rational square. When rational, the checker reports the **exact rational time**, even if the root isolator would otherwise supply only a non-point bracket.
+
+For example:
+
+| Ellipse semi-axes | Exact parameter condition | Square side² | Rectangle-locus topology |
+|---|---|---|---|
+| \(a=3,b=2\) | \(3t^2+4t-3=0\), \(t=(\sqrt{13}-2)/3\) irrational | \(144/13\) | Open interval |
+| \(a=3,b=4\) | \(3t^2+8t-3=0\), \(t=1/3\) rational | \(576/25\) | Open interval |
+
+The verifier checks the complete noncircular-ellipse classification's algebraic rank premise, the relative opposite endpoint signs, the uniqueness of the square event and the **failure of uniform closed-interval side noncollapse**. It deliberately rejects \(a=b\), because the circle has a **different, higher-dimensional rectangle locus**, as demonstrated by the two examples in §§3–4.
+
+**Research consequence:** The original universal **closed odd-loop** existence conjecture has an explicit elementary **counterexample**. A universal Toeplitz program must instead use **relative boundary endpoint signs / a compactified rectangle cobordism**, or a more sophisticated Floer action/filtration that can keep the resulting square from being a spurious total-collision zero.
+
+## 8. What could make a *relative* rectangle obstruction universal?
 
 The research now has a sharp **relative topology versus geometric size** separation.
 
-**Topological obligation T.** From the Jordan embedding, produce an actual **connected** loop or relative cobordism of inscribed rectangles with **odd cyclic monodromy**. It must be a geometric rectangle family, not merely a loop in the large free unordered-chord Möbius strip. The §3 even-loop counterexample proves that individual chord-line \(w_1\) is insufficient.
+**Relative-boundary obligation T.** The ellipse in §7 disproves the universality of **closed odd-monodromy loops**. Instead, construct from any Jordan embedding a **connected rectangle cobordism or relative 1-chain** whose **two admissible boundary/end strata have oppositely forced perpendicularity signs**, or otherwise compute a nonzero relative Stiefel–Whitney/degree class. It must be a family of genuine geometric rectangles, not an arbitrary unordered-chord Möbius loop. The §3 even-loop counterexample shows individual chord-line \(w_1\) is insufficient; the ellipse shows **even the existence of an essential rectangle loop is not universal**.
 
-**Geometric obligation G.** Ensure that the odd-monodromy component cannot pass through total-collision/zero-side strata. For a *fixed, compact, entirely nondegenerate loop*, its minimum side length is automatically positive by continuity. The difficulty is demonstrating such a loop or an equivalent boundary-relative class **uniformly under arbitrary \(C^0\) approximations**.
+**Geometric obligation G.** A relative rectangle interval may legitimately terminate at **two-pair flattening/binormal strata** where one rectangle side vanishes, as on the ellipse, without invalidating an *interior* square crossing. The crucial distinction is between prescribed boundary degenerations with **controlled nonzero perpendicularity signs** and uncontrolled **all-corner total-collision**. For arbitrary \(C^0\) approximations, prove that the desired crossing cannot escape through the latter; Floer spectral **radius/action** estimates in Greene–Lobb 2026 are a promising input.
 
 **Multiplicity/sector obligation S.** Capture nongraceful rectangles and squares, singular and positive-dimensional rectangle components, and pairing changes under the full geometric \(D_4\) action without silently treating a fourfold labeled orbit as a mod-2 obstruction.
 
-**Literature-link obligation L.** Test whether Greene–Lobb's **quantitatively radius-protected spectral rectangles** can populate a single connected component with an odd cyclic monodromy, or whether the available compactified 1-manifolds can close only through binormal or collision states. No result found in the 2026 paper directly proves T.
+**Literature-link obligation L.** Investigate how Greene–Lobb's **quantitatively radius-protected spectral rectangles** and **compactified binormal ends** can supply a nonzero **relative boundary class**, rather than presupposing an odd closed component. Their 2026 paper establishes strong positive-measure/size results but does not identify an all-Jordan relative sign crossing at the specific square angle \(\pi/2\).
 
-Proving these would turn the elementary monodromy observation into a substantive all-Jordan argument. Until then, the odd-loop theorem is a valid **sufficient** criterion, not an existence theorem for arbitrary Jordan curves.
+Proving these would turn the **relative interval** example into a substantive all-Jordan argument. The odd-loop theorem remains a valid **sufficient** criterion for particular curves but is **not a possible universal existence premise**, because the noncircular ellipse refutes that premise.
 
-## 8. Reproduction and status
+## 9. Reproduction and status
 
 New source: [`code/rectangle_monodromy_v268.py`](../code/rectangle_monodromy_v268.py).  
 New tests: [`tests/test_rectangle_monodromy_v268.py`](../tests/test_rectangle_monodromy_v268.py).  
@@ -306,7 +425,7 @@ python -m unittest -v tests.test_rectangle_monodromy_v268
 python -m unittest -v tests.test_moving_polygon_events_v224 tests.test_configuration_symmetry_v218
 ```
 
-The code uses **exact rational arithmetic and rational polynomial identity checks**, with exact Bernstein and Sturm certificates for all closed real-parameter intervals. No floating-point comparison or numerical sampling is used as proof of an event or noncollapse. The topological odd-loop criterion is justified analytically by continuity and the intermediate value theorem, and the full-Jordan obligations are **not** machine-proved by finite tests.
+The code also certifies the noncircular-ellipse **relative endpoint square** with exact quadratic root rationality detection, while the assertion that the ellipse's *full* rectangle locus is an interval is proved analytically in §7. The code uses **exact rational arithmetic and rational polynomial identity checks**, with exact Bernstein and Sturm certificates for all closed real-parameter intervals. No floating-point comparison or numerical sampling is used as proof of an event or noncollapse. The topological odd-loop criterion is justified analytically by continuity and the intermediate value theorem, and the full-Jordan obligations are **not** machine-proved by finite tests.
 
 ### Related project results
 
@@ -317,4 +436,4 @@ The code uses **exact rational arithmetic and rational polynomial identity check
 - [v266](v266-two-corner-stability-and-convex-cutoff.md): independent hidden-corner/convex noncollapse arguments.
 - [v267](v267-secant-spin-rectangle-obstruction.md): universal antipodal secant winding, the Möbius chord-line twist and the diagonal-tensor conditional theorem.
 
-**Conclusion:** The odd-monodromy square-forcing test is mathematically exact, but the same circle also contains a non-square rectangle loop with **both individual chord orientation lines twisted** and **trivial perpendicularity tensor twist**. To prove the unrestricted Toeplitz conjecture using this framework, we must establish **a protected odd-monodromy rectangle family on every Jordan curve**, or a genuinely stronger relative/Floer boundary invariant. **The unrestricted Toeplitz conjecture remains open.**
+**Conclusion:** The odd-monodromy square-forcing test is mathematically exact, but (i) a non-square half-turn loop on a circle has **both individual chord orientation lines twisted** and **trivial tensor twist**, and (ii) the entire rectangle locus of a noncircular **ellipse is an open interval with no essential loops**, while a **relative endpoint sign change** forces an interior square. Thus the proposed all-Jordan **odd closed-loop hypothesis is false**. The actionable remaining line is a **relative/compactified rectangle-boundary or Floer-filtered obstruction**, with explicit control of total collision. **The unrestricted Toeplitz conjecture remains open.**
