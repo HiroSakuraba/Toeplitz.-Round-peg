@@ -434,3 +434,10 @@ See the [November literature review](research/2026-11-literature-and-v212-plan.m
 - With small **C¹** perturbations on the endpoint arcs and compatible **C⁰** perturbations throughout, both moving ends join the same connected witness. Its circumradius stays **at least 1/3**. The neighborhood includes curves with two finite-coil singularities. Stronger **C²** control gives unique local branches at the two ends.
 - A tiny tilt eliminates the local flat between the previously parallel straight arcs, and the time-fold control records cancellation of transverse degree.
 - [Proof and replay instructions](research/v292-v295-moving-flat-endpoints.md) · [Exact endpoint records](results/v292-v295/moving-flat-endpoints.json)
+
+## v296–v299 — Roughness at all four flat contacts
+
+- A rescaled four-contact degree calculation uses quadratic positional envelopes on continuous endpoint arcs. It reaches a genuine flat limit even when the arcs double back in transverse projection.
+- Four finite-coil insertions at the concave flat contacts leave both flats on the same connected witness, with circumradius **at least 1/3**. The central square persists with the original interior geometry.
+- A cubic control preserves the flat points and tangent directions while removing the stipulated flat from the closure of genuine rectangles on those arcs.
+- [Proof and replay instructions](research/v296-v299-rough-flat-contacts.md) · [Exact sample bounds](results/v296-v299/rough-flat-contacts.json)
