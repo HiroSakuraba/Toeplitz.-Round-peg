@@ -223,6 +223,25 @@ def _product(v):
     return x
 
 
+def tensor_perpendicularity_character(flip_first,flip_second,swap_chords=False):
+    """Monodromy of signed diagonal dot: (-1)^(flip_first+flip_second).
+
+    The scalar is a section of L_first tensor L_second; simultaneous
+    reversal is TRIVIAL, even if both individual chord lines twist.
+    Interchanging the two diagonals also leaves the dot unchanged.
+    """
+    if type(flip_first) is not bool or type(flip_second) is not bool or type(swap_chords) is not bool:
+        raise ValueError("exact Z2 monodromy flags required")
+    return -1 if flip_first!=flip_second else 1
+
+
+def tensor_w1_on_loop(first_w1,second_w1):
+    """The *relative* obstruction is w1(L1 tensor L2)=w1(L1)+w1(L2)."""
+    if first_w1 not in (0,1) or second_w1 not in (0,1):
+        raise ValueError("w1 inputs must be 0 or 1")
+    return (first_w1+second_w1)%2
+
+
 def rectangle_family(x,height=Q(1)):
     """Four distinct corners (±x,±height) on fixed rectangle boundary."""
     x,h=Q(x),Q(height)
@@ -303,11 +322,19 @@ def audit():
         "clockwise_square_secant":_format(exact_secant_winding(clockwise)),
         "chord_swap_monodromy_w1":1,
         "D4_target_character":diag,
+        "tensor_diagonal_twist":{
+            "one_chord_endpoint_reversal":tensor_perpendicularity_character(True,False),
+            "both_chord_endpoint_reversals":tensor_perpendicularity_character(True,True),
+            "w1_of_perpendicularity_line_if_two_chord_w1_are_1_0":
+                tensor_w1_on_loop(1,0),
+            "w1_of_perpendicularity_line_if_two_chord_w1_are_1_1":
+                tensor_w1_on_loop(1,1),
+        },
         "rectangle_sign_crossing":_format(
             certify_rectangle_orthogonality_crossing(Q(1,2),Q(3,2))),
         "notch_shrinkout_n_64":_format(notch_shrinkout_comparison(64)),
         "unconditional_all_Jordan_square_existence_inferred":False,
-        "actionable_conditional_theorem":"a compact 1-cycle of nondegenerate inscribed rectangles with nontrivial pulled-back diagonal-orientation line has a zero of its perpendicularity section, hence a square",
+        "actionable_conditional_theorem":"a compact 1-cycle of nondegenerate inscribed rectangles with w1(L_first tensor L_second)=1 has a zero of its diagonal-dot-product section, hence a square",
         "remaining_obstruction":"construct such a protected nondegenerate rectangle cycle for every Jordan curve, or a boundary-relative class that cannot disappear into zero chord length",
     }
 
