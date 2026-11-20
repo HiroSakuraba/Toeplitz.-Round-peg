@@ -1,0 +1,36 @@
+name: v265 exact irrational square vertex gluing
+
+on:
+  pull_request:
+    paths:
+      - 'code/square_irrational_vertex_gluing_v265.py'
+      - 'tests/test_square_irrational_vertex_gluing_v265.py'
+      - 'research/v265-*'
+      - '.github/workflows/v265-irrational-vertex-gluing.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'code/square_irrational_vertex_gluing_v265.py'
+      - 'tests/test_square_irrational_vertex_gluing_v265.py'
+      - 'research/v265-*'
+      - '.github/workflows/v265-irrational-vertex-gluing.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-algebraic-gluing:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Resolve genuine irrational event and full geometric square count
+        run: python code/square_irrational_vertex_gluing_v265.py
+      - name: Exact algebraic congruences, degree, affine invariance and fail closed tests
+        run: python -m unittest -v tests.test_square_irrational_vertex_gluing_v265
+      - name: Retain generic chart and whole pentagon regression proofs
+        run: python -m unittest -v tests.test_convex_square_event_atlas_v264 tests.test_pentagon_complete_ledger_v263 tests.test_square_relative_degree_v260
