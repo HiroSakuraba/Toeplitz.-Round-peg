@@ -39,7 +39,6 @@ from moving_polygon_events_v224 import (
     moving_point, pairminus, pairplus, residual_poly,
     neg, iszero,
 )
-from big_peg_cutoff_ledger_v252 import cutoff_numerator
 
 START=ROOT_LEFT
 END=ROOT_RIGHT
@@ -190,7 +189,7 @@ def classify_chart(P,ids,eta,start,end):
     # Any algebraic square with side²<=eta can be safely omitted:
     # the global geometric gap theorem proves no *positive* square
     # on the real polygon can have such a short side.
-    size=cutoff_numerator(D,chart.numerators,eta)
+    size=chart.cutoff  # v224: actual squared side residual numerator
     if sign_constant(size)==-1:
         return {"class":"below_certified_cutoff","witness":str(eta)}
     if ids in TRACKED:
