@@ -1,0 +1,55 @@
+name: v266 two-corner lemma, stability, convex cutoff and sectors
+
+on:
+  pull_request:
+    paths:
+      - 'code/convex_lemmas_v266.py'
+      - 'code/convex_big_peg_v255.py'
+      - 'code/convex_square_event_atlas_v264.py'
+      - 'tests/test_convex_lemmas_v266.py'
+      - 'research/v266-*'
+      - '.github/workflows/v266-convex-lemmas.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'code/convex_lemmas_v266.py'
+      - 'code/convex_big_peg_v255.py'
+      - 'code/convex_square_event_atlas_v264.py'
+      - 'tests/test_convex_lemmas_v266.py'
+      - 'research/v266-*'
+      - '.github/workflows/v266-convex-lemmas.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Exact two-corner and stability grids, moving-disk cutoffs, Pochuev near corner (standard library)
+        run: python code/convex_lemmas_v266.py
+      - name: Exact tests (numeric tests skip without numpy/scipy)
+        run: python -m unittest -v tests.test_convex_lemmas_v266
+      - name: Retain predecessor v255 exact checks
+        run: python code/convex_big_peg_v255.py
+
+  numeric:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install numerical dependencies
+        run: python -m pip install 'numpy>=1.26,<3' 'scipy>=1.11,<2'
+      - name: All v266 tests with dependencies required (no silent skips)
+        env:
+          REQUIRE_NUMERIC_DEPS: '1'
+        run: python -m unittest -v tests.test_convex_lemmas_v266

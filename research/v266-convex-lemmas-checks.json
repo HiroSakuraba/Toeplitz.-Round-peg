@@ -1,0 +1,320 @@
+{
+ "exact": {
+  "two_corner_grid": {
+   "small_squares": 17328,
+   "with_hidden_near_corner": 17328
+  },
+  "stability_constants_eps_1_100": {
+   "eps": "1/100",
+   "cos_lower": "99/101",
+   "sin_upper": "20/101",
+   "margin": "79/101",
+   "T": "101/3950"
+  },
+  "stability_grid_eps_1_100": {
+   "eps": "1/100",
+   "T": "101/3950",
+   "T_over_eps": 2.5569620253164556,
+   "unhidden_near_corner_squares": 1917,
+   "satisfy_X_plus_Y_le_T": 1917,
+   "fully_unhidden_squares": 1917,
+   "satisfy_convex_centre_bound": 1917,
+   "max_centre_sq_over_2eps2": 1.0
+  },
+  "stability_grid_eps_1_400": {
+   "eps": "1/400",
+   "T": "401/71800",
+   "T_over_eps": 2.233983286908078,
+   "unhidden_near_corner_squares": 1917,
+   "satisfy_X_plus_Y_le_T": 1917,
+   "fully_unhidden_squares": 1917,
+   "satisfy_convex_centre_bound": 1917,
+   "max_centre_sq_over_2eps2": 1.0
+  },
+  "sharpness_example": {
+   "eps": "1/100",
+   "hidden_corners": [],
+   "corners_outside_open_disk": true,
+   "centre_distance_squared_over_eps_squared": "2"
+  },
+  "pochuev_near_corner": {
+   "hidden": [
+    0
+   ],
+   "near": [
+    0,
+    3
+   ],
+   "hidden_corner_is_near": true
+  },
+  "cutoff_comparison": {
+   "v254_collision_window": {
+    "disk_side_squared_floor": "103169105309871441/113470381344500000",
+    "disk_side_squared_floor_float": 0.9092161680205029,
+    "v264_projection_side_squared_floor_float": 0.258903905,
+    "improvement_factor": 3.511790090692154,
+    "slabs": 1
+   },
+   "v254_full_interval_3/5_to_13/20": {
+    "disk_side_squared_floor": "239491378809081/263511924500000",
+    "disk_side_squared_floor_float": 0.9088445589834436,
+    "v264_projection_side_squared_floor_float": 0.258903905,
+    "improvement_factor": 3.5103547742296266,
+    "slabs": 1
+   },
+   "v264_translated_pentagon": {
+    "disk_side_squared_floor": "48692357724575601/53554135538000000",
+    "disk_side_squared_floor_float": 0.9092175092626663,
+    "v264_projection_side_squared_floor_float": 0.11930408648786914,
+    "improvement_factor": 7.621008936312636,
+    "slabs": 1
+   },
+   "v264_scaled_pentagon": {
+    "disk_side_squared_floor": "103169105309871441/113470381344500000",
+    "disk_side_squared_floor_float": 0.9092161680205029,
+    "v264_projection_side_squared_floor_float": 0.24540997733455627,
+    "improvement_factor": 3.7048867283053033,
+    "slabs": 1
+   },
+   "v264_translated_quadrilateral": {
+    "disk_side_squared_floor": "331704954647361/107421153125000",
+    "disk_side_squared_floor_float": 3.0878923284446076,
+    "v264_projection_side_squared_floor_float": 1.7244897959183674,
+    "improvement_factor": 1.790612119453086,
+    "slabs": 1
+   }
+  }
+ },
+ "numeric": {
+  "twin_spike_sectors": {
+   "0.3": {
+    "squares": [
+     {
+      "half_diagonal": 1.1948055666850186,
+      "diag_line_distances": [
+       0.21820488792717635,
+       0.21820488792717693
+      ],
+      "a_diagonal_crosses_open_disk": true,
+      "a_diagonal_tangent_to_disk": false,
+      "graceful": true
+     },
+     {
+      "half_diagonal": 0.19697420516866582,
+      "diag_line_distances": [
+       4.8234252426342685,
+       3.2122374750925005
+      ],
+      "a_diagonal_crosses_open_disk": false,
+      "a_diagonal_tangent_to_disk": false,
+      "graceful": false
+     },
+     {
+      "half_diagonal": 0.14680377756203258,
+      "diag_line_distances": [
+       5.495993283627094,
+       1.0000000000000036
+      ],
+      "a_diagonal_crosses_open_disk": false,
+      "a_diagonal_tangent_to_disk": true,
+      "graceful": false
+     },
+     {
+      "half_diagonal": 0.14680377756203275,
+      "diag_line_distances": [
+       5.495993283627094,
+       1.0000000000000049
+      ],
+      "a_diagonal_crosses_open_disk": false,
+      "a_diagonal_tangent_to_disk": true,
+      "graceful": false
+     },
+     {
+      "half_diagonal": 0.196974205168666,
+      "diag_line_distances": [
+       4.823425242634259,
+       3.212237475092504
+      ],
+      "a_diagonal_crosses_open_disk": false,
+      "a_diagonal_tangent_to_disk": false,
+      "graceful": false
+     }
+    ],
+    "small_squares_all_ungraceful": true,
+    "lemma_holds": true,
+    "small_or_ungraceful_have_both_diagonals_off_disk": true
+   },
+   "0.6": {
+    "squares": [
+     {
+      "half_diagonal": 1.2209938270771408,
+      "diag_line_distances": [
+       0.25099722074719233,
+       0.2509972207471915
+      ],
+      "a_diagonal_crosses_open_disk": true,
+      "a_diagonal_tangent_to_disk": false,
+      "graceful": true
+     },
+     {
+      "half_diagonal": 0.36732164245218635,
+      "diag_line_distances": [
+       4.7031064680399615,
+       2.9215712632146853
+      ],
+      "a_diagonal_crosses_open_disk": false,
+      "a_diagonal_tangent_to_disk": false,
+      "graceful": false
+     },
+     {
+      "half_diagonal": 0.2766150779159197,
+      "diag_line_distances": [
+       5.127739748462782,
+       0.9999999999999996
+      ],
+      "a_diagonal_crosses_open_disk": false,
+      "a_diagonal_tangent_to_disk": true,
+      "graceful": false
+     },
+     {
+      "half_diagonal": 0.2766150779159197,
+      "diag_line_distances": [
+       5.127739748462782,
+       0.9999999999999996
+      ],
+      "a_diagonal_crosses_open_disk": false,
+      "a_diagonal_tangent_to_disk": true,
+      "graceful": false
+     },
+     {
+      "half_diagonal": 0.36732164245218635,
+      "diag_line_distances": [
+       4.7031064680399615,
+       2.9215712632146853
+      ],
+      "a_diagonal_crosses_open_disk": false,
+      "a_diagonal_tangent_to_disk": false,
+      "graceful": false
+     }
+    ],
+    "small_squares_all_ungraceful": true,
+    "lemma_holds": true,
+    "small_or_ungraceful_have_both_diagonals_off_disk": true
+   },
+   "1.0": {
+    "squares": [
+     {
+      "half_diagonal": 1.2612473577736807,
+      "diag_line_distances": [
+       0.3103842648234925,
+       0.3103842648234925
+      ],
+      "a_diagonal_crosses_open_disk": true,
+      "a_diagonal_tangent_to_disk": false,
+      "graceful": true
+     },
+     {
+      "half_diagonal": 0.5515163604876515,
+      "diag_line_distances": [
+       4.485815891147576,
+       2.520085968286828
+      ],
+      "a_diagonal_crosses_open_disk": false,
+      "a_diagonal_tangent_to_disk": false,
+      "graceful": false
+     },
+     {
+      "half_diagonal": 0.4286371618182543,
+      "diag_line_distances": [
+       4.700822731783789,
+       0.9999999999999994
+      ],
+      "a_diagonal_crosses_open_disk": false,
+      "a_diagonal_tangent_to_disk": true,
+      "graceful": false
+     },
+     {
+      "half_diagonal": 0.42863716181825434,
+      "diag_line_distances": [
+       4.700822731783789,
+       0.9999999999999994
+      ],
+      "a_diagonal_crosses_open_disk": false,
+      "a_diagonal_tangent_to_disk": true,
+      "graceful": false
+     },
+     {
+      "half_diagonal": 0.5515163604876515,
+      "diag_line_distances": [
+       4.485815891147574,
+       2.5200859682868284
+      ],
+      "a_diagonal_crosses_open_disk": false,
+      "a_diagonal_tangent_to_disk": false,
+      "graceful": false
+     }
+    ],
+    "small_squares_all_ungraceful": true,
+    "lemma_holds": true,
+    "small_or_ungraceful_have_both_diagonals_off_disk": true
+   },
+   "1.6": {
+    "squares": [
+     {
+      "half_diagonal": 1.340658579665456,
+      "diag_line_distances": [
+       0.44173768335076946,
+       0.44173768335077035
+      ],
+      "a_diagonal_crosses_open_disk": true,
+      "a_diagonal_tangent_to_disk": false,
+      "graceful": true
+     },
+     {
+      "half_diagonal": 0.7447107334388012,
+      "diag_line_distances": [
+       4.100554478633397,
+       1.9416301828214981
+      ],
+      "a_diagonal_crosses_open_disk": false,
+      "a_diagonal_tangent_to_disk": false,
+      "graceful": false
+     },
+     {
+      "half_diagonal": 0.6221361993488458,
+      "diag_line_distances": [
+       4.164977382291238,
+       1.0000000000000009
+      ],
+      "a_diagonal_crosses_open_disk": false,
+      "a_diagonal_tangent_to_disk": true,
+      "graceful": false
+     },
+     {
+      "half_diagonal": 0.6221361993488458,
+      "diag_line_distances": [
+       4.164977382291239,
+       1.0000000000000009
+      ],
+      "a_diagonal_crosses_open_disk": false,
+      "a_diagonal_tangent_to_disk": true,
+      "graceful": false
+     },
+     {
+      "half_diagonal": 0.7447107334388015,
+      "diag_line_distances": [
+       4.100554478633397,
+       1.9416301828214986
+      ],
+      "a_diagonal_crosses_open_disk": false,
+      "a_diagonal_tangent_to_disk": false,
+      "graceful": false
+     }
+    ],
+    "small_squares_all_ungraceful": true,
+    "lemma_holds": true,
+    "small_or_ungraceful_have_both_diagonals_off_disk": true
+   }
+  }
+ }
+}

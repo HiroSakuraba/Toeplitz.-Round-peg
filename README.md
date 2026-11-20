@@ -340,7 +340,7 @@ See the [November literature review](research/2026-11-literature-and-v212-plan.m
   - 4,570 distinct squares on 3,000 random convex polygons.
   - An optimizer trying to break the bound stalls at exactly 1.
 - **Beyond convexity:** twin-spike regions, star-shaped about the whole disk, have tiny squares, so the "every square" form fails there. Searches over that class and over centre-star-shaped polygons found no largest-square counterexample.
-- [15 tests](tests/test_convex_big_peg_v255.py) and dedicated CI back all of this. **Limits:** I could not find the argument in the literature, but it may be folklore. It says nothing about the unrestricted Toeplitz problem or a universal c > 0 for general curves.
+- [15 tests](tests/test_convex_big_peg_v255.py) and dedicated CI back all of this. **Limits:** the convex statement was answered publicly before v255 (Christophe Boilley, 12 June 2026, on David Bernier's Math StackExchange question; see the v256 provenance note). It says nothing about the unrestricted Toeplitz problem or a universal c > 0 for general curves.
 
 ## v256-v257: sharp centered squares on arbitrary symmetric Jordan curves; quantitative near-squares beyond symmetry
 
@@ -369,3 +369,20 @@ See the [November literature review](research/2026-11-literature-and-v212-plan.m
 - The key new proof is **UNIFORM outer-boundary nonvanishing for EVERY REAL collision time** \(64722/100000\le t\le64723/100000\). [Exact rational verifier](code/square_relative_degree_v260.py) shows both extended Cramer roots lie at least \(1/10000\) inside one rational four-dimensional outer box, with all-time signed Bernstein inequalities. An independent exact determinant check proves \(|\det M_\pm|>1/10\) and \(|M_{ij}|\le2\), giving \(\|M_\pm^{-1}\|_\infty<1920\) and the explicit **outer residual floor \(1/19200000\)**. Arbitrary continuous coordinatewise arc perturbations of amplitude \(\varepsilon=10^{-9}\) preserve the **zero degree** and a possible-root side² bound **greater than 1**. **Degree zero is NOT a square-existence guarantee**; this is bookkeeping robust to genuine pair cancellation, not another nonzero-index persistence theorem.
 - At the algebraic event, both square root parameter vectors agree in **all four coordinates** by exact divisibility by v254's quadratic. The shared inner-interface zero makes individual halfbox degrees undefined at the event, although the combined outer-box degree remains defined. [24 adversarial tests](tests/test_square_relative_degree_v260.py) check orientation, the all-time no-escape inequalities, exact event factor, before/after genuine geometric square counts (independent v223 **3→1** rational-slice census), continuous perturbation margins, noncollapse and fail-closed geometry/box/epsilon controls.
 - **Scope:** A correct and complete **local** degree-gluing demonstration for ONE affine convex pentagon, including its irrational pair-death time. Not a global signed square-configuration index, not an all-time **whole-polygon** census, and not a universal Big Peg/Toeplitz proof. Next: attempt an oriented *multi-box atlas* of all square configurations rather than assuming that a zero local degree is globally protected.
+
+## v266: a two-corner proof of the hidden-corner lemma, stability, an automatic convex cutoff, and graceful-or-off-disk
+
+- [Five lemmas with proofs](research/v266-two-corner-stability-and-convex-cutoff.md):
+  - **Lemma 0.** The v255 hidden-corner lemma has a **two-line proof** using only the two corners nearest the disk centre, and when side < sqrt(2) r one of those two is the hidden corner.
+  - **Lemma 2 (stability).** A convex curve's square with half-diagonal <= r(1+eps) has its centre within **sqrt(2) eps (1+7eps) r** of the disk centre (eps <= 1/100). This is sharp, and it gives an explicit margin over sqrt(2) for convex curves that do not nearly touch their incircle at four orthogonal points.
+  - **Lemma 1.** A moving convex polygon containing a disk of radius r0 has every square of side^2 >= 2 r0^2. [`certify_moving_disk`](code/convex_lemmas_v266.py) proves the containment exactly for v264 linear motions. It gives a side floor **1.8 to 7.6 times** v264's projection floor on all of v264's test families (0.909 versus 0.259 on the v254 window), and is invariant under edge subdivision.
+  - **Lemma 3.** If every point of a disk sees the whole boundary, squares with a diagonal through the disk are graceful and big. On twin spikes, every small square is ungraceful with both diagonals off the disk.
+  - **Lemma 4.** Squares cannot collapse at locally convex points; at each scale a pocket must hide a near corner.
+  - **Proposition 5 (classical, convex only).** On convex families, v262's relative parity becomes global.
+- Exact support (standard library):
+  - 17,328 small grid squares, each with a hidden near corner;
+  - exact stability constants T(1/100) = 101/3950;
+  - 1,917 near-equality grid squares, all within the bound, with the sharp ratio exactly 1;
+  - Pochuev's hidden corner is a near corner;
+  - moving-disk certificates for five families.
+- [14 tests](tests/test_convex_lemmas_v266.py) and dedicated CI. **Limits:** the convex statements are classical in spirit; nothing here gives existence or noncollapse for nonconvex curves.
