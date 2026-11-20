@@ -384,4 +384,4 @@ See the [November literature review](research/2026-11-literature-and-v212-plan.m
   - 1,917 near-equality grid squares, all within the bound, with the sharp ratio exactly 1;
   - Pochuev's hidden corner is a near corner;
   - moving-disk certificates for five families.
-- [13 tests](tests/test_convex_lemmas_v266.py) and dedicated CI. **Limits:** the convex statements are classical in spirit; nothing here gives existence or noncollapse for nonconvex curves.
+- [14 tests](tests/test_convex_lemmas_v266.py) and dedicated CI. **Limits:** the convex statements are classical in spirit; nothing here gives existence or noncollapse for nonconvex curves.

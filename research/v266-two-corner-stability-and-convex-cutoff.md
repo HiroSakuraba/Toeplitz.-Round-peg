@@ -87,7 +87,7 @@ In words, a convex curve beats √2 by an amount proportional to how far it is f
 | scaled pentagon (×3/2) | 0.909216 | 0.245410 | 3.70 |
 | translated quadrilateral | 3.087892 | 1.724490 | 1.79 |
 
-Each family needed one time slab. The true minimum side² over the v254 window is about 1.113, so the floor is safe. Unlike a projection gap between nonadjacent edges, the disk certificate is unchanged by subdividing edges, so it needs no collinear-refinement compression.
+Each family needed one time slab. The true minimum side² over the v254 window is about 1.113, so the floor is safe. Unlike a projection gap between nonadjacent edges, the disk certificate is unchanged by subdividing edges: a subdivided edge has the same edge line. `auto_disk_cutoff` first applies v264's all-time collinear compression, so v264's strict-convexity gate accepts subdivided inputs and returns the same cutoff (tested).
 
 ## Lemma 3: graceful or off the disk
 
@@ -124,7 +124,7 @@ So the uniform-noncollapse bottleneck named in v262 (item 3) and v263 (direction
 - every inscribed square has side ≥ √2·r0 (Lemma 1);
 - consecutive corners are therefore at least √2·r0 apart along the curve.
 
-So the zeros of the square-defect map lie in one compact region of the positive cyclic-order sector, away from the collision boundary, for all t. The mod-2 degree on that region is defined and independent of t, and any v262-style relative quotient parity on an atlas containing all squares equals it. For generic members it is the parity of the number of squares, which is odd. That oddness is classical and not claimed here.
+So the zeros of the square-defect map lie in one compact region of the positive cyclic-order sector, away from the collision boundary, for all t. That alone does not give a useful invariant on the labeled sector. Each geometric square contributes four labeled zeros (its cyclic relabelings), so the labeled mod-2 degree is 0, as v218 and v262 record. The right invariant is v262's relative mod-2 index of the C4-quotient section, which counts each geometric square once. Because the zero set stays compact and away from the collision boundary for every t, that quotient index is defined on one fixed region for the whole family and does not depend on t. On any atlas containing all squares, it equals v262's relative quotient parity. For generic members it is the parity of the number of geometric squares, which is odd. That oddness is classical and not claimed here.
 
 This is consistent with v263's complete count: 3 squares before the collision, 2 at it, and 1 after.
 

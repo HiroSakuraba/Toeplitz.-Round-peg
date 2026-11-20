@@ -280,7 +280,10 @@ def auto_disk_cutoff(P0, P1, slabs=1, shrink=Q(999, 1000), depth=10, max_slabs=6
     """Find and exactly certify a moving disk on [0, 1] (dyadic slabs if
     needed). Returns the certified r0^2 lower bound (min over slabs), the
     cutoff 2 r0^2 for squared square sides, and per-slab data."""
-    from convex_square_event_atlas_v264 import certify_strict_convex_motion
+    from convex_square_event_atlas_v264 import certify_strict_convex_motion, compress_collinear_refinement
+    # v264's compression removes only all-time straight subdivision vertices, so
+    # the boundary (and every edge line) is unchanged; certify on the compressed motion.
+    P0, P1, removed = compress_collinear_refinement(P0, P1)
     certify_strict_convex_motion(P0, P1)
     while slabs <= max_slabs:
         out = []
@@ -314,7 +317,8 @@ def auto_disk_cutoff(P0, P1, slabs=1, shrink=Q(999, 1000), depth=10, max_slabs=6
                         "centre_at_1": [str(C1.x), str(C1.y)], "r": str(r), "bernstein_cells": cert})
         if good:
             r2 = min(Q(s["r"]) ** 2 for s in out)
-            return {"slabs": out, "r0_squared": r2, "side_squared_cutoff": 2 * r2,
+            return {"slabs": out, "removed_collinear_vertices": list(removed),
+                    "r0_squared": r2, "side_squared_cutoff": 2 * r2,
                     "side_squared_cutoff_float": float(2 * r2)}
         slabs *= 2
     raise ValueError("no moving-disk certificate found")

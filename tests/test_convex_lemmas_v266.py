@@ -103,6 +103,18 @@ class MovingDiskCutoff(unittest.TestCase):
         for name, rec in out.items():
             self.assertGreater(rec["improvement_factor"], 1.5, name)
 
+    def test_cutoff_unchanged_by_collinear_subdivision(self):
+        sq = tuple(pt(x, y) for x, y in ((-1, -1), (1, -1), (1, 1), (-1, 1)))
+        ref = tuple(pt(x, y) for x, y in ((-1, -1), (0, -1), (1, -1), (1, 1), (-1, 1)))
+        a, b = v.auto_disk_cutoff(sq, sq), v.auto_disk_cutoff(ref, ref)
+        self.assertEqual(a["side_squared_cutoff"], b["side_squared_cutoff"])
+        self.assertEqual(b["removed_collinear_vertices"], [1])
+        A, B = self.fam["v254_collision_window"]
+        mid = lambda P: tuple(x for i, p in enumerate(P) for x in (p, pt((p.x + P[(i + 1) % len(P)].x) / 2,
+                                                                         (p.y + P[(i + 1) % len(P)].y) / 2)))
+        self.assertEqual(v.auto_disk_cutoff(A, B)["side_squared_cutoff"],
+                         v.auto_disk_cutoff(mid(A), mid(B))["side_squared_cutoff"])
+
     def test_nonconvex_motion_fails_closed(self):
         P, _, _ = v.read_polygon(v255.POCHUEV_JSON)
         with self.assertRaises(Exception):
