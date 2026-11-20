@@ -126,6 +126,26 @@ class ExactIrrationalVertexGluing(unittest.TestCase):
         self.assertEqual((c.left_orientation,c.right_orientation),(-1,1))
         self.assertGreater(c.external_defect_floor,0)
 
+    def test_genuinely_perturbed_pentagon_has_new_algebraic_event(self):
+        # This changes only the third polygon corner, so the moving
+        # pentagon is NOT related to v254 by a common similarity.
+        A,B=list(self.A),list(self.B)
+        A[3]=pt(A[3].x,A[3].y+Q(1,10**7))
+        B[3]=pt(B[3].x,B[3].y+Q(1,10**7))
+        r=complete_v264_vertex_event(
+            tuple(A),tuple(B),
+            COLLIDING_LEFT,COLLIDING_RIGHT,1)
+        self.assertEqual(
+            [r["event_before_geometric_squares"],
+             r["event_exact_geometric_squares"],
+             r["event_after_geometric_squares"]],[3,2,1])
+        self.assertNotEqual(
+            tuple(r["event_defining_polynomial"]),
+            tuple(str(x) for x in self.pair.exact_event_polynomial))
+        self.assertTrue(r["complete_whole_polygon_all_time_ledger"])
+        self.assertGreater(
+            Q(r["uniform_outer_boundary_square_defect_floor"]),0)
+
     def test_independent_positively_scaled_motion(self):
         A,B=scale_motion(self.A,self.B,Q(3,2))
         c=certify_vertex_pair(A,B,COLLIDING_LEFT,COLLIDING_RIGHT,1)
