@@ -127,6 +127,11 @@ class Numeric(unittest.TestCase):
         self.assertGreaterEqual(r["min_half_diagonal_over_inradius"], 1 - 1e-9)
 
     def test_twin_spike_breaks_strong_form_only(self):
+        import numpy as np
+        for gap in (0.3, 1.6):
+            P = v.twin_spike(gap)
+            self.assertGreaterEqual(v._edge_line_dist(np, P).min(), 1 - 1e-12)   # unit disk in kernel
+            self.assertGreaterEqual(v._seg_dist(np, P).min(), 1 - 1e-12)         # unit disk inside
         r = v.twin_spike_check()
         for gap, rec in r.items():
             self.assertLess(rec["min_half_diagonal"], 1, gap)

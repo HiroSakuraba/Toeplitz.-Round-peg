@@ -328,7 +328,7 @@ See the [November literature review](research/2026-11-literature-and-v212-plan.m
 - **Support:**
   - Exact lemma grid: 14,024 small rational squares, every one with a hidden corner.
   - Exact complete v223 censuses of ten convex polygons. One octagon comes within 0.05% of equality.
-  - 18,280 squares on 3,000 random convex polygons.
+  - 4,570 distinct squares on 3,000 random convex polygons.
   - An optimizer trying to break the bound stalls at exactly 1.
 - **Beyond convexity:** twin-spike regions, star-shaped about the whole disk, have tiny squares, so the "every square" form fails there. Searches over that class and over centre-star-shaped polygons found no largest-square counterexample.
 - [15 tests](tests/test_convex_big_peg_v255.py) and dedicated CI back all of this. **Limits:** I could not find the argument in the literature, but it may be folklore. It says nothing about the unrestricted Toeplitz problem or a universal c > 0 for general curves.

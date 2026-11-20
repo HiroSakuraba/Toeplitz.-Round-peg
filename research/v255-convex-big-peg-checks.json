@@ -169,7 +169,7 @@
  "numeric": {
   "random_convex": {
    "polygons": 3000,
-   "squares": 18280,
+   "distinct_squares": 4570,
    "min_half_diagonal_over_inradius": 1.0019221602207868
   },
   "convex_adversary_min_half_diagonal": {
@@ -180,28 +180,32 @@
   },
   "twin_spike": {
    "0.3": {
-    "squares": 20,
-    "min_half_diagonal": 0.14680377756203272,
-    "max_half_diagonal": 1.1940842722530047,
-    "small_squares_far_from_disk": 16
+    "distinct_squares": 5,
+    "min_half_diagonal": 0.14680377756203258,
+    "max_half_diagonal": 1.1948055666850186,
+    "min_edge_line_distance": 0.9999999999999998,
+    "small_squares_far_from_disk": 4
    },
    "0.6": {
-    "squares": 20,
-    "min_half_diagonal": 0.27661507791591966,
-    "max_half_diagonal": 1.219963089079832,
-    "small_squares_far_from_disk": 16
+    "distinct_squares": 5,
+    "min_half_diagonal": 0.2766150779159197,
+    "max_half_diagonal": 1.2209938270771408,
+    "min_edge_line_distance": 0.9999999999999996,
+    "small_squares_far_from_disk": 4
    },
    "1.0": {
-    "squares": 20,
-    "min_half_diagonal": 0.42863716181825434,
-    "max_half_diagonal": 1.2609095471021514,
-    "small_squares_far_from_disk": 16
+    "distinct_squares": 5,
+    "min_half_diagonal": 0.4286371618182543,
+    "max_half_diagonal": 1.2612473577736807,
+    "min_edge_line_distance": 0.9999999999999984,
+    "small_squares_far_from_disk": 4
    },
    "1.6": {
-    "squares": 20,
-    "min_half_diagonal": 0.6221361993488457,
-    "max_half_diagonal": 1.340145396713112,
-    "small_squares_far_from_disk": 16
+    "distinct_squares": 5,
+    "min_half_diagonal": 0.6221361993488458,
+    "max_half_diagonal": 1.340658579665456,
+    "min_edge_line_distance": 0.9999999999999996,
+    "small_squares_far_from_disk": 4
    }
   },
   "kernel_contains_disk_search": {

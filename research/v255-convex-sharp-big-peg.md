@@ -80,9 +80,9 @@ Numeric checks need numpy, scipy and cma (`--numeric --write` regenerates [the J
 
 | Check | What it does | Result |
 |---|---|---|
-| Random convex polygons | 3,000 seeded convex polygons (3 to 12 sides, all support values >= 1), every inscribed square | 18,280 squares; smallest half-diagonal / inradius = **1.00192** |
+| Random convex polygons | 3,000 seeded convex polygons (3 to 12 sides, all support values >= 1), every inscribed square | 4,570 distinct squares; smallest half-diagonal / inradius = **1.00192** |
 | Optimizer trying to break the theorem | CMA-ES minimising the *smallest* inscribed half-diagonal over convex n-gons containing the unit disk, n = 4, 5, 6, 8 | 1.0000000011, 1.0000011, 1.0000035, 1.00059: it reaches the equality shapes and never goes below 1 |
-| Twin spikes | Union of conv(D U T1) and conv(D U T2), so every point of D sees the whole boundary; tip gap 0.3 to 1.6 | Smallest half-diagonals **0.147 to 0.622** (16 small squares out in the spikes), largest 1.19 to 1.34: the "every square" form fails, the largest-square form survives |
+| Twin spikes | Union of conv(D U T1) and conv(D U T2) with the arc replaced by a circumscribed polyline, so every edge line is tangent to the unit circle and every point of D sees the whole boundary; tip gap 0.3 to 1.6 | Five distinct squares each. Smallest half-diagonals **0.147 to 0.622** (4 small squares out in the spikes), largest 1.19 to 1.34: the "every square" form fails, the largest-square form survives |
 | D in the kernel | CMA-ES minimising the *largest* half-diagonal; every edge line at distance >= 1 from the centre; n = 5 to 10, 10 runs | Lowest reached **1.000124**; no counterexample |
 | Star-shaped about the centre only | Same, with the unit disk inside but edge lines allowed to cut it (pockets the disk cannot see); n = 6 to 12, 12 runs | Lowest reached **1.000034**; no counterexample |
 | Pochuev pushed into that class | Start at his ten-gon and penalise failure to be star-shaped about the disk centre, keeping the disk inside | Both runs became star-shaped; the largest half-diagonal went from 0.9973 to **1.0015** (seed 0) and **1.134** (seed 7). His small square does not survive, though seed 0 ends close to the bound |

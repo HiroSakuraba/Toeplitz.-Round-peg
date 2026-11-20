@@ -417,9 +417,9 @@ def random_convex_check(count=3000, seed=0):
         if len(h) == 0:
             continue
         done += 1
-        nsq += len(h)
+        nsq += len(_square_polys(np, P))     # distinct geometric squares (solver lists each 4x)
         worst = min(worst, h.min() / inradius_float(P))
-    return {"polygons": done, "squares": int(nsq), "min_half_diagonal_over_inradius": float(worst)}
+    return {"polygons": done, "distinct_squares": int(nsq), "min_half_diagonal_over_inradius": float(worst)}
 
 
 def convex_adversary(n, seed, restarts=4, maxfevals=2500):
@@ -450,8 +450,11 @@ def convex_adversary(n, seed, restarts=4, maxfevals=2500):
 
 
 def twin_spike(gap, L=6.0, m=24):
-    """Union of conv(D U T1) and conv(D U T2), T = (L, +-gap/2): star-shaped
-    with respect to every point of the unit disk D."""
+    """Union of conv(D U T1) and conv(D U T2), T = (L, +-gap/2), with the
+    circular arc replaced by a CIRCUMSCRIBED polyline. Every edge line is
+    tangent to the unit circle and the centre is inside, so the polygon
+    contains the unit disk D and D lies in its kernel (every point of D sees
+    the whole boundary)."""
     np = _np()
     T1, T2 = np.array([L, gap / 2]), np.array([L, -gap / 2])
 
@@ -462,12 +465,13 @@ def twin_spike(gap, L=6.0, m=24):
         return b + d, b - d
     a1u, a1l = tang(T1)
     a2u, a2l = tang(T2)
-    p1 = np.array([np.cos(a1l), np.sin(a1l)])
-    p2 = np.array([np.cos(a2u), np.sin(a2u)])
-    s, _ = np.linalg.solve(np.c_[T1 - p1, -(T2 - p2)], p2 - p1)
-    notch = p1 + s * (T1 - p1)
-    arc = np.linspace(a1u, a2l + 2 * np.pi, m)
-    return np.array([T1] + [np.array([np.cos(a), np.sin(a)]) for a in arc] + [T2, notch])
+
+    def meet(t1, t2):          # intersection of the tangent lines at angles t1, t2
+        return np.linalg.solve([[np.cos(t1), np.sin(t1)], [np.cos(t2), np.sin(t2)]], [1.0, 1.0])
+    notch = meet(a1l, a2u)     # T1's inner tangent meets T2's inner tangent
+    th = np.linspace(a1u, a2l + 2 * np.pi, m)
+    arc = [meet(th[i], th[i + 1]) for i in range(m - 1)]
+    return np.array([T1] + arc + [T2, notch])
 
 
 def twin_spike_check():
@@ -475,10 +479,13 @@ def twin_spike_check():
     out = {}
     for gap in (0.3, 0.6, 1.0, 1.6):
         P = twin_spike(gap)
-        c, h = all_squares_float(P)
-        out[str(gap)] = {"squares": int(len(h)), "min_half_diagonal": float(h.min()),
-                         "max_half_diagonal": float(h.max()),
-                         "small_squares_far_from_disk": int(np.sum((h < 1) & (np.linalg.norm(c, axis=1) > 2)))}
+        polys = _square_polys(np, P)                     # distinct geometric squares
+        hs = np.array([h for _, h in polys])
+        cs = np.array([V.mean(axis=0) for V, _ in polys])
+        out[str(gap)] = {"distinct_squares": int(len(hs)), "min_half_diagonal": float(hs.min()),
+                         "max_half_diagonal": float(hs.max()),
+                         "min_edge_line_distance": float(_edge_line_dist(np, P).min()),
+                         "small_squares_far_from_disk": int(np.sum((hs < 1) & (np.linalg.norm(cs, axis=1) > 2)))}
     return out
 
 
