@@ -16,7 +16,7 @@ from rectangle_monodromy_v268 import (
     diagonal_dot_character,even_moebius_loop,odd_twisted_loop,
     _monodromy,_pointset,_assert_rectangle_identically,
     _positive_rational_function,_nonnegative_rational_function,
-    monodromy_no_go,audit,
+    monodromy_no_go,audit,certify_circle_rectangle_loop,
 )
 
 
@@ -160,6 +160,65 @@ class ExactRectangleMonodromy(unittest.TestCase):
         t=list(s);t[0]=(Q(4),Q(4))
         with self.assertRaises(ValueError):
             _monodromy(s,tuple(t))
+
+    def test_generic_checker_accepts_static_non_square_loop(self):
+        c=certify_circle_rectangle_loop(
+            (rectangle(3,4),),Q(25),Q(30))
+        self.assertEqual(c["geometric_C4_monodromy_T_power"],0)
+        self.assertEqual(c["distinct_isolated_square_event_count"],0)
+        self.assertEqual(c["all_side_inequalities_certified"],4)
+
+    def test_generic_checker_validates_both_example_loops(self):
+        e=self.even["reusable_piecewise_path_audit"]
+        o=self.odd["reusable_piecewise_path_audit"]
+        self.assertEqual(e["number_of_rational_patches"],2)
+        self.assertEqual(e["all_side_inequalities_certified"],8)
+        self.assertEqual(e["distinct_isolated_square_event_count"],0)
+        self.assertEqual(o["number_of_rational_patches"],1)
+        self.assertEqual(o["all_side_inequalities_certified"],4)
+        self.assertEqual(o["distinct_isolated_square_event_count"],1)
+        self.assertTrue(o["nondegenerate_at_every_real_parameter"])
+
+    def test_wrong_circle_radius_rejected(self):
+        with self.assertRaises(ValueError):
+            certify_circle_rectangle_loop(
+                (rectangle(3,4),),Q(24),Q(30))
+
+    def test_false_size_floor_rejected(self):
+        with self.assertRaises(ValueError):
+            certify_circle_rectangle_loop(
+                (rectangle(3,4),),Q(25),Q(40))
+
+    def test_square_continuum_is_not_a_finite_event_ledger(self):
+        with self.assertRaises(ValueError):
+            certify_circle_rectangle_loop(
+                (rectangle(3,3),),Q(18),Q(10))
+
+    def test_degenerate_flat_endpoint_rectangle_is_rejected(self):
+        p=ONE-U/2
+        a=5*(ONE-p*p)/(ONE+p*p)
+        b=10*p/(ONE+p*p)
+        with self.assertRaises(ValueError):
+            certify_circle_rectangle_loop(
+                (rectangle(a,b),),Q(25),Q(1))
+
+    def test_unclosed_rectangle_path_is_rejected(self):
+        c,s=unit_quarter(U)
+        with self.assertRaises(ValueError):
+            certify_circle_rectangle_loop(
+                (rotate(rectangle(3,4),c,s),),Q(25),Q(30))
+
+    def test_piecewise_discontinuous_rectangle_path_is_rejected(self):
+        c,s=unit_quarter(U)
+        with self.assertRaises(ValueError):
+            certify_circle_rectangle_loop(
+                (rectangle(3,4),rotate(rectangle(3,4),-s,c)),
+                Q(25),Q(30))
+
+    def test_wrong_cyclic_orientation_is_rejected(self):
+        with self.assertRaises(ValueError):
+            certify_circle_rectangle_loop(
+                (rectangle(-3,4),),Q(25),Q(30))
 
     def test_odd_component_no_square_is_topologically_impossible(self):
         r=monodromy_no_go()
