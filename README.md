@@ -1,9 +1,17 @@
 # Toeplitz square-peg research
 
 **Research program:** Benjamin John Schulz (GitHub: HiroSakuraba)  
-**Status as of 2026-11-18:** Research in progress. The general square-peg conjecture for arbitrary Jordan curves is **not proved** here.
+**Status as of 2026-11-20:** Research in progress. Exact square-census and relative-degree theorems have been certified for selected polygonal families; the general square-peg conjecture for arbitrary Jordan curves is **not proved** here.
 
 The [Toeplitz square-peg problem](https://en.wikipedia.org/wiki/Inscribed_square_problem) asks whether every Jordan curve contains four distinct vertices of a nondegenerate Euclidean square. This is a versioned research archive of constructive half-square approaches, local certificates, geometric obstructions, analytic energy methods, and supporting computation.
+
+## Latest certified milestones (20 November 2026)
+
+- **[v263: full all-real-time moving-pentagon square census](research/v263-complete-all-real-time-moving-pentagon-census.md)**: exact 70-chart exhaustion proves **3 → 2 → 1** positive inscribed square orbits across a unique irrational collision, including the singular vertex event. The selected v262 quotient atlas contains every positive square of that *particular* moving pentagon throughout the narrow certified interval.
+- **[v264: reusable exact convex-polygon event atlas](research/v264-reusable-convex-square-event-atlas.md)**: accepts arbitrary rational-affine strictly convex polygon families, compresses certified collinear edge subdivisions, computes time-uniform positive square-size bounds, and exhausts all closed-edge configurations. Independently isolates the v254 algebraic event and certifies event-free chamber orbit counts. **Irrational event slices are not inferred from neighboring samples**; they require a separate event theorem.
+- **[v262: C4 quotient-relative mod-2 degree](research/v262-cyclic-quotient-relative-parity.md)**: a selected eight-sheet atlas has parity degree one despite a genuine pair death. This is a *relative* and family-specific index, not an absolute obstruction on unrestricted square-configuration space.
+
+**Remaining obstacle:** Neither the positive-size bound nor the relative quotient degree has been shown to persist uniformly across arbitrary \(C^0\) approximations of all Jordan curves. The unrestricted Toeplitz problem remains open.
 
 ## Repository contents
 
