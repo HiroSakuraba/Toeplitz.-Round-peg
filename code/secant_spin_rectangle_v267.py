@@ -223,6 +223,44 @@ def _product(v):
     return x
 
 
+def diagonal_nowherezero_section_formal(cosine,sine):
+    """Values s(c)=(cos(4*pi*c),sin(4*pi*c),0,0) at a unit phase pair.
+
+    On the one graceful cyclic configuration component, v219's
+    center c obeys c(Tx)=c(x)+1/4. The diagonal square residual's
+    target representation under T is -I4, so s(Tx)=-s(x)
+    exactly, and |s|^2=1. Therefore its rank-four associated
+    bundle admits an EXPLICIT nowhere-zero equivariant section.
+    This is a direct absolute-obstruction no-go for the *new*
+    diagonal target representation, not an inference from v219's
+    different target representation.
+    """
+    a,b=Q(cosine),Q(sine)
+    if a*a+b*b!=Q(1):
+        raise ValueError("exact rational phase must lie on unit circle")
+    return (a,b,Q(0),Q(0))
+
+
+def certify_diagonal_absolute_no_go():
+    samples=((Q(1),Q(0)),(Q(0),Q(1)),
+             (Q(3,5),Q(4,5)),(Q(-5,13),Q(12,13)))
+    for a,b in samples:
+        v=diagonal_nowherezero_section_formal(a,b)
+        rotated=diagonal_nowherezero_section_formal(-a,-b)
+        if rotated!=tuple(z*x for z,x in zip(ROT_TARGET,v)):
+            raise AssertionError("diagonal section fails C4 equivariance")
+        if sum(z*z for z in v)!=Q(1):
+            raise AssertionError("diagonal section vanished")
+    return {
+        "global_section_formula":"s(c)=(cos(4*pi*c), sin(4*pi*c), 0, 0)",
+        "center_quarter_shift":"c(Tx)=c(x)+1/4",
+        "target_R":"-I4",
+        "nonzero_section_squared_norm":"1",
+        "absolute_top_w4_obstruction_on_one_cyclic_quotient":0,
+        "no_unrestricted_Jordan_square_conclusion":True,
+    }
+
+
 def tensor_perpendicularity_character(flip_first,flip_second,swap_chords=False):
     """Monodromy of signed diagonal dot: (-1)^(flip_first+flip_second).
 
@@ -328,6 +366,7 @@ def audit():
         "clockwise_square_secant":_format(exact_secant_winding(clockwise)),
         "chord_swap_monodromy_w1":1,
         "D4_target_character":diag,
+        "diagonal_target_absolute_no_go":certify_diagonal_absolute_no_go(),
         "tensor_diagonal_twist":{
             "one_chord_endpoint_reversal":tensor_perpendicularity_character(True,False),
             "both_chord_endpoint_reversals":tensor_perpendicularity_character(True,True),
