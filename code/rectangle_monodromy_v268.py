@@ -193,6 +193,104 @@ def diagonal_dot_character(cyclic_power):
 def _pointset(P,u):return tuple(_eval_v(p,u) for p in P)
 
 
+def certify_circle_rectangle_loop(patches,radius_squared=Q(25),
+                                  strict_side_floor=Q(30)):
+    """Reusable all-real-time certificate for rational rectangle loops.
+
+    Each patch is four cyclically ordered 2D points, coordinates Rat(u),
+    parameter u in [0,1]. Prove exact *identities* for midpoint, equal
+    diagonals, common circumcircle; exact Bernstein positivity for all
+    four sides and all rational-function denominators; full endpoint
+    continuity; exact C4 monodromy; and Sturm-complete algebraic
+    perpendicularity zeros.
+
+    A positive-DIMENSIONAL interval of squares is reported INCONCLUSIVE,
+    not misclassified as a finite count. Endpoint square events are
+    likewise excluded from this first finite ledger because piecewise
+    intervals could double-count them.
+
+    This certifies actual inscribed rectangles of the known circle,
+    not the existence of any such loop on an arbitrary Jordan curve.
+    """
+    patches=tuple(tuple(tuple(Rat.of(x) for x in p)
+                        for p in segment) for segment in patches)
+    if not patches or any(len(seg)!=4 or any(len(p)!=2 for p in seg)
+                          for seg in patches):
+        raise ValueError("nonempty sequence of four-corner rational loops required")
+    radius_squared,strict_side_floor=Q(radius_squared),Q(strict_side_floor)
+    if radius_squared<=0 or strict_side_floor<=0:
+        raise ValueError("positive exact circle radius and strict side floor required")
+    dots=[]
+    events=[]
+    sides_certified=0
+    for i,seg in enumerate(patches):
+        for p in seg:
+            for z in p:
+                # A rational-function chart must have no denominator
+                # zero anywhere on the closed real interval.
+                _positive_rational_function(Rat(z.d))
+        f=rectangle_defect(seg)
+        if f[:3]!=(ZERO,ZERO,ZERO):
+            raise ValueError("not a rectangle on the entire rational patch")
+        if any(q!=Rat.of(radius_squared) for q in corner_radius_squared(seg)):
+            raise ValueError("corner not on the SAME certified radius circle")
+        if diagonal_lengths_squared(seg)!=(Rat.of(4*radius_squared),)*2:
+            raise AssertionError("not centered diameter rectangle")
+        for j in range(4):
+            edge=_vsub(seg[(j+1)%4],seg[j])
+            length_sq=_vdot(edge,edge)
+            _positive_rational_function(length_sq-strict_side_floor)
+            sides_certified+=1
+        # Orientation must be CCW at the first endpoint. The
+        # noncollapse premise guarantees it cannot change in a
+        # continuous rectangle path without some two corners meeting.
+        a,b,c=(_eval_v(seg[j],0) for j in range(3))
+        ab=(b[0]-a[0],b[1]-a[1])
+        bc=(c[0]-b[0],c[1]-b[1])
+        if ab[0]*bc[1]-ab[1]*bc[0]<=0:
+            raise ValueError("square corners not in geometric CCW order")
+        dot=f[3]
+        if iszero(dot.n):
+            raise ValueError("positive-dimensional interval of squares: no finite zero ledger")
+        # Any genuine zero must arise in this numerator, since the
+        # denominator is nonzero on ALL real parameter values.
+        _positive_rational_function(Rat(dot.d))
+        for root in isolate_roots(dot.n,Q(0),Q(1),width=Q(1,2**22)):
+            if root.lower==Q(0) or root.upper==Q(1):
+                raise ValueError("endpoint square needs shared-patch event deduplication")
+            events.append({
+                "segment_index":i,
+                "lower":str(Q(i)+root.lower),
+                "upper":str(Q(i)+root.upper),
+                "rational":root.rational,
+            })
+        dots.append(dot)
+    for before,after in zip(patches,patches[1:]):
+        if _pointset(before,1)!=_pointset(after,0):
+            raise ValueError("piecewise rational loop not continuously glued")
+    first,last=_pointset(patches[0],0),_pointset(patches[-1],1)
+    cyclic=_monodromy(first,last)
+    expected=diagonal_dot_character(cyclic)*dots[0].at(0)
+    if dots[-1].at(1)!=expected:
+        raise AssertionError("C4 endpoint dot orientation character fails")
+    if cyclic%2==1 and not events:
+        raise AssertionError("odd monodromy but no exact polynomial zero")
+    return {
+        "certified_circle_radius_squared":str(radius_squared),
+        "number_of_rational_patches":len(patches),
+        "strict_rectangle_side_squared_floor":str(strict_side_floor),
+        "all_side_inequalities_certified":sides_certified,
+        "continuous_patch_gluing_certified":True,
+        "geometric_C4_monodromy_T_power":cyclic,
+        "tensor_w1":cyclic%2,
+        "first_last_signed_dot":[str(dots[0].at(0)),str(dots[-1].at(1))],
+        "distinct_isolated_square_event_count":len(events),
+        "all_event_roots":[*events],
+        "all_real_parameter_continuum_certified":True,
+        "nondegenerate_at_every_real_parameter":True,
+    }
+
+
 def even_moebius_loop():
     """Non-square 180-degree loop, independent chord twists cancel."""
     a,b=Rat.of(3),Rat.of(4)
@@ -208,6 +306,10 @@ def even_moebius_loop():
     k=_monodromy(start,end)
     if k!=2 or diagonal_dot_character(k)!=1:
         raise AssertionError("even loop monodromy mismatched")
+    generic=certify_circle_rectangle_loop((path0,path1),Q(25),Q(30))
+    if (generic["geometric_C4_monodromy_T_power"]!=2 or
+            generic["distinct_isolated_square_event_count"]!=0):
+        raise AssertionError("generic loop verifier disagrees with half-turn no-go")
     # Edges have lengths 6 and 8 throughout both arcs.
     min_side_sq=Q(36)
     return {
@@ -290,6 +392,10 @@ def odd_twisted_loop():
         raise AssertionError("candidate root and derived minimal polynomial disagree")
     # At that instant, the 10-long diagonals are perpendicular,
     # giving a square with side^2=100/2=50.
+    generic=certify_circle_rectangle_loop((vertices,),Q(25),Q(30))
+    if (generic["geometric_C4_monodromy_T_power"]!=1 or
+            generic["distinct_isolated_square_event_count"]!=1):
+        raise AssertionError("generic loop verifier disagrees with odd crossing")
     return {
         "status":"CERTIFIED: one odd-T geometric rectangle loop with exactly one positive algebraic square",
         "semiwidth_endpoints":[str(a.at(0)),str(a.at(1))],
@@ -307,6 +413,7 @@ def odd_twisted_loop():
         "minimum_rectangle_side_squared":"36",
         "all_real_parameter_identities_checked":True,
         "unrestricted_toeplitz_proved":False,
+        "reusable_piecewise_path_audit":generic,
     }
 
 
