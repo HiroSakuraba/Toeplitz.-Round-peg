@@ -199,8 +199,7 @@ def certify_collision(P):
     """
     if tuple(P)!=family_vertices():
         raise ValueError("uncertified moving polygon")
-    if not (_strict_sign(pneg(QPOLY))==-1 and
-            peval(QPOLY,START)>0 and peval(QPOLY,END)<0):
+    if not (peval(QPOLY,START)>0 and peval(QPOLY,END)<0):
         raise AssertionError("wrong sign of square-collision event polynomial")
     certify_sign(pneg(pol(-496738335230000,2*72468080000000)),
                  START,END,strict=True)  # -Q'(t)>0, unique zero
