@@ -229,9 +229,13 @@ The reusable v264 atlas independently recovers the five geometric categories: 25
 
 The persistent third square supplies the nonzero quotient-relative mod-2 degree of v262; the disappearing pair itself has degree zero. As in v263, there are **no hidden square events** in this fixed interval.
 
+### Independent nonsimilar moving-pentagon test
+
+The verifier also accepts a genuinely different rational-affine pentagon: move the third noninitial polygon vertex upward by exactly `1/10^7` in **both** endpoint polygons, keeping the other vertices and the moving interval unchanged. This is **not** a common translation, rotation or uniform scaling of the original pentagon. The program derives a **different** exact contact polynomial, proves a unique irrational vertex event, checks its complete v264 supporting-edge census, and again certifies the **3→2→1** whole-polygon geometric orbit ledger. This is a local structural-stability demonstration within the supported geometric hypotheses, not a theorem for arbitrary perturbations.
+
 ## 7. New tests and negative controls
 
-The [new regression suite](../tests/test_square_irrational_vertex_gluing_v265.py) exercises exact equivalence to the v254 event polynomial, all five divisibilities, exact irrational root isolation, opposite Jacobian signs, full-time outer-boundary nonvanishing, the complete 3→2→1 global count, positive-size inheritance, and affine equivariance under **nonconstant translation** and **positive scaling**.
+The [new regression suite](../tests/test_square_irrational_vertex_gluing_v265.py) exercises exact equivalence to the v254 event polynomial, all five divisibilities, exact irrational root isolation, opposite Jacobian signs, full-time outer-boundary nonvanishing, the complete 3→2→1 global count, positive-size inheritance, and affine equivariance under **nonconstant translation**, **positive scaling**, and a **nonsimilar perturbation of a polygon vertex that changes the algebraic event polynomial**.
 
 The fail-closed tests include: misaligned chart assignments, wrong crossing corner, reverse-time square birth instead of death, nonconvex input, missing common event, uncertified cutoff, perturbed polygon, a polynomial with a root falsely presented as strictly positive, and an adversarial artificial **third-party vertex-locked square branch** injected into the complete atlas.
 
