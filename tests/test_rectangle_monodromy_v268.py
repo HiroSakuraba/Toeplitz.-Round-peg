@@ -17,6 +17,7 @@ from rectangle_monodromy_v268 import (
     _monodromy,_pointset,_assert_rectangle_identically,
     _positive_rational_function,_nonnegative_rational_function,
     monodromy_no_go,audit,certify_circle_rectangle_loop,
+    certify_ellipse_relative_rectangle_path,
 )
 
 
@@ -228,6 +229,76 @@ class ExactRectangleMonodromy(unittest.TestCase):
             "nonsquare_closed_loop_must_have_even_monodromy"])
         self.assertFalse(r[
             "existence_of_odd_rectangle_loop_for_arbitrary_Jordan_curve_proved"])
+
+    def test_full_noncircular_ellipse_rectangle_locus_has_no_odd_loop(self):
+        r=certify_ellipse_relative_rectangle_path(Q(3),Q(2))
+        self.assertEqual(
+            r["full_geometric_rectangle_locus_homeomorphic_to"],
+            "(0,a) open interval")
+        self.assertEqual(r["essential_closed_loops"],0)
+        self.assertFalse(r["odd_T_rectangle_loops_exist"])
+        self.assertTrue(r["all_rectangles_axis_aligned"])
+        self.assertTrue(r["all_rectangles_centered_at_origin"])
+
+    def test_ellipse_two_binormal_ends_force_one_square(self):
+        r=certify_ellipse_relative_rectangle_path(Q(3),Q(2))
+        self.assertEqual(
+            r["diagonal_dot_endpoint_limits"],["-36","16"])
+        self.assertEqual(
+            r["first_second_boundary_diagonal_squared"],["36","16"])
+        self.assertTrue(
+            r["two_ends_are_nonzero_diagonal_two_pair_collapses"])
+        self.assertEqual(r["square_side_squared"],"144/13")
+        self.assertFalse(
+            r["uniform_positive_side_floor_on_CLOSED_rectangle_interval"])
+        self.assertTrue(r[
+            "square_is_strictly_inside_noncollapsed_rectangle_locus"])
+
+    def test_ellipse_irrational_square_parameter_exact_quadratic(self):
+        r=certify_ellipse_relative_rectangle_path(Q(3),Q(2))
+        self.assertEqual(r["event_minimal_or_defining_polynomial"],
+                         ["-3","4","3"])
+        lo,hi=map(Q,r["unique_square_event_bracket"])
+        poly=polynomial((-3,4,3))
+        self.assertLess(evaluate(poly,lo)*evaluate(poly,hi),0)
+        self.assertFalse(r["square_event_rational"])
+        self.assertLess(Q(0),lo)
+        self.assertLess(hi,Q(1))
+
+    def test_ellipse_with_pythagorean_axes_has_rational_square_time(self):
+        r=certify_ellipse_relative_rectangle_path(Q(3),Q(4))
+        self.assertEqual(r["event_minimal_or_defining_polynomial"],
+                         ["-3","8","3"])
+        self.assertTrue(r["square_event_rational"])
+        self.assertEqual(r["unique_square_event_bracket"],
+                         ["1/3","1/3"])
+        self.assertEqual(r["square_side_squared"],"576/25")
+        self.assertFalse(r["odd_T_rectangle_loops_exist"])
+
+    def test_noncircular_ellipse_obstruction_fails_on_a_circle(self):
+        with self.assertRaises(ValueError):
+            certify_ellipse_relative_rectangle_path(Q(3),Q(3))
+        with self.assertRaises(ValueError):
+            certify_ellipse_relative_rectangle_path(Q(0),Q(4))
+        with self.assertRaises(ValueError):
+            certify_ellipse_relative_rectangle_path(Q(5),Q(-2))
+
+    def test_ellipse_global_axis_alignment_has_nonzero_rank_det(self):
+        for a,b in ((Q(3),Q(2)),(Q(3),Q(4)),(Q(7),Q(5))):
+            r=certify_ellipse_relative_rectangle_path(a,b)
+            self.assertNotEqual(
+                Q(r["coefficient_difference_determinant"]),Q(0))
+            self.assertTrue(r["all_rectangles_axis_aligned"])
+            self.assertTrue(r[
+                "square_is_strictly_inside_noncollapsed_rectangle_locus"])
+
+    def test_ellipse_obstruction_invalidates_universal_odd_loop_premise(self):
+        r=certify_ellipse_relative_rectangle_path(Q(5),Q(2))
+        self.assertFalse(r["odd_T_rectangle_loops_exist"])
+        self.assertGreater(Q(r["square_side_squared"]),0)
+        self.assertTrue(
+            r["a_relative_endpoint_theorem_is_needed_for_general_Jordan_curves"])
+        self.assertFalse(r["unrestricted_Toeplitz_proved"])
 
     def test_automatic_report_rejects_universal_toeplitz_claim(self):
         self.assertTrue(self.all["not_an_unrestricted_Toeplitz_proof"])
