@@ -413,3 +413,10 @@ See the [November literature review](research/2026-11-literature-and-v212-plan.m
 - The moving concave atlas certifies all 168 ordered contact charts for `|t| <= 1/100`. A persistent interval and a folded pair of intervals give geometric square counts of **1, 2, 3** across the event. All its rectangles have circumradius at least **99/200**.
 - The shrinking-notch square belongs to a local rectangle triangle with zero relative class. On the diamond spirals, a relative witness uses three fixed edges and remains valid for every admissible inner replacement, including the non-Liouville-regular limit. The squared circumradius stays at least **1/512** along that path, which contains a common square of squared side **101252/58081**.
 - [Proof and replay instructions](research/v280-v283-moving-relative-class.md) · [Moving atlas](results/v280/moving-concave-atlas.json) · [Refinement audit](results/v282-v283/refinement-witnesses.json)
+
+## v284–v287 — Moving supports, smooth flat collars, and near-square bands
+
+- Two rational degree certificates give a compact connected family of rectangles under continuous perturbations of all four tagged contact arcs. The diamond and concave charts give circumradius bounds **greater than 9/10** and **greater than 7/10**, respectively, throughout their near-square angle bands.
+- The diamond path continues through independently moving cap and arm supports with circumradius **greater than 1/25**. A construction rounds the four flat contacts and preserves the full path and its opposite endpoint signs.
+- The concave angle band also applies to a finite-coil Jordan curve outside Liouville regularity and to its finite truncations.
+- [Proof and replay instructions](research/v284-v287-rectangle-family-stability.md) · [Angle-band records](results/v284-v287/protected-angle-bands.json) · [Moving-support records](results/v284-v287/moving-spiral-supports.json)

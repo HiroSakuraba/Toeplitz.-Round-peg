@@ -1,0 +1,198 @@
+{
+  "concave_quadrilateral": {
+    "angle_coordinate_interval": [
+      "499/1000",
+      "501/1000"
+    ],
+    "angle_derivative_bound": "977/550",
+    "circumradius_strict_lower": "7/10",
+    "contact_box_halfwidth": "1/100",
+    "coordinate_perturbation_infinity_upper": "1/2000",
+    "end_diagonal_dot_signs": [
+      1,
+      -1
+    ],
+    "inverse_infinity_norm": "17/11",
+    "maximum_long_to_short_ratio": "501/499",
+    "opposite_corner_distance_lower": "16329/11000",
+    "preconditioned_side_margin": "25191/6050000",
+    "preconditioned_slice_degree": 1,
+    "reference_edges": [
+      [
+        [
+          "0",
+          "0"
+        ],
+        [
+          "4",
+          "0"
+        ]
+      ],
+      [
+        [
+          "4",
+          "0"
+        ],
+        [
+          "1",
+          "1"
+        ]
+      ],
+      [
+        [
+          "1",
+          "1"
+        ],
+        [
+          "0",
+          "3"
+        ]
+      ],
+      [
+        [
+          "0",
+          "3"
+        ],
+        [
+          "0",
+          "0"
+        ]
+      ]
+    ],
+    "square_corners_ccw": [
+      [
+        "9/11",
+        "0"
+      ],
+      [
+        "17/11",
+        "9/11"
+      ],
+      [
+        "8/11",
+        "17/11"
+      ],
+      [
+        "0",
+        "8/11"
+      ]
+    ],
+    "square_edge_parameters": [
+      "9/44",
+      "9/11",
+      "3/11",
+      "25/33"
+    ],
+    "square_side_squared": "145/121"
+  },
+  "diamond_spiral": {
+    "angle_coordinate_interval": [
+      "9999/20000",
+      "10001/20000"
+    ],
+    "angle_derivative_bound": "113241/60250",
+    "circumradius_strict_lower": "9/10",
+    "contact_box_halfwidth": "1/1000",
+    "coordinate_perturbation_infinity_upper": "1/30000",
+    "end_diagonal_dot_signs": [
+      1,
+      -1
+    ],
+    "inverse_infinity_norm": "768/241",
+    "maximum_long_to_short_ratio": "10001/9999",
+    "opposite_corner_distance_lower": "6742529/3615000",
+    "preconditioned_side_margin": "10005489/36300625000",
+    "preconditioned_slice_degree": 1,
+    "reference_edges": [
+      [
+        [
+          "-1",
+          "0"
+        ],
+        [
+          "0",
+          "-7/8"
+        ]
+      ],
+      [
+        [
+          "-1",
+          "0"
+        ],
+        [
+          "0",
+          "-1"
+        ]
+      ],
+      [
+        [
+          "0",
+          "-1"
+        ],
+        [
+          "1",
+          "0"
+        ]
+      ],
+      [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "7/8"
+        ]
+      ]
+    ],
+    "square_corners_ccw": [
+      [
+        "-225/241",
+        "-14/241"
+      ],
+      [
+        "-1/241",
+        "-240/241"
+      ],
+      [
+        "225/241",
+        "-16/241"
+      ],
+      [
+        "1/241",
+        "210/241"
+      ]
+    ],
+    "square_edge_parameters": [
+      "16/241",
+      "240/241",
+      "225/241",
+      "240/241"
+    ],
+    "square_side_squared": "101252/58081"
+  },
+  "finite_coil_in_concave_polygon": {
+    "analytic_arc_source": "Asano and Ike, Liouville regular Jordan curves, Proposition 6.6",
+    "coil_box_x": [
+      "2",
+      "21/8"
+    ],
+    "coil_box_y": [
+      "-1/8",
+      "1/8"
+    ],
+    "gap_to_first_tagged_window": "314/275",
+    "parent_band": "concave_quadrilateral",
+    "replacement_segment": [
+      [
+        "2",
+        "0"
+      ],
+      [
+        "3",
+        "0"
+      ]
+    ],
+    "second_edge_height_gap": "1/3"
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "moving_supports": {
+    "cap_depth_interval": [
+      "1",
+      "101/100"
+    ],
+    "first_arm_height_interval": [
+      "7/8",
+      "177/200"
+    ],
+    "flat_diagonal_dot_signs": [
+      1,
+      -1
+    ],
+    "inner_replacement_l1_radius_upper": "1/2",
+    "relative_index_on_whole_labeled_path": 1,
+    "squared_circumradius_lower": "529/323216",
+    "uniform_circumradius_strict_lower": "1/25"
+  },
+  "rounded_collar_input_at_reference": {
+    "horizontal_flat": {
+      "inward_midpoint_derivatives": [
+        "15",
+        "1"
+      ],
+      "root_derivative": "-1/4",
+      "short_side_derivative": [
+        "0",
+        "-15/8"
+      ]
+    },
+    "vertical_flat": {
+      "inward_midpoint_derivatives": [
+        "7/8",
+        "7/8"
+      ],
+      "root_derivative": "-7/32",
+      "short_side_derivative": [
+        "7/4",
+        "0"
+      ]
+    }
+  },
+  "rounded_collar_inputs_at_parameter_box_corners": [
+    {
+      "flat_inputs": {
+        "horizontal_flat": {
+          "inward_midpoint_derivatives": [
+            "15",
+            "1"
+          ],
+          "root_derivative": "-1/4",
+          "short_side_derivative": [
+            "0",
+            "-15/8"
+          ]
+        },
+        "vertical_flat": {
+          "inward_midpoint_derivatives": [
+            "7/8",
+            "7/8"
+          ],
+          "root_derivative": "-7/32",
+          "short_side_derivative": [
+            "7/4",
+            "0"
+          ]
+        }
+      },
+      "h": "1",
+      "k": "7/8"
+    },
+    {
+      "flat_inputs": {
+        "horizontal_flat": {
+          "inward_midpoint_derivatives": [
+            "377/23",
+            "1"
+          ],
+          "root_derivative": "-23/100",
+          "short_side_derivative": [
+            "0",
+            "-377/200"
+          ]
+        },
+        "vertical_flat": {
+          "inward_midpoint_derivatives": [
+            "177/200",
+            "7/8"
+          ],
+          "root_derivative": "-4071/20000",
+          "short_side_derivative": [
+            "7/4",
+            "0"
+          ]
+        }
+      },
+      "h": "1",
+      "k": "177/200"
+    },
+    {
+      "flat_inputs": {
+        "horizontal_flat": {
+          "inward_midpoint_derivatives": [
+            "377/27",
+            "1"
+          ],
+          "root_derivative": "-27/100",
+          "short_side_derivative": [
+            "0",
+            "-377/200"
+          ]
+        },
+        "vertical_flat": {
+          "inward_midpoint_derivatives": [
+            "7/8",
+            "707/800"
+          ],
+          "root_derivative": "-19089/80000",
+          "short_side_derivative": [
+            "7/4",
+            "0"
+          ]
+        }
+      },
+      "h": "101/100",
+      "k": "7/8"
+    },
+    {
+      "flat_inputs": {
+        "horizontal_flat": {
+          "inward_midpoint_derivatives": [
+            "379/25",
+            "1"
+          ],
+          "root_derivative": "-1/4",
+          "short_side_derivative": [
+            "0",
+            "-379/200"
+          ]
+        },
+        "vertical_flat": {
+          "inward_midpoint_derivatives": [
+            "177/200",
+            "707/800"
+          ],
+          "root_derivative": "-17877/80000",
+          "short_side_derivative": [
+            "7/4",
+            "0"
+          ]
+        }
+      },
+      "h": "101/100",
+      "k": "177/200"
+    }
+  ]
+}
