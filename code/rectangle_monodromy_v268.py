@@ -327,6 +327,7 @@ def even_moebius_loop():
         "minimum_rectangle_side_squared":str(min_side_sq),
         "nondegenerate_square_count_on_loop":0,
         "all_real_parameter_identities_checked":True,
+        "reusable_piecewise_path_audit":generic,
     }
 
 
