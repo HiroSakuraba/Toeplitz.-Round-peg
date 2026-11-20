@@ -20,6 +20,7 @@ from secant_spin_rectangle_v267 import (
     certify_diagonal_D4_equivariance,
     rectangle_family,certify_rectangle_orthogonality_crossing,
     notch_shrinkout_comparison,audit,
+    tensor_perpendicularity_character,tensor_w1_on_loop,
 )
 
 
@@ -140,6 +141,26 @@ class SecantSpinAudit(unittest.TestCase):
             "local_index_transport":1,
         })
         self.assertEqual(_source_sign(REFLECT),-1)
+
+    def test_twist_in_one_diagonal_but_not_other_forces_dot_sign_flip(self):
+        self.assertEqual(tensor_perpendicularity_character(True,False),-1)
+        self.assertEqual(tensor_perpendicularity_character(False,True),-1)
+        self.assertEqual(tensor_w1_on_loop(1,0),1)
+        self.assertEqual(tensor_w1_on_loop(0,1),1)
+
+    def test_simultaneous_diagonal_reversal_has_NO_tensor_obstruction(self):
+        self.assertEqual(tensor_perpendicularity_character(True,True),1)
+        self.assertEqual(tensor_perpendicularity_character(False,False),1)
+        self.assertEqual(tensor_perpendicularity_character(
+            True,True,swap_chords=True),1)
+        self.assertEqual(tensor_w1_on_loop(1,1),0)
+        self.assertEqual(tensor_w1_on_loop(0,0),0)
+
+    def test_tensor_character_is_strictly_Z2_valued(self):
+        with self.assertRaises(ValueError):
+            tensor_w1_on_loop(2,1)
+        with self.assertRaises(ValueError):
+            tensor_perpendicularity_character(1,False)
 
     def test_notch_shrinking_square_survives_odd_winding(self):
         for n in (2,3,4,8,64,128):
