@@ -1,0 +1,38 @@
+name: v261 oriented multi-region square atlas and cyclic quotient audit
+
+on:
+  pull_request:
+    paths:
+      - 'code/square_oriented_atlas_v261.py'
+      - 'tests/test_square_oriented_atlas_v261.py'
+      - 'research/v261-*'
+      - '.github/workflows/v261-oriented-atlas.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'code/square_oriented_atlas_v261.py'
+      - 'tests/test_square_oriented_atlas_v261.py'
+      - 'research/v261-*'
+      - '.github/workflows/v261-oriented-atlas.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  exact-oriented-atlas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Certify all-real-time +1 relative degree and quotient obstruction
+        run: python code/square_oriented_atlas_v261.py
+      - name: Verify persistent chart, global orientation, gluing and negative controls
+        run: python -m unittest -v tests.test_square_oriented_atlas_v261
+      - name: Retain v260 pair cancellation certificate
+        run: python -m unittest -v tests.test_square_relative_degree_v260
+      - name: Retain v254 actual square pair death
+        run: python -m unittest -v tests.test_big_peg_pair_death_v254
