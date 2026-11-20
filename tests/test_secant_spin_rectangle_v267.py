@@ -166,6 +166,7 @@ class SecantSpinAudit(unittest.TestCase):
         for n in (2,3,4,8,64,128):
             r=notch_shrinkout_comparison(n)
             self.assertEqual(r["secant_winding"],1)
+            self.assertEqual(r["minimum_antipodal_chord_squared"],Q(1))
             self.assertEqual(r["chosen_square_side_squared"],Q(1,n*n))
             self.assertEqual(r["chosen_square_side_squared"],
                              notch_square_side_squared(n))
