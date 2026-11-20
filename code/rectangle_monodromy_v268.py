@@ -228,19 +228,121 @@ def even_moebius_loop():
     }
 
 
+def _nonnegative_rational_function(r):
+    """Certify r>=0 throughout [0,1], including EXACT endpoint zeros."""
+    if not isinstance(r,Rat):
+        raise TypeError("exact rational function needed")
+    den_positive=evaluate(r.d,Q(0))>0
+    sign=1 if den_positive else -1
+    certify_sign(r.d if sign==1 else neg(r.d),
+                 Q(0),Q(1),strict=True,max_depth=12)
+    certify_sign(r.n if sign==1 else neg(r.n),
+                 Q(0),Q(1),strict=False,max_depth=12)
+    return True
+
+
 def odd_twisted_loop():
-    """One T-cycle and exactly one irrational crossing through squares."""
-    # Stereographic t in [1/2,1/3] gives (a,b) from (3,4) to
-    # (4,3) while maintaining a^2+b^2=25 at every real u.
+    """A genuine rational circle rectangle loop with ODD T monodromy.
+
+    Exact algebraic square event: u=9-6sqrt(2), unique root of
+    u^2-18u+9 in (0,1). Positively bounded sides prevent collapse.
+    """
+    # Stereographic p runs from 1/2 to 1/3. The semiwidth a grows
+    # from 3 to 4 and semiheight b decreases from 4 to 3,
+    # maintaining a^2+b^2=25 on the ENTIRE real interval.
     p=(3-U)/6
     a=5*(1-p*p)/(1+p*p)
     b=10*p/(1+p*p)
-    if not _positive_rational_function(a-3):
-        # a(u)-3 is zero at u=0, so this intentionally cannot be
-        # strictly positive. A wrong certificate must not be used.
-        raise AssertionError("unexpected a>3")
-    return None
+    if a*a+b*b!=Rat.of(25):
+        raise AssertionError("radius-5 circle constraint changed")
+    for r in (a,b):
+        _positive_rational_function(r)
+        _nonnegative_rational_function(r-3)
+        _nonnegative_rational_function(4-r)
+    c,s=unit_quarter(U)
+    vertices=rotate(rectangle(a,b),c,s)
+    f=_assert_rectangle_identically(vertices)
+    expected=4*(b*b-a*a)
+    if f!=expected:
+        raise AssertionError("diagonal dot algebraic identity failed")
+    start,end=_pointset(vertices,0),_pointset(vertices,1)
+    k=_monodromy(start,end)
+    if k!=1 or diagonal_dot_character(k)!=-1:
+        raise AssertionError("odd rectangle loop did not return with T")
+    if f.at(0)!=Q(28) or f.at(1)!=Q(-28):
+        raise AssertionError("wrong certified end signs")
+    # Denominator remains >0 on entire interval, so every zero of
+    # f is captured by the numerator's complete Sturm root census.
+    _positive_rational_function(Rat(f.d))
+    event_poly=P(9,-18,1)
+    quotient,remainder=divide(f.n,event_poly)
+    if not iszero(remainder):
+        raise AssertionError("expected irrational algebraic event factor missing")
+    if len(quotient)<=0:
+        raise AssertionError("missing event quotient")
+    roots=isolate_roots(f.n,Q(0),Q(1),width=Q(1,2**22))
+    exact_roots=isolate_roots(event_poly,Q(0),Q(1),width=Q(1,2**22))
+    if (len(roots)!=1 or roots[0].rational or
+            len(exact_roots)!=1 or exact_roots[0].rational):
+        raise AssertionError("not exactly one irrational perpendicularity root")
+    x,y=roots[0],exact_roots[0]
+    if not (x.lower<y.upper and y.lower<x.upper):
+        raise AssertionError("candidate root and derived minimal polynomial disagree")
+    # At that instant, the 10-long diagonals are perpendicular,
+    # giving a square with side^2=100/2=50.
+    return {
+        "status":"CERTIFIED: one odd-T geometric rectangle loop with exactly one positive algebraic square",
+        "semiwidth_endpoints":[str(a.at(0)),str(a.at(1))],
+        "semiheight_endpoints":[str(b.at(0)),str(b.at(1))],
+        "fixed_circumcircle_radius_squared":"25",
+        "cyclic_monodromy_T_power":k,
+        "tensor_w1":1,
+        "individual_diagonal_lines_globally_labeled":False,
+        "diagonal_dot_endpoints":[str(f.at(0)),str(f.at(1))],
+        "event_minimal_polynomial":[str(z) for z in event_poly],
+        "event_algebraic_expression":"9 - 6*sqrt(2)",
+        "event_isolation_bracket":[str(x.lower),str(x.upper)],
+        "number_of_distinct_square_crossings":1,
+        "square_side_squared_at_event":"50",
+        "minimum_rectangle_side_squared":"36",
+        "all_real_parameter_identities_checked":True,
+        "unrestricted_toeplitz_proved":False,
+    }
+
+
+def monodromy_no_go():
+    """Pure line-bundle implication, independent of numerical models.
+
+    For a continuous loop of genuine nondegenerate rectangles,
+    f(end)=(-1)^k f(start). If k is odd and f continuous, IVT
+    gives an exact positive square because both diagonals stay
+    nonzero. If all rectangles remain non-square, k must be even.
+
+    IMPORTANT: The physical existence of an ODD loop on EVERY
+    Jordan curve is NOT established by this abstract implication.
+    """
+    for k in range(4):
+        if diagonal_dot_character(k)!=(-1 if k%2 else 1):
+            raise AssertionError("C4 sign character failed")
+    return {
+        "sign_representation_C4":{"0":1,"1":-1,"2":1,"3":-1},
+        "necessary_for_nontrivial_tensor_monodromy":"odd cyclic permutation of continuously lifted geometric rectangle",
+        "odd_monodromy_forces_nonzero_size_square":True,
+        "nonsquare_closed_loop_must_have_even_monodromy":True,
+        "existence_of_odd_rectangle_loop_for_arbitrary_Jordan_curve_proved":False,
+        "selected_halfturn_counterloop_has_both_individual_w1_equal_one":True,
+    }
+
+
+def audit():
+    return {
+        "even_no_square_rectangle_loop":even_moebius_loop(),
+        "odd_algebraic_square_forcing_rectangle_loop":odd_twisted_loop(),
+        "general_monodromy_character":monodromy_no_go(),
+        "comparison_to_latest_Greene_Lobb_2026":"arXiv:2604.17116 proves positive-measure rectangle angles for arbitrary Jordan curves, but not a nondegenerate odd-monodromy rectangle loop, nor the required angle pi/2",
+        "not_an_unrestricted_Toeplitz_proof":True,
+    }
 
 
 if __name__=="__main__":
-    print(json.dumps({"even":even_moebius_loop()},sort_keys=True,indent=2))
+    print(json.dumps(audit(),sort_keys=True,indent=2))
