@@ -418,6 +418,98 @@ def odd_twisted_loop():
     }
 
 
+def certify_ellipse_relative_rectangle_path(major=Q(3),minor=Q(2)):
+    """Exact *relative endpoint* square forcing on NONCIRCULAR ellipse.
+
+    Every inscribed parallelogram is centered at 0: the affine
+    inverse image is a cyclic parallelogram in a circle and hence
+    a centered rectangle. For a rectangle with opposite vertices
+    +-u,+-v, equality of Euclidean diagonals and the two ellipse
+    equations imply u_x^2=v_x^2 and u_y^2=v_y^2, because the
+    2x2 coefficient determinant 1/b²-1/a² is nonzero when a!=b.
+    Distinctness forces an axis-aligned rectangle. Thus the FULL
+    geometric rectangle locus of an ellipse a!=b is an OPEN
+    INTERVAL: {(+-x,+-y):x in(0,a), y=b sqrt(1-x²/a²)}.
+
+    The interval has NO odd-monodromy loop (indeed no essential loop)
+    although it has a square. Its two boundary ends are collapsed
+    TWO-POINT rectangles of NONZERO diagonal length (binormal
+    endpoint type, not an all-four-corners total collision). A
+    relative diagonal-dot sign crossing forces a square.
+
+    This is a counterexample to the HYPOTHESIS that every Jordan
+    curve has an odd-T closed rectangle loop. It does not refute
+    the universal square peg theorem itself.
+    """
+    a,b=Q(major),Q(minor)
+    if a<=0 or b<=0 or a==b:
+        raise ValueError("positive noncircular ellipse semi-axes required")
+    det=Q(1,b*b)-Q(1,a*a)
+    if det==0:
+        raise AssertionError("not a noncircular ellipse coefficient rank")
+    # Half-ellipse arc in first quadrant from (a,0) to (0,b).
+    x=a*(ONE-U*U)/(ONE+U*U)
+    y=2*b*U/(ONE+U*U)
+    corners=rectangle(x,y)
+    for p in corners:
+        if p[0]*p[0]/(a*a)+p[1]*p[1]/(b*b)!=ONE:
+            raise AssertionError("corner does not lie on ellipse identically")
+    residual=rectangle_defect(corners)
+    if residual[:3]!=(ZERO,ZERO,ZERO):
+        raise AssertionError("not an entire rectangle path")
+    # Endpoint factors ensure x>0 for u in [0,1) and y>0
+    # for u in (0,1], but *neither* has a uniform positive
+    # lower bound on the CLOSED interval.
+    _positive_rational_function(x/(ONE-U))
+    _positive_rational_function(y/U)
+    if (x.at(0),y.at(0),x.at(1),y.at(1))!=(a,Q(0),Q(0),b):
+        raise AssertionError("wrong two binormal endpoint limits")
+    f=residual[3]
+    if f!=4*(y*y-x*x) or f.at(0)!=-4*a*a or f.at(1)!=4*b*b:
+        raise AssertionError("relative end signs not opposite")
+    _positive_rational_function(Rat(f.d))
+    # x=y iff a*(1-u²)=2b*u; the quadratic is strictly
+    # increasing on [0,1], negative at 0 and positive at 1.
+    event_poly=P(-a,2*b,a)
+    quotient,remainder=divide(f.n,event_poly)
+    if not iszero(remainder) or not quotient:
+        raise AssertionError("relative square event polynomial factor not exact")
+    from moving_polygon_events_v224 import derivative
+    _positive_rational_function(Rat(derivative(event_poly)))
+    roots=isolate_roots(f.n,Q(0),Q(1),width=Q(1,2**22))
+    basic=isolate_roots(event_poly,Q(0),Q(1),width=Q(1,2**22))
+    if (len(roots)!=1 or len(basic)!=1 or
+            not (roots[0].lower<basic[0].upper and
+                 basic[0].lower<roots[0].upper)):
+        raise AssertionError("not one exact positive-size ellipse square")
+    # All inscribed rectangles are axis-parallel: their geometric
+    # moduli x in (0,a) is HOMEOMORPHIC TO AN OPEN INTERVAL.
+    # Its fundamental group is zero. Hence NO essential odd
+    # cyclic-monodromy loop occurs anywhere on this ellipse.
+    side_sq=4*a*a*b*b/(a*a+b*b)
+    return {
+        "status":"PROVED: full noncircular ellipse rectangle locus is an open interval, NOT an odd-monodromy loop, but relative endpoint signs force a square",
+        "ellipse_semi_axes":[str(a),str(b)],
+        "coefficient_difference_determinant":str(det),
+        "all_rectangles_centered_at_origin":True,
+        "all_rectangles_axis_aligned":True,
+        "full_geometric_rectangle_locus_homeomorphic_to":"(0,a) open interval",
+        "essential_closed_loops":0,
+        "odd_T_rectangle_loops_exist":False,
+        "two_ends_are_nonzero_diagonal_two_pair_collapses":True,
+        "diagonal_dot_endpoint_limits":[str(f.at(0)),str(f.at(1))],
+        "first_second_boundary_diagonal_squared":[str(4*a*a),str(4*b*b)],
+        "event_minimal_or_defining_polynomial":[str(q) for q in event_poly],
+        "unique_square_event_bracket":[str(roots[0].lower),str(roots[0].upper)],
+        "square_event_rational":roots[0].rational,
+        "square_side_squared":str(side_sq),
+        "uniform_positive_side_floor_on_CLOSED_rectangle_interval":False,
+        "square_is_strictly_inside_noncollapsed_rectangle_locus":True,
+        "a_relative_endpoint_theorem_is_needed_for_general_Jordan_curves":True,
+        "unrestricted_Toeplitz_proved":False,
+    }
+
+
 def monodromy_no_go():
     """Pure line-bundle implication, independent of numerical models.
 
@@ -446,6 +538,8 @@ def audit():
     return {
         "even_no_square_rectangle_loop":even_moebius_loop(),
         "odd_algebraic_square_forcing_rectangle_loop":odd_twisted_loop(),
+        "nonsymmetric_ellipse_relative_square_and_no_odd_loop":
+            certify_ellipse_relative_rectangle_path(Q(3),Q(2)),
         "general_monodromy_character":monodromy_no_go(),
         "comparison_to_latest_Greene_Lobb_2026":"arXiv:2604.17116 proves positive-measure rectangle angles for arbitrary Jordan curves, but not a nondegenerate odd-monodromy rectangle loop, nor the required angle pi/2",
         "not_an_unrestricted_Toeplitz_proof":True,
