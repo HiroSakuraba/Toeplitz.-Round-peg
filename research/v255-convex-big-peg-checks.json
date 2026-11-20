@@ -1,0 +1,488 @@
+{
+ "exact": {
+  "lemma_grid": {
+   "small_squares": 14024,
+   "small_with_hidden_corner": 14024,
+   "equality_squares": 1630,
+   "equality_without_hidden_corner": 6,
+   "equality_free_off_centre": 0
+  },
+  "lemma_float_sweep": {
+   "tested": 100000,
+   "without_hidden_corner": 0
+  },
+  "convex_census": {
+   "triangle": {
+    "vertices": 3,
+    "squares": 3,
+    "min_side_squared": "900/121",
+    "min_side_squared_float": 7.43801652892562,
+    "max_side_squared_float": 7.470703125,
+    "all_side_squared_at_least_2": true
+   },
+   "asymmetric_quad": {
+    "vertices": 4,
+    "squares": 1,
+    "min_side_squared": "6736783941/803268964",
+    "min_side_squared_float": 8.386710109467145,
+    "max_side_squared_float": 8.386710109467145,
+    "all_side_squared_at_least_2": true
+   },
+   "lopsided_pentagon": {
+    "vertices": 5,
+    "squares": 1,
+    "min_side_squared": "31746650/3200521",
+    "min_side_squared_float": 9.91921315310851,
+    "max_side_squared_float": 9.91921315310851,
+    "all_side_squared_at_least_2": true
+   },
+   "near_square_hexagon": {
+    "vertices": 6,
+    "squares": 1,
+    "min_side_squared": "60112/21025",
+    "min_side_squared_float": 2.8590725326991677,
+    "max_side_squared_float": 2.8590725326991677,
+    "all_side_squared_at_least_2": true
+   },
+   "long_heptagon": {
+    "vertices": 7,
+    "squares": 1,
+    "min_side_squared": "5669639716/923248225",
+    "min_side_squared_float": 6.140970069019088,
+    "max_side_squared_float": 6.140970069019088,
+    "all_side_squared_at_least_2": true
+   },
+   "octagon_near_equality": {
+    "vertices": 8,
+    "squares": 3,
+    "min_side_squared": "1430921829919322030187989/715118831696060100000000",
+    "min_side_squared_float": 2.000956717257157,
+    "max_side_squared_float": 2.4205723418019964,
+    "all_side_squared_at_least_2": true
+   },
+   "random_convex_0": {
+    "vertices": 4,
+    "squares": 3,
+    "min_side_squared": "65995015711474038512417915821/8720869931841110831420112500",
+    "min_side_squared_float": 7.5674807934604145,
+    "max_side_squared_float": 8.01092193573521,
+    "all_side_squared_at_least_2": true
+   },
+   "random_convex_1": {
+    "vertices": 4,
+    "squares": 3,
+    "min_side_squared": "773554117313108641119881089/214761792113380057400978000",
+    "min_side_squared_float": 3.601916847968577,
+    "max_side_squared_float": 4.021073613788912,
+    "all_side_squared_at_least_2": true
+   },
+   "random_convex_2": {
+    "vertices": 4,
+    "squares": 3,
+    "min_side_squared": "11408036298946831547612109/3529772763106835236224032",
+    "min_side_squared_float": 3.2319463785837894,
+    "max_side_squared_float": 3.4855785767067173,
+    "all_side_squared_at_least_2": true
+   },
+   "random_convex_3": {
+    "vertices": 4,
+    "squares": 1,
+    "min_side_squared": "1327882367127189863749401/295855127305130099560000",
+    "min_side_squared_float": 4.4882858013059845,
+    "max_side_squared_float": 4.4882858013059845,
+    "all_side_squared_at_least_2": true
+   }
+  },
+  "pochuev": {
+   "max_side_squared": "56381275521625791352241234309/28343589374868261752462760000",
+   "max_side_squared_float": 1.9892073221896882,
+   "side_squared_below_2": true,
+   "half_diagonal_squared_float": 0.9946036610948441,
+   "centre": [
+    -1.9840892800178,
+    0.5536062988773526
+   ],
+   "centre_distance_float": 2.0598762596909146,
+   "diagonal_line_distance_squared_float": [
+    1.203701734794399,
+    3.0393884704438334
+   ],
+   "both_diagonal_lines_miss_unit_disk": true,
+   "hidden_corner_indices": [
+    0
+   ],
+   "hidden_corner": [
+    "-69249224071669/67342217813040",
+    "282297237611291/336711089065200"
+   ],
+   "hidden_corner_float": [
+    -1.0283181386143736,
+    0.8383960219279489
+   ],
+   "hidden_corner_on_edges": [
+    2
+   ],
+   "hidden_corner_distance_to_v2_float": 6.450379352528257e-05,
+   "barycentric_certificate": {
+    "z": [
+     "-7/10",
+     "7/10"
+    ],
+    "barycentric": [
+     "112762551043251582704482468618/141115198629241923115123590165",
+     "25597271930982229586089488902/141115198629241923115123590165",
+     "183691710333874054970108843/9407679908616128207674906011"
+    ]
+   },
+   "reflex_vertices": [
+    2,
+    9
+   ],
+   "star_shaped_about_disk_centre": false,
+   "kernel_vertices_float": [
+    [
+     -1.3163401722597252,
+     -0.3498916032209062
+    ],
+    [
+     -1.0283333333333333,
+     0.8383333333333334
+    ],
+    [
+     -3.0049229936134134,
+     0.4971652162948183
+    ],
+    [
+     -2.8825,
+     0.0675
+    ],
+    [
+     -1.8644906114869209,
+     -0.33659317116255283
+    ]
+   ],
+   "kernel_distance_squared": "19452159841/13579065000",
+   "kernel_distance_float": 1.1968755113212635,
+   "kernel_misses_unit_disk": true
+  }
+ },
+ "numeric": {
+  "random_convex": {
+   "polygons": 3000,
+   "squares": 18280,
+   "min_half_diagonal_over_inradius": 1.0019221602207868
+  },
+  "convex_adversary_min_half_diagonal": {
+   "4": 1.0000000011025079,
+   "5": 1.0000010603021028,
+   "6": 1.0000035304762855,
+   "8": 1.000588613536978
+  },
+  "twin_spike": {
+   "0.3": {
+    "squares": 20,
+    "min_half_diagonal": 0.14680377756203272,
+    "max_half_diagonal": 1.1940842722530047,
+    "small_squares_far_from_disk": 16
+   },
+   "0.6": {
+    "squares": 20,
+    "min_half_diagonal": 0.27661507791591966,
+    "max_half_diagonal": 1.219963089079832,
+    "small_squares_far_from_disk": 16
+   },
+   "1.0": {
+    "squares": 20,
+    "min_half_diagonal": 0.42863716181825434,
+    "max_half_diagonal": 1.2609095471021514,
+    "small_squares_far_from_disk": 16
+   },
+   "1.6": {
+    "squares": 20,
+    "min_half_diagonal": 0.6221361993488457,
+    "max_half_diagonal": 1.340145396713112,
+    "small_squares_far_from_disk": 16
+   }
+  },
+  "kernel_contains_disk_search": {
+   "runs": [
+    {
+     "n": 5,
+     "seed": 1,
+     "mode": "kernel",
+     "best_max_half_diagonal": 1.000163897899449,
+     "min_edge_line_distance": 1.0000021806288046,
+     "min_segment_distance": 1.0000021806288046
+    },
+    {
+     "n": 5,
+     "seed": 2,
+     "mode": "kernel",
+     "best_max_half_diagonal": 1.000123707105311,
+     "min_edge_line_distance": 1.000000604515073,
+     "min_segment_distance": 1.0000006045150733
+    },
+    {
+     "n": 6,
+     "seed": 1,
+     "mode": "kernel",
+     "best_max_half_diagonal": 1.0001453188423848,
+     "min_edge_line_distance": 1.0000272915951898,
+     "min_segment_distance": 1.0000272915951895
+    },
+    {
+     "n": 6,
+     "seed": 2,
+     "mode": "kernel",
+     "best_max_half_diagonal": 1.0004547703038222,
+     "min_edge_line_distance": 1.000020991548665,
+     "min_segment_distance": 1.000020991548665
+    },
+    {
+     "n": 7,
+     "seed": 1,
+     "mode": "kernel",
+     "best_max_half_diagonal": 1.0006331048187407,
+     "min_edge_line_distance": 1.0000357268912208,
+     "min_segment_distance": 1.0000357268912208
+    },
+    {
+     "n": 7,
+     "seed": 2,
+     "mode": "kernel",
+     "best_max_half_diagonal": 1.00158733636812,
+     "min_edge_line_distance": 1.0000032136884485,
+     "min_segment_distance": 1.0000032136884482
+    },
+    {
+     "n": 8,
+     "seed": 1,
+     "mode": "kernel",
+     "best_max_half_diagonal": 1.0005374334003438,
+     "min_edge_line_distance": 1.0000020021900002,
+     "min_segment_distance": 1.0000020021900002
+    },
+    {
+     "n": 8,
+     "seed": 2,
+     "mode": "kernel",
+     "best_max_half_diagonal": 1.0009676602762099,
+     "min_edge_line_distance": 1.0001667033305475,
+     "min_segment_distance": 1.0001667033305475
+    },
+    {
+     "n": 10,
+     "seed": 1,
+     "mode": "kernel",
+     "best_max_half_diagonal": 1.003409982764273,
+     "min_edge_line_distance": 1.000006065161211,
+     "min_segment_distance": 1.0000060651612113
+    },
+    {
+     "n": 10,
+     "seed": 2,
+     "mode": "kernel",
+     "best_max_half_diagonal": 1.0067855934959609,
+     "min_edge_line_distance": 1.001057034963581,
+     "min_segment_distance": 1.001057034963581
+    }
+   ],
+   "overall_min_max_half_diagonal": 1.000123707105311
+  },
+  "star_about_centre_search": {
+   "runs": [
+    {
+     "n": 6,
+     "seed": 1,
+     "mode": "centre",
+     "best_max_half_diagonal": 1.00022849428566,
+     "min_edge_line_distance": 0.5916644162510478,
+     "min_segment_distance": 1.0000447723938963
+    },
+    {
+     "n": 6,
+     "seed": 2,
+     "mode": "centre",
+     "best_max_half_diagonal": 1.0000341908785526,
+     "min_edge_line_distance": 1.000002529192826,
+     "min_segment_distance": 1.0000025291928265
+    },
+    {
+     "n": 6,
+     "seed": 3,
+     "mode": "centre",
+     "best_max_half_diagonal": 1.0000427111034487,
+     "min_edge_line_distance": 0.6184265893914834,
+     "min_segment_distance": 1.0000003093776015
+    },
+    {
+     "n": 8,
+     "seed": 1,
+     "mode": "centre",
+     "best_max_half_diagonal": 1.0001362491359378,
+     "min_edge_line_distance": 0.0658475110911491,
+     "min_segment_distance": 1.0000034309813806
+    },
+    {
+     "n": 8,
+     "seed": 2,
+     "mode": "centre",
+     "best_max_half_diagonal": 1.000041430422986,
+     "min_edge_line_distance": 0.2842078058822932,
+     "min_segment_distance": 1.000002006283207
+    },
+    {
+     "n": 8,
+     "seed": 3,
+     "mode": "centre",
+     "best_max_half_diagonal": 1.0000910195263175,
+     "min_edge_line_distance": 0.33239676735392226,
+     "min_segment_distance": 1.0000211589674088
+    },
+    {
+     "n": 10,
+     "seed": 1,
+     "mode": "centre",
+     "best_max_half_diagonal": 1.0001886689418504,
+     "min_edge_line_distance": 0.01039732657177996,
+     "min_segment_distance": 1.0000158205320862
+    },
+    {
+     "n": 10,
+     "seed": 2,
+     "mode": "centre",
+     "best_max_half_diagonal": 1.0002707548890213,
+     "min_edge_line_distance": 0.36569684675447833,
+     "min_segment_distance": 1.0000407648690524
+    },
+    {
+     "n": 10,
+     "seed": 3,
+     "mode": "centre",
+     "best_max_half_diagonal": 1.0007400079044404,
+     "min_edge_line_distance": 0.1275226374580941,
+     "min_segment_distance": 1.0000288461213591
+    },
+    {
+     "n": 12,
+     "seed": 1,
+     "mode": "centre",
+     "best_max_half_diagonal": 1.000197859632115,
+     "min_edge_line_distance": 0.011761931058300033,
+     "min_segment_distance": 1.0000231069945833
+    },
+    {
+     "n": 12,
+     "seed": 2,
+     "mode": "centre",
+     "best_max_half_diagonal": 1.0003532600874663,
+     "min_edge_line_distance": 0.009799885830371533,
+     "min_segment_distance": 1.000070643010769
+    },
+    {
+     "n": 12,
+     "seed": 3,
+     "mode": "centre",
+     "best_max_half_diagonal": 1.0005422307067486,
+     "min_edge_line_distance": 0.003720195279789669,
+     "min_segment_distance": 1.0003234856523209
+    }
+   ],
+   "overall_min_max_half_diagonal": 1.0000341908785526
+  },
+  "pochuev_push_to_centre_star": [
+   {
+    "seed": 0,
+    "trail": [
+     {
+      "lambda": 0,
+      "max_half_diagonal": 0.9972981806334772,
+      "star_violation": 1.5496777777777777
+     },
+     {
+      "lambda": 0.3,
+      "max_half_diagonal": 1.1046073194189212,
+      "star_violation": 0.1454381488995442,
+      "min_segment_distance": 1.0004661102699672
+     },
+     {
+      "lambda": 1,
+      "max_half_diagonal": 1.0015232453027687,
+      "star_violation": 0.0,
+      "min_segment_distance": 1.0001237974788126
+     },
+     {
+      "lambda": 3,
+      "max_half_diagonal": 1.0030018333065682,
+      "star_violation": 0.0,
+      "min_segment_distance": 1.0000992764042604
+     },
+     {
+      "lambda": 10,
+      "max_half_diagonal": 1.002296569213861,
+      "star_violation": 0.0,
+      "min_segment_distance": 1.000174387184348
+     },
+     {
+      "lambda": 30,
+      "max_half_diagonal": 1.001483704077692,
+      "star_violation": 0.0,
+      "min_segment_distance": 1.0000284243086854
+     },
+     {
+      "lambda": 100,
+      "max_half_diagonal": 1.0020490093645233,
+      "star_violation": 0.0,
+      "min_segment_distance": 1.000017667594837
+     }
+    ]
+   },
+   {
+    "seed": 7,
+    "trail": [
+     {
+      "lambda": 0,
+      "max_half_diagonal": 0.9972981806334772,
+      "star_violation": 1.5496777777777777
+     },
+     {
+      "lambda": 0.3,
+      "max_half_diagonal": 1.1428717306608782,
+      "star_violation": 0.0030475014886621743,
+      "min_segment_distance": 1.003014509328856
+     },
+     {
+      "lambda": 1,
+      "max_half_diagonal": 1.1357469122651038,
+      "star_violation": 0.0,
+      "min_segment_distance": 1.0005067880259197
+     },
+     {
+      "lambda": 3,
+      "max_half_diagonal": 1.1368799469185658,
+      "star_violation": 0.0,
+      "min_segment_distance": 1.0009478985092992
+     },
+     {
+      "lambda": 10,
+      "max_half_diagonal": 1.1349107194294985,
+      "star_violation": 0.0,
+      "min_segment_distance": 1.000385104035168
+     },
+     {
+      "lambda": 30,
+      "max_half_diagonal": 1.138602952484447,
+      "star_violation": 0.0,
+      "min_segment_distance": 1.0007423583066848
+     },
+     {
+      "lambda": 100,
+      "max_half_diagonal": 1.1336898875791912,
+      "star_violation": 0.0,
+      "min_segment_distance": 1.0000779650781162
+     }
+    ]
+   }
+  ]
+ }
+}
