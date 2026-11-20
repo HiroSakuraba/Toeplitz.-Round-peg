@@ -298,6 +298,12 @@ def notch_shrinkout_comparison(n):
     size=notch_square_side_squared(n)
     if size!=Q(1,int(n)**2):
         raise AssertionError("wrong shrinkout scale")
+    # Strong exact non-implication: for these eight equally timed
+    # edges every antipodal secant has |v| >=1 (one coordinate has
+    # magnitude >=1), and equality occurs at t=1/8. The *selected*
+    # tiny square nevertheless has side 1/n.
+    if v["minimum_antipodal_secant_length_squared"]!=Q(1):
+        raise AssertionError("notch should have UNIFORM unit antipodal chord floor")
     return {
         "n":int(n),"secant_winding":v["secant_winding"],
         "minimum_antipodal_chord_squared":
