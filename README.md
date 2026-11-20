@@ -427,3 +427,10 @@ See the [November literature review](research/2026-11-literature-and-v212-plan.m
 - A coupled degree argument extends the witness through overlapping replacements with circumradius **at least 499/1000**. For two anchored finite-coil copies, the same connected set contains the exact reference square at both rough accumulation points.
 - An exact tent fixture shows how the sequential lift can demand a contact on a deleted segment while the coupled path survives. The original polygon vertices can also be rounded by the v286 construction.
 - [Proof and replay instructions](research/v288-v291-rough-arc-continuation.md) · [Exact certificate](results/v288-v291/rough-arc-continuation.json)
+
+## v292–v295 — Moving flats through a rough interior
+
+- Quadratic rounding makes the two concave flat chords isolated and keeps the selected rectangle path regular at every genuine angle.
+- With small **C¹** perturbations on the endpoint arcs and compatible **C⁰** perturbations throughout, both moving ends join the same connected witness. Its circumradius stays **at least 1/3**. The neighborhood includes curves with two finite-coil singularities. Stronger **C²** control gives unique local branches at the two ends.
+- A tiny tilt eliminates the local flat between the previously parallel straight arcs, and the time-fold control records cancellation of transverse degree.
+- [Proof and replay instructions](research/v292-v295-moving-flat-endpoints.md) · [Exact endpoint records](results/v292-v295/moving-flat-endpoints.json)

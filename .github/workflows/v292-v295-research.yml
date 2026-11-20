@@ -1,0 +1,45 @@
+name: v292–v295 moving flat endpoints
+
+on:
+  pull_request:
+    paths:
+      - 'code/moving_flat_endpoints_v292_v295.py'
+      - 'code/rough_arc_continuation_v288_v291.py'
+      - 'code/moving_polygon_events_v224.py'
+      - 'tests/test_moving_flat_endpoints_v292_v295.py'
+      - 'tests/test_flat_jets_algebra_v292.py'
+      - 'research/v292-v295*'
+      - 'results/v280/moving-concave-atlas.json'
+      - 'results/v292-v295/**'
+      - '.github/workflows/v292-v295-research.yml'
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  endpoint-ledger:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Replay the endpoint and control records
+        run: |
+          python -m unittest discover -s tests -p 'test_moving_flat_endpoints_v292_v295.py' -v
+          python code/moving_flat_endpoints_v292_v295.py --check
+  symbolic-jets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify the transition matrix and chord Hessian with SageMath
+        run: |
+          docker run --rm --mount "type=bind,src=$PWD,dst=/work,readonly" \
+            --workdir /work --env PYTHONDONTWRITEBYTECODE=1 --entrypoint /usr/bin/sage \
+            sagemath/sagemath:10.10 -c \
+            "import unittest; suite = unittest.defaultTestLoader.discover('tests', pattern='test_flat_jets_algebra_v292.py'); assert unittest.TextTestRunner(verbosity=2).run(suite).wasSuccessful()"
