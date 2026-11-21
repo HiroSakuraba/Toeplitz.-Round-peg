@@ -1,0 +1,28 @@
+name: v304-v306 four-contact clearance
+on:
+  pull_request:
+    paths:
+      - 'code/rectangle_clearance_v305.py'
+      - 'code/radial_and_rough_v304_v306.py'
+      - 'code/polygon_orbit_census_v223.py'
+      - 'tests/test_rectangle_clearance_v304_v306.py'
+      - 'research/v304-v306-four-contact-clearance.md'
+      - 'results/v304-v306/**'
+      - '.github/workflows/v304-v306-four-contact.yml'
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s tests -p 'test_rectangle_clearance_v304_v306.py' -v
+      - run: python code/rectangle_clearance_v305.py --check
+      - run: python code/radial_and_rough_v304_v306.py --check
