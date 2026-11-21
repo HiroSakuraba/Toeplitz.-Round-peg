@@ -461,3 +461,10 @@ See the [November literature review](research/2026-11-literature-and-v212-plan.m
 - Every v301 rough refinement and its infinite-length limit, at either shear sign or zero, has a compact connected family of actual inscribed rectangles realizing every vertical-over-horizontal side ratio from **99/100 to 100/99**. This includes independent registered perturbations up to **1/1000**. Both sides stay longer than **0.407**, and a continuous choice of a length-1/12 boundary packet balances the whole family.
 - An exact search recovers a sufficient direction and source parametrization from an unmarked rational polygon. A smooth fourfold-symmetric curve in the same annulus admits a 45° tie for every direction, exposing a limitation of the fixed-frame proof.
 - [Continuum proof](research/v302-connected-rough-rectangle-crossing.md) · [Direction search and obstruction](research/v303-finding-a-direction.md) · [Exact margins](results/v302/rough-crossing.json) · [Polygon examples](results/v303/polygon-directions.json)
+
+## v304–v306 — Moving centers and a uniform square on a thin rough limit
+
+- Four independent boundary contacts on the v303 radial model retain a connected rectangle crossing under registered Euclidean perturbations up to **1/100000**. An explicit perturbation forces the center to move.
+- An unmarked rational polygon search certifies physical side length and boundary clearance. On a 13-vertex concave input one corner changes supporting edge and its tracked side crosses 45° on the same family.
+- A single certificate protects all four rough contact regions on a thin infinite-length Jordan limit outside the thin-annulus criterion. Every ratio from **99/100 to 100/99** occurs on one continuum, with shorter side at least **10659/11200** in coarse anchor units.
+- [Proof and replay](research/v304-v306-four-contact-clearance.md) · [Polygon certificate](results/v304-v306/crossings.json) · [Radial bounds and twelve finite witnesses](results/v304-v306/radial-and-rough.json)
