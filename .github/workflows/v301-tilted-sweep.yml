@@ -1,0 +1,30 @@
+name: v301 tilted squares and boundary weights
+on:
+  pull_request:
+    paths:
+      - 'code/tilted_sweep_v301.py'
+      - 'code/balanced_sweep_v300.py'
+      - 'code/polygon_orbit_census_v223.py'
+      - 'tests/test_tilted_sweep_v301.py'
+      - 'results/v301/**'
+      - 'research/v301-tilted-squares-and-boundary-weights.md'
+      - '.github/workflows/v301-tilted-sweep.yml'
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  replay:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Check the full shear interval and replay exact bounds
+        run: |
+          python -m unittest discover -s tests -p 'test_tilted_sweep_v301.py' -v
+          python code/tilted_sweep_v301.py --check

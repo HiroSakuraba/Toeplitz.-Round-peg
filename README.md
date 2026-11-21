@@ -441,3 +441,30 @@ See the [November literature review](research/2026-11-literature-and-v212-plan.m
 - Four finite-coil insertions at the concave flat contacts leave both flats on the same connected witness, with circumradius **at least 1/3**. The central square persists with the original interior geometry.
 - A cubic control preserves the flat points and tangent directions while removing the stipulated flat from the closure of genuine rectangles on those arcs.
 - [Proof and replay instructions](research/v296-v299-rough-flat-contacts.md) · [Exact sample bounds](results/v296-v299/rough-flat-contacts.json)
+
+## v300 — A bounded-density sweep from wide to tall rectangles
+
+- For any parametrized Jordan curve, interpolating between two bounded boundary densities gives a compact connected family of balanced inscribed rectangles. Both side lengths have an explicit positive lower bound.
+- Two prescribed dyadic densities force a square on a class of curves built from pairs of equal-height sections. The same sweep works at every polygonal refinement and on an infinite-length Jordan limit, with square side at least **1/9**. Its contact positions can move.
+- An independent midline drift removes all rectangles using the selected vertical pairs. The unrestricted square-angle crossing remains open.
+- [Proof and replay](research/v300-bounded-density-square-crossing.md) · [Exact refinement records](results/v300/balanced-sweep.json)
+
+## v301 — Tilted squares after breaking the vertical pairing
+
+- Every nonzero seed shear of magnitude at most **1/100** has exactly one square. Opposite shear signs select different squares as the shear tends to zero. Every mixture of the original v300 weights misses the surviving square.
+- Replacing the wide weight by two end packets recovers a connected tilted rectangle crossing on a drift-dependent neighborhood, with side greater than **1/2** at the square.
+- A separate annulus argument gives a square of side at least **29√2/100** on every sheared rough refinement and its infinite-length limit. One prescribed family of moving boundary weights balances every square above that threshold.
+- [Proof and replay](research/v301-tilted-squares-and-boundary-weights.md) · [Exact certificate](results/v301/tilted-sweep.json)
+
+## v302–v303 — A connected crossing on the full sheared rough family
+
+- Every v301 rough refinement and its infinite-length limit, at either shear sign or zero, has a compact connected family of actual inscribed rectangles realizing every vertical-over-horizontal side ratio from **99/100 to 100/99**. This includes independent registered perturbations up to **1/1000**. Both sides stay longer than **0.407**, and a continuous choice of a length-1/12 boundary packet balances the whole family.
+- An exact search recovers a sufficient direction and source parametrization from an unmarked rational polygon. A smooth fourfold-symmetric curve in the same annulus admits a 45° tie for every direction, exposing a limitation of the fixed-frame proof.
+- [Continuum proof](research/v302-connected-rough-rectangle-crossing.md) · [Direction search and obstruction](research/v303-finding-a-direction.md) · [Exact margins](results/v302/rough-crossing.json) · [Polygon examples](results/v303/polygon-directions.json)
+
+## v304–v306 — Moving centers and a uniform square on a thin rough limit
+
+- Four independent boundary contacts on the v303 radial model retain a connected rectangle crossing under registered Euclidean perturbations up to **1/100000**. An explicit perturbation forces the center to move.
+- An unmarked rational polygon search certifies physical side length and boundary clearance. On a 13-vertex concave input one corner changes supporting edge and its tracked side crosses 45° on the same family.
+- A single certificate protects all four rough contact regions on a thin infinite-length Jordan limit outside the thin-annulus criterion. Every ratio from **99/100 to 100/99** occurs on one continuum, with shorter side at least **10659/11200** in coarse anchor units.
+- [Proof and replay](research/v304-v306-four-contact-clearance.md) · [Polygon certificate](results/v304-v306/crossings.json) · [Radial bounds and twelve finite witnesses](results/v304-v306/radial-and-rough.json)
