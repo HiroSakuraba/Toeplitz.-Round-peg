@@ -488,3 +488,10 @@ See the [November literature review](research/2026-11-literature-and-v212-plan.m
 - Every Jordan embedding within registered Euclidean distance **1/4** of the original two-run polygon has a square centered left of **−2** and another right of **2**, both of side at least **13√2/8**. A continuous motion in the tube preserves two separate spanning continua.
 - A three-run census has slab counts **1, 0, 1, 0, 3**. The geometric center line of the original two-run example itself carries a square, so its use as a dividing line would be invalid.
 - [Proof and replay](research/v309-local-square-degree-by-center.md) · [Exact centers and certificates](results/v309/center-walls.json)
+
+## v310 — What unstable parity forces on a Jordan limit
+
+- If arbitrarily close approximations disagree about square-count parity above a fixed positive squared side length, the limiting curve realizes that exact size. A quantitative version bounds the measure of all disagreement cutoffs by the measure of the size spectrum in a shrinking tube.
+- Convex quadrilaterals with summable registered motion can switch parity on an entire fixed interval at every step. An explicit family of limit squares accounts for every size between 81/289 and 117/289.
+- Rational estimates for one or more edited boundary regions protect a square even when four disjoint rough replacements remove every original contact. An exact 19-vertex example checks the four-contact case.
+- [Proof, limitations and replay](research/v310-moving-degree-and-scale-loss.md) · [Exact certificates](results/v310/scale-transfer.json)
