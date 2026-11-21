@@ -508,3 +508,10 @@ See the [November literature review](research/2026-11-literature-and-v212-plan.m
 - A sharp four-corridor criterion permits folds and infinite length on every open marked subarc. A rational 30-vertex example has 31 squares in one oriented side window. The corridor degree guarantees side at least 7/8 throughout the specified class.
 - On all nonempty v220 notch stages and their limit the two formerly horizontal arcs can vary throughout strips of halfwidth 1/80. The combined four-cut bit survives with side at least 39/40.
 - [Proof and limitations](research/v312-two-arc-winding.md) · [Exact winding and census results](results/v312/rough-arc-winding.json)
+
+## v313. Half-turn degree and the boundary-or-winding alternative
+
+- On a centrally symmetric Jordan curve enclosing a centered open disk of radius r, each side cutoff below √2 r is realized or has odd geometric-square degree above it. Actual off-center crossings can occur during the proof and cancel in reflected pairs.
+- Odd positive-scale degree forces a finite dyadic two-arc window with a perimeter square or odd winding. An exact polygonal verifier handles tangencies, collinear overlaps and vertex hits.
+- A moving pair of protrusions gives two true simultaneous crossings. Moving only one flips degree to zero. At the symmetric endpoint, every registered Jordan perturbation of coordinate sup size at most 1/32 still has a square of side greater than 8/5.
+- [Proof and scope](research/v313-half-turn-degree.md) · [Exact cutoff and window certificates](results/v313/half-turn-degree.json)
