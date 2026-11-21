@@ -4,7 +4,7 @@ import sys
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "code"))
-from direction_search_v303 import arc_reserve, direction_certificates, example, moved
+from direction_search_v303 import arc_reserve, broken_symmetry, direction_certificates, example, moved
 from polygon_orbit_census_v223 import pt
 
 
@@ -38,6 +38,16 @@ class DirectionSearch(unittest.TestCase):
                 self.assertEqual(radius(u, v), r)
             self.assertLess(Q(99, 100), y/x)
             self.assertLess(y/x, Q(100, 99))
+
+    def test_unique_centered_square_after_symmetry_breaking(self):
+        c2, s2 = Q(3, 5), Q(4, 5)  # Double angle of the diagonal direction (2,1).
+        second_harmonic = (4*c2-3*s2)/5
+        fourth_harmonic = c2*c2-s2*s2
+        radius = (1 + fourth_harmonic/100 + second_harmonic/1000)/2
+        self.assertEqual(second_harmonic, 0)
+        self.assertEqual(radius, Q(2493, 5000))
+        self.assertNotEqual((4*s2+3*c2)/5, 0)
+        self.assertGreater(Q(broken_symmetry()["derivative_margin"]), 0)
 
     def test_no_certificate_and_invalid_input(self):
         square = (pt(0, 0), pt(1, 0), pt(1, 1), pt(0, 1))

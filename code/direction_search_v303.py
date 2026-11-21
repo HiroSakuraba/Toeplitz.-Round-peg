@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 
 from polygon_orbit_census_v223 import cross, dot, orientation_area, pt, sub, validate_jordan_polygon
-from rough_crossing_v302 import DISP, ERROR, height_band
+from rough_crossing_v302 import DISP, ERROR, T_MIN, height_band, require
 
 RECORD = Path(__file__).resolve().parents[1] / "results/v303/polygon-directions.json"
 
@@ -73,10 +73,25 @@ def serial(rows):
             for r in rows]
 
 
+def broken_symmetry():
+    """Exact bounds for the two-frequency centered-rectangle equation."""
+    c, epsilon = Q(1, 100), Q(1, 1000)
+    cos_phi = (1-T_MIN**2)/(1+T_MIN**2)
+    value_margin = epsilon/2 - 2*c*cos_phi
+    # On each root window, |cos(w+beta)| >= sqrt(3)/2 > 4/5.
+    derivative_margin = 4*epsilon/5 - 4*c*cos_phi
+    radius = (1-c-epsilon)/2
+    require(min(value_margin, derivative_margin) > 0, "centered branch window")
+    require(4*radius**2*T_MIN**2/(1+T_MIN**2) > Q(69, 100)**2, "centered branch side floor")
+    return {"cos_phi_bound": str(cos_phi), "value_margin": str(value_margin),
+            "derivative_margin": str(derivative_margin), "radius_floor": str(radius)}
+
+
 def example_report():
     polygon = example()
     square = (pt(0, 0), pt(1, 0), pt(1, 1), pt(0, 1))
-    return {"independent_arcs": serial(direction_certificates(polygon)),
+    return {"reflection_asymmetric_radial_curve": broken_symmetry(),
+            "independent_arcs": serial(direction_certificates(polygon)),
             "rotated_scaled_translated": serial(direction_certificates(tuple(map(moved, polygon)))),
             "square_boundary": serial(direction_certificates(square))}
 

@@ -46,7 +46,24 @@ f(\theta+\phi)-f(\theta)
 $$
 The square circle $\phi=\pi/2$ meets the other branches at $\theta\in(\pi/4)\mathbb Z$. These eight labeled junctions give two geometric squares modulo a quarter turn. Along the square circle, advancing $\theta$ by $\pi/2$ returns to the same geometric square with the corners cyclically permuted. The ratio of second to first side is $\cot(\phi/2)$; cyclic relabeling exchanges it with its reciprocal. This describes the full centered locus, while off-center configurations may also occur.
 
-**Next question.** Can one transfer the degree between overlapping choices of frame through a junction where the side labels exchange? The factored centered example gives explicit branches and a known permutation against which to check such a rule. A subsequent test would perturb the fourfold symmetry and examine whether a spanning component survives after the square circle splits. For a general Jordan curve, collapse outside the present annulus class is a separate open issue.
+## Break fourfold symmetry and every reflection
+
+Keep antipodal symmetry but change the curve to the smooth radial graph
+$$
+f_\epsilon(\theta)=\tfrac12[1+c\cos(4\theta)+\epsilon\cos(2\theta+\beta)],\qquad
+c=1/100,\quad \epsilon=1/1000,\quad (\cos\beta,\sin\beta)=(4/5,3/5).
+$$
+It is positive. A reflection axis through its center at angle $\alpha$ would require both $4\alpha$ and $2\alpha+\beta$ to be multiples of $\pi$, by uniqueness of Fourier coefficients. These conditions conflict. Every reflection symmetry of this bounded centrally symmetric curve would preserve its unique center, so there are no other possible axes. The second harmonic destroys the quarter-turn symmetry.
+
+Put $w=2\theta+\phi$ in the centered-rectangle equation. Canceling the nonzero factor $-\sin\phi$ leaves
+$$
+H(w,\phi)=4c\cos\phi\,\sin w\cos w+\epsilon\sin(w+\beta)=0.
+$$
+For $k=\cot(\phi/2)\in[99/100,100/99]$, we have $|\cos\phi|\le199/19801$. The first term has absolute value at most $2c(199/19801)<\epsilon/2$. Thus roots are restricted to windows of halfwidth $\pi/6$ about $w+\beta=0,\pi$ modulo $2\pi$, with strict opposite signs at the ends of each window. On those windows the derivative of the first term in $w$ is bounded by $4c(199/19801)<4\epsilon/5$, while the derivative of the second has fixed sign and magnitude at least $\sqrt3\epsilon/2>4\epsilon/5$. Each window contains one simple root for every ratio, varying smoothly with $\phi$. Choosing a continuous angle lift $\theta=(w-\phi)/2$ gives a branch of actual rectangles across the full ratio band. Their sides exceed $0.69$ since their half-diagonal is at least $(1-c-\epsilon)/2$. [Exact sign margins](../results/v303/polygon-directions.json)
+
+At $k=1$ the entire square circle has reduced to one geometric **centered** square. Its first diagonal can be chosen in direction $(2,1)$, for which $\cos 2\theta=3/5$, $\sin 2\theta=4/5$. Its radius is $2493/5000$. The two ratio windows meet this same square with distinct cyclic labels. This is an explicit symmetry-breaking crossing on a second curve class, independent of the polygon frame test.
+
+**Next question.** Do the centered branches just obtained retain nonzero degree in the full four-contact equations after an independent perturbation of each boundary arc breaks antipodal symmetry? The reduced equation controls the diagonal angle. A full proof also needs to control displacement of the rectangle center and give a quantitative neighborhood on one spanning family. For a general Jordan curve, collapse outside the present annulus class is a separate open issue.
 
 ## Replay
 

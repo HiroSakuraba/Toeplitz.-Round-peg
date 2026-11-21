@@ -13,6 +13,12 @@
       ]
     }
   ],
+  "reflection_asymmetric_radial_curve": {
+    "cos_phi_bound": "199/19801",
+    "derivative_margin": "9851/24751250",
+    "radius_floor": "989/2000",
+    "value_margin": "11841/39602000"
+  },
   "rotated_scaled_translated": [
     {
       "end": [
