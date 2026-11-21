@@ -1,0 +1,112 @@
+{
+  "dyadic_witnesses": [
+    {
+      "outcome": "boundary square",
+      "side_squared": "4",
+      "ordered_side": [
+        [
+          "25/16",
+          "1"
+        ],
+        [
+          "25/16",
+          "-1"
+        ]
+      ],
+      "level": 3,
+      "cells": [
+        0,
+        6
+      ],
+      "separation_squared": "4"
+    },
+    {
+      "outcome": "winding",
+      "winding": 1,
+      "level": 10,
+      "cells": [
+        343,
+        101
+      ],
+      "separation_squared": "11515205/67108864"
+    }
+  ],
+  "ear_motion": {
+    "normalized_squared_sides": [
+      "1386334197/9194892100",
+      "533/2890"
+    ],
+    "ear_counts_above_cutoff": [
+      0,
+      1
+    ],
+    "event_scale_squared": "2312/2665",
+    "symmetric_degrees": [
+      1,
+      1
+    ],
+    "one_ear_moved_degrees": [
+      1,
+      0
+    ]
+  },
+  "cutoff_clearance": {
+    "side_interval": [
+      "2/5",
+      "2/5"
+    ],
+    "tube_halfwidth": "1/8192",
+    "max_depth_used": 20,
+    "excluded_leaves": {
+      "side": 1094,
+      "first_completion": 724,
+      "second_completion": 292
+    }
+  },
+  "large_gap": {
+    "side_interval": [
+      "7/5",
+      "8/5"
+    ],
+    "tube_halfwidth": "1/32",
+    "max_depth_used": 12,
+    "excluded_leaves": {
+      "side": 410,
+      "first_completion": 226,
+      "second_completion": 66
+    }
+  },
+  "whole_curve_window": {
+    "positive_ray_hits_by_face": [
+      0,
+      0,
+      1,
+      0
+    ],
+    "winding": 1,
+    "bit": 1,
+    "side_squared": "533/2890",
+    "windows": [
+      [
+        [
+          "266157/348160",
+          "1"
+        ],
+        [
+          "267347/348160",
+          "1"
+        ]
+      ],
+      [
+        [
+          "164949/139264",
+          "90197/81920"
+        ],
+        [
+          "164779/139264",
+          "90027/81920"
+        ]
+      ]
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+name: v310 square scale transfer
+on:
+  pull_request:
+    paths:
+      - 'code/scale_transfer_v310.py'
+      - 'code/tilted_sweep_v301.py'
+      - 'code/balanced_sweep_v300.py'
+      - 'code/polygon_orbit_census_v223.py'
+      - 'research/v310-moving-degree-and-scale-loss.md'
+      - 'tests/test_scale_transfer_v310.py'
+      - 'results/v310/**'
+      - '.github/workflows/v310-scale-transfer.yml'
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s tests -p 'test_scale_transfer_v310.py' -v
+      - run: python code/scale_transfer_v310.py | diff - results/v310/scale-transfer.json

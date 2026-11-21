@@ -1,0 +1,27 @@
+name: v313 half-turn degree
+on:
+  pull_request:
+    paths:
+      - 'code/half_turn_degree_v313.py'
+      - 'code/rough_arc_winding_v312.py'
+      - 'code/boundary_or_winding_v313.py'
+      - 'code/polygon_orbit_census_v223.py'
+      - 'research/v313-half-turn-degree.md'
+      - 'tests/test_half_turn_degree_v313.py'
+      - 'results/v313/**'
+      - '.github/workflows/v313-half-turn-degree.yml'
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s tests -p 'test_half_turn_degree_v313.py' -v
+      - run: python code/half_turn_degree_v313.py | diff - results/v313/half-turn-degree.json

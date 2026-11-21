@@ -1,19 +1,29 @@
 # Toeplitz square-peg research
 
 **Research program:** Benjamin John Schulz (GitHub: HiroSakuraba)  
-**Status as of 2026-11-20:** Research in progress. Exact square-census and relative-degree theorems have been certified for selected polygonal families; the general square-peg conjecture for arbitrary Jordan curves is **not proved** here.
+**Status as of 2026-11-21:** Research in progress (latest integrated version: **v313**). Exact square-census, relative-degree, parity and winding certificates have been proved for selected polygonal and rough families; the general square-peg conjecture for arbitrary Jordan curves is **not proved** here.
 
 The [Toeplitz square-peg problem](https://en.wikipedia.org/wiki/Inscribed_square_problem) asks whether every Jordan curve contains four distinct vertices of a nondegenerate Euclidean square. This is a versioned research archive of constructive half-square approaches, local certificates, geometric obstructions, analytic energy methods, and supporting computation.
 
-## Latest certified milestones (20 November 2026)
+## Latest certified milestones (21 November 2026)
+
+- **[v313: half-turn degree and the boundary-or-winding alternative](research/v313-half-turn-degree.md)**: on a centrally symmetric Jordan curve enclosing a centered disk of radius r, every side cutoff below √2 r is either realized or has odd geometric-square degree above it, and that odd degree survives small registered Jordan perturbations. Odd positive-scale degree forces a finite dyadic two-arc window with a perimeter square or odd winding (the v312 alternative). At the symmetric endpoint of the moving-protrusion example, every registered Jordan perturbation of size at most 1/32 has a square of side greater than **8/5**.
+- **[v312: two-arc winding on rough contact arcs](research/v312-two-arc-winding.md)**: completing an oriented side on two marked arcs gives a whole-curve winding test with an explicit perturbation margin. A sharp four-corridor criterion allows folds and infinite length on every marked subarc and guarantees side at least **7/8**. On every v220 notch stage and its limit, the two formerly straight arcs may vary in strips of halfwidth 1/80 with a square of side at least **39/40** surviving.
+- **[v311: separated-arc parity through infinitely many refinements](research/v311-separated-arc-parity.md)**: a four-cut identity shows an odd pair of consecutive contacts always survives in a finite nonempty square census. One fixed pair of intervals works on every v220 notch stage and its limit; every registered Jordan perturbation within 1/512 has a square meeting all four designated arcs with side at least **255/256**.
+- **[v310: what unstable parity forces on a Jordan limit](research/v310-moving-degree-and-scale-loss.md)**: if arbitrarily close approximations keep disagreeing about square parity at a fixed positive size, the limit realizes that exact size; a measure version bounds the disagreement set by the size spectrum in a shrinking tube. A convex quadrilateral sequence with summable motion switches parity on a fixed interval at every step, and rational edit-box estimates protect a square even after all four original contacts are replaced.
+- **[v309: one square per occupied run, separated by center](research/v309-local-square-degree-by-center.md)**: localizes the v308 parity to center slabs, so an even total parity still yields one large square per run. Every Jordan curve within registered distance **1/4** of the two-run example has squares centered left of −2 and right of 2, each of side at least **13√2/8**.
+- **[v307–v308: convex-layer size gap and deep dents](research/v308-deep-dents-and-square-parity.md)**: a [convex-layer lemma](research/v307-convex-shell-square-gap.md) forces a square of half-diagonal greater than q when δ < q(r−q)/(R+q); v308 extends the size-gap method to curves with dents traversing 255/256 of the height, where square parity above the gap equals the parity of enclosed cell runs.
+
+**Remaining obstacle:** Each certificate (center walls, separated arcs, two-arc winding, half-turn degree) works on explicitly chosen windows or covers for a specified family. No method yet selects such windows for an **arbitrary** Jordan curve and keeps a nonzero degree at a fixed positive square size across its approximations; v310 shows that the rate of uniform approximation alone cannot supply this, and the circle shows a winding argument must also handle squares on the parameter boundary. The unrestricted Toeplitz problem remains open.
+
+### Earlier milestones (20 November 2026)
 
 - **[v268: exact rectangle monodromy and relative-boundary obstruction](research/v268-rectangle-monodromy-and-protected-square-criterion.md)**: proves a conditional odd-cyclic-monodromy square-forcing criterion; builds two complete rational rectangle loops on a circle (one even-Möbius/no-square, one odd/square with irrational algebraic time) and a reusable exact loop verifier. **Crucial no-go:** every inscribed rectangle on a noncircular ellipse is axis-aligned, and its full rectangle moduli space is an **open interval**, so a universal *closed odd-loop* hypothesis is **false** even for smooth convex curves. An exact **relative binormal-endpoint sign crossing** nevertheless forces its square. The remaining route is a relative/Floer boundary class with noncollapse control, not a universal odd loop.
+- **[v267: secant-spin and twisted rectangle obstruction](research/v267-secant-spin-rectangle-obstruction.md)**: proves an odd-winding antipodal secant for **every** continuous Jordan embedding, audits its Möbius chord-line twist, and computes the exact square-diagonal D4 orientation action. A *conditional* nonzero tensor-twist on a size-protected rectangle loop would force a square; existence of such a loop for every Jordan curve is **unproved**. An exact notch family keeps secant winding +1 and secant length ≥1 while a selected square shrinks to side 1/n.
 - **[v265: generic exact irrational vertex-gluing resolver](research/v265-generic-irrational-vertex-gluing.md)**: derives a shared algebraic contact polynomial from two adjacent-edge square charts, verifies full geometric identity at a genuine polygon vertex, opposite local degrees and a uniform zero-free outer kink boundary. Combined with a complete v264 atlas, it resolves a single eligible irrational pair-death event, giving the full 3 → 2 → 1 ledger. New tests include a genuinely perturbed nonsimilar pentagon with a different event polynomial. Unsupported singularities remain inconclusive.
 - **[v263: full all-real-time moving-pentagon square census](research/v263-complete-all-real-time-moving-pentagon-census.md)**: exact 70-chart exhaustion proves **3 → 2 → 1** positive inscribed square orbits across a unique irrational collision, including the singular vertex event. The selected v262 quotient atlas contains every positive square of that *particular* moving pentagon throughout the narrow certified interval.
 - **[v264: reusable exact convex-polygon event atlas](research/v264-reusable-convex-square-event-atlas.md)**: accepts arbitrary rational-affine strictly convex polygon families, compresses certified collinear edge subdivisions, computes time-uniform positive square-size bounds, and exhausts all closed-edge configurations. Independently isolates the v254 algebraic event and certifies event-free chamber orbit counts. **Irrational event slices are not inferred from neighboring samples**; they require a separate event theorem.
 - **[v262: C4 quotient-relative mod-2 degree](research/v262-cyclic-quotient-relative-parity.md)**: a selected eight-sheet atlas has parity degree one despite a genuine pair death. This is a *relative* and family-specific index, not an absolute obstruction on unrestricted square-configuration space.
-
-**Remaining obstacle:** Neither the positive-size bound nor the relative quotient degree has been shown to persist uniformly across arbitrary \(C^0\) approximations of all Jordan curves. The unrestricted Toeplitz problem remains open.
 
 ## Repository contents
 
@@ -481,3 +491,37 @@ See the [November literature review](research/2026-11-literature-and-v212-plan.m
 - Two opposing dents each traverse 255/256 of the height of a 12-by-4 box. The curve still has a square of side at least **15√2/8**. The uniform-depth v307 criterion fails on this example for every enclosing convex reference.
 - On three perturbed polygons an independent full enumeration finds **19, 2 and 5** actual large squares, respectively, matching the predicted parities.
 - [Proof, scope and replay](research/v308-deep-dents-and-square-parity.md) · [Rational strip and parity certificates](results/v308/deep-dents.json)
+
+## v309 — Separate the two large squares by their centers
+
+- The two squares in the v308 even-parity census carry independent odd degrees. Their centers lie in separate slabs; the same argument guarantees at least one large square per occupied run when the intervening gaps pass the single-cap and separation tests.
+- Every Jordan embedding within registered Euclidean distance **1/4** of the original two-run polygon has a square centered left of **−2** and another right of **2**, both of side at least **13√2/8**. A continuous motion in the tube preserves two separate spanning continua.
+- A three-run census has slab counts **1, 0, 1, 0, 3**. The geometric center line of the original two-run example itself carries a square, so its use as a dividing line would be invalid.
+- [Proof and replay](research/v309-local-square-degree-by-center.md) · [Exact centers and certificates](results/v309/center-walls.json)
+
+## v310 — What unstable parity forces on a Jordan limit
+
+- If arbitrarily close approximations disagree about square-count parity above a fixed positive squared side length, the limiting curve realizes that exact size. A quantitative version bounds the measure of all disagreement cutoffs by the measure of the size spectrum in a shrinking tube.
+- Convex quadrilaterals with summable registered motion can switch parity on an entire fixed interval at every step. An explicit family of limit squares accounts for every size between 81/289 and 117/289.
+- Rational estimates for one or more edited boundary regions protect a square even when four disjoint rough replacements remove every original contact. An exact 19-vertex example checks the four-contact case.
+- [Proof, limitations and replay](research/v310-moving-degree-and-scale-loss.md) · [Exact certificates](results/v310/scale-transfer.json)
+
+## v311 — Separated-arc parity through infinitely many notch refinements
+
+- A four-cut identity detects consecutive square contacts on two disjoint source intervals. For every finite nonempty square census, an odd pair survives at the greatest distance between consecutive contacts, even when a large square's side coincides with a smaller square's diagonal.
+- One fixed pair of intervals works on every nonempty v220 notch stage and on its infinite limit. Eliminating two horizontal contacts reduces the degree to one planar crossing. Every registered Jordan perturbation within coordinate sup distance 1/512 has a square meeting all four designated arcs with side at least 255/256.
+- Exact censuses give different four-entry parity matrices on two perturbations of the same polygon, with combined bit one in both. [Proof](research/v311-separated-arc-parity.md) · [Exact results](results/v311/separated-arc-parity.json)
+
+## v312 — Two-arc winding and rough contact arcs
+
+- Completing an oriented side on two marked arcs gives a planar winding test on the whole Jordan curve, with an explicit perturbation margin. On the circle its two residuals agree identically, so a universal argument must also handle squares on the parameter boundary.
+- A sharp four-corridor criterion permits folds and infinite length on every open marked subarc. A rational 30-vertex example has 31 squares in one oriented side window. The corridor degree guarantees side at least 7/8 throughout the specified class.
+- On all nonempty v220 notch stages and their limit the two formerly horizontal arcs can vary throughout strips of halfwidth 1/80. The combined four-cut bit survives with side at least 39/40.
+- [Proof and limitations](research/v312-two-arc-winding.md) · [Exact winding and census results](results/v312/rough-arc-winding.json)
+
+## v313 — Half-turn degree and the boundary-or-winding alternative
+
+- On a centrally symmetric Jordan curve enclosing a centered open disk of radius r, each side cutoff below √2 r is realized or has odd geometric-square degree above it. Actual off-center crossings can occur during the proof and cancel in reflected pairs.
+- Odd positive-scale degree forces a finite dyadic two-arc window with a perimeter square or odd winding. An exact polygonal verifier handles tangencies, collinear overlaps and vertex hits.
+- A moving pair of protrusions gives two true simultaneous crossings. Moving only one flips degree to zero. At the symmetric endpoint, every registered Jordan perturbation of coordinate sup size at most 1/32 still has a square of side greater than 8/5.
+- [Proof and scope](research/v313-half-turn-degree.md) · [Exact cutoff and window certificates](results/v313/half-turn-degree.json)
