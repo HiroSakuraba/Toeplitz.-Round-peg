@@ -501,3 +501,10 @@ See the [November literature review](research/2026-11-literature-and-v212-plan.m
 - A four-cut identity detects consecutive square contacts on two disjoint source intervals. For every finite nonempty square census, an odd pair survives at the greatest distance between consecutive contacts, even when a large square's side coincides with a smaller square's diagonal.
 - One fixed pair of intervals works on every nonempty v220 notch stage and on its infinite limit. Eliminating two horizontal contacts reduces the degree to one planar crossing. Every registered Jordan perturbation within coordinate sup distance 1/512 has a square meeting all four designated arcs with side at least 255/256.
 - Exact censuses give different four-entry parity matrices on two perturbations of the same polygon, with combined bit one in both. [Proof](research/v311-separated-arc-parity.md) · [Exact results](results/v311/separated-arc-parity.json)
+
+## v312. Two-arc winding and rough contact arcs
+
+- Completing an oriented side on two marked arcs gives a planar winding test on the whole Jordan curve, with an explicit perturbation margin. On the circle its two residuals agree identically, so a universal argument must also handle squares on the parameter boundary.
+- A sharp four-corridor criterion permits folds and infinite length on every open marked subarc. A rational 30-vertex example has 31 squares in one oriented side window. The corridor degree guarantees side at least 7/8 throughout the specified class.
+- On all nonempty v220 notch stages and their limit the two formerly horizontal arcs can vary throughout strips of halfwidth 1/80. The combined four-cut bit survives with side at least 39/40.
+- [Proof and limitations](research/v312-two-arc-winding.md) · [Exact winding and census results](results/v312/rough-arc-winding.json)
