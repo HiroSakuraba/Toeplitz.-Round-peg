@@ -474,3 +474,10 @@ See the [November literature review](research/2026-11-literature-and-v212-plan.m
 - For a Jordan curve in the inner layer of thickness δ of a convex body between concentric disks of radii r and R, enclosing the common center, the condition δ < q(r−q)/(R+q), 0 < q < r, forces an inscribed square of half-diagonal greater than q.
 - The proof combines a supporting-line inequality with parity on the space of geometric squares. It applies when the convex reference has a continuum of squares and the target folds inside the layer.
 - [Proof and controls](research/v307-convex-shell-square-gap.md) · [Rational polygon verifier](code/convex_shell_v307.py) · [Example record](results/v307/convex-shell.json)
+
+## v308 — A large square despite deep opposing dents
+
+- In a rectangle with narrow, separated vertical strips and two exterior horizontal caps, the mod-two count of squares above a forbidden size equals the parity of the number of consecutive runs of enclosed cells.
+- Two opposing dents each traverse 255/256 of the height of a 12-by-4 box. The curve still has a square of side at least **15√2/8**. The uniform-depth v307 criterion fails on this example for every enclosing convex reference.
+- On three perturbed polygons an independent full enumeration finds **19, 2 and 5** actual large squares, respectively, matching the predicted parities.
+- [Proof, scope and replay](research/v308-deep-dents-and-square-parity.md) · [Rational strip and parity certificates](results/v308/deep-dents.json)

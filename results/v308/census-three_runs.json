@@ -1,0 +1,7 @@
+{
+  "fixture": "three_runs",
+  "actual_squares_above_cutoff": 5,
+  "predicted_parity": 1,
+  "edge_charts": 40392,
+  "nongraceful": 0
+}

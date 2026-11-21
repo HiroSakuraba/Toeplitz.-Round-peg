@@ -1,0 +1,40 @@
+{
+  "opposite_dents": {
+    "occupied_cells": [
+      1,
+      1,
+      1
+    ],
+    "runs": 1,
+    "parity": 1,
+    "forbidden_half_diagonal_squared_lower_open": "1/16",
+    "forbidden_half_diagonal_upper_open": "15/8",
+    "forced_side_squared_at_least": "225/32"
+  },
+  "two_runs": {
+    "occupied_cells": [
+      1,
+      0,
+      1
+    ],
+    "runs": 2,
+    "parity": 0,
+    "forbidden_half_diagonal_squared_lower_open": "1/16",
+    "forbidden_half_diagonal_upper_open": "15/8",
+    "forced_side_squared_at_least": null
+  },
+  "three_runs": {
+    "occupied_cells": [
+      1,
+      0,
+      1,
+      0,
+      1
+    ],
+    "runs": 3,
+    "parity": 1,
+    "forbidden_half_diagonal_squared_lower_open": "1/16",
+    "forbidden_half_diagonal_upper_open": "15/8",
+    "forced_side_squared_at_least": "225/32"
+  }
+}
