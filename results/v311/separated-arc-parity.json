@@ -1,0 +1,143 @@
+{
+  "triangle_automatic_windows": {
+    "marks": [
+      "103/231",
+      "107/231",
+      "355/231",
+      "359/231"
+    ],
+    "contact_pair": [
+      "5/11",
+      "17/11"
+    ],
+    "contact_distance_squared": "360/121",
+    "bit": 1
+  },
+  "triangle": {
+    "counts": [
+      [
+        3,
+        3
+      ],
+      [
+        2,
+        3
+      ]
+    ],
+    "matrix": [
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "consecutive_pairs": 1,
+    "bit": 1
+  },
+  "uniform_notch_certificate": {
+    "eta": "1/512",
+    "side_floor": "255/256",
+    "cut_bit": 1,
+    "reference_crossing": [
+      "2/5",
+      "1"
+    ],
+    "remaining_margins": {
+      "first_window_endpoints": "1/64",
+      "bottom_window_endpoints": "15/128",
+      "upper_window_endpoints": "7/64",
+      "last_window_endpoints": "3/64",
+      "diagonal_lower_vertex": "29/512",
+      "clockwise_lower_vertex": "39/128",
+      "upper_right_side_clearance": "31/128",
+      "upper_right_bottom_clearance": "47/128",
+      "last_corner_top_extent": "13/128"
+    }
+  },
+  "independent_notch_censuses": [
+    {
+      "counts": [
+        [
+          2,
+          3
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "consecutive_pairs": 1,
+      "bit": 1,
+      "notches": 1,
+      "total_squares": 3,
+      "seed": 1
+    },
+    {
+      "counts": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "matrix": [
+        [
+          1,
+          1
+        ],
+        [
+          0,
+          1
+        ]
+      ],
+      "consecutive_pairs": 1,
+      "bit": 1,
+      "notches": 1,
+      "total_squares": 1,
+      "seed": 4
+    },
+    {
+      "counts": [
+        [
+          2,
+          3
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "matrix": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "consecutive_pairs": 1,
+      "bit": 1,
+      "notches": 2,
+      "total_squares": 3,
+      "seed": 1
+    }
+  ]
+}

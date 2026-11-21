@@ -1,0 +1,7 @@
+{
+  "fixture": "opposite_dents",
+  "actual_squares_above_cutoff": 19,
+  "predicted_parity": 1,
+  "edge_charts": 40392,
+  "nongraceful": 0
+}
