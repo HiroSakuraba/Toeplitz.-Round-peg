@@ -1,7 +1,7 @@
 # Toeplitz square-peg research
 
 **Research program:** Benjamin John Schulz (GitHub: HiroSakuraba)  
-**Status as of 2026-11-21:** Research in progress (latest integrated version: **v314**). Exact square-census, relative-degree, parity and winding certificates have been proved for selected polygonal and rough families; the general square-peg conjecture for arbitrary Jordan curves is **not proved** here.
+**Status as of 2026-11-21:** Research in progress (latest integrated version: **v315**). Exact square-census, relative-degree, parity and winding certificates have been proved for selected polygonal and rough families; the general square-peg conjecture for arbitrary Jordan curves is **not proved** here.
 
 The [Toeplitz square-peg problem](https://en.wikipedia.org/wiki/Inscribed_square_problem) asks whether every Jordan curve contains four distinct vertices of a nondegenerate Euclidean square. This is a versioned research archive of constructive half-square approaches, local certificates, geometric obstructions, analytic energy methods, and supporting computation.
 
@@ -16,6 +16,8 @@ The [Toeplitz square-peg problem](https://en.wikipedia.org/wiki/Inscribed_square
 - **[v307–v308: convex-layer size gap and deep dents](research/v308-deep-dents-and-square-parity.md)**: a [convex-layer lemma](research/v307-convex-shell-square-gap.md) forces a square of half-diagonal greater than q when δ < q(r−q)/(R+q); v308 extends the size-gap method to curves with dents traversing 255/256 of the height, where square parity above the gap equals the parity of enclosed cell runs.
 
 **Primary research goal.** Prove a [general noncollapse lemma](research/general-noncollapse-goal.md): for every Jordan curve, construct arbitrarily fine approximations carrying odd local square degree above a positive cutoff determined by the curve. A universal multiple of the inradius is the quantitative target. The note gives the compactness reduction, the diameter obstruction, and a way to turn a large polygonal square into a regular local degree witness at the same size.
+
+The [v315 cutoff lemma](research/v315-cutoff-payment.md) combines v310 and v313. Crossings far from the target may be removed in regions of even degree. If all remaining wall configurations approach the curve at a fixed positive size, the target either realizes that exact size or has odd degree above it. A polygonal repair turns the near contacts into an exact square on a close approximation.
 
 **Remaining obstacle:** Each certificate (center walls, separated arcs, two-arc winding, half-turn degree) works on explicitly chosen windows or covers for a specified family. No method yet selects such windows for an **arbitrary** Jordan curve and keeps a nonzero degree at a fixed positive square size across its approximations; v310 shows that the rate of uniform approximation alone cannot supply this, and the circle shows a winding argument must also handle squares on the parameter boundary. The unrestricted Toeplitz problem remains open.
 

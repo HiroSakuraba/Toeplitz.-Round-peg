@@ -1,0 +1,14 @@
+{
+  "critical_scale_squared": "2312/2665",
+  "normalized_square_side_squared": "533/2890",
+  "cutoff_side": "2/5",
+  "depth": 8,
+  "lower_scale": "149/160",
+  "upper_scale": "477/512",
+  "repair_budget_sup": "1/2560",
+  "lower_ear_center_x": "-2559/2560",
+  "repaired_square_side_squared": "121272957/757596160",
+  "repaired_polygon_vertices": 49,
+  "horizontal_clearance_from_opposite_ear": "19/32",
+  "remote_crossing_distance_lower_bound": "2/5"
+}
