@@ -455,3 +455,9 @@ See the [November literature review](research/2026-11-literature-and-v212-plan.m
 - Replacing the wide weight by two end packets recovers a connected tilted rectangle crossing on a drift-dependent neighborhood, with side greater than **1/2** at the square.
 - A separate annulus argument gives a square of side at least **29√2/100** on every sheared rough refinement and its infinite-length limit. One prescribed family of moving boundary weights balances every square above that threshold.
 - [Proof and replay](research/v301-tilted-squares-and-boundary-weights.md) · [Exact certificate](results/v301/tilted-sweep.json)
+
+## v302–v303 — A connected crossing on the full sheared rough family
+
+- Every v301 rough refinement and its infinite-length limit, at either shear sign or zero, has a compact connected family of actual inscribed rectangles realizing every vertical-over-horizontal side ratio from **99/100 to 100/99**. This includes independent registered perturbations up to **1/1000**. Both sides stay longer than **0.407**, and a continuous choice of a length-1/12 boundary packet balances the whole family.
+- An exact search recovers a sufficient direction and source parametrization from an unmarked rational polygon. A smooth fourfold-symmetric curve in the same annulus admits a 45° tie for every direction, exposing a limitation of the fixed-frame proof.
+- [Continuum proof](research/v302-connected-rough-rectangle-crossing.md) · [Direction search and obstruction](research/v303-finding-a-direction.md) · [Exact margins](results/v302/rough-crossing.json) · [Polygon examples](results/v303/polygon-directions.json)

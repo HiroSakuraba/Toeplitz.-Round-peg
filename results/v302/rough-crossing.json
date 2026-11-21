@@ -1,0 +1,26 @@
+{
+  "anchor": {
+    "determinant": "385209/640000",
+    "horizontal_margin": "2550/14267",
+    "sector_margin": "14458021697071/73277024040000",
+    "sorted_charts": "13"
+  },
+  "annulus": {
+    "side_squared": "8242641/49502500",
+    "source_spacing_squared_margin": "29/40000",
+    "triple_width": "5742/19801",
+    "wall_clearance": "2099/500000"
+  },
+  "orientation": {
+    "available_half_span": "501/1000",
+    "diagonal_offset_ratio": "1/199",
+    "excess": "131/8000",
+    "forced_half_span": "4139/8000",
+    "tent_difference_upper": "56/1125"
+  },
+  "rough_example": {
+    "ordered_edges": "15,4,8,13",
+    "positive_bernstein_coefficients": "45",
+    "tag_clearance": "1/100"
+  }
+}

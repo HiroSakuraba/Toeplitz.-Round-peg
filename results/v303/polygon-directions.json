@@ -1,0 +1,31 @@
+{
+  "independent_arcs": [
+    {
+      "end": [
+        "1",
+        "0"
+      ],
+      "length_squared": "1",
+      "normalized_tube": "1/1000",
+      "start": [
+        "0",
+        "0"
+      ]
+    }
+  ],
+  "rotated_scaled_translated": [
+    {
+      "end": [
+        "10",
+        "2"
+      ],
+      "length_squared": "25",
+      "normalized_tube": "1/1000",
+      "start": [
+        "7",
+        "-2"
+      ]
+    }
+  ],
+  "square_boundary": []
+}
