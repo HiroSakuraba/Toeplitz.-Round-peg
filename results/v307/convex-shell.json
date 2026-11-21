@@ -1,0 +1,6 @@
+{
+  "cutoff_polynomial": "-1/128",
+  "half_diagonal_above": "3/4",
+  "large_root_linear_term": "31/32",
+  "large_root_discriminant": "321/1024"
+}
