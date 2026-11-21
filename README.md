@@ -468,3 +468,9 @@ See the [November literature review](research/2026-11-literature-and-v212-plan.m
 - An unmarked rational polygon search certifies physical side length and boundary clearance. On a 13-vertex concave input one corner changes supporting edge and its tracked side crosses 45° on the same family.
 - A single certificate protects all four rough contact regions on a thin infinite-length Jordan limit outside the thin-annulus criterion. Every ratio from **99/100 to 100/99** occurs on one continuum, with shorter side at least **10659/11200** in coarse anchor units.
 - [Proof and replay](research/v304-v306-four-contact-clearance.md) · [Polygon certificate](results/v304-v306/crossings.json) · [Radial bounds and twelve finite witnesses](results/v304-v306/radial-and-rough.json)
+
+## v307 — A square-size gap in a convex boundary layer
+
+- For a Jordan curve in the inner layer of thickness δ of a convex body between concentric disks of radii r and R, enclosing the common center, the condition δ < q(r−q)/(R+q), 0 < q < r, forces an inscribed square of half-diagonal greater than q.
+- The proof combines a supporting-line inequality with parity on the space of geometric squares. It applies when the convex reference has a continuum of squares and the target folds inside the layer.
+- [Proof and controls](research/v307-convex-shell-square-gap.md) · [Rational polygon verifier](code/convex_shell_v307.py) · [Example record](results/v307/convex-shell.json)
