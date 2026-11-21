@@ -481,3 +481,10 @@ See the [November literature review](research/2026-11-literature-and-v212-plan.m
 - Two opposing dents each traverse 255/256 of the height of a 12-by-4 box. The curve still has a square of side at least **15√2/8**. The uniform-depth v307 criterion fails on this example for every enclosing convex reference.
 - On three perturbed polygons an independent full enumeration finds **19, 2 and 5** actual large squares, respectively, matching the predicted parities.
 - [Proof, scope and replay](research/v308-deep-dents-and-square-parity.md) · [Rational strip and parity certificates](results/v308/deep-dents.json)
+
+## v309 — Separate the two large squares by their centers
+
+- The two squares in the v308 even-parity census carry independent odd degrees. Their centers lie in separate slabs; the same argument guarantees at least one large square per occupied run when the intervening gaps pass the single-cap and separation tests.
+- Every Jordan embedding within registered Euclidean distance **1/4** of the original two-run polygon has a square centered left of **−2** and another right of **2**, both of side at least **13√2/8**. A continuous motion in the tube preserves two separate spanning continua.
+- A three-run census has slab counts **1, 0, 1, 0, 3**. The geometric center line of the original two-run example itself carries a square, so its use as a dividing line would be invalid.
+- [Proof and replay](research/v309-local-square-degree-by-center.md) · [Exact centers and certificates](results/v309/center-walls.json)
