@@ -1,7 +1,7 @@
 # Toeplitz square-peg research
 
 **Research program:** Benjamin John Schulz (GitHub: HiroSakuraba)  
-**Status as of 2026-11-21:** Research in progress (latest integrated version: **v314**). Exact square-census, relative-degree, parity and winding certificates have been proved for selected polygonal and rough families; the general square-peg conjecture for arbitrary Jordan curves is **not proved** here.
+**Status as of 2026-11-21:** Research in progress (latest integrated version: **v315**). Exact square-census, relative-degree, parity and winding certificates have been proved for selected polygonal and rough families; the general square-peg conjecture for arbitrary Jordan curves is **not proved** here.
 
 The [Toeplitz square-peg problem](https://en.wikipedia.org/wiki/Inscribed_square_problem) asks whether every Jordan curve contains four distinct vertices of a nondegenerate Euclidean square. This is a versioned research archive of constructive half-square approaches, local certificates, geometric obstructions, analytic energy methods, and supporting computation.
 
@@ -14,6 +14,10 @@ The [Toeplitz square-peg problem](https://en.wikipedia.org/wiki/Inscribed_square
 - **[v310: what unstable parity forces on a Jordan limit](research/v310-moving-degree-and-scale-loss.md)**: if arbitrarily close approximations keep disagreeing about square parity at a fixed positive size, the limit realizes that exact size; a measure version bounds the disagreement set by the size spectrum in a shrinking tube. A convex quadrilateral sequence with summable motion switches parity on a fixed interval at every step, and rational edit-box estimates protect a square even after all four original contacts are replaced.
 - **[v309: one square per occupied run, separated by center](research/v309-local-square-degree-by-center.md)**: localizes the v308 parity to center slabs, so an even total parity still yields one large square per run. Every Jordan curve within registered distance **1/4** of the two-run example has squares centered left of −2 and right of 2, each of side at least **13√2/8**.
 - **[v307–v308: convex-layer size gap and deep dents](research/v308-deep-dents-and-square-parity.md)**: a [convex-layer lemma](research/v307-convex-shell-square-gap.md) forces a square of half-diagonal greater than q when δ < q(r−q)/(R+q); v308 extends the size-gap method to curves with dents traversing 255/256 of the height, where square parity above the gap equals the parity of enclosed cell runs.
+
+**Primary research goal.** Prove a [general noncollapse lemma](research/general-noncollapse-goal.md): for every Jordan curve, construct arbitrarily fine approximations carrying odd local square degree above a positive cutoff determined by the curve. A universal multiple of the inradius is the quantitative target. The note gives the compactness reduction, the diameter obstruction, and a way to turn a large polygonal square into a regular local degree witness at the same size.
+
+The [v315 cutoff lemma](research/v315-cutoff-payment.md) combines v310 and v313. Crossings far from the target may be removed in regions of even degree. If all remaining wall configurations approach the curve at a fixed positive size, the target either realizes that exact size or has odd degree above it. A polygonal repair turns the near contacts into an exact square on a close approximation.
 
 **Remaining obstacle:** Each certificate (center walls, separated arcs, two-arc winding, half-turn degree) works on explicitly chosen windows or covers for a specified family. No method yet selects such windows for an **arbitrary** Jordan curve and keeps a nonzero degree at a fixed positive square size across its approximations; v310 shows that the rate of uniform approximation alone cannot supply this, and the circle shows a winding argument must also handle squares on the parameter boundary. The unrestricted Toeplitz problem remains open.
 
