@@ -1,0 +1,92 @@
+{
+  "atlas_band_cap": "316/103",
+  "atlas_controls": {
+    "persistent": {
+      "minimum_density_cap": "264/119",
+      "red_fraction": "409/528"
+    },
+    "unit": {
+      "minimum_density_cap": "24/23",
+      "red_fraction": "23/48"
+    }
+  },
+  "density_cap": "9/2",
+  "refinements": [
+    {
+      "balanced_square_samples": [
+        {
+          "s": "4/17",
+          "t": "13/17",
+          "weight": "4/13"
+        }
+      ],
+      "depth": 0,
+      "level_square_components": 1,
+      "tall_max_width_minus_height": "-8/9",
+      "tall_zero_components": 1,
+      "wide_min_width_minus_height": "3/4",
+      "wide_zero_components": 1
+    },
+    {
+      "balanced_square_samples": [
+        {
+          "s": "63/268",
+          "t": "821/1072",
+          "weight": "503/1641"
+        }
+      ],
+      "depth": 1,
+      "level_square_components": 1,
+      "tall_max_width_minus_height": "-2137/2376",
+      "tall_zero_components": 1,
+      "wide_min_width_minus_height": "490/663",
+      "wide_zero_components": 1
+    },
+    {
+      "balanced_square_samples": [
+        {
+          "s": "31/132",
+          "t": "203/264",
+          "weight": "41/135"
+        }
+      ],
+      "depth": 2,
+      "level_square_components": 1,
+      "tall_max_width_minus_height": "-10129/11232",
+      "tall_zero_components": 1,
+      "wide_min_width_minus_height": "4413/5984",
+      "wide_zero_components": 1
+    },
+    {
+      "balanced_square_samples": [
+        {
+          "s": "49/208",
+          "t": "321/416",
+          "weight": "193/639"
+        }
+      ],
+      "depth": 3,
+      "level_square_components": 1,
+      "tall_max_width_minus_height": "-5609/6192",
+      "tall_zero_components": 1,
+      "wide_min_width_minus_height": "10161/13856",
+      "wide_zero_components": 1
+    },
+    {
+      "balanced_square_samples": [
+        {
+          "s": "863/3664",
+          "t": "2831/3664",
+          "weight": "53/176"
+        }
+      ],
+      "depth": 4,
+      "level_square_components": 1,
+      "tall_max_width_minus_height": "-7781/8576",
+      "tall_zero_components": 1,
+      "wide_min_width_minus_height": "703/960",
+      "wide_zero_components": 1
+    }
+  ],
+  "square_side_floor": "1/9"
+}

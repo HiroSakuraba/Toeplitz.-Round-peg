@@ -1,0 +1,55 @@
+{
+  "shear_charts": 13,
+  "stretch_charts": 13,
+  "limiting_squared_sides": [
+    "117/289",
+    "81/289"
+  ],
+  "uniform_switch_interval": [
+    "3/10",
+    "39/100"
+  ],
+  "patch_example": {
+    "four_contact_replacement_squared_side": "39582494097493/13469017440256",
+    "four_patch_centers": [
+      [
+        "4/7",
+        "0"
+      ],
+      [
+        "16/7",
+        "0"
+      ],
+      [
+        "16/7",
+        "12/7"
+      ],
+      [
+        "4/7",
+        "12/7"
+      ]
+    ],
+    "four_patch_squared_side_enclosure": [
+      "603635761/205520896",
+      "302161969/102760448"
+    ],
+    "isolating_band": [
+      "29/10",
+      "59/20"
+    ],
+    "initial_squared_sides": [
+      "72/25",
+      "144/49",
+      "360/121"
+    ],
+    "possible_flux_intervals": [
+      [
+        "9662300209/3288334336",
+        "4832526581/1644167168"
+      ]
+    ],
+    "initial_odd_measure": "284063/148225",
+    "lost_measure_upper": "98339/234881024",
+    "squared_side_floor": "14503095972091/4973605683200"
+  }
+}

@@ -1,0 +1,26 @@
+name: v311 separated arc parity
+on:
+  pull_request:
+    paths:
+      - 'code/separated_arc_parity_v311.py'
+      - 'code/accumulating_notches_v220.py'
+      - 'code/polygon_orbit_census_v223.py'
+      - 'research/v311-separated-arc-parity.md'
+      - 'tests/test_separated_arc_parity_v311.py'
+      - 'results/v311/**'
+      - '.github/workflows/v311-separated-arc-parity.yml'
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s tests -p 'test_separated_arc_parity_v311.py' -v
+      - run: python code/separated_arc_parity_v311.py | diff - results/v311/separated-arc-parity.json
