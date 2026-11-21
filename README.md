@@ -495,3 +495,9 @@ See the [November literature review](research/2026-11-literature-and-v212-plan.m
 - Convex quadrilaterals with summable registered motion can switch parity on an entire fixed interval at every step. An explicit family of limit squares accounts for every size between 81/289 and 117/289.
 - Rational estimates for one or more edited boundary regions protect a square even when four disjoint rough replacements remove every original contact. An exact 19-vertex example checks the four-contact case.
 - [Proof, limitations and replay](research/v310-moving-degree-and-scale-loss.md) · [Exact certificates](results/v310/scale-transfer.json)
+
+## v311. Separated-arc parity through infinitely many notch refinements
+
+- A four-cut identity detects consecutive square contacts on two disjoint source intervals. For every finite nonempty square census, an odd pair survives at the greatest distance between consecutive contacts, even when a large square's side coincides with a smaller square's diagonal.
+- One fixed pair of intervals works on every nonempty v220 notch stage and on its infinite limit. Eliminating two horizontal contacts reduces the degree to one planar crossing. Every registered Jordan perturbation within coordinate sup distance 1/512 has a square meeting all four designated arcs with side at least 255/256.
+- Exact censuses give different four-entry parity matrices on two perturbations of the same polygon, with combined bit one in both. [Proof](research/v311-separated-arc-parity.md) · [Exact results](results/v311/separated-arc-parity.json)
