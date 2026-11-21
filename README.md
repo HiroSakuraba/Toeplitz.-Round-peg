@@ -448,3 +448,10 @@ See the [November literature review](research/2026-11-literature-and-v212-plan.m
 - Two prescribed dyadic densities force a square on a class of curves built from pairs of equal-height sections. The same sweep works at every polygonal refinement and on an infinite-length Jordan limit, with square side at least **1/9**. Its contact positions can move.
 - An independent midline drift removes all rectangles using the selected vertical pairs. The unrestricted square-angle crossing remains open.
 - [Proof and replay](research/v300-bounded-density-square-crossing.md) · [Exact refinement records](results/v300/balanced-sweep.json)
+
+## v301 — Tilted squares after breaking the vertical pairing
+
+- Every nonzero seed shear of magnitude at most **1/100** has exactly one square. Opposite shear signs select different squares as the shear tends to zero. Every mixture of the original v300 weights misses the surviving square.
+- Replacing the wide weight by two end packets recovers a connected tilted rectangle crossing on a drift-dependent neighborhood, with side greater than **1/2** at the square.
+- A separate annulus argument gives a square of side at least **29√2/100** on every sheared rough refinement and its infinite-length limit. One prescribed family of moving boundary weights balances every square above that threshold.
+- [Proof and replay](research/v301-tilted-squares-and-boundary-weights.md) · [Exact certificate](results/v301/tilted-sweep.json)
