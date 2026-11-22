@@ -1,0 +1,28 @@
+name: v335 even-loop counterexample and fragility
+on:
+  pull_request:
+    paths:
+      - 'code/even_loop_fragility_v335.py'
+      - 'code/terrain_gluing_v334.py'
+      - 'tests/test_even_loop_fragility_v335.py'
+      - 'research/v335-even-loop-and-fragility.md'
+      - 'results/v335/**'
+      - '.github/workflows/v335-even-loop-fragility.yml'
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'numpy>=1.26,<3'
+      - run: python -m unittest discover -s tests -p 'test_even_loop_fragility_v335.py' -v
+        env:
+          REQUIRE_NUMERIC_DEPS: '1'
+      - run: python code/even_loop_fragility_v335.py | diff - results/v335/report.json
