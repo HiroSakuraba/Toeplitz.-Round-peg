@@ -4,6 +4,8 @@ on:
     paths:
       - 'code/residue_census_v331.py'
       - 'code/floer_parity_v331.py'
+      - 'code/floer_actions_v331.py'
+      - 'tests/test_floer_actions_v331.py'
       - 'tests/test_floer_parity_v331.py'
       - 'code/angular_windows_v328_v330.py'
       - 'code/polygon_orbit_census_v223.py'
@@ -32,4 +34,8 @@ jobs:
         env:
           REQUIRE_NUMERIC_DEPS: '1'
       - run: python code/residue_census_v331.py | diff - results/v331/census.json
+      - run: python -m unittest discover -s tests -p 'test_floer_actions_v331.py' -v
+        env:
+          REQUIRE_NUMERIC_DEPS: '1'
       - run: python code/floer_parity_v331.py | diff - results/v331/parity.json
+      - run: python code/floer_actions_v331.py | diff - results/v331/actions.json

@@ -75,6 +75,29 @@ The spectral value at π/2 belongs to the grading-two class. The integer grading
 
 Parity removes about half of the candidates and leaves tens of thousands at N = 30. The near-exact balance between even and odd is consistent with the Euler-characteristic constraint. So the grading modulo 2 does not select the carrier either. The integer grading could do more, since only grading exactly 2 qualifies among the even ones, but it requires the Maslov index of each preferred capping. Beyond that lies the Floer differential, which decides which grading-two generators actually represent the class.
 
+## Real actions from the preferred capping
+
+The residue test used actions only modulo A, because the return paths in (323.1) are free up to whole traversals of the curve. Greene–Lobb's preferred capping removes that freedom ([arXiv:2404.05179](https://arxiv.org/abs/2404.05179), Lemma 2.5).
+
+**Derivation.** Under (z, w) ↦ (midpoint, w − z), the complement of the diagonal Δ(ℂ) is ℂ × ℂ*. So a loop bounds a disk avoiding Δ(ℂ) exactly when w − z has winding zero along it. The Hamiltonian trajectory from p to x = R_θ(p) turns w − z by +θ. The preferred return path is therefore the unique pair-path in γ×γ minus its diagonal along which arg(w − z) changes by exactly −θ. Shifting the path by the core loop changes this by ±2π, and the code checks that it does. As in (323.1), the Hamiltonian term cancels the trajectory's own integral, leaving the real action
+
+    A(x) = ∫ (λ_z + λ_w) over the pair-path p → x along which arg(w − z) changes by +θ.
+
+**Checks.**
+- *Ellipse.* The major-axis branch gets action 2ab·arctan((a/b)·tan(θ/2)). Its θ-derivative is q₁², which is the derivative property. It runs from 0 at θ = 0 to πab at θ = π. At θ = π/2 the two branches' actions sum to the area.
+- *Convex pentagon.* The only even-parity generator has action 33.67, inside the spectral window [30.25, 39.66]. It is therefore the grading-two carrier, and its odd partner has action A − 33.67, which is the duality ℓ₁ = A − ℓ₂. The real-action derivation and the sign calibration were made independently, and here they agree.
+- *Duality everywhere.* On every square of the convex examples, in both orientations, and on all 158,721 spiral survivors at N = 30, the two generators' real actions sum to exactly A.
+
+**Result.** The spectral value at π/2 is a real number in [A/2, πR²/2]. A survivor can carry it only if one of its generators has real action in that window and even parity. On the spiral fixtures, the preferred capping winds up to 47 times (N = 24) and 59 times (N = 30), so real actions differ from residues by up to that many multiples of A.
+
+| Turns N | Residue survivors | Real action outside the window | Window generator odd | Window generator at a vertex contact | Candidates (real action in window, even parity) |
+| ---: | ---: | ---: | ---: | ---: | ---: |
+| 20 | 6 | 0 | 0 | 6 | 0 |
+| 24 | 2,617 | 1,573 | 500 | 43 | 501 |
+| 30 | 158,721 | 132,895 | 12,864 | 96 | 12,866 |
+
+The real-action window removes far more than parity did. At N = 30 the candidates fall from 79,278 (parity alone) to 12,866, about 8% of the residue survivors. Thousands of candidates remain, so carrier selection still needs more: the integer grading, or continuity of ℓ in θ along the action spectrum, or the differential itself.
+
 ## Replay
 
     python code/residue_census_v331.py              # N = 4, 8, 16, 20 (CI replay, about 15 s on 4 cores)
@@ -83,6 +106,9 @@ Parity removes about half of the candidates and leaves tens of thousands at N = 
     python code/floer_parity_v331.py                # calibration, Euler checks, parity at N = 20, 24 (CI replay)
     python code/floer_parity_v331.py --large        # parity at N = 30 (about 9 minutes)
     python -m unittest discover -s tests -p 'test_floer_parity_v331.py' -v
+    python code/floer_actions_v331.py               # real-action filter at N = 20, 24 (CI replay)
+    python code/floer_actions_v331.py --large       # real-action filter at N = 30 (about 10 minutes)
+    python -m unittest discover -s tests -p 'test_floer_actions_v331.py' -v
     python -m unittest discover -s tests -p 'test_residue_census_v331.py' -v
 
-The search needs numpy. [CI replay output](../results/v331/census.json) · [parity replay](../results/v331/parity.json) · [Large runs](../results/v331/large-runs.json) and the [genericity check](../results/v331/genericity.json) and the [N = 30 parity run](../results/v331/parity-large.json), recorded and not replayed in CI.
+The search needs numpy. [CI replay output](../results/v331/census.json) · [parity replay](../results/v331/parity.json) · [real-action replay](../results/v331/actions.json) · [Large runs](../results/v331/large-runs.json) and the [genericity check](../results/v331/genericity.json) the [N = 30 parity run](../results/v331/parity-large.json) and the [N = 30 real-action run](../results/v331/actions-large.json), recorded and not replayed in CI.

@@ -233,3 +233,10 @@ def carrier_filter(N, workers=4, fast=True):
         else:
             tally["odd_only"] += 1
     return {"N": N, **tally, "max_capping_turns": max(abs(k) for k in shifts)}
+
+
+if __name__ == "__main__":
+    import json
+    import sys
+    turns = (30,) if sys.argv[1:] == ["--large"] else (20, 24)
+    print(json.dumps({"carrier_filter": [carrier_filter(N) for N in turns]}, indent=2))
