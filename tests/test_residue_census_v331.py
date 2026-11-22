@@ -1,12 +1,21 @@
+"""v331 residue census. Needs numpy; set REQUIRE_NUMERIC_DEPS=1 to make a missing numpy a
+failure instead of a skip (the dedicated CI job does this)."""
 from fractions import Fraction as Q
 from pathlib import Path
+import os
 import sys
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "code"))
-from angular_windows_v328_v330 import area, radius_squared
+from angular_windows_v328_v330 import area, pi_enclosure, radius_squared
 from polygon_orbit_census_v223 import census_polygon, pt
-from residue_census_v331 import census, certify, float_search, midside_fixture, residue_distance
+try:
+    from residue_census_v331 import census, certify, degenerate_audit, float_search, midside_fixture, residue_distance
+    HAVE_NUMPY = True
+except ImportError:  # pragma: no cover - environment dependent
+    HAVE_NUMPY = False
+REQUIRE = os.environ.get("REQUIRE_NUMERIC_DEPS") == "1"
+needs_numpy = unittest.skipUnless(HAVE_NUMPY or REQUIRE, "numpy not installed")
 
 
 def squares_by_fast_search(P):
@@ -15,6 +24,7 @@ def squares_by_fast_search(P):
     return found
 
 
+@needs_numpy
 class AgreesWithExhaustiveCensus(unittest.TestCase):
     def test_irregular_twelve_gon(self):
         poly = [(0, 0), (5, 1), (9, 0), (11, 4), (8, 5), (10, 9), (6, 8), (4, 11), (2, 7), (-2, 9), (-1, 4), (-3, 2)]
@@ -24,6 +34,7 @@ class AgreesWithExhaustiveCensus(unittest.TestCase):
         self.assertEqual(len(reference), 7)
 
 
+@needs_numpy
 class SpiralCensus(unittest.TestCase):
     def test_fixture_keeps_the_square_diameter(self):
         for N in (4, 20, 40):
@@ -45,6 +56,18 @@ class SpiralCensus(unittest.TestCase):
         P = midside_fixture(20)
         self.assertEqual(residue_distance(P, top), top_distance)       # independent residue routine
         self.assertTrue(all(d >= row["spectral_gap_lower"] for d, _ in row["survivors"]))
+
+    def test_skipped_collinear_cases(self):
+        P = midside_fixture(20)
+        A = area(P)
+        gap = min(A/2, A-pi_enclosure(30)[1]*radius_squared(P)/2)
+        counts, families, point_survivors = degenerate_audit(P, gap, workers=2)
+        self.assertEqual(counts["other"], 0)
+        self.assertEqual(point_survivors, [])
+        self.assertEqual(len(families), 1)                       # the frame-box family of tilted squares
+        residues = {d for d in families[0]["residue_distances"]}
+        self.assertEqual(len(residues), 1)                       # action is constant along the family
+        self.assertLess(residues.pop(), gap)
 
 
 if __name__ == "__main__":

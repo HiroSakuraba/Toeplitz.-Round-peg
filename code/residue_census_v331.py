@@ -36,7 +36,7 @@ def midside_fixture(N, eps=Q(1, 2), height=Q(2)):
 
 # ---------------------------------------------------------------- floating search
 
-def _search_rows(P, rows, qmax2, keep_dist, area_f, tol=1e-9):
+def _search_rows(P, rows, qmax2, keep_dist, area_f, count_only=False, collect=False, tol=1e-9):
     n = len(P)
     A = np.array([[float(x), float(y)] for x, y in P])
     D = np.roll(A, -1, axis=0) - A
@@ -45,6 +45,8 @@ def _search_rows(P, rows, qmax2, keep_dist, area_f, tol=1e-9):
     Fcum = np.concatenate([[0.0], np.cumsum(0.5*crossAD)])[:n]
     smax2 = 2*qmax2
     kept, small, best, degenerate = set(), 0, 0.0, 0
+    best_count = [0]
+    flagged = []
 
     def clip(c0, c1, lo, hi):          # c0 + c1*lam >= 0
         with np.errstate(divide='ignore', invalid='ignore'):
@@ -73,6 +75,8 @@ def _search_rows(P, rows, qmax2, keep_dist, area_f, tol=1e-9):
                 nrm = np.abs(alpha)+np.abs(beta)
                 deg = nrm < 1e-14
                 degenerate += int(np.sum(deg & (np.abs(gamma) < 1e-12)))
+                if collect:
+                    flagged.extend((i, j, int(k), None, sigma) for k in np.nonzero(deg & (np.abs(gamma) < 1e-12))[0])
                 ok = ~deg
                 a2b2 = np.where(ok, alpha**2+beta**2, 1.0)
                 p0s, p0t = gamma*alpha/a2b2, gamma*beta/a2b2
@@ -104,7 +108,10 @@ def _search_rows(P, rows, qmax2, keep_dist, area_f, tol=1e-9):
                     good |= point[:, None]&(np.abs(cr) < 1e-12)&(mu2 >= -tol)&(mu2 <= 1+tol)
                     lam = np.where(point[:, None], 0.0, lam)
                     mu = np.where(point[:, None], mu2, mu)
-                degenerate += int(np.sum((np.abs(den) <= 1e-15)&~point[:, None]&(np.abs(cr) < 1e-12)))
+                collinear = (np.abs(den) <= 1e-15)&~point[:, None]&(np.abs(cr) < 1e-12)
+                degenerate += int(np.sum(collinear))
+                if collect:
+                    flagged.extend((i, j, int(ks[a]), int(l), sigma) for a, l in zip(*np.nonzero(collinear)))
                 aa, ll = np.nonzero(good)
                 if len(aa) == 0:
                     continue
@@ -123,8 +130,16 @@ def _search_rows(P, rows, qmax2, keep_dist, area_f, tol=1e-9):
                 dist = np.minimum(r, area_f-r)
                 if size_ok.any():
                     best = max(best, float(np.max(np.where(size_ok, dist, 0.0))))
-                for a, l in zip(aa[size_ok & (dist >= keep_dist)], ll[size_ok & (dist >= keep_dist)]):
+                passing = size_ok & (dist >= keep_dist)
+                if count_only:
+                    best_count[0] += int(np.sum(passing))
+                    continue
+                for a, l in zip(aa[passing], ll[passing]):
                     kept.add((i, j, int(ks[a]), int(l), sigma))
+    if collect:
+        return flagged
+    if count_only:
+        return best_count[0], small, best, degenerate
     return kept, small, best, degenerate
 
 
@@ -132,17 +147,25 @@ def _job(args):
     return _search_rows(*args)
 
 
-def float_search(P, qmax2=1.0, keep_dist=-1.0, area_f=None, workers=1, chunks=16):
+def _collect_job(args):
+    P, rows, qmax2 = args
+    return _search_rows(P, rows, qmax2, -1.0, 1.0, collect=True)
+
+
+def float_search(P, qmax2=1.0, keep_dist=-1.0, area_f=None, workers=1, chunks=16, count_only=False):
+    """Floating candidate search. With count_only, return the number of raw edge-quadruple hits
+    passing the filters instead of the set (each square is hit several times)."""
     n = len(P)
     if area_f is None:
         area_f = float(area(P))
-    jobs = [(P, list(range(r, n, chunks)), qmax2, keep_dist, area_f) for r in range(chunks)]
+    jobs = [(P, list(range(r, n, chunks)), qmax2, keep_dist, area_f, count_only) for r in range(chunks)]
     if workers > 1:
         with Pool(workers) as pool:
             parts = pool.map(_job, jobs)
     else:
         parts = [_job(job) for job in jobs]
-    return (set().union(*[p[0] for p in parts]), sum(p[1] for p in parts),
+    first = sum(p[0] for p in parts) if count_only else set().union(*[p[0] for p in parts])
+    return (first, sum(p[1] for p in parts),
             max(p[2] for p in parts), sum(p[3] for p in parts))
 
 
@@ -240,6 +263,114 @@ def residue_distance(P, square, F=None, A=None):
     return min(r, A-r)
 
 
+def _feasible_segment(P, case):
+    """Exact (s,t)-set where all four contacts of a flagged edge tuple hold, as a list of extreme
+    points (empty, one point, or two endpoints of a segment)."""
+    i, j, k, l, sigma = case
+    n = len(P)
+    E = lambda m: (P[m], P[(m+1) % n])
+    vec = lambda a, b: (b[0]-a[0], b[1]-a[1])
+    rot = lambda v: (-sigma*v[1], sigma*v[0])
+    (ai, bi), (aj, bj) = E(i), E(j)
+    di, dj = vec(ai, bi), vec(aj, bj)
+    w0, Jdi, Jdj = rot(vec(ai, aj)), rot(di), rot(dj)
+    v3 = ((ai[0]+w0[0], ai[1]+w0[1]), (di[0]-Jdi[0], di[1]-Jdi[1]), Jdj)
+    v2 = ((aj[0]+w0[0], aj[1]+w0[1]), (-Jdi[0], -Jdi[1]), (dj[0]+Jdj[0], dj[1]+Jdj[1]))
+    eqs, ineqs = [], [(1, 0, 0), (-1, 0, 1), (0, 1, 0), (0, -1, 1)]     # a s + b t + c >= 0
+    for edge, (P0, As, Bs) in (([k], v3), ([l] if l is not None else [], v2)):
+        for m in edge:
+            a, b = E(m)
+            d = vec(a, b)
+            dd = d[0]**2+d[1]**2
+            eqs.append((d[0]*As[1]-d[1]*As[0], d[0]*Bs[1]-d[1]*Bs[0], d[0]*(P0[1]-a[1])-d[1]*(P0[0]-a[0])))
+            u = ((As[0]*d[0]+As[1]*d[1]), (Bs[0]*d[0]+Bs[1]*d[1]), (P0[0]-a[0])*d[0]+(P0[1]-a[1])*d[1])
+            ineqs += [u, (-u[0], -u[1], dd-u[2])]
+    if l is None:   # type A: the third corner still has to lie on some edge; handled by the caller
+        return None
+    eqs = [e for e in eqs if (e[0], e[1]) != (0, 0) or e[2] != 0]
+    if any((e[0], e[1]) == (0, 0) for e in eqs):
+        return []
+    lines = eqs[:1]
+    if len(eqs) == 2 and eqs[0][0]*eqs[1][1]-eqs[0][1]*eqs[1][0] != 0:
+        return "isolated"
+    if not lines:
+        return "two-dimensional"
+    a, b, c = lines[0]
+    # parametrize a s + b t + c = 0 as (s,t) = p + lam*(b,-a)
+    p0 = (-c*a/(a*a+b*b), -c*b/(a*a+b*b))
+    lo, hi = None, None
+    for x, y, z in ineqs:
+        c0, c1 = x*p0[0]+y*p0[1]+z, x*b-y*a
+        if c1 == 0:
+            if c0 < 0:
+                return []
+            continue
+        r = -c0/c1
+        if c1 > 0:
+            lo = r if lo is None else max(lo, r)
+        else:
+            hi = r if hi is None else min(hi, r)
+    if lo is None or hi is None or lo > hi:
+        return []
+    return [(p0[0]+lam*b, p0[1]-lam*a) for lam in ((lo,) if lo == hi else (lo, hi))]
+
+
+def degenerate_audit(P, gap, qmax2=Q(1), workers=1, chunks=16):
+    """Classify every collinear configuration the floating search skipped, exactly.
+
+    Returns (counts, families, point_survivors): families are positive-size continua with a
+    square of half-diagonal below the cutoff, each with its residue distances at the two ends and
+    the midpoint; point_survivors are isolated squares at range boundaries whose residue reaches
+    the gap (these must already be among the certified survivors)."""
+    n = len(P)
+    jobs = [(P, list(range(r, n, chunks)), float(qmax2)) for r in range(chunks)]
+    if workers > 1:
+        with Pool(workers) as pool:
+            parts = pool.map(_collect_job, jobs)
+    else:
+        parts = [_collect_job(job) for job in jobs]
+    flagged = [c for part in parts for c in part]
+    counts = {"flagged": len(flagged), "empty": 0, "single_point": 0, "segment": 0, "other": 0}
+    families, point_survivors, seen = [], [], set()
+    for case in flagged:
+        res = _feasible_segment(P, case)
+        if res is None or isinstance(res, str):
+            counts["other"] += 1
+            continue
+        if not res:
+            counts["empty"] += 1
+            continue
+        counts["single_point" if len(res) == 1 else "segment"] += 1
+        i, j, k, l, sigma = case
+        a, b, c, d = P[i], P[(i+1) % n], P[j], P[(j+1) % n]
+        rot = lambda v: (-sigma*v[1], sigma*v[0])
+
+        def square(st):
+            s_, t_ = st
+            v0 = (a[0]+s_*(b[0]-a[0]), a[1]+s_*(b[1]-a[1]))
+            v1 = (c[0]+t_*(d[0]-c[0]), c[1]+t_*(d[1]-c[1]))
+            w = rot((v1[0]-v0[0], v1[1]-v0[1]))
+            v3, v2 = (v0[0]+w[0], v0[1]+w[1]), (v1[0]+w[0], v1[1]+w[1])
+            return (v0, v1, v2, v3) if sigma == 1 else (v0, v3, v2, v1)
+        points = res if len(res) == 1 else [res[0], ((res[0][0]+res[1][0])/2, (res[0][1]+res[1][1])/2), res[1]]
+        squares = [square(st) for st in points]
+        side2 = [(q[1][0]-q[0][0])**2+(q[1][1]-q[0][1])**2 for q in squares]
+        if max(side2) == 0 or min(side2)/2 >= qmax2:
+            continue
+        key = frozenset(frozenset(q) for q in squares)
+        if key in seen:
+            continue
+        seen.add(key)
+        dists = [residue_distance(P, q) if s2 > 0 else None for q, s2 in zip(squares, side2)]
+        if len(res) == 1:
+            if dists[0] is not None and dists[0] >= gap:
+                point_survivors.append((dists[0], squares[0]))
+        else:
+            families.append({"edges": case, "sides": [float(x)**0.5 for x in side2],
+                             "residue_distances": dists})
+    return counts, families, point_survivors
+
+
 def census(N, workers=4, margin=0.05):
     P = midside_fixture(N)
     A, R2 = area(P), radius_squared(P)
@@ -267,6 +398,30 @@ def summary(row, top=5):
     return out
 
 
+def large_runs(workers=4):
+    """Exact censuses at N = 24 and 30 and a floating count at the retuned N = 40.
+
+    At N = 40 exact certification of every survivor needs more memory than a 16 GB machine
+    has, so only raw floating hits are counted; a square with contacts in edge interiors is
+    hit 8 times (4 starting corners x 2 orientations), the ratio measured at N = 30."""
+    rows = [summary(census(N, workers=workers)) for N in (24, 30)]
+    P = midside_fixture(40)
+    A, R2 = area(P), radius_squared(P)
+    p = pi_enclosure(30)
+    gap = min(A/2, A-p[1]*R2/2)
+    hits, small, best, _ = float_search(P, keep_dist=float(gap), area_f=float(A), workers=workers, count_only=True)
+    tagged = (Q(19*40, 24)-Q(1, 384*40)-Q(1, 2))/4
+    rows.append({"N": 40, "vertices": len(P), "spectral_gap_lower": float(gap),
+                 "marked_square_residue": float(min(tagged % A, A-tagged % A)),
+                 "small_square_hits": small, "raw_hits_at_or_above_gap": hits,
+                 "estimated_survivors": hits//8, "max_float_residue_distance": round(best, 6),
+                 "certified": False})
+    return rows
+
+
 if __name__ == "__main__":
-    turns = [int(x) for x in sys.argv[1:]] or [4, 8, 16, 20]
-    print(json.dumps([summary(census(N)) for N in turns], indent=2))
+    if sys.argv[1:] == ["--large"]:
+        print(json.dumps(large_runs(), indent=2))
+    else:
+        turns = [int(x) for x in sys.argv[1:]] or [4, 8, 16, 20]
+        print(json.dumps([summary(census(N)) for N in turns], indent=2))

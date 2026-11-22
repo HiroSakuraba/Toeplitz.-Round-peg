@@ -1,0 +1,177 @@
+[
+  {
+    "N": 4,
+    "vertices": 45,
+    "area": 16.71142578125,
+    "radius_sq": 8.0,
+    "spectral_gap_lower": 4.145055166890827,
+    "marked_square_residue": 0.66650390625,
+    "small_square_hits": 77162,
+    "max_float_residue_distance": 1.12793,
+    "candidates_certified": 0,
+    "degenerate_flags": 526,
+    "singular_systems": 0,
+    "survivor_count": 0,
+    "marked_square_survives": false,
+    "top_survivors": []
+  },
+  {
+    "N": 8,
+    "vertices": 77,
+    "area": 16.711181640625,
+    "radius_sq": 8.0,
+    "spectral_gap_lower": 4.144811026265827,
+    "marked_square_residue": 1.458251953125,
+    "small_square_hits": 1012938,
+    "max_float_residue_distance": 1.919434,
+    "candidates_certified": 0,
+    "degenerate_flags": 654,
+    "singular_systems": 0,
+    "survivor_count": 0,
+    "marked_square_survives": false,
+    "top_survivors": []
+  },
+  {
+    "N": 16,
+    "vertices": 141,
+    "area": 16.7110595703125,
+    "radius_sq": 8.0,
+    "spectral_gap_lower": 4.144688955953327,
+    "marked_square_residue": 3.0416259765625,
+    "small_square_hits": 14949570,
+    "max_float_residue_distance": 3.502686,
+    "candidates_certified": 0,
+    "degenerate_flags": 910,
+    "singular_systems": 0,
+    "survivor_count": 0,
+    "marked_square_survives": false,
+    "top_survivors": []
+  },
+  {
+    "N": 20,
+    "vertices": 173,
+    "area": 16.71103515625,
+    "radius_sq": 8.0,
+    "spectral_gap_lower": 4.144664541890827,
+    "marked_square_residue": 3.83330078125,
+    "small_square_hits": 35972894,
+    "max_float_residue_distance": 4.294336,
+    "candidates_certified": 7,
+    "degenerate_flags": 1038,
+    "singular_systems": 0,
+    "survivor_count": 6,
+    "marked_square_survives": false,
+    "top_survivors": [
+      {
+        "residue_distance": 4.2943359375,
+        "side": 0.5,
+        "vertices": [
+          [
+            "-1",
+            "2"
+          ],
+          [
+            "-1/2",
+            "2"
+          ],
+          [
+            "-1/2",
+            "5/2"
+          ],
+          [
+            "-1",
+            "5/2"
+          ]
+        ]
+      },
+      {
+        "residue_distance": 4.278662261487539,
+        "side": 0.6253894080996885,
+        "vertices": [
+          [
+            "-1",
+            "2407/1284"
+          ],
+          [
+            "-481/1284",
+            "2407/1284"
+          ],
+          [
+            "-481/1284",
+            "5/2"
+          ],
+          [
+            "-1",
+            "5/2"
+          ]
+        ]
+      },
+      {
+        "residue_distance": 4.247607573987539,
+        "side": 0.37461059190031154,
+        "vertices": [
+          [
+            "-803/1284",
+            "2729/1284"
+          ],
+          [
+            "-803/1284",
+            "5/2"
+          ],
+          [
+            "-1",
+            "5/2"
+          ],
+          [
+            "-1",
+            "2729/1284"
+          ]
+        ]
+      },
+      {
+        "residue_distance": 4.214984893329327,
+        "side": 0.3730480769230769,
+        "vertices": [
+          [
+            "-1",
+            "221203/104000"
+          ],
+          [
+            "-65203/104000",
+            "221203/104000"
+          ],
+          [
+            "-65203/104000",
+            "5/2"
+          ],
+          [
+            "-1",
+            "5/2"
+          ]
+        ]
+      },
+      {
+        "residue_distance": 4.183930205829327,
+        "side": 0.626951923076923,
+        "vertices": [
+          [
+            "-38797/104000",
+            "5/2"
+          ],
+          [
+            "-1",
+            "5/2"
+          ],
+          [
+            "-1",
+            "194797/104000"
+          ],
+          [
+            "-38797/104000",
+            "194797/104000"
+          ]
+        ]
+      }
+    ]
+  }
+]
