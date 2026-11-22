@@ -419,8 +419,61 @@ def large_runs(workers=4):
     return rows
 
 
+def _survivors_of(P, workers=4):
+    A, R2 = area(P), radius_squared(P)
+    p = pi_enclosure(30)
+    gap = min(A/2, A-p[1]*R2/2)
+    quads, *_ = float_search(P, keep_dist=float(gap)-0.05, area_f=float(A), workers=workers)
+    found, singular = certify_parallel(P, quads, workers=workers)
+    return gap, [(d, s) for s, d in found.values() if d >= gap], singular
+
+
+def perturbed(P, delta, seed):
+    """Move every vertex by a seeded rational offset in [-delta, delta]^2."""
+    import random
+    rng = random.Random(seed)
+    return [(x+Q(rng.randint(-1000, 1000), 1000)*delta, y+Q(rng.randint(-1000, 1000), 1000)*delta) for x, y in P]
+
+
+def chamfered(P, eta):
+    """Cut every corner: replace vertex b by the points at max-norm distance eta along both edges."""
+    out, n = [], len(P)
+    for i in range(n):
+        b = P[i]
+        for u in (P[i-1], P[(i+1) % n]):
+            d = (u[0]-b[0], u[1]-b[1])
+            f = eta/max(abs(d[0]), abs(d[1]))
+            out.append((b[0]+f*d[0], b[1]+f*d[1]))
+    return out
+
+
+def genericity(N=24, size=Q(1, 10000), radius=2e-3, workers=4):
+    """Rerun the census on perturbed and corner-cut versions of the N-turn fixture.
+
+    Survivors are matched by centre within `radius`; since spiral arms are about 1.3e-3 apart,
+    a match may be a neighbouring square, so only the survivor counts are matching-free."""
+    from polygon_orbit_census_v223 import validate_jordan_polygon, pt
+    base = midside_fixture(N)
+    centre = lambda sq: (float(sum(v[0] for v in sq)/4), float(sum(v[1] for v in sq)/4))
+    _, base_surv, _ = _survivors_of(base, workers)
+    base_c = [centre(sq) for _, sq in base_surv]
+    near = lambda c, pool: any(abs(c[0]-x) <= radius and abs(c[1]-y) <= radius for x, y in pool)
+    rows = [{"polygon": "base", "vertices": len(base), "survivors": len(base_surv)}]
+    for label, P in (("perturbed, seed 1", perturbed(base, size, 1)), ("perturbed, seed 2", perturbed(base, size, 2)),
+                     ("corners cut", chamfered(base, size))):
+        validate_jordan_polygon([pt(*v) for v in P])
+        gap, surv, singular = _survivors_of(P, workers)
+        c = [centre(sq) for _, sq in surv]
+        rows.append({"polygon": label, "vertices": len(P), "spectral_gap_lower": float(gap), "survivors": len(surv),
+                     "singular_systems": singular, "base_survivors_matched": sum(near(x, c) for x in base_c),
+                     "new_survivors": sum(not near(x, base_c) for x in c)})
+    return {"N": N, "displacement": str(size), "match_radius": radius, "rows": rows}
+
+
 if __name__ == "__main__":
-    if sys.argv[1:] == ["--large"]:
+    if sys.argv[1:] == ["--genericity"]:
+        print(json.dumps(genericity(), indent=2))
+    elif sys.argv[1:] == ["--large"]:
         print(json.dumps(large_runs(), indent=2))
     else:
         turns = [int(x) for x in sys.argv[1:]] or [4, 8, 16, 20]

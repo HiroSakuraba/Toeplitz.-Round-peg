@@ -1,0 +1,39 @@
+{
+  "N": 24,
+  "displacement": "1/10000",
+  "match_radius": 0.002,
+  "rows": [
+    {
+      "polygon": "base",
+      "vertices": 205,
+      "survivors": 2617
+    },
+    {
+      "polygon": "perturbed, seed 1",
+      "vertices": 205,
+      "spectral_gap_lower": 4.144372529371687,
+      "survivors": 2489,
+      "singular_systems": 0,
+      "base_survivors_matched": 2598,
+      "new_survivors": 2
+    },
+    {
+      "polygon": "perturbed, seed 2",
+      "vertices": 205,
+      "spectral_gap_lower": 4.144553037572908,
+      "survivors": 2610,
+      "singular_systems": 0,
+      "base_survivors_matched": 2612,
+      "new_survivors": 0
+    },
+    {
+      "polygon": "corners cut",
+      "vertices": 410,
+      "spectral_gap_lower": 4.145276548688946,
+      "survivors": 1940,
+      "singular_systems": 0,
+      "base_survivors_matched": 2577,
+      "new_survivors": 0
+    }
+  ]
+}

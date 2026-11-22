@@ -41,6 +41,17 @@ The six survivors at N = 20 lie between the gadget's outer frame and the spiral 
 
 **The survivors are robust.** At N = 24, 2,553 of the 2,617 survivors have all four contacts in the interiors of edges. Each solves a nonsingular exact system, so it persists under sufficiently small smoothing (implicit function theorem), and its residue changes continuously. The explosion is not an artifact of polygon corners.
 
+**Genericity check.** The N = 24 census was rerun on three modified polygons, each verified to be a Jordan polygon, with every survivor certified exactly. The modifications are of size 10⁻⁴, well below the spacing of about 1.3·10⁻³ between spiral arms.
+
+| Polygon | Vertices | Survivors | Base survivors with a survivor within 2·10⁻³ | New survivors |
+| --- | ---: | ---: | ---: | ---: |
+| Base fixture | 205 | 2,617 | — | — |
+| Every vertex moved by a seeded rational offset in [−10⁻⁴, 10⁻⁴]² (seed 1) | 205 | 2,489 | 2,598 | 2 |
+| The same, seed 2 | 205 | 2,610 | 2,612 | 0 |
+| Every corner cut at max-norm distance 10⁻⁴ along both edges | 410 | 1,940 | 2,577 | 0 |
+
+Random perturbations change the count by at most 5%. The losses come from survivors just above the gap whose residues shift slightly below it. Cutting every corner removes every contact at an original vertex, and about three-quarters of the survivors remain. The matching column is approximate: the radius exceeds the arm spacing, so a match may be a neighbouring square. The survivor counts do not depend on the matching.
+
 ## Interpretation
 
 - **Threshold behaviour.** Below the threshold, the census agrees with Lemma 330.1: every small square is excluded, and the largest residue distance stays below G. Above it, residues fill the spectral window. By N = 40 the largest found distance, 8.253, is near A/2 ≈ 8.356, where the retuned family's spectral value lies.
@@ -52,6 +63,7 @@ The six survivors at N = 20 lie between the gadget's outer frame and the spiral 
 
     python code/residue_census_v331.py              # N = 4, 8, 16, 20 (CI replay, about 15 s on 4 cores)
     python code/residue_census_v331.py --large      # N = 24, 30 exact and N = 40 counted (minutes)
+    python code/residue_census_v331.py --genericity # perturbed and corner-cut N = 24 (about 2 minutes)
     python -m unittest discover -s tests -p 'test_residue_census_v331.py' -v
 
-The search needs numpy. [CI replay output](../results/v331/census.json) · [Large runs](../results/v331/large-runs.json), recorded and not replayed in CI.
+The search needs numpy. [CI replay output](../results/v331/census.json) · [Large runs](../results/v331/large-runs.json) and the [genericity check](../results/v331/genericity.json), recorded and not replayed in CI.
