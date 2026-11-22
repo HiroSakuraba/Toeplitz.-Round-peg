@@ -1,11 +1,13 @@
 # Toeplitz square-peg research
 
 **Research program:** Benjamin John Schulz (GitHub: HiroSakuraba)  
-**Status as of 2026-11-21:** Research in progress (latest integrated version: **v317**). Exact square-census, relative-degree, parity and winding certificates have been proved for selected polygonal and rough families; the general square-peg conjecture for arbitrary Jordan curves is **not proved** here.
+**Status as of 2026-11-21:** Research in progress (latest integrated version: **v322**). Exact square-census, relative-degree, parity and winding certificates have been proved for selected polygonal and rough families; the general square-peg conjecture for arbitrary Jordan curves is **not proved** here.
 
 The [Toeplitz square-peg problem](https://en.wikipedia.org/wiki/Inscribed_square_problem) asks whether every Jordan curve contains four distinct vertices of a nondegenerate Euclidean square. This is a versioned research archive of constructive half-square approaches, local certificates, geometric obstructions, analytic energy methods, and supporting computation.
 
 ## Latest certified milestones (21 November 2026)
+
+- **[v318–v322: support-free spectral noncollapse](research/v318-v322-support-free-spectral.md)** proves a largest-rectangle radius envelope for arbitrary Jordan curves, an angular mass bound, and a near-square-to-odd-local-degree transfer. An exact scalar plateau countermodel excludes a proof using only the known spectral endpoint, Lipschitz and subadditivity bounds. Positive central spectral mass remains open; this is a route around the support-box selection problem, not a solution to Toeplitz.
 
 - **[v317: selecting two local graph arcs](research/v317-neck-lens.md)** gives four height comparisons that keep Rifford's large square off artificial closing segments. A diagonal grid search selects the arcs from an unmarked boundary. A four-line degree certificate then forces a square of side greater than 3 on a folded refinement family in which all monotone runs shrink in both diagonal frames.
 - **[v316: mesh-independent square bounds for terrains and folded bases](research/v316-roof-shear.md)** proves that every flat-base grid terrain carries a lattice square at least as large as its largest contained axis-aligned square. A two-arc degree test also covers folded bases. On a refining staircase its side bound tends to 5√2 while every straight edge shrinks to zero.
