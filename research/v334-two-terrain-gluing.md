@@ -49,7 +49,7 @@ The bound is sharp: 38 of 20,000 random glued pairs attain equality, with the la
 
 | Search | Instances | Lowest M/i found |
 | --- | ---: | ---: |
-| Random glued pairs (heights ≤ 6, widths ≤ 7) | 4,000 | 2/√5 ≈ 0.894 (2 instances below 1) |
+| Random glued pairs (heights ≤ 6, widths ≤ 7; 3,812 of 4,000 have i ≥ 2) | 3,812 | 2/√5 ≈ 0.894 (2 instances below 1) |
 | Hill-climbing, 24 seeded runs of 700 steps (heights and widths ≤ 12) | about 17,000 evaluations | 5/7 ≈ 0.714 |
 | Structured family (three roof blocks plus an end block, scale up to 40) | 5,997 | 0.738 |
 
