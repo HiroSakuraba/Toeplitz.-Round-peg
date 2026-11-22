@@ -75,6 +75,11 @@ class ConvexExamples(unittest.TestCase):
 
 @needs_numpy
 class SpiralCarriers(unittest.TestCase):
+    def test_census_without_survivors(self):
+        # review finding on PR #86: an empty census used to raise in max()
+        row = carrier_filter(4, workers=1)
+        self.assertEqual((row["survivors"], row["candidates"], row["max_capping_turns"]), (0, 0, 0))
+
     def test_twenty_four_turns(self):
         row = carrier_filter(24, workers=2)
         self.assertEqual(row["duality_failures"], 0)

@@ -232,7 +232,7 @@ def carrier_filter(N, workers=4, fast=True):
             tally["vertex_contact"] += 1
         else:
             tally["odd_only"] += 1
-    return {"N": N, **tally, "max_capping_turns": max(abs(k) for k in shifts)}
+    return {"N": N, **tally, "max_capping_turns": max((abs(k) for k in shifts), default=0)}
 
 
 if __name__ == "__main__":
