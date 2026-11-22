@@ -1,0 +1,24 @@
+{
+  "carrier_filter": [
+    {
+      "N": 20,
+      "survivors": 6,
+      "no_real_action_in_window": 0,
+      "odd_only": 0,
+      "vertex_contact": 6,
+      "candidates": 0,
+      "duality_failures": 0,
+      "max_capping_turns": 0
+    },
+    {
+      "N": 24,
+      "survivors": 2617,
+      "no_real_action_in_window": 1573,
+      "odd_only": 500,
+      "vertex_contact": 43,
+      "candidates": 501,
+      "duality_failures": 0,
+      "max_capping_turns": 47
+    }
+  ]
+}
