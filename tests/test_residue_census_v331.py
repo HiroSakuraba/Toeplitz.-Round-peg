@@ -69,6 +69,16 @@ class SpiralCensus(unittest.TestCase):
         self.assertEqual(len(residues), 1)                       # action is constant along the family
         self.assertLess(residues.pop(), gap)
 
+    def test_family_minimum_can_be_interior(self):
+        # [0, 1.99]^2 with the bottom-left corner cut: the family of tilted squares on the four
+        # original sides has its smallest square strictly inside the parameter interval, below
+        # every sampled endpoint and the midpoint (review finding on PR #85).
+        L = Q(199, 100)
+        P = [(Q(199, 2000), Q(0)), (L, Q(0)), (L, L), (Q(0), L), (Q(0), Q(199, 400))]
+        _, families, _ = degenerate_audit(P, Q(0), qmax2=Q(1))
+        self.assertEqual(len(families), 1)
+        self.assertTrue(all(s*s/2 > 1 for s in families[0]["sides"]))   # every sample misses it
+
 
 if __name__ == "__main__":
     unittest.main()

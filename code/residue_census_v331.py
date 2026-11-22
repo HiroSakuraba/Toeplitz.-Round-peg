@@ -355,7 +355,18 @@ def degenerate_audit(P, gap, qmax2=Q(1), workers=1, chunks=16):
         points = res if len(res) == 1 else [res[0], ((res[0][0]+res[1][0])/2, (res[0][1]+res[1][1])/2), res[1]]
         squares = [square(st) for st in points]
         side2 = [(q[1][0]-q[0][0])**2+(q[1][1]-q[0][1])**2 for q in squares]
-        if max(side2) == 0 or min(side2)/2 >= qmax2:
+        smallest = min(side2)
+        if len(res) == 2:
+            # The side vector is affine along the segment, so side^2 is a convex quadratic in the
+            # segment parameter mu in [0,1]; minimize it exactly (the minimum may be interior).
+            w0 = (squares[0][1][0]-squares[0][0][0], squares[0][1][1]-squares[0][0][1])
+            w1 = (squares[-1][1][0]-squares[-1][0][0], squares[-1][1][1]-squares[-1][0][1])
+            dw = (w1[0]-w0[0], w1[1]-w0[1])
+            dd = dw[0]**2+dw[1]**2
+            if dd:
+                mu = min(Q(1), max(Q(0), -(w0[0]*dw[0]+w0[1]*dw[1])/dd))
+                smallest = (w0[0]+mu*dw[0])**2+(w0[1]+mu*dw[1])**2
+        if max(side2) == 0 or smallest/2 >= qmax2:
             continue
         key = frozenset(frozenset(q) for q in squares)
         if key in seen:
