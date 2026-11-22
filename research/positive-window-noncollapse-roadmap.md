@@ -2,6 +2,8 @@
 
 **Objective.** Given a Jordan curve, construct from its geometry a positive side cutoff and arbitrarily fine registered polygonal approximations with odd local square degree above that cutoff. A universal constant times the inradius is the quantitative goal. A positive, independently computable curve-specific bound would already suffice for square existence. The published repository milestone is v327. The six versions below are proposed research stages.
 
+**Status.** The first implementation tranche (v328, v329, v330) is in [v328–v330](v328-v330-windows-ellipses-spirals.md). v331–v333 remain proposals.
+
 **First decision.** The original v324 marked spiral square can already be excluded as the upper spectral carrier at the square angle. A change in its turn count removes that strict exclusion in the limit. Use both fixtures before committing to a Floer computation. The calculation is in v330 below.
 
 The analytic inspiration is positive localization on selected windows in *Dirichlet L-functions and the critical line*, §2, pp. 4–5. Here we localize in the angle between rectangle diagonals. The proof uses the Greene–Lobb derivative theorem and the repository's compactness argument. It needs no claim about Dirichlet zeros. [Greene–Lobb, §5, Theorem 5.1](https://arxiv.org/html/2604.17116v1#S5) · [v318–v322](v318-v322-support-free-spectral.md)
