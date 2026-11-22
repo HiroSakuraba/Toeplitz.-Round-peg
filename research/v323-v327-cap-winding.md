@@ -6,6 +6,15 @@ Benjamin John Schulz · November 2026
 
 Inputs: Greene–Lobb, [Floer homology and square pegs](https://arxiv.org/html/2404.05179v2), §§2–5, especially Lemma 5.1; [Jordan curves inscribe a positive measure of rectangles](https://arxiv.org/html/2604.17116v1), §2, Theorem 5.1 and its proof. We use the conventions H(z,w)=|z-w|²/4, positive rotation by t of the relative coordinate, and action equal to integrated Hamiltonian minus cap area. Write A for the positive area of the bounded domain, not the signed area of the chosen registration. All action identities below are **modulo A** unless explicitly stated. For generic smooth curves use the actual real action and spectrality from those papers; a PL action residue is the elementary cap expression, not an assertion of PL Floer theory.
 
+## Relation to the cited papers and to earlier versions
+
+- **Cap identity (v323).** (323.1)–(323.3) rewrite exactly the cap computation behind Greene–Lobb, arXiv:2404.05179, Lemma 5.1 (restated as Lemma 2.1 of arXiv:2604.17116). In arXiv:2407.07798, §1, they note that the earlier paper already turned an action gap into a rectangle-size bound depending on length. The new ingredient here is the joint winding function W_1+W_2 in place of length, together with the payment (323.4).
+- **Single carrier (v325).** That one rectangle realizes both the spectral value and its derivative is read from the proof of Greene–Lobb, arXiv:2604.17116, Theorem 5.1. The step from central mass to a square is the transfer theorem of [v277](v277-localized-spectral-slope.md), as sharpened in v318.
+- **Dichotomy (v327).** Ruling out endpoint saturation when A > pi R²/2 is the theta = pi/2 case of the Greene–Lobb argument for their Theorem B. For a rectifiable curve, the interior-action alternative already contradicts their Lemma 5.1. The dichotomy therefore says something new only for nonrectifiable curves.
+- **Duality (v326).** This is property (7) of arXiv:2407.07798, Theorem 1.1: ell_1(gamma, theta) + ell_2(gamma, pi - theta) = Area(gamma).
+
+The v324 spiral, the winding payment and the endpoint scalar model are new here.
+
 ## v323. Exact two-arc reduction, with no length estimate
 
 Consider a nondegenerate t-rectangle, 0<t<pi. Its diagonal endpoints p1,p2 rotate to p1',p2', about c with radius q. Choose two paths E_i on the Jordan boundary returning p_i' to p_i. For a smooth Jordan loop, use the cap construction of Greene–Lobb Lemma 5.1: paths in the deleted product may be chosen by compatible lifts, and adjusting their winding about the diagonal changes the symplectic area by a multiple of A (the core contributes 2A). Arbitrary choices of the individual projected return paths differ from these by integer traversals of the boundary, also invisible modulo A. Thus we may evaluate using the short-in-parameter arcs without requiring their simultaneous lift to avoid the diagonal.
