@@ -12,6 +12,17 @@ External input: Greene and Lobb, [Jordan curves inscribe a positive measure of r
 
 Use registered generic smooth approximations gamma_n with enclosed areas A_n→A. Existence even for a positive-area Jordan boundary: a Riemann map from the disk to D extends homeomorphically to the closed disk by Carathéodory's theorem. Images of circles of radii tending to 1 from below converge uniformly in the induced registration, enclose nested domains exhausting D, and are smooth embedded curves. Approximate each by a generic smooth embedding in the smooth topology with registration and area errors tending to zero (area is continuous in C¹ on smooth loops). Reparameterize by the boundary correspondence if a different registration is given. One can also rescale each curve by sqrt(A/A_n) to have exact area A if needed, since scaling preserves genericity of the rectangle and binormal configuration spaces. None of this assumes rectifiability of Gamma. Arbitrary C⁰ approximations without area control are not substituted for this construction.
 
+## Relation to earlier versions and to the cited papers
+
+Several statements below restate or sharpen earlier results; they are not new in substance.
+
+- **Central slope gives a square (v318, v322).** This is the transfer theorem of [v277](v277-localized-spectral-slope.md). Upper semicontinuity of the envelope sharpens v277's side bound from sqrt(c) to sqrt(2m).
+- **Scalar no-go (v319).** [v270](v270-spectral-axiom-no-go.md) already showed that monotonicity, the Lipschitz cap, subadditivity and the endpoint values do not force a positive derivative at pi/2. Its countermodel is strictly increasing with an isolated zero derivative there. v319 adds a model with a flat central interval and uses it to show that the v320 window bound is sharp.
+- **Angular budgets (v318, v320).** The bound integral_0^pi M_Gamma² >= A is a size-weighted form of the Greene–Lobb proof of Theorem A (arXiv:2604.17116, §2). The window bound repeats that argument on a central interval. The prefix bound L(t) >= A/ceil(pi/t) is the subadditivity step in their proof of Theorem B.
+- **Action gap and length payment (v321B).** The action gap for A > pi K/2 is the case theta = pi/2 of the Greene–Lobb argument for Theorem B. The length payment quantifies the cap estimate in their Lemma 5.1 (arXiv:2404.05179). They note in arXiv:2407.07798, §1, that their earlier work already turned an action gap into a rectangle-size bound depending on length.
+
+What is new here is the upper-semicontinuous envelope M_Gamma with the domination inequality of Theorem 318.2, the plateau model and its sharpness, and the explicit form liminf rho_n T_n >= eta of the length payment.
+
 ## v318. Largest-radius envelope and domination theorem
 
 For t in (0,pi), define M_Gamma(t) as the largest q for a t-rectangle on Gamma, allowing q=0 so the compact feasible set is never empty. The optimizing center and vectors live in a common compact box; all four vertices must lie on Gamma. Thus the maximum exists and lies in [0,R].
