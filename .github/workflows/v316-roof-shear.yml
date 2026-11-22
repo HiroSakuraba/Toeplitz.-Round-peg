@@ -1,0 +1,27 @@
+name: v316 roof shear
+on:
+  pull_request:
+    paths:
+      - 'code/roof_shear_v316.py'
+      - 'code/rough_arc_winding_v312.py'
+      - 'code/boundary_or_winding_v313.py'
+      - 'code/polygon_orbit_census_v223.py'
+      - 'research/v316-roof-shear.md'
+      - 'tests/test_roof_shear_v316.py'
+      - 'results/v316/**'
+      - '.github/workflows/v316-roof-shear.yml'
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s tests -p 'test_roof_shear_v316.py' -v
+      - run: python code/roof_shear_v316.py | diff - results/v316/roof-shear.json

@@ -1,0 +1,94 @@
+{
+  "six_column_profiles": 4096,
+  "strict_improvements": 2489,
+  "first_strict": [
+    {
+      "heights": [
+        1,
+        1,
+        1,
+        2,
+        1,
+        2
+      ],
+      "contained_side": 1,
+      "boundary_side": 2,
+      "base_left": 3
+    }
+  ],
+  "folded_base": {
+    "height": "2",
+    "strip": "1/4",
+    "side_floor": "7/4",
+    "gates": [
+      [
+        "1",
+        "7/6"
+      ],
+      [
+        "61/7",
+        "9"
+      ]
+    ],
+    "regular_marked_squares": 1,
+    "squared_sides": [
+      "176409046145/6998326336"
+    ]
+  },
+  "rotated_trapezoid": [
+    {
+      "mesh": "1/4",
+      "physical_floor_squared": "1225/32",
+      "longest_grid_edge": "1",
+      "height": "9/2",
+      "strip": "1/8",
+      "side_floor": "35/8",
+      "gates": [
+        [
+          "11/4",
+          "3"
+        ],
+        [
+          "9",
+          "37/4"
+        ]
+      ]
+    },
+    {
+      "mesh": "1/16",
+      "physical_floor_squared": "24025/512",
+      "longest_grid_edge": "1/4",
+      "height": "39/8",
+      "strip": "1/32",
+      "side_floor": "155/32",
+      "gates": [
+        [
+          "47/16",
+          "3"
+        ],
+        [
+          "9",
+          "145/16"
+        ]
+      ]
+    },
+    {
+      "mesh": "1/64",
+      "physical_floor_squared": "403225/8192",
+      "longest_grid_edge": "1/16",
+      "height": "159/32",
+      "strip": "1/128",
+      "side_floor": "635/128",
+      "gates": [
+        [
+          "191/64",
+          "3"
+        ],
+        [
+          "9",
+          "577/64"
+        ]
+      ]
+    }
+  ]
+}
