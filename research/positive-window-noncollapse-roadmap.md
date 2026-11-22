@@ -2,7 +2,7 @@
 
 **Objective.** Given a Jordan curve, construct from its geometry a positive side cutoff and arbitrarily fine registered polygonal approximations with odd local square degree above that cutoff. A universal constant times the inradius is the quantitative goal. A positive, independently computable curve-specific bound would already suffice for square existence. The published repository milestone is v327. The six versions below are proposed research stages.
 
-**Status.** The first implementation tranche (v328, v329, v330) is in [v328–v330](v328-v330-windows-ellipses-spirals.md). v331–v333 remain proposals.
+**Status.** The first implementation tranche (v328, v329, v330) is in [v328–v330](v328-v330-windows-ellipses-spirals.md). The first v331 step, a complete residue census, is in [v331](v331-residue-census.md): residues alone leave thousands of robust small candidates on the retuned spiral, so filtered Floer data or gradings are required. v332–v333 remain proposals.
 
 **First decision.** The original v324 marked spiral square can already be excluded as the upper spectral carrier at the square angle. A change in its turn count removes that strict exclusion in the limit. Use both fixtures before committing to a Floer computation. The calculation is in v330 below.
 

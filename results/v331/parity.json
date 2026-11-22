@@ -1,0 +1,53 @@
+{
+  "grading_two_sign": -1,
+  "ellipse_signs_major_minor": {
+    "0.3": [
+      -1,
+      1
+    ],
+    "0.7": [
+      -1,
+      1
+    ],
+    "1.0": [
+      -1,
+      1
+    ],
+    "1.3": [
+      -1,
+      1
+    ]
+  },
+  "euler_characteristic_checks": [
+    {
+      "polygon": "irregular 12-gon",
+      "squares": 7,
+      "sign_sum": 0,
+      "vertex_contacts": 0
+    },
+    {
+      "polygon": "convex pentagon",
+      "squares": 1,
+      "sign_sum": 0,
+      "vertex_contacts": 0
+    }
+  ],
+  "survivor_parity": [
+    {
+      "N": 20,
+      "survivors": 6,
+      "even": 0,
+      "odd": 0,
+      "vertex_contact": 6,
+      "ambiguous_window": 0
+    },
+    {
+      "N": 24,
+      "survivors": 2617,
+      "even": 1280,
+      "odd": 1273,
+      "vertex_contact": 64,
+      "ambiguous_window": 0
+    }
+  ]
+}
