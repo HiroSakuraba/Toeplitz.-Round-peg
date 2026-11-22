@@ -1,11 +1,13 @@
 # Toeplitz square-peg research
 
 **Research program:** Benjamin John Schulz (GitHub: HiroSakuraba)  
-**Status as of 2026-11-21:** Research in progress (latest integrated version: **v322**). Exact square-census, relative-degree, parity and winding certificates have been proved for selected polygonal and rough families; the general square-peg conjecture for arbitrary Jordan curves is **not proved** here.
+**Status as of 2026-11-21:** Research in progress (latest integrated version: **v327**). Exact square-census, relative-degree, parity and winding certificates have been proved for selected polygonal and rough families; the general square-peg conjecture for arbitrary Jordan curves is **not proved** here.
 
 The [Toeplitz square-peg problem](https://en.wikipedia.org/wiki/Inscribed_square_problem) asks whether every Jordan curve contains four distinct vertices of a nondegenerate Euclidean square. This is a versioned research archive of constructive half-square approaches, local certificates, geometric obstructions, analytic energy methods, and supporting computation.
 
 ## Latest certified milestones (21 November 2026)
+
+- **[v323–v327: cap winding and spectral-carrier localization](research/v323-v327-cap-winding.md)** gives an exact two-return-arc action formula modulo enclosed area, a winding-multiplicity lower bound for action-preserving shrinkout, and an interleaved rational spiral counterexample with square side tending to zero but action gap tending to 19/24. This refutes unconditional cap cancellation for individual generators, not for spectral carriers. A conditional localization estimate connects action exclusion to positive angular slope; the remaining obstructions are endpoint saturation and interior-action winding on selected spectral carriers.
 
 - **[v318–v322: support-free spectral noncollapse](research/v318-v322-support-free-spectral.md)** proves a largest-rectangle radius envelope for arbitrary Jordan curves, an angular mass bound, and a near-square-to-odd-local-degree transfer. An exact scalar plateau countermodel excludes a proof using only the known spectral endpoint, Lipschitz and subadditivity bounds. Positive central spectral mass remains open; this is a route around the support-box selection problem, not a solution to Toeplitz.
 
