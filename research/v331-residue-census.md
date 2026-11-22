@@ -59,11 +59,30 @@ Random perturbations change the count by at most 5%. The losses come from surviv
 - **Consequence for the program.** v324 showed that a single collapsing generator can keep an action gap. This census shows that above the threshold this is typical, not exceptional, among small squares. Arbitrary Jordan curves can carry such gadgets at every scale. So no argument that uses only actions and residues can select spectral carriers in general. A carrier-selection argument needs more structure: for instance, the Maslov grading of the grading-two class, or which generators the Floer differential lets represent it.
 - **What this does not show.** Survivors are squares the residue cannot exclude. The spectral value may still be carried by a large square (for example, one of the squares inscribed in the base square). The census shows the residue test is inconclusive, not that the carrier is small.
 
+## Mod-2 Floer grading of the survivors
+
+The spectral value at π/2 belongs to the grading-two class. The integer grading of a generator is the Maslov index of its preferred capping, which Greene–Lobb do not give in computable form and which is not computed here. Its parity, however, is determined by the local intersection sign of L₀ = γ×γ and L₁ = R_{π/2}(L₀) at the generator, up to one universal constant. At θ = π/2 the rotation is rational, so the sign is an exact 4×4 determinant built from the edge directions at the four contacts. The product orientation of γ×γ does not depend on the direction of γ, so the sign is intrinsic.
+
+- **Which generator.** A square (c₀, c₁, c₂, c₃), listed counterclockwise, gives two inequivalent generators: x = (c₁, c₃) = R(c₀, c₂), with action residue r, and x′ = (c₂, c₀) = R(c₁, c₃), with residue A − r. Each also has a swapped twin (w, z) with the same sign and action. The spectral value lies in [A/2, πR²/2], so exactly one generator of each surviving square can carry it. The sign convention of (323.1) is the one that gives ℓ(θ) = ρ²θ on the circle.
+- **Calibration.** On an ellipse at θ < π/2, the major-axis rectangle continues as θ → 0 to the diameter, the maximum of H, so it has grading 2. The minor-axis rectangle continues to a saddle of H, so it has grading 1. Their signs are −1 and +1 at every angle tested and for aspect ratios 1.2, 2 and 5. So grading 2 has sign −1.
+- **Check.** The homology is F₂ in gradings 2 and 1, so the signs over all generators of any generic polygon sum to zero. They do, exactly, on an irregular 12-gon (7 squares) and a convex pentagon (1 square), in both orientations. The pentagon's single square has one generator of each parity.
+
+| Turns N | Survivors | Window generator even (may carry grading 2) | Odd (excluded) | Contact at a polygon vertex (parity undefined) |
+| ---: | ---: | ---: | ---: | ---: |
+| 20 | 6 | 0 | 0 | 6 |
+| 24 | 2,617 | 1,280 | 1,273 | 64 |
+| 30 | 158,721 | 79,278 | 79,283 | 160 |
+
+Parity removes about half of the candidates and leaves tens of thousands at N = 30. The near-exact balance between even and odd is consistent with the Euler-characteristic constraint. So the grading modulo 2 does not select the carrier either. The integer grading could do more, since only grading exactly 2 qualifies among the even ones, but it requires the Maslov index of each preferred capping. Beyond that lies the Floer differential, which decides which grading-two generators actually represent the class.
+
 ## Replay
 
     python code/residue_census_v331.py              # N = 4, 8, 16, 20 (CI replay, about 15 s on 4 cores)
     python code/residue_census_v331.py --large      # N = 24, 30 exact and N = 40 counted (minutes)
     python code/residue_census_v331.py --genericity # perturbed and corner-cut N = 24 (about 2 minutes)
+    python code/floer_parity_v331.py                # calibration, Euler checks, parity at N = 20, 24 (CI replay)
+    python code/floer_parity_v331.py --large        # parity at N = 30 (about 9 minutes)
+    python -m unittest discover -s tests -p 'test_floer_parity_v331.py' -v
     python -m unittest discover -s tests -p 'test_residue_census_v331.py' -v
 
-The search needs numpy. [CI replay output](../results/v331/census.json) · [Large runs](../results/v331/large-runs.json) and the [genericity check](../results/v331/genericity.json), recorded and not replayed in CI.
+The search needs numpy. [CI replay output](../results/v331/census.json) · [parity replay](../results/v331/parity.json) · [Large runs](../results/v331/large-runs.json) and the [genericity check](../results/v331/genericity.json) and the [N = 30 parity run](../results/v331/parity-large.json), recorded and not replayed in CI.
