@@ -98,6 +98,37 @@ The residue test used actions only modulo A, because the return paths in (323.1)
 
 The real-action window removes far more than parity did. At N = 30 the candidates fall from 79,278 (parity alone) to 12,866, about 8% of the residue survivors. Thousands of candidates remain, so carrier selection still needs more: the integer grading, or continuity of ℓ in θ along the action spectrum, or the differential itself.
 
+## Integer Floer grading: no small candidate has grading two
+
+The spectral value at π/2 is carried by a generator of grading exactly 2. Parity only rules out the odd gradings, so this step computes the integer grading itself.
+
+**Derivation.** The grading of x = R_θ(p) is minus the Maslov index of the loop of Lagrangian planes around its preferred capping. Under the phase map det² on the Lagrangian Grassmannian of ℂ², the loop splits into three explicit pieces:
+- Along the Hamiltonian flow from p to x, the plane is R_t(T_p L₀). R_t is unitary with det R_t = e^{it}, so the phase rises by exactly 2θ.
+- At x, the cap switches from T_x L₁ to T_x L₀. These are transverse, and the canonical path between them rotates back through their Kähler angles θ_k ∈ (0, π), contributing −2Σθ_k.
+- Along the preferred return path from x to p in L₀, the plane is the product of the tangent lines at z and w. Its phase changes by twice their total turning, which on a polygon is the sum of the signed exterior angles crossed.
+
+The total is checked to be an exact multiple of 2π, and no additive constant is needed. The code is `code/floer_grading_v331.py`.
+
+**Checks.**
+- *Ellipses.* The major-axis branch gets grading 2 and the minor-axis branch grading 1, at every angle tested and for aspect ratios 1.3, 2 and 5.
+- *Convex pentagon.* Its carrier gets grading 2 and its partner grading 1, in both orientations.
+- *Irregular 12-gon.* The gradings are 0, 1 (six times), 2 (six times) and 3. Every parity agrees with the calibrated sign of the mod-2 step.
+- *Duality.* On every square checked, its two generators have gradings summing to exactly 3, as the duality ℓ₁ + ℓ₂ = A predicts by pairing grading k with 3 − k.
+- *Vertex contacts.* A contact at a polygon vertex has no tangent line. Under smoothing its tangent is the incoming edge rotated by λ times the exterior angle, with λ ∈ (0, 1), with a matching partial turn on the return path. The gradings are computed on a grid of nine values of λ per vertex contact. On generic contacts this smoothed computation agrees with the plain one exactly.
+
+**Result.** For each residue survivor, consider the generator whose real action lies in the window [A/2, πR²/2].
+
+| Turns N | Window generators with generic contacts | Their gradings | Grading 2 | Vertex-contact cases | Gradings under any sampled smoothing | Admitting grading 2 |
+| ---: | ---: | --- | ---: | ---: | --- | ---: |
+| 24 | 1,001 | −46 to −35 | 0 | 43 | −47 to −33 | 0 |
+| 30 | 25,730 | −58 to −33 | 0 | 96 | −59 to −30 | 0 |
+
+On both fixtures, **no small residue survivor can carry the grading-two class at π/2**, under any sampled smoothing of its vertex contacts. The window generators' gradings lie far below 2. That is consistent with the preferred capping winding dozens of times around the spiral. So, granting Greene–Lobb's framework and the grading derivation above, the spectral value at π/2 must be carried by a square of half-diagonal at least 1 on these polygons. The residue ambiguity of the earlier steps disappears once the integer grading is used.
+
+Two caveats.
+- *Smoothing was sampled.* A grading changes by ±1 only where the smoothed tangent becomes non-transverse. Reaching 2 from about −40 would take dozens of such jumps within one corner's sweep.
+- *Only π/2 is tested.* The exclusion holds at θ = π/2. Following the candidates through a neighbourhood of π/2 is not needed here, because none survives at π/2 itself.
+
 ## Replay
 
     python code/residue_census_v331.py              # N = 4, 8, 16, 20 (CI replay, about 15 s on 4 cores)
@@ -109,6 +140,9 @@ The real-action window removes far more than parity did. At N = 30 the candidate
     python code/floer_actions_v331.py               # real-action filter at N = 20, 24 (CI replay)
     python code/floer_actions_v331.py --large       # real-action filter at N = 30 (about 10 minutes)
     python -m unittest discover -s tests -p 'test_floer_actions_v331.py' -v
+    python code/floer_grading_v331.py               # ellipse calibration and N = 24 (CI replay)
+    python code/floer_grading_v331.py --large       # N = 30 (about 7 minutes)
+    python -m unittest discover -s tests -p 'test_floer_grading_v331.py' -v
     python -m unittest discover -s tests -p 'test_residue_census_v331.py' -v
 
-The search needs numpy. [CI replay output](../results/v331/census.json) · [parity replay](../results/v331/parity.json) · [real-action replay](../results/v331/actions.json) · [Large runs](../results/v331/large-runs.json) and the [genericity check](../results/v331/genericity.json) the [N = 30 parity run](../results/v331/parity-large.json) and the [N = 30 real-action run](../results/v331/actions-large.json), recorded and not replayed in CI.
+The search needs numpy. [CI replay output](../results/v331/census.json) · [parity replay](../results/v331/parity.json) · [real-action replay](../results/v331/actions.json) · [grading replay](../results/v331/grading.json) · [Large runs](../results/v331/large-runs.json) and the [genericity check](../results/v331/genericity.json) the [N = 30 parity run](../results/v331/parity-large.json) the [N = 30 real-action run](../results/v331/actions-large.json) and the [N = 30 grading run](../results/v331/grading-large.json), recorded and not replayed in CI.
