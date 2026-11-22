@@ -1,12 +1,13 @@
 # Toeplitz square-peg research
 
 **Research program:** Benjamin John Schulz (GitHub: HiroSakuraba)  
-**Status as of 2026-11-21:** Research in progress (latest integrated version: **v316**). Exact square-census, relative-degree, parity and winding certificates have been proved for selected polygonal and rough families; the general square-peg conjecture for arbitrary Jordan curves is **not proved** here.
+**Status as of 2026-11-21:** Research in progress (latest integrated version: **v317**). Exact square-census, relative-degree, parity and winding certificates have been proved for selected polygonal and rough families; the general square-peg conjecture for arbitrary Jordan curves is **not proved** here.
 
 The [Toeplitz square-peg problem](https://en.wikipedia.org/wiki/Inscribed_square_problem) asks whether every Jordan curve contains four distinct vertices of a nondegenerate Euclidean square. This is a versioned research archive of constructive half-square approaches, local certificates, geometric obstructions, analytic energy methods, and supporting computation.
 
 ## Latest certified milestones (21 November 2026)
 
+- **[v317: selecting two local graph arcs](research/v317-neck-lens.md)** gives four height comparisons that keep Rifford's large square off artificial closing segments. A diagonal grid search selects the arcs from an unmarked boundary. A four-line degree certificate then forces a square of side greater than 3 on a folded refinement family in which all monotone runs shrink in both diagonal frames.
 - **[v316: mesh-independent square bounds for terrains and folded bases](research/v316-roof-shear.md)** proves that every flat-base grid terrain carries a lattice square at least as large as its largest contained axis-aligned square. A two-arc degree test also covers folded bases. On a refining staircase its side bound tends to 5√2 while every straight edge shrinks to zero.
 - **[v314: local square degree after an unpaired crossing](research/v314-local-twist.md)** computes local degree from two quarter-circle scans on a half-turn-symmetric reference. On the asymmetric endpoint of v313, two center regions each retain odd degree at the same cutoff where total degree is even. A second example forces three squares in disjoint size intervals under registered Jordan perturbations.
 - **[v313: half-turn degree and the boundary-or-winding alternative](research/v313-half-turn-degree.md)**: on a centrally symmetric Jordan curve enclosing a centered disk of radius r, every side cutoff below √2 r is either realized or has odd geometric-square degree above it, and that odd degree survives small registered Jordan perturbations. Odd positive-scale degree forces a finite dyadic two-arc window with a perimeter square or odd winding (the v312 alternative). At the symmetric endpoint of the moving-protrusion example, every registered Jordan perturbation of size at most 1/32 has a square of side greater than **8/5**.
