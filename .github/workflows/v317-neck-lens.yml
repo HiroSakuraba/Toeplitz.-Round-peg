@@ -1,0 +1,25 @@
+name: v317 local lens
+on:
+  pull_request:
+    paths:
+      - 'code/neck_lens_v317.py'
+      - 'code/polygon_orbit_census_v223.py'
+      - 'research/v317-neck-lens.md'
+      - 'tests/test_neck_lens_v317.py'
+      - 'results/v317/**'
+      - '.github/workflows/v317-neck-lens.yml'
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m unittest discover -s tests -p 'test_neck_lens_v317.py' -v
+      - run: python code/neck_lens_v317.py | diff - results/v317/neck-lens.json
