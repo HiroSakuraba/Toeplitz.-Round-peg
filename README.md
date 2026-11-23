@@ -1,7 +1,7 @@
 # Toeplitz square-peg research
 
 **Research program:** Benjamin John Schulz (GitHub: HiroSakuraba)  
-**Status as of 2026-11-23:** Research in progress (latest integrated version: **v349**). Exact square-census, relative-degree, parity and winding certificates have been proved for selected polygonal and rough families; the general square-peg conjecture for arbitrary Jordan curves is **not proved** here.
+**Status as of 2026-11-23:** Research in progress (latest integrated version: **v350**). Exact square-census, relative-degree, parity and winding certificates have been proved for selected polygonal and rough families; the general square-peg conjecture for arbitrary Jordan curves is **not proved** here.
 
 The [Toeplitz square-peg problem](https://en.wikipedia.org/wiki/Inscribed_square_problem) asks whether every Jordan curve contains four distinct vertices of a nondegenerate Euclidean square. This is a versioned research archive of constructive half-square approaches, local certificates, geometric obstructions, analytic energy methods, and supporting computation.
 
@@ -9,6 +9,7 @@ The [Toeplitz square-peg problem](https://en.wikipedia.org/wiki/Inscribed_square
 
 Entries marked *analytic* are paper arguments that depend on cited preprints; only the computations named in the entry are machine-checked. The other entries pair their arguments with exact replays of the stated examples and certificates.
 
+- **[v350: inward tilts and monotone frontiers](research/v350-inward-tilts-and-monotone-frontiers.md)** completes the six-sided tilted-L family. Sliding an interior disk to the bottom-left corner forces the selected square to span its diameter. The same argument covers continuous monotone frontiers with interior anchor contacts.
 - **[v349: the disk bound for every outward-tilted L](research/v349-all-outward-tilted-L.md)** completes the positive-slope family. Two separately robust squares cover disks above the ledge and disks reaching into the lower arm when the anchor square falls short of the outer span.
 - **[v348: thick lower arms and folded upper walls](research/v348-thick-lower-arms.md)** completes the disk bound through the v346 collision for every lower-arm thickness. At equality the third corner reaches the elbow, where the two anchor edges and the opposite wall force it to remain on the ledge even for a folded upper arc.
 - **[v347: a third square survives the tilted-wall collision](research/v347-square-through-the-tilted-wall-collision.md)** proves the disk bound through the v346 collision whenever the lower arm height is less than the outer width. In the original example every registered redraw within 1/64 retains a square of side greater than 6.
