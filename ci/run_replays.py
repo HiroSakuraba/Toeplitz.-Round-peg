@@ -3,7 +3,8 @@
 Each entry comes from one of the per-version workflows that the single CI workflow replaced, and it
 keeps that workflow's file filter. An entry runs when a changed file matches one of its paths
 (GitHub path-filter globs: `*` stays inside a directory, `**` crosses directories), or always with
---all. Unit tests are not listed here: the CI tests job runs the whole suite.
+--all. An entry without paths runs on every change, and a change to the shared CI files (ci/ or
+the CI workflow) selects every entry. Unit tests are not listed here: the CI tests job runs the whole suite.
 
     python ci/run_replays.py --kind python --all
     python ci/run_replays.py --kind sage --changed-files changed.txt
@@ -46,8 +47,13 @@ def glob_regex(pattern):
     return re.compile(out+r"\Z")
 
 
+# Changes to the shared CI files can affect every replay, so they select all entries.
+INFRASTRUCTURE = ["ci/**", ".github/workflows/ci.yml"]
+
+
 def selected(entries, changed, run_all):
-    if run_all:
+    infra = [glob_regex(p) for p in INFRASTRUCTURE]
+    if run_all or any(r.match(f) for r in infra for f in changed):
         return entries
     regs = {p: glob_regex(p) for e in entries for p in e["paths"]}
     return [e for e in entries if not e["paths"] or any(regs[p].match(f) for p in e["paths"] for f in changed)]

@@ -1,6 +1,95 @@
 {
- "note": "Generated from the per-version workflows retired in the consolidation; each entry keeps its file filter.",
+ "note": "Generated from the per-version workflows retired in the consolidation; each entry keeps its file filter. An entry with no paths ran on every change and still does.",
  "entries": [
+  {
+   "source": "v212-exact.yml:exact-rational-research",
+   "kind": "python",
+   "paths": [],
+   "timeout_minutes": 60,
+   "commands": [
+    {
+     "run": "python code/periodic_bridge_v212.py"
+    },
+    {
+     "run": "python code/periodic_square_cert_v213.py"
+    },
+    {
+     "run": "python code/relative_degree_v214.py"
+    },
+    {
+     "run": "python code/relative_degree_v215.py"
+    },
+    {
+     "run": "python code/boundary_degree_v216.py"
+    },
+    {
+     "run": "python code/multiscale_degree_v217.py"
+    },
+    {
+     "run": "python code/configuration_symmetry_v218.py"
+    },
+    {
+     "run": "python code/collision_quotient_v219.py"
+    },
+    {
+     "run": "python code/accumulating_notches_v220.py"
+    },
+    {
+     "run": "python code/cutoff_incidence_v221.py"
+    },
+    {
+     "run": "python code/multibranch_incidence_v222.py"
+    },
+    {
+     "run": "python code/polygon_orbit_census_v223.py"
+    },
+    {
+     "run": "python code/moving_polygon_events_v224.py"
+    },
+    {
+     "run": "python code/persistent_strata_v225.py"
+    },
+    {
+     "run": "python code/algebraic_orbit_events_v226.py"
+    },
+    {
+     "run": "python code/local_orbit_germs_v227.py"
+    },
+    {
+     "run": "python code/singular_event_feasibility_v228.py"
+    },
+    {
+     "run": "python code/singular_continuation_v229.py"
+    },
+    {
+     "run": "python code/irregular_spiral_frontier_v230.py"
+    },
+    {
+     "run": "python code/spiral_pruned_v231.py"
+    },
+    {
+     "run": "python code/spiral_multicandidate_v232.py"
+    },
+    {
+     "run": "python code/mixed_power_spiral_v233.py"
+    },
+    {
+     "run": "python code/log_spiral_exclusion_v236.py"
+    },
+    {
+     "run": "python code/log_spiral_exclusion_v238.py"
+    },
+    {
+     "run": "python code/log_spiral_exclusion_v239.py"
+    },
+    {
+     "run": "python code/log_spiral_exclusion_v240.py"
+    },
+    {
+     "run": "sha256sum --check archive/SHA256SUMS.txt"
+    }
+   ]
+  },
   {
    "source": "v230-spiral-arb.yml:recovered-spiral-certificates",
    "kind": "python",
