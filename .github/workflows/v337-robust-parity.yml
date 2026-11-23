@@ -1,0 +1,28 @@
+name: v337 robust terrain proof
+on:
+  pull_request:
+    paths:
+      - 'code/robust_parity_v337.py'
+      - 'code/terrain_gluing_v334.py'
+      - 'code/robust_squares_v336.py'
+      - 'tests/test_robust_parity_v337.py'
+      - 'research/v337-robust-terrain-proof.md'
+      - 'results/v337/**'
+      - '.github/workflows/v337-robust-parity.yml'
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'numpy>=1.26,<3'
+      - run: python -m unittest discover -s tests -p 'test_robust_parity_v337.py' -v
+        env:
+          REQUIRE_NUMERIC_DEPS: '1'
