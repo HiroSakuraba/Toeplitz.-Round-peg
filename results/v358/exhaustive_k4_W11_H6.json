@@ -1,0 +1,25 @@
+{
+ "name": "exhaustive_k4_W11_H6",
+ "shapes": 27115,
+ "levels": {
+  "closed-form": 16717,
+  "theorem": 10230,
+  "traced": 168
+ },
+ "kinds": {
+  "anchored-floor-wall": 3,
+  "anchored-floor-wall-mirror": 4,
+  "anchored-wall-wall": 37,
+  "anchored-wall-wall-mirror": 14,
+  "end-plateau-v351": 25,
+  "end-tower-v351": 1,
+  "floor-slide": 161,
+  "interior-slot-v338": 10204,
+  "odd-component": 168,
+  "roof-slide": 12833,
+  "wall-floor": 213,
+  "wall-pair": 3452
+ },
+ "misses": [],
+ "seconds": 43.3
+}

@@ -1,0 +1,32 @@
+{
+ "name": "exhaustive_k3_W10_H8",
+ "shapes": 46193,
+ "levels": {
+  "closed-form": 33199,
+  "theorem": 8272,
+  "traced": 4539,
+  "transverse": 183
+ },
+ "kinds": {
+  "anchored-floor-floor": 4,
+  "anchored-floor-floor-mirror": 12,
+  "anchored-floor-roof": 88,
+  "anchored-floor-roof-mirror": 492,
+  "anchored-floor-wall": 418,
+  "anchored-floor-wall-mirror": 156,
+  "anchored-wall-wall": 5394,
+  "anchored-wall-wall-mirror": 1035,
+  "end-plateau-v351": 108,
+  "end-tower-v351": 16,
+  "floor-slide": 664,
+  "floor-wall": 344,
+  "interior-slot-v338": 8148,
+  "odd-component": 4539,
+  "regular-square": 183,
+  "roof-slide": 5556,
+  "wall-floor": 1748,
+  "wall-pair": 17288
+ },
+ "misses": [],
+ "seconds": 153.4
+}
