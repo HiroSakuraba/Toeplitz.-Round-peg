@@ -1,7 +1,7 @@
 # Toeplitz square-peg research
 
 **Research program:** Benjamin John Schulz (GitHub: HiroSakuraba)  
-**Status as of 2026-11-23:** Research in progress (latest integrated version: **v358**). Exact square-census, relative-degree, parity and winding certificates have been proved for selected polygonal and rough families; the general square-peg conjecture for arbitrary Jordan curves is **not proved** here.
+**Status as of 2026-11-23:** Research in progress (latest integrated version: **v359**). Exact square-census, relative-degree, parity and winding certificates have been proved for selected polygonal and rough families; the general square-peg conjecture for arbitrary Jordan curves is **not proved** here.
 
 The [Toeplitz square-peg problem](https://en.wikipedia.org/wiki/Inscribed_square_problem) asks whether every Jordan curve contains four distinct vertices of a nondegenerate Euclidean square. This is a versioned research archive of constructive half-square approaches, local certificates, geometric obstructions, analytic energy methods, and supporting computation.
 
@@ -9,6 +9,7 @@ The [Toeplitz square-peg problem](https://en.wikipedia.org/wiki/Inscribed_square
 
 Entries marked *analytic* are paper arguments that depend on cited preprints; only the computations named in the entry are machine-checked. The other entries pair their arguments with exact replays of the stated examples and certificates.
 
+- **[v359: two fixed arcs through refinement](research/v359-fixed-arcs-through-refinement.md)** tests separated arc visits on entire odd components and proves persistence for four folded contact arcs with arbitrary connecting pieces. Selecting arcs on arbitrary Jordan curves remains open.
 - **[v358: any number of roof notches](research/v358-any-number-of-roof-notches.md)** describes, for every number of notches, all squares with two vertices on the bottom edge and all transverse squares anchored on the bottom and a wall. A slide along the roof or a floor has a mod-two degree given by an interleaving rule. The inradius is computed exactly, ties included. An exact three-level certifier proves the disk bound on all 154,574 integer shapes in five exhaustive families with one to five notches, and on 5,000 random rational shapes. A five-notch example keeps a square of side greater than 8.18 under every redraw within 1/32. A selection rule for every shape remains open.
 - **[v357: simultaneous loss of two square pairs](research/v357-simultaneous-loss-of-two-square-pairs.md)** proves the disk bound through the remaining v356 double collision, selecting a square on different walls or a roof interval as the outer height changes. A fifth square in the worked example has an explicit redraw tolerance.
 - **[v356: roof and far-wall contact switches](research/v356-roof-switch-and-far-wall.md)** proves continuation through a roof corner and identifies a different square when two tilted squares disappear at a notch wall, including a simultaneous contact event and a finite redraw estimate.
