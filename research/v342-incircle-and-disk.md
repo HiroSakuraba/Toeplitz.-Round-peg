@@ -1,4 +1,4 @@
-# v341. The incircle reading of 1/√2, and a disk version of the robust bound
+# v342. The incircle reading of 1/√2, and a disk version of the robust bound
 
 Benjamin John Schulz · November 2026
 
@@ -6,9 +6,9 @@ Benjamin John Schulz · November 2026
 
 **Findings.**
 1. **i/√2 is the side of the square inscribed in the incircle of the interior square.** In the sharp example (2, 7), the surviving diamond is exactly that square: its four vertices lie on the incircle of [0, 2]².
-2. **Conjecture 341.1 (disk version).** Let r be the curve's inradius, the radius of its largest inscribed disk. Then the curve carries a robust inscribed square of side at least √2·r, the side of the square inscribed in that disk. Since i/√2 ≤ √2·r ≤ i, this implies Conjecture 336.1. It also needs no choice of axes.
+2. **Conjecture 342.1 (disk version).** Let r be the curve's inradius, the radius of its largest inscribed disk. Then the curve carries a robust inscribed square of side at least √2·r, the side of the square inscribed in that disk. Since i/√2 ≤ √2·r ≤ i, this implies Conjecture 336.1. It also needs no choice of axes.
 3. **The sampled evidence is consistent with it.** Over 576 sampled shapes (282 terrains, 194 two-terrain unions, 60 random star polygons and 40 circles with slots) and 12 named shapes, the robust estimate never falls below 0.9998·√2r. The deficit is of the size of the perturbation. The near-equality cases are regular polygons and terrains with i = 2r, where the robust square is the square inscribed in the incircle.
-4. **What is already proved.** Theorem 338.1 gives the disk version on interior terrains, and v337 gives it, with equality, for (2, 7) and the glued witness A. Nothing is proved in general.
+4. **What is already proved.** Theorem 338.1 gives the disk version on interior terrains, and v337 gives it, with equality, for (2, 7) and the glued witness A. The [v341](v341-ledge-and-component-certificates.md) certificates reach i/√2 on all 476 v336 rows, which is the disk version wherever i = 2r. Nothing is proved in general.
 
 ## The incircle reading
 
@@ -18,7 +18,7 @@ In the (2, 7) terrain the interior square is [0, 2]², with incircle centred at 
 
 ## The disk version
 
-**Conjecture 341.1.** Every Jordan curve with inradius r carries a robust inscribed square of side at least √2·r. Robust means here that for each s < √2·r, every sufficiently close registered Jordan curve has an inscribed square of side greater than s.
+**Conjecture 342.1.** Every Jordan curve with inradius r carries a robust inscribed square of side at least √2·r. Robust means here that for each s < √2·r, every sufficiently close registered Jordan curve has an inscribed square of side greater than s.
 
 **Relation to Conjecture 336.1.**
 - A disk of radius r contains an axis-aligned square of side √2·r, so i ≥ √2·r.
@@ -29,7 +29,7 @@ Together these give i/√2 ≤ √2·r ≤ i. The disk version is therefore at l
 **What is proved.**
 - [Theorem 338.1](v338-robust-terrain-proof.md) gives a robust square of side at least i ≥ √2·r on interior terrains, so the disk version holds there.
 - v337's two fixtures have i = 2r, and their robust size i/√2 equals √2·r. So the disk version holds with equality there.
-- The v339–v340 certificates reach i/√2. That gives the disk version only where i = 2r.
+- The v339–v340 certificates, and the [v341](v341-ledge-and-component-certificates.md) certificates on all 476 v336 rows, reach i/√2. That gives the disk version only where i = 2r. On the remaining rows, where i < 2r, the disk version asks for more, between i/√2 and √2·r.
 
 For a circle the bound is attained, and it cannot be improved by any constant factor. An ellipse with semi-axes a ≥ b has r = b and an inscribed square of side 2ab/√(a² + b²) ≥ √2·b, with equality only for the circle.
 
@@ -58,7 +58,7 @@ The robust estimate uses random perturbations and the v334 square search, which 
 
 ## Replay
 
-    python code/incircle_disk_v341.py      # about 10 minutes on 4 cores
-    python -m unittest discover -s tests -p 'test_incircle_disk_v341.py' -v
+    python code/incircle_disk_v342.py      # about 10 minutes on 4 cores
+    python -m unittest discover -s tests -p 'test_incircle_disk_v342.py' -v
 
-[Recorded output](../results/v341/disk.json). The experiment is seeded and recorded, but not replayed in CI.
+[Recorded output](../results/v342/disk.json). The experiment is seeded and recorded, but not replayed in CI.
