@@ -36,13 +36,13 @@ For a circle the bound is attained, and it cannot be improved by any constant fa
 
 ## Test
 
-The test compares the v336 robust estimate with √2·r. The robust estimate is the minimum over 12 seeded perturbations of size 10⁻³ of the exact largest square, and it is an upper estimate of the robust size. The inradius is computed numerically: a grid search is refined by a pattern search, using the exact distance at each point. A ratio clearly below 1 would point to a counterexample, which would then need an exhaustive census to confirm.
+The test compares the v336 robust estimate with √2·r. The robust estimate is the minimum over 12 seeded perturbations of size 10⁻³ of the exact largest square, and it is an upper estimate of the robust size. The inradius is bracketed by a branch-and-bound over square cells. The signed distance to the boundary is 1-Lipschitz, so a cell of side s whose centre has value d holds no value above d + s/√2. This gives a certified interval [r_lo, r_hi], up to floating point, and the ratio is computed with r_hi, so an inradius error can only lower it. On the recorded rows the interval has relative width at most about 10⁻⁵. A ratio clearly below 1 would point to a counterexample, which would then need an exhaustive census to confirm.
 
 | Family | Shapes | Lowest robust / √2r | Below 0.99 |
 | --- | ---: | ---: | ---: |
 | Terrains (heights ≤ 8, widths 2–8) | 282 | 0.9998 | 0 |
 | Two-terrain unions | 194 | 1.0000 | 0 |
-| Random star polygons (20 vertices, radii in [2, 4]) | 60 | 1.0926 | 0 |
+| Random star polygons (20 vertices, radii in [2, 4]) | 60 | 1.0916 | 0 |
 | 32-gon circles with 3–6 inward slots | 40 | 1.2043 | 0 |
 
 **Named shapes.**
@@ -55,7 +55,7 @@ The lowest terrains, (2, 7), (6, 2), (2, 5) and (3, 3, 4), all have i = 2r. Thei
 
 ## Caveats
 
-The robust estimate uses random perturbations and the v334 square search, which is seeded and heuristic. The inradius is a floating-point computation. The disk version for all Jordan curves would be a strengthening of the square-peg conjecture with an explicit size bound, so it is at least as hard as the open problem.
+The robust estimate uses random perturbations and the v334 square search, which is seeded and heuristic. The inradius interval is computed in floating point, not exact arithmetic. The disk version for all Jordan curves would be a strengthening of the square-peg conjecture with an explicit size bound, so it is at least as hard as the open problem.
 
 ## Replay
 
