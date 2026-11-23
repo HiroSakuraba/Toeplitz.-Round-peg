@@ -1,7 +1,7 @@
 # Toeplitz square-peg research
 
 **Research program:** Benjamin John Schulz (GitHub: HiroSakuraba)  
-**Status as of 2026-11-23:** Research in progress (latest integrated version: **v355**). Exact square-census, relative-degree, parity and winding certificates have been proved for selected polygonal and rough families; the general square-peg conjecture for arbitrary Jordan curves is **not proved** here.
+**Status as of 2026-11-23:** Research in progress (latest integrated version: **v356**). Exact square-census, relative-degree, parity and winding certificates have been proved for selected polygonal and rough families; the general square-peg conjecture for arbitrary Jordan curves is **not proved** here.
 
 The [Toeplitz square-peg problem](https://en.wikipedia.org/wiki/Inscribed_square_problem) asks whether every Jordan curve contains four distinct vertices of a nondegenerate Euclidean square. This is a versioned research archive of constructive half-square approaches, local certificates, geometric obstructions, analytic energy methods, and supporting computation.
 
@@ -9,6 +9,7 @@ The [Toeplitz square-peg problem](https://en.wikipedia.org/wiki/Inscribed_square
 
 Entries marked *analytic* are paper arguments that depend on cited preprints; only the computations named in the entry are machine-checked. The other entries pair their arguments with exact replays of the stated examples and certificates.
 
+- **[v356: roof and far-wall contact switches](research/v356-roof-switch-and-far-wall.md)** proves continuation through a roof corner and identifies a different square when two tilted squares disappear at a notch wall, including a simultaneous contact event and a finite redraw estimate.
 - **[v355: tall strips and grounded disks](research/v355-tall-strip-and-grounded-disks.md)** removes the strip-height restriction in the v354 endpoint family. A forced tilt offsets the larger inradius, and an exact disk feasibility test applies to any finite list of rectangular roof cuts.
 - **[v354: when the second cut covers the turning endpoint](research/v354-when-the-second-cut-covers-the-endpoint.md)** traces the disappearance of the old turning interval and proves a wall-to-floor replacement for a family of two-notch rectangles at every second floor height.
 - **[v353: a second roof cut and the transfer of degree](research/v353-two-cuts-and-degree-transfer.md)** proves that a detached turning interval protects the disk bound in a two-notch collision family. For a square outer box, any finite number of disjoint roof notches preserves a robust side of at least the box width divided by √2.
