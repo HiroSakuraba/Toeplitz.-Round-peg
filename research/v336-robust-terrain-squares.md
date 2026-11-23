@@ -5,9 +5,9 @@ Benjamin John Schulz · November 2026
 [v335](v335-even-loop-and-fragility.md) showed that the side-i square v316 guarantees on a terrain can rest on corner contacts and vanish under a perturbation of size 10⁻³. The noncollapse goal needs squares that survive approximation, so this note asks how large the **robust** squares of a terrain are.
 
 **Findings.**
-1. Over 282 random terrains and 194 random two-terrain unions, the robust ratio never falls below 1/√2. This is Pettersson–Tverberg–Östergård's conjectured constant for grid polygons, here appearing as a robust constant for terrains.
+1. Over 282 random terrains and 194 random two-terrain unions, the lowest robust ratio sits just below 1/√2, short of it by an amount proportional to the perturbation size ε, and it approaches 1/√2 as ε → 0. So the evidence points to 1/√2 as a limiting constant, not a bound verified at fixed ε. This is Pettersson–Tverberg–Östergård's conjectured constant for grid polygons, here appearing as a robust constant for terrains.
 2. The bound is attained by the terrain with heights (2, 7). There the exact largest square has side i = 2 but is fragile, and the surviving square is a 45° diamond of side exactly i/√2.
-3. A natural degree argument has exactly the right constant, but in its naive form the fragile corner squares lie on the boundary of its parameter domain. Cutting them out is the remaining step of a proof.
+3. A natural degree argument has exactly the right constant, but in its naive form a fragile corner square can lie on the boundary of its parameter domain, namely when its roof vertex lies on the excursion. Cutting such squares out is the remaining step of a proof.
 
 ## Robust size, measured
 
@@ -32,9 +32,9 @@ This would repair the survival lemma of [v334](v334-two-terrain-gluing.md) in it
 
 Consider squares with one vertex b on the base and the **opposite** vertex t on the v316 excursion above height h, and require the other two vertices to lie on the curve. Record their signed distances as G(b, t) ∈ ℝ². The diagonal satisfies |t − b| ≥ height(t) ≥ h, so every zero is a square of side at least h/√2. Letting h → i gives exactly the conjectured constant. If G had odd winding around the boundary of the parameter rectangle (base × excursion), the zero would be robust.
 
-**Obstruction.** On the side b = (0,0) the boundary always contains a zero. The roof crosses the diagonal y = x at some point (c, c), and the axis-aligned corner square (0,0), (c,0), (c,c), (0,c) then has its free vertices on the base and the left wall. The replay checks this exactly on several terrains. These boundary zeros are precisely the fragile corner squares of v335. So on the naive domain the winding is undefined, and sampled windings (0, ±1, −2) carry no information.
+**Obstruction.** Let the roof first cross the diagonal y = x at (c, c), and consider the axis-aligned corner square (0,0), (c,0), (c,c), (0,c). It is a zero of G on the side b = (0,0) of the parameter rectangle exactly when (c,c) belongs to the excursion (c ≥ h) and (0,c) lies on the left wall (c is at most the first column's height). The mirror condition gives a zero on the side b = (W,0). The condition can fail: for heights (1, 8, 8, 8) the left corner square has c = 1 < i = 3, so its roof vertex is outside the domain and the left side carries no such zero, while the right corner square (c = 3) does give one. The replay checks the condition and the boundary contacts exactly on several terrains. Where the condition holds, which includes the sharp example (2, 7) on both sides, these boundary zeros are precisely the fragile corner squares of v335, the winding is undefined on the naive domain, and sampled windings (0, ±1, −2) carry no information.
 
-**What a proof needs.** Remove the corner squares from the parameter domain, for instance by restricting b to the interior of the interior square's base interval. Then show that the new boundary is zero-free and that the winding there is odd. Robustness of the resulting zero would then follow from the degree, giving Conjecture 336.1 for terrains. Gluing would need the same argument with the base replaced by the lower terrain's roof.
+**What a proof needs.** Remove the corner squares that meet the boundary from the parameter domain, for instance by restricting b to the interior of the interior square's base interval. Then show that the new boundary is zero-free and that the winding there is odd. Robustness of the resulting zero would then follow from the degree, giving Conjecture 336.1 for terrains. Gluing would need the same argument with the base replaced by the lower terrain's roof.
 
 ## Replay
 

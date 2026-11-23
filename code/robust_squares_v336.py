@@ -85,17 +85,37 @@ if __name__ == "__main__":
 
 # ---------------------------------------------------------------- the diagonal degree and its corner zeros
 
-def corner_square_zero(heights):
-    """The fragile corner square at the left base corner: (0,0), (c,0), (c,c), (0,c) with (c,c) on the
-    roof. It is a zero of the base-to-roof diagonal problem on the boundary b = (0,0), which is why that
-    degree is undefined on the naive parameter domain. Returns c (the roof crosses y = x at x = c)."""
+def _diagonal_crossing(heights):
+    """First point (c, c) where the roof meets the diagonal y = x from the left base corner."""
     for x, h in enumerate(heights):
         lo, hi = Q(x), Q(x+1)
         if lo <= h <= hi:            # horizontal roof piece at height h meets y = x
             return Q(h)
         if h < lo:                   # the roof dropped below the diagonal at the wall x = lo
             return lo
-        prev = heights[x+1] if x+1 < len(heights) else 0
-        if h > hi and prev <= hi:    # the wall at x+1 descends through height x+1
+        nxt = heights[x+1] if x+1 < len(heights) else 0
+        if h > hi and nxt <= hi:     # the wall at x+1 descends through height x+1
             return hi
     return Q(len(heights))
+
+
+def corner_square_zeros(heights, h=None):
+    """Fragile corner squares that are zeros of the base-to-roof diagonal problem on the boundary of
+    its parameter domain (base x excursion above height h; h defaults to i).
+
+    Left corner: (0,0), (c,0), (c,c), (0,c), where (c,c) is the first roof point on y = x. It is a
+    boundary zero only if (c,c) lies on the excursion (c >= h) and (0,c) lies on the left wall
+    (c <= height of the first column). The right corner is the mirror image. Returns a list of
+    (side, square) with side "left" or "right"; the list can be empty."""
+    if h is None:
+        h = terrain_i(heights)
+    W = Q(len(heights))
+    out = []
+    for side, hs in (("left", list(heights)), ("right", list(heights)[::-1])):
+        c = _diagonal_crossing(hs)
+        if h <= c <= hs[0]:
+            sq = [(Q(0), Q(0)), (c, Q(0)), (c, c), (Q(0), c)]
+            if side == "right":
+                sq = [(W-x, y) for x, y in sq]
+            out.append((side, sq))
+    return out

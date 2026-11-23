@@ -9,7 +9,7 @@ import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "code"))
 try:
-    from robust_squares_v336 import corner_square_zero, perturb, robust_estimate, terrain_polygon
+    from robust_squares_v336 import corner_square_zeros, perturb, robust_estimate, terrain_polygon
     from terrain_gluing_v334 import edges_through, largest_square, terrain_i
     HAVE_NUMPY = True
 except ImportError:  # pragma: no cover - environment dependent
@@ -36,11 +36,23 @@ class SharpExample(unittest.TestCase):
 
 @needs_numpy
 class CornerZeros(unittest.TestCase):
-    def test_corner_square_lies_on_the_boundary(self):
-        for hs in ([5, 5, 5], [6, 2], [8, 8, 8, 7, 7, 7, 7, 3], [2, 7], [3, 1, 5]):
-            c, P = corner_square_zero(hs), terrain_polygon(hs)
-            for v in ((Q(0), Q(0)), (c, Q(0)), (c, c), (Q(0), c)):
-                self.assertTrue(edges_through(P, v))
+    def test_corner_squares_lie_on_the_boundary(self):
+        for hs in ([5, 5, 5], [6, 2], [8, 8, 8, 7, 7, 7, 7, 3], [2, 7], [3, 1, 5], [1, 8, 8, 8]):
+            P, i = terrain_polygon(hs), terrain_i(hs)
+            for side, sq in corner_square_zeros(hs):
+                for v in sq:
+                    self.assertTrue(edges_through(P, v))
+                top = sq[2]                                            # the vertex on the roof
+                self.assertGreaterEqual(top[1], i)                     # lies on the excursion above i
+        self.assertEqual([s for s, _ in corner_square_zeros([2, 7])], ["left", "right"])
+
+    def test_no_zero_when_corner_square_misses_the_excursion(self):
+        # review finding on PR #91: for (1, 8, 8, 8) the left corner square has c = 1 < i = 3, so its
+        # roof vertex is not in the parameter domain and gives no boundary zero on b = (0, 0)
+        self.assertEqual([s for s, _ in corner_square_zeros([1, 8, 8, 8])], ["right"])
+        # for (2, 5, 5) the roof meets y = x at c = 3 above the left wall's top (2): no left zero
+        self.assertEqual([s for s, _ in corner_square_zeros([2, 5, 5])], ["right"])
+
 
 
 if __name__ == "__main__":
