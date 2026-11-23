@@ -1,4 +1,4 @@
-"""v342 incircle reading and disk version. Needs numpy (the v331 square search and the inradius
+"""v343 incircle reading and disk version. Needs numpy (the v331 square search and the inradius
 search); set REQUIRE_NUMERIC_DEPS=1 to make a missing numpy a failure instead of a skip."""
 from fractions import Fraction as Q
 from pathlib import Path
@@ -10,7 +10,7 @@ import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "code"))
 try:
-    from incircle_disk_v342 import inradius, named_shapes, random_star, regular_polygon, row, union_polygon
+    from incircle_disk_v343 import inradius, named_shapes, random_star, regular_polygon, row, union_polygon
     from robust_squares_v336 import terrain_polygon
     from terrain_gluing_v334 import edges_through, terrain_i
     HAVE_NUMPY = True

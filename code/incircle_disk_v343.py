@@ -1,9 +1,9 @@
-"""v342: the incircle reading of 1/sqrt2 and a test of the disk version.
+"""v343: the incircle reading of 1/sqrt2 and a test of the disk version.
 
 Incircle reading. The largest interior axis-aligned square of side i has an incircle of radius i/2;
 the square inscribed in that circle has side i/sqrt2, the constant of Conjecture 336.1.
 
-Disk version (Conjecture 342.1). With r the inradius (largest inscribed disk), every Jordan curve
+Disk version (Conjecture 343.1). With r the inradius (largest inscribed disk), every Jordan curve
 carries a robust inscribed square of side at least sqrt2 * r. Since a disk of radius r contains an
 axis-aligned square of side sqrt2 * r, and every interior square of side i contains a disk of radius
 i/2, we have i/sqrt2 <= sqrt2 * r <= i, so the disk version implies Conjecture 336.1 and is implied

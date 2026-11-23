@@ -1,14 +1,14 @@
-name: v342 incircle and disk
+name: v343 incircle and disk
 on:
   pull_request:
     paths:
-      - 'code/incircle_disk_v342.py'
+      - 'code/incircle_disk_v343.py'
       - 'code/terrain_gluing_v334.py'
       - 'code/robust_squares_v336.py'
-      - 'tests/test_incircle_disk_v342.py'
-      - 'research/v342-incircle-and-disk.md'
-      - 'results/v342/**'
-      - '.github/workflows/v342-incircle-disk.yml'
+      - 'tests/test_incircle_disk_v343.py'
+      - 'research/v343-incircle-and-disk.md'
+      - 'results/v343/**'
+      - '.github/workflows/v343-incircle-disk.yml'
   push:
     branches: [main]
   workflow_dispatch:
@@ -23,6 +23,6 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install 'numpy>=1.26,<3'
-      - run: python -m unittest discover -s tests -p 'test_incircle_disk_v342.py' -v
+      - run: python -m unittest discover -s tests -p 'test_incircle_disk_v343.py' -v
         env:
           REQUIRE_NUMERIC_DEPS: '1'
