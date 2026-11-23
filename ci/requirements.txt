@@ -1,0 +1,6 @@
+# Optional dependencies of the tests and replays, as pinned by the per-version workflows.
+numpy>=1.26,<3
+scipy>=1.11,<2
+sympy==1.14.0
+python-flint>=0.6,<1
+mpmath>=1.2,<2

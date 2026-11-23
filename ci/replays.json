@@ -1,0 +1,1329 @@
+{
+ "note": "Generated from the per-version workflows retired in the consolidation; each entry keeps its file filter.",
+ "entries": [
+  {
+   "source": "v230-spiral-arb.yml:recovered-spiral-certificates",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v230-spiral-arb.yml",
+    "code/irregular_spiral_frontier_v230.py",
+    "code/spiral_box_a_audit_v230.py",
+    "related/power-spiral-v99-v102/**",
+    "research/v230-*",
+    "tests/test_irregular_spiral_frontier_v230.py",
+    "tests/test_iv230_interval_layer.py",
+    "tests/test_spiral_box_a_audit_v230.py"
+   ],
+   "timeout_minutes": 12,
+   "commands": [
+    {
+     "run": "sha256sum --check SHA256SUMS.txt",
+     "working_directory": "related/power-spiral-v99-v102"
+    },
+    {
+     "run": "python related/power-spiral-v99-v102/verify_v99_small_exponent_log_spiral.py"
+    },
+    {
+     "run": "python related/power-spiral-v99-v102/verify_v230_arb_strict.py"
+    },
+    {
+     "run": "python code/spiral_box_a_audit_v230.py"
+    }
+   ]
+  },
+  {
+   "source": "v234-spiral-family.yml:replay",
+   "kind": "sage",
+   "paths": [
+    ".github/workflows/v234-spiral-family.yml",
+    "code/mixed_power_spiral_v233.py",
+    "code/rough_spiral_family_v235.py",
+    "code/spiral_family_v234.py",
+    "code/spiral_multicandidate_v232.py",
+    "code/spiral_parameter_rectangle_v236.py",
+    "code/spiral_pruned_v231.py",
+    "research/v234-*",
+    "research/v235-*",
+    "research/v236-*",
+    "tests/test_rough_spiral_family_v235.py",
+    "tests/test_spiral_parameter_rectangle_v236.py"
+   ],
+   "timeout_minutes": 15,
+   "commands": [
+    {
+     "run": "docker run --rm --mount \"type=bind,src=$PWD,dst=/work,readonly\" \\\n  --workdir /work --env PYTHONDONTWRITEBYTECODE=1 --entrypoint /usr/bin/sage \\\n  sagemath/sagemath:10.10 -c \\\n  \"import runpy, sys; sys.path.insert(0, 'code'); sys.argv[:] = ['code/spiral_family_v234.py']; runpy.run_path(sys.argv[0], run_name='__main__')\""
+    },
+    {
+     "run": "docker run --rm --mount \"type=bind,src=$PWD,dst=/work,readonly\" \\\n  --workdir /work --env PYTHONDONTWRITEBYTECODE=1 --entrypoint /usr/bin/sage \\\n  sagemath/sagemath:10.10 -c \\\n  \"import runpy, sys, unittest; sys.path.insert(0, 'code'); sys.argv[:] = ['code/rough_spiral_family_v235.py']; runpy.run_path(sys.argv[0], run_name='__main__'); suite = unittest.defaultTestLoader.discover('tests', pattern='test_rough_spiral_family_v235.py'); assert unittest.TextTestRunner(verbosity=2).run(suite).wasSuccessful()\""
+    },
+    {
+     "run": "docker run --rm --mount \"type=bind,src=$PWD,dst=/work,readonly\" \\\n  --workdir /work --env PYTHONDONTWRITEBYTECODE=1 --entrypoint /usr/bin/sage \\\n  sagemath/sagemath:10.10 -c \\\n  \"import runpy, sys, unittest; sys.path.insert(0, 'code'); sys.argv[:] = ['code/spiral_parameter_rectangle_v236.py']; runpy.run_path(sys.argv[0], run_name='__main__'); suite = unittest.defaultTestLoader.discover('tests', pattern='test_spiral_parameter_rectangle_v236.py'); assert unittest.TextTestRunner(verbosity=2).run(suite).wasSuccessful()\""
+    }
+   ]
+  },
+  {
+   "source": "v241-log-spiral-arb.yml:classify",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v241-log-spiral-arb.yml",
+    "code/log_spiral_classification_v241.py",
+    "research/v241-log-spiral-*",
+    "tests/test_log_spiral_classification_v241.py"
+   ],
+   "timeout_minutes": 15,
+   "commands": [
+    {
+     "run": "python code/log_spiral_classification_v241.py"
+    }
+   ]
+  },
+  {
+   "source": "v242-small-squares.yml:replay",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v242-small-squares.yml",
+    "code/small_squares_hunt_v242.py",
+    "research/v242-*",
+    "tests/test_small_squares_hunt_v242.py"
+   ],
+   "timeout_minutes": 20,
+   "commands": [
+    {
+     "run": "python code/small_squares_hunt_v242.py"
+    }
+   ]
+  },
+  {
+   "source": "v243-big-peg-exact.yml:exact-polygon-census",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v243-big-peg-exact.yml",
+    "code/big_peg_exact_v243.py",
+    "research/v243-*",
+    "tests/test_big_peg_exact_v243.py"
+   ],
+   "timeout_minutes": 15,
+   "commands": [
+    {
+     "run": "python code/big_peg_exact_v243.py"
+    }
+   ]
+  },
+  {
+   "source": "v244-pochuev-exact.yml:independent-exact-polygon-certificate",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v244-pochuev-exact.yml",
+    "code/big_peg_exact_v243.py",
+    "code/pochuev_big_peg_v244.py",
+    "research/v244-*",
+    "tests/test_pochuev_big_peg_v244.py"
+   ],
+   "timeout_minutes": 20,
+   "commands": [
+    {
+     "run": "python code/pochuev_big_peg_v244.py"
+    },
+    {
+     "run": "python code/pochuev_big_peg_v244.py --crosscheck-v223"
+    }
+   ]
+  },
+  {
+   "source": "v245-big-peg-improvement.yml:exact",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v245-big-peg-improvement.yml",
+    "code/big_peg_improvement_v245.py",
+    "code/big_peg_search_v245.py",
+    "research/v245-*",
+    "tests/test_big_peg_improvement_v245.py"
+   ],
+   "timeout_minutes": 15,
+   "commands": [
+    {
+     "run": "python code/big_peg_improvement_v245.py"
+    },
+    {
+     "run": "python code/big_peg_improvement_v245.py --crosscheck-v223"
+    }
+   ]
+  },
+  {
+   "source": "v245-big-peg-improvement.yml:search-replay",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v245-big-peg-improvement.yml",
+    "code/big_peg_improvement_v245.py",
+    "code/big_peg_search_v245.py",
+    "research/v245-*",
+    "tests/test_big_peg_improvement_v245.py"
+   ],
+   "timeout_minutes": 10,
+   "commands": [
+    {
+     "run": "python code/big_peg_search_v245.py"
+    }
+   ]
+  },
+  {
+   "source": "v246-big-peg-inradius.yml:global-radius-cover",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v246-big-peg-inradius.yml",
+    "code/big_peg_inradius_v246.py",
+    "research/v246-*",
+    "tests/test_big_peg_inradius_v246.py"
+   ],
+   "timeout_minutes": 15,
+   "commands": [
+    {
+     "run": "python code/big_peg_inradius_v246.py"
+    },
+    {
+     "run": "python code/pochuev_big_peg_v244.py"
+    },
+    {
+     "run": "python code/big_peg_improvement_v245.py"
+    }
+   ]
+  },
+  {
+   "source": "v247-big-peg-true-ratio.yml:exact-rational-certificate",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v247-big-peg-true-ratio.yml",
+    "code/big_peg_search_v247.py",
+    "code/big_peg_true_ratio_v247.py",
+    "research/v247-*",
+    "tests/test_big_peg_true_ratio_v247.py"
+   ],
+   "timeout_minutes": 15,
+   "commands": [
+    {
+     "run": "python code/big_peg_true_ratio_v247.py"
+    },
+    {
+     "run": "python code/big_peg_true_ratio_v247.py --crosscheck-v223"
+    },
+    {
+     "run": "python code/big_peg_inradius_v246.py"
+    }
+   ]
+  },
+  {
+   "source": "v247-big-peg-true-ratio.yml:numerical-search-replay",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v247-big-peg-true-ratio.yml",
+    "code/big_peg_search_v247.py",
+    "code/big_peg_true_ratio_v247.py",
+    "research/v247-*",
+    "tests/test_big_peg_true_ratio_v247.py"
+   ],
+   "timeout_minutes": 10,
+   "commands": [
+    {
+     "run": "python code/big_peg_search_v247.py"
+    },
+    {
+     "run": "python code/big_peg_search_v247.py --start v245 --steps 1 --grid 12000"
+    }
+   ]
+  },
+  {
+   "source": "v248-big-peg-persistence.yml:exact-persistence",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v248-big-peg-persistence.yml",
+    "code/big_peg_persistence_v248.py",
+    "research/v248-*",
+    "tests/test_big_peg_persistence_v248.py"
+   ],
+   "timeout_minutes": 15,
+   "commands": [
+    {
+     "run": "python code/big_peg_persistence_v248.py"
+    },
+    {
+     "run": "python code/big_peg_inradius_v246.py"
+    },
+    {
+     "run": "python code/big_peg_true_ratio_v247.py"
+    }
+   ]
+  },
+  {
+   "source": "v249-multichart.yml:exact-chart-atlas",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v249-multichart.yml",
+    "code/big_peg_multichart_v249.py",
+    "research/v249-*",
+    "tests/test_big_peg_multichart_v249.py"
+   ],
+   "timeout_minutes": 15,
+   "commands": [
+    {
+     "run": "python code/big_peg_multichart_v249.py"
+    },
+    {
+     "run": "python code/big_peg_persistence_v248.py"
+    }
+   ]
+  },
+  {
+   "source": "v250-corner-noncollapse.yml:exact-corner",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v250-corner-noncollapse.yml",
+    "code/big_peg_corner_v250.py",
+    "research/v250-*",
+    "tests/test_big_peg_corner_v250.py"
+   ],
+   "timeout_minutes": 15,
+   "commands": [
+    {
+     "run": "python code/big_peg_corner_v250.py"
+    },
+    {
+     "run": "python code/big_peg_multichart_v249.py"
+    },
+    {
+     "run": "python code/big_peg_persistence_v248.py"
+    }
+   ]
+  },
+  {
+   "source": "v251-size-atlas.yml:exact-size-atlas",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v251-size-atlas.yml",
+    "code/big_peg_size_atlas_v251.py",
+    "research/v251-*",
+    "tests/test_big_peg_size_atlas_v251.py"
+   ],
+   "timeout_minutes": 15,
+   "commands": [
+    {
+     "run": "python code/big_peg_size_atlas_v251.py"
+    },
+    {
+     "run": "python code/big_peg_corner_v250.py"
+    },
+    {
+     "run": "python code/big_peg_multichart_v249.py"
+    }
+   ]
+  },
+  {
+   "source": "v252-cutoff-ledger.yml:complete-cutoff-ledger",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v252-cutoff-ledger.yml",
+    "code/big_peg_cutoff_ledger_v252.py",
+    "research/v252-*",
+    "tests/test_big_peg_cutoff_ledger_v252.py"
+   ],
+   "timeout_minutes": 20,
+   "commands": [
+    {
+     "run": "python code/big_peg_cutoff_ledger_v252.py"
+    },
+    {
+     "run": "python code/big_peg_size_atlas_v251.py"
+    },
+    {
+     "run": "python code/big_peg_corner_v250.py"
+    }
+   ]
+  },
+  {
+   "source": "v253-relative-parity.yml:exact-relative-boundary-ledger",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v253-relative-parity.yml",
+    "code/big_peg_relative_parity_v253.py",
+    "research/v253-*",
+    "tests/test_big_peg_relative_parity_v253.py"
+   ],
+   "timeout_minutes": 20,
+   "commands": [
+    {
+     "run": "python code/big_peg_relative_parity_v253.py"
+    },
+    {
+     "run": "python code/big_peg_cutoff_ledger_v252.py"
+    },
+    {
+     "run": "python code/big_peg_size_atlas_v251.py"
+    }
+   ]
+  },
+  {
+   "source": "v254-square-pair-death.yml:exact-geometric-pair-death",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v254-square-pair-death.yml",
+    "code/big_peg_pair_death_v254.py",
+    "research/v254-*",
+    "tests/test_big_peg_pair_death_v254.py"
+   ],
+   "timeout_minutes": 20,
+   "commands": [
+    {
+     "run": "python code/big_peg_pair_death_v254.py"
+    },
+    {
+     "run": "python code/big_peg_relative_parity_v253.py"
+    },
+    {
+     "run": "python code/singular_continuation_v229.py"
+    }
+   ]
+  },
+  {
+   "source": "v255-convex-big-peg.yml:exact",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v255-convex-big-peg.yml",
+    "code/convex_big_peg_v255.py",
+    "research/v255-*",
+    "tests/test_convex_big_peg_v255.py"
+   ],
+   "timeout_minutes": 20,
+   "commands": [
+    {
+     "run": "python code/convex_big_peg_v255.py"
+    },
+    {
+     "run": "python code/pochuev_big_peg_v244.py"
+    }
+   ]
+  },
+  {
+   "source": "v256-v257-central-symmetry.yml:exact-symmetry-and-near-square",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v256-v257-central-symmetry.yml",
+    "code/central_symmetry_square_v256.py",
+    "research/v255-convex-sharp-big-peg.md",
+    "research/v256-*",
+    "research/v257-*",
+    "tests/test_central_symmetry_square_v256.py"
+   ],
+   "timeout_minutes": 20,
+   "commands": [
+    {
+     "run": "python code/central_symmetry_square_v256.py"
+    },
+    {
+     "run": "python code/convex_big_peg_v255.py"
+    }
+   ]
+  },
+  {
+   "source": "v258-near-square-lift.yml:exact-near-square-lift",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v258-near-square-lift.yml",
+    "code/near_square_transversality_v258.py",
+    "research/v258-*",
+    "tests/test_near_square_transversality_v258.py"
+   ],
+   "timeout_minutes": 20,
+   "commands": [
+    {
+     "run": "python code/near_square_transversality_v258.py"
+    },
+    {
+     "run": "python code/central_symmetry_square_v256.py"
+    },
+    {
+     "run": "python code/big_peg_persistence_v248.py"
+    }
+   ]
+  },
+  {
+   "source": "v259-square-degree.yml:exact-local-square-degree",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v259-square-degree.yml",
+    "code/square_degree_cube_v259.py",
+    "research/v259-*",
+    "tests/test_square_degree_cube_v259.py"
+   ],
+   "timeout_minutes": 20,
+   "commands": [
+    {
+     "run": "python code/square_degree_cube_v259.py"
+    },
+    {
+     "run": "python code/big_peg_corner_v250.py"
+    },
+    {
+     "run": "python code/near_square_transversality_v258.py"
+    }
+   ]
+  },
+  {
+   "source": "v260-relative-degree.yml:exact-relative-degree",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v260-relative-degree.yml",
+    "code/square_relative_degree_v260.py",
+    "research/v260-*",
+    "tests/test_square_relative_degree_v260.py"
+   ],
+   "timeout_minutes": 20,
+   "commands": [
+    {
+     "run": "python code/square_relative_degree_v260.py"
+    },
+    {
+     "run": "python code/big_peg_pair_death_v254.py"
+    },
+    {
+     "run": "python code/square_degree_cube_v259.py"
+    }
+   ]
+  },
+  {
+   "source": "v261-oriented-atlas.yml:exact-oriented-atlas",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v261-oriented-atlas.yml",
+    "code/square_oriented_atlas_v261.py",
+    "research/v261-*",
+    "tests/test_square_oriented_atlas_v261.py"
+   ],
+   "timeout_minutes": 20,
+   "commands": [
+    {
+     "run": "python code/square_oriented_atlas_v261.py"
+    }
+   ]
+  },
+  {
+   "source": "v262-quotient-parity.yml:exact-cyclic-quotient",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v262-quotient-parity.yml",
+    "code/square_quotient_parity_v262.py",
+    "research/v262-*",
+    "tests/test_square_quotient_parity_v262.py"
+   ],
+   "timeout_minutes": 20,
+   "commands": [
+    {
+     "run": "python code/square_quotient_parity_v262.py"
+    }
+   ]
+  },
+  {
+   "source": "v263-pentagon-ledger.yml:complete-real-time-census",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v263-pentagon-ledger.yml",
+    "code/pentagon_complete_ledger_v263.py",
+    "research/v263-*",
+    "tests/test_pentagon_complete_ledger_v263.py"
+   ],
+   "timeout_minutes": 20,
+   "commands": [
+    {
+     "run": "python code/pentagon_complete_ledger_v263.py --diagnostic"
+    },
+    {
+     "run": "python code/pentagon_complete_ledger_v263.py"
+    }
+   ]
+  },
+  {
+   "source": "v264-convex-atlas.yml:exact-convex-atlas",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v264-convex-atlas.yml",
+    "code/convex_square_event_atlas_v264.py",
+    "research/v264-*",
+    "tests/test_convex_square_event_atlas_v264.py"
+   ],
+   "timeout_minutes": 20,
+   "commands": [
+    {
+     "run": "python code/convex_square_event_atlas_v264.py"
+    }
+   ]
+  },
+  {
+   "source": "v265-irrational-vertex-gluing.yml:exact-algebraic-gluing",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v265-irrational-vertex-gluing.yml",
+    "code/square_irrational_vertex_gluing_v265.py",
+    "research/v265-*",
+    "tests/test_square_irrational_vertex_gluing_v265.py"
+   ],
+   "timeout_minutes": 20,
+   "commands": [
+    {
+     "run": "python code/square_irrational_vertex_gluing_v265.py"
+    }
+   ]
+  },
+  {
+   "source": "v266-convex-lemmas.yml:exact",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v266-convex-lemmas.yml",
+    "code/convex_big_peg_v255.py",
+    "code/convex_lemmas_v266.py",
+    "code/convex_square_event_atlas_v264.py",
+    "research/v266-*",
+    "tests/test_convex_lemmas_v266.py"
+   ],
+   "timeout_minutes": 20,
+   "commands": [
+    {
+     "run": "python code/convex_lemmas_v266.py"
+    },
+    {
+     "run": "python code/convex_big_peg_v255.py"
+    }
+   ]
+  },
+  {
+   "source": "v267-secant-spin.yml:exact-secant-chirality",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v267-secant-spin.yml",
+    "code/secant_spin_rectangle_v267.py",
+    "research/v267-*",
+    "tests/test_secant_spin_rectangle_v267.py"
+   ],
+   "timeout_minutes": 12,
+   "commands": [
+    {
+     "run": "python code/secant_spin_rectangle_v267.py"
+    }
+   ]
+  },
+  {
+   "source": "v268-rectangle-monodromy.yml:exact-rectangle-monodromy",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v268-rectangle-monodromy.yml",
+    "code/rectangle_monodromy_v268.py",
+    "research/v268-*",
+    "tests/test_rectangle_monodromy_v268.py"
+   ],
+   "timeout_minutes": 15,
+   "commands": [
+    {
+     "run": "python code/rectangle_monodromy_v268.py"
+    }
+   ]
+  },
+  {
+   "source": "v269-v273-relative-rectangle.yml:exact-tranche",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v269-v273-relative-rectangle.yml",
+    "code/relative_rectangle_v269_v273.py",
+    "research/v269-relative-index-ellipse-stability.md",
+    "research/v270-spectral-axiom-no-go.md",
+    "research/v271-six-sector-equivariant-ledger.md",
+    "research/v272-degeneration-trichotomy-and-shrinkout.md",
+    "research/v273-ellipse-angle-continuation.md",
+    "tests/test_relative_rectangle_v269_v273.py"
+   ],
+   "timeout_minutes": 30,
+   "commands": [
+    {
+     "run": "python code/relative_rectangle_v269_v273.py"
+    }
+   ]
+  },
+  {
+   "source": "v274-v279-research.yml:exact-atlas",
+   "kind": "sage",
+   "paths": [
+    ".github/workflows/v274-v279-research.yml",
+    "code/*v27[4-9].py",
+    "code/moving_polygon_events_v224.py",
+    "code/polygon_orbit_census_v223.py",
+    "research/v27[4-9]*",
+    "results/v274/**",
+    "results/v278/**",
+    "tests/*v27[4-9].py"
+   ],
+   "timeout_minutes": 12,
+   "commands": [
+    {
+     "run": "docker run --rm --mount \"type=bind,src=$PWD,dst=/work,readonly\" \\\n  --workdir /work --env PYTHONDONTWRITEBYTECODE=1 --entrypoint /usr/bin/sage \\\n  sagemath/sagemath:10.10 -c \\\n  \"import unittest; suite = unittest.defaultTestLoader.discover('tests', pattern='test_rectangle_atlas_v274.py'); assert unittest.TextTestRunner(verbosity=2).run(suite).wasSuccessful()\""
+    }
+   ]
+  },
+  {
+   "source": "v274-v279-research.yml:relative-and-adversarial",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v274-v279-research.yml",
+    "code/*v27[4-9].py",
+    "code/moving_polygon_events_v224.py",
+    "code/polygon_orbit_census_v223.py",
+    "research/v27[4-9]*",
+    "results/v274/**",
+    "results/v278/**",
+    "tests/*v27[4-9].py"
+   ],
+   "timeout_minutes": 8,
+   "commands": [
+    {
+     "run": "python code/adversarial_rectangles_v278.py --check"
+    }
+   ]
+  },
+  {
+   "source": "v280-v283-research.yml:moving-atlas",
+   "kind": "sage",
+   "paths": [
+    ".github/workflows/v280-v283-research.yml",
+    "code/*v280.py",
+    "code/*v282_v283.py",
+    "code/adversarial_rectangles_v278.py",
+    "code/liouville_primitive_experiments_v276.py",
+    "code/rectangle_atlas_v274.py",
+    "code/relative_rectangle_v269_v273.py",
+    "research/v280-v283*",
+    "results/v280/**",
+    "results/v282-v283/**",
+    "tests/*v280.py",
+    "tests/*v282_v283.py"
+   ],
+   "timeout_minutes": 12,
+   "commands": [
+    {
+     "run": "docker run --rm --mount \"type=bind,src=$PWD,dst=/work,readonly\" \\\n  --workdir /work --env PYTHONDONTWRITEBYTECODE=1 --entrypoint /usr/bin/sage \\\n  sagemath/sagemath:10.10 -c \\\n  \"import unittest; suite = unittest.defaultTestLoader.discover('tests', pattern='test_moving_rectangle_atlas_v280.py'); assert unittest.TextTestRunner(verbosity=2).run(suite).wasSuccessful()\""
+    }
+   ]
+  },
+  {
+   "source": "v280-v283-research.yml:refinement",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v280-v283-research.yml",
+    "code/*v280.py",
+    "code/*v282_v283.py",
+    "code/adversarial_rectangles_v278.py",
+    "code/liouville_primitive_experiments_v276.py",
+    "code/rectangle_atlas_v274.py",
+    "code/relative_rectangle_v269_v273.py",
+    "research/v280-v283*",
+    "results/v280/**",
+    "results/v282-v283/**",
+    "tests/*v280.py",
+    "tests/*v282_v283.py"
+   ],
+   "timeout_minutes": 8,
+   "commands": [
+    {
+     "run": "python code/relative_witness_refinement_v282_v283.py --check"
+    },
+    {
+     "run": "python code/adversarial_rectangles_v278.py --check"
+    }
+   ]
+  },
+  {
+   "source": "v284-v287-research.yml:angle-band-and-collars",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v284-v287-research.yml",
+    "code/moving_spiral_support_v285_v286.py",
+    "code/polygon_orbit_census_v223.py",
+    "code/protected_rectangle_band_v284.py",
+    "code/relative_witness_refinement_v282_v283.py",
+    "research/v284-v287*",
+    "results/v284-v287/**",
+    "tests/test_rectangle_family_stability_v284_v287.py",
+    "tests/test_support_identities_v285.py"
+   ],
+   "timeout_minutes": 8,
+   "commands": [
+    {
+     "run": "python code/protected_rectangle_band_v284.py --check"
+    },
+    {
+     "run": "python code/moving_spiral_support_v285_v286.py --check"
+    }
+   ]
+  },
+  {
+   "source": "v284-v287-research.yml:moving-support-algebra",
+   "kind": "sage",
+   "paths": [
+    ".github/workflows/v284-v287-research.yml",
+    "code/moving_spiral_support_v285_v286.py",
+    "code/polygon_orbit_census_v223.py",
+    "code/protected_rectangle_band_v284.py",
+    "code/relative_witness_refinement_v282_v283.py",
+    "research/v284-v287*",
+    "results/v284-v287/**",
+    "tests/test_rectangle_family_stability_v284_v287.py",
+    "tests/test_support_identities_v285.py"
+   ],
+   "timeout_minutes": 12,
+   "commands": [
+    {
+     "run": "docker run --rm --mount \"type=bind,src=$PWD,dst=/work,readonly\" \\\n  --workdir /work --env PYTHONDONTWRITEBYTECODE=1 --entrypoint /usr/bin/sage \\\n  sagemath/sagemath:10.10 -c \\\n  \"import unittest; suite = unittest.defaultTestLoader.discover('tests', pattern='test_support_identities_v285.py'); assert unittest.TextTestRunner(verbosity=2).run(suite).wasSuccessful()\""
+    }
+   ]
+  },
+  {
+   "source": "v288-v291-research.yml:coupled-certificate",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v288-v291-research.yml",
+    "code/big_peg_multichart_v249.py",
+    "code/moving_polygon_events_v224.py",
+    "code/protected_rectangle_band_v284.py",
+    "code/rough_arc_continuation_v288_v291.py",
+    "research/v288-v291*",
+    "results/v280/moving-concave-atlas.json",
+    "results/v288-v291/**",
+    "tests/test_rough_arc_*.py"
+   ],
+   "timeout_minutes": 8,
+   "commands": [
+    {
+     "run": "python code/rough_arc_continuation_v288_v291.py --check"
+    }
+   ]
+  },
+  {
+   "source": "v288-v291-research.yml:algebraic-joins",
+   "kind": "sage",
+   "paths": [
+    ".github/workflows/v288-v291-research.yml",
+    "code/big_peg_multichart_v249.py",
+    "code/moving_polygon_events_v224.py",
+    "code/protected_rectangle_band_v284.py",
+    "code/rough_arc_continuation_v288_v291.py",
+    "research/v288-v291*",
+    "results/v280/moving-concave-atlas.json",
+    "results/v288-v291/**",
+    "tests/test_rough_arc_*.py"
+   ],
+   "timeout_minutes": 12,
+   "commands": [
+    {
+     "run": "docker run --rm --mount \"type=bind,src=$PWD,dst=/work,readonly\" \\\n  --workdir /work --env PYTHONDONTWRITEBYTECODE=1 --entrypoint /usr/bin/sage \\\n  sagemath/sagemath:10.10 -c \\\n  \"import unittest; suite = unittest.defaultTestLoader.discover('tests', pattern='test_rough_arc_algebra_v288_v289.py'); assert unittest.TextTestRunner(verbosity=2).run(suite).wasSuccessful()\""
+    }
+   ]
+  },
+  {
+   "source": "v292-v295-research.yml:endpoint-ledger",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v292-v295-research.yml",
+    "code/moving_flat_endpoints_v292_v295.py",
+    "code/moving_polygon_events_v224.py",
+    "code/rough_arc_continuation_v288_v291.py",
+    "research/v292-v295*",
+    "results/v280/moving-concave-atlas.json",
+    "results/v292-v295/**",
+    "tests/test_flat_jets_algebra_v292.py",
+    "tests/test_moving_flat_endpoints_v292_v295.py"
+   ],
+   "timeout_minutes": 8,
+   "commands": [
+    {
+     "run": "python code/moving_flat_endpoints_v292_v295.py --check"
+    }
+   ]
+  },
+  {
+   "source": "v292-v295-research.yml:symbolic-jets",
+   "kind": "sage",
+   "paths": [
+    ".github/workflows/v292-v295-research.yml",
+    "code/moving_flat_endpoints_v292_v295.py",
+    "code/moving_polygon_events_v224.py",
+    "code/rough_arc_continuation_v288_v291.py",
+    "research/v292-v295*",
+    "results/v280/moving-concave-atlas.json",
+    "results/v292-v295/**",
+    "tests/test_flat_jets_algebra_v292.py",
+    "tests/test_moving_flat_endpoints_v292_v295.py"
+   ],
+   "timeout_minutes": 12,
+   "commands": [
+    {
+     "run": "docker run --rm --mount \"type=bind,src=$PWD,dst=/work,readonly\" \\\n  --workdir /work --env PYTHONDONTWRITEBYTECODE=1 --entrypoint /usr/bin/sage \\\n  sagemath/sagemath:10.10 -c \\\n  \"import unittest; suite = unittest.defaultTestLoader.discover('tests', pattern='test_flat_jets_algebra_v292.py'); assert unittest.TextTestRunner(verbosity=2).run(suite).wasSuccessful()\""
+    }
+   ]
+  },
+  {
+   "source": "v296-v299-research.yml:scaled-envelope",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v296-v299-research.yml",
+    "code/moving_flat_endpoints_v292_v295.py",
+    "code/rough_flat_contacts_v296_v299.py",
+    "research/v296-v299*",
+    "results/v296-v299/**",
+    "tests/test_rough_flat_algebra_v296.py",
+    "tests/test_rough_flat_contacts_v296_v299.py"
+   ],
+   "timeout_minutes": 8,
+   "commands": [
+    {
+     "run": "python code/rough_flat_contacts_v296_v299.py --check"
+    }
+   ]
+  },
+  {
+   "source": "v296-v299-research.yml:endpoint-algebra",
+   "kind": "sage",
+   "paths": [
+    ".github/workflows/v296-v299-research.yml",
+    "code/moving_flat_endpoints_v292_v295.py",
+    "code/rough_flat_contacts_v296_v299.py",
+    "research/v296-v299*",
+    "results/v296-v299/**",
+    "tests/test_rough_flat_algebra_v296.py",
+    "tests/test_rough_flat_contacts_v296_v299.py"
+   ],
+   "timeout_minutes": 12,
+   "commands": [
+    {
+     "run": "docker run --rm --mount \"type=bind,src=$PWD,dst=/work,readonly\" \\\n  --workdir /work --env PYTHONDONTWRITEBYTECODE=1 --entrypoint /usr/bin/sage \\\n  sagemath/sagemath:10.10 -c \\\n  \"import unittest; suite = unittest.defaultTestLoader.discover('tests', pattern='test_rough_flat_algebra_v296.py'); assert unittest.TextTestRunner(verbosity=2).run(suite).wasSuccessful()\""
+    }
+   ]
+  },
+  {
+   "source": "v300-balanced-sweep.yml:replay",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v300-balanced-sweep.yml",
+    "code/balanced_sweep_v300.py",
+    "research/v300-bounded-density-square-crossing.md",
+    "results/v300/**",
+    "tests/test_balanced_sweep_v300.py"
+   ],
+   "timeout_minutes": 30,
+   "commands": [
+    {
+     "run": "python code/balanced_sweep_v300.py --check"
+    }
+   ]
+  },
+  {
+   "source": "v301-tilted-sweep.yml:replay",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v301-tilted-sweep.yml",
+    "code/balanced_sweep_v300.py",
+    "code/polygon_orbit_census_v223.py",
+    "code/tilted_sweep_v301.py",
+    "research/v301-tilted-squares-and-boundary-weights.md",
+    "results/v301/**",
+    "tests/test_tilted_sweep_v301.py"
+   ],
+   "timeout_minutes": 30,
+   "commands": [
+    {
+     "run": "python code/tilted_sweep_v301.py --check"
+    }
+   ]
+  },
+  {
+   "source": "v302-v303-rough-crossing.yml:replay",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v302-v303-rough-crossing.yml",
+    "code/balanced_sweep_v300.py",
+    "code/direction_search_v303.py",
+    "code/polygon_orbit_census_v223.py",
+    "code/rough_crossing_v302.py",
+    "code/tilted_sweep_v301.py",
+    "research/v302-connected-rough-rectangle-crossing.md",
+    "research/v303-finding-a-direction.md",
+    "results/v302/**",
+    "results/v303/**",
+    "tests/test_direction_search_v303.py",
+    "tests/test_rough_crossing_v302.py"
+   ],
+   "timeout_minutes": 30,
+   "commands": [
+    {
+     "run": "python code/rough_crossing_v302.py --check"
+    },
+    {
+     "run": "python code/direction_search_v303.py --check"
+    }
+   ]
+  },
+  {
+   "source": "v304-v306-four-contact.yml:verify",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v304-v306-four-contact.yml",
+    "code/polygon_orbit_census_v223.py",
+    "code/radial_and_rough_v304_v306.py",
+    "code/rectangle_clearance_v305.py",
+    "research/v304-v306-four-contact-clearance.md",
+    "results/v304-v306/**",
+    "tests/test_rectangle_clearance_v304_v306.py"
+   ],
+   "timeout_minutes": 30,
+   "commands": [
+    {
+     "run": "python code/rectangle_clearance_v305.py --check"
+    },
+    {
+     "run": "python code/radial_and_rough_v304_v306.py --check"
+    }
+   ]
+  },
+  {
+   "source": "v307-convex-shell.yml:verify",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v307-convex-shell.yml",
+    "code/convex_shell_v307.py",
+    "code/polygon_orbit_census_v223.py",
+    "research/v307-convex-shell-square-gap.md",
+    "results/v307/**",
+    "tests/test_convex_shell_v307.py"
+   ],
+   "timeout_minutes": 30,
+   "commands": [
+    {
+     "run": "python code/convex_shell_v307.py | diff - results/v307/convex-shell.json"
+    }
+   ]
+  },
+  {
+   "source": "v308-deep-dents.yml:verify",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v308-deep-dents.yml",
+    "code/convex_shell_v307.py",
+    "code/deep_dent_census_v308.py",
+    "code/deep_dents_v308.py",
+    "code/polygon_orbit_census_v223.py",
+    "research/v308-deep-dents-and-square-parity.md",
+    "results/v308/**",
+    "tests/test_deep_dents_v308.py"
+   ],
+   "timeout_minutes": 30,
+   "commands": [
+    {
+     "run": "python code/deep_dents_v308.py | diff - results/v308/deep-dents.json"
+    },
+    {
+     "run": "for kind in opposite_dents two_runs three_runs; do\n  python code/deep_dent_census_v308.py \"$kind\" | diff - \"results/v308/census-$kind.json\"\ndone"
+    }
+   ]
+  },
+  {
+   "source": "v309-center-walls.yml:verify",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v309-center-walls.yml",
+    "code/center_walls_v309.py",
+    "code/convex_shell_v307.py",
+    "code/deep_dents_v308.py",
+    "code/polygon_orbit_census_v223.py",
+    "research/v309-local-square-degree-by-center.md",
+    "results/v309/**",
+    "tests/test_center_walls_v309.py"
+   ],
+   "timeout_minutes": 30,
+   "commands": [
+    {
+     "run": "python code/center_walls_v309.py | diff - results/v309/center-walls.json"
+    }
+   ]
+  },
+  {
+   "source": "v310-scale-transfer.yml:verify",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v310-scale-transfer.yml",
+    "code/balanced_sweep_v300.py",
+    "code/polygon_orbit_census_v223.py",
+    "code/scale_transfer_v310.py",
+    "code/tilted_sweep_v301.py",
+    "research/v310-moving-degree-and-scale-loss.md",
+    "results/v310/**",
+    "tests/test_scale_transfer_v310.py"
+   ],
+   "timeout_minutes": 30,
+   "commands": [
+    {
+     "run": "python code/scale_transfer_v310.py | diff - results/v310/scale-transfer.json"
+    }
+   ]
+  },
+  {
+   "source": "v311-separated-arc-parity.yml:verify",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v311-separated-arc-parity.yml",
+    "code/accumulating_notches_v220.py",
+    "code/polygon_orbit_census_v223.py",
+    "code/separated_arc_parity_v311.py",
+    "research/v311-separated-arc-parity.md",
+    "results/v311/**",
+    "tests/test_separated_arc_parity_v311.py"
+   ],
+   "timeout_minutes": 30,
+   "commands": [
+    {
+     "run": "python code/separated_arc_parity_v311.py | diff - results/v311/separated-arc-parity.json"
+    }
+   ]
+  },
+  {
+   "source": "v312-rough-arc-winding.yml:verify",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v312-rough-arc-winding.yml",
+    "code/polygon_orbit_census_v223.py",
+    "code/rough_arc_winding_v312.py",
+    "research/v312-two-arc-winding.md",
+    "results/v312/**",
+    "tests/test_rough_arc_winding_v312.py"
+   ],
+   "timeout_minutes": 30,
+   "commands": [
+    {
+     "run": "python code/rough_arc_winding_v312.py | diff - results/v312/rough-arc-winding.json"
+    }
+   ]
+  },
+  {
+   "source": "v313-half-turn-degree.yml:verify",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v313-half-turn-degree.yml",
+    "code/boundary_or_winding_v313.py",
+    "code/half_turn_degree_v313.py",
+    "code/polygon_orbit_census_v223.py",
+    "code/rough_arc_winding_v312.py",
+    "research/v313-half-turn-degree.md",
+    "results/v313/**",
+    "tests/test_half_turn_degree_v313.py"
+   ],
+   "timeout_minutes": 30,
+   "commands": [
+    {
+     "run": "python code/half_turn_degree_v313.py | diff - results/v313/half-turn-degree.json"
+    }
+   ]
+  },
+  {
+   "source": "v314-local-twist.yml:verify",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v314-local-twist.yml",
+    "code/boundary_or_winding_v313.py",
+    "code/half_turn_degree_v313.py",
+    "code/local_twist_v314.py",
+    "code/polygon_orbit_census_v223.py",
+    "code/rough_arc_winding_v312.py",
+    "research/v314-local-twist.md",
+    "results/v314/**",
+    "tests/test_local_twist_v314.py"
+   ],
+   "timeout_minutes": 30,
+   "commands": [
+    {
+     "run": "python code/local_twist_v314.py | diff - results/v314/local-twist.json"
+    }
+   ]
+  },
+  {
+   "source": "v315-cutoff-payment.yml:verify",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v315-cutoff-payment.yml",
+    "code/boundary_or_winding_v313.py",
+    "code/cutoff_payment_v315.py",
+    "code/half_turn_degree_v313.py",
+    "code/polygon_orbit_census_v223.py",
+    "code/rough_arc_winding_v312.py",
+    "research/v315-cutoff-payment.md",
+    "results/v315/**",
+    "tests/test_cutoff_payment_v315.py"
+   ],
+   "timeout_minutes": 30,
+   "commands": [
+    {
+     "run": "python code/cutoff_payment_v315.py | diff - results/v315/cutoff-payment.json"
+    }
+   ]
+  },
+  {
+   "source": "v316-roof-shear.yml:verify",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v316-roof-shear.yml",
+    "code/boundary_or_winding_v313.py",
+    "code/polygon_orbit_census_v223.py",
+    "code/roof_shear_v316.py",
+    "code/rough_arc_winding_v312.py",
+    "research/v316-roof-shear.md",
+    "results/v316/**",
+    "tests/test_roof_shear_v316.py"
+   ],
+   "timeout_minutes": 30,
+   "commands": [
+    {
+     "run": "python code/roof_shear_v316.py | diff - results/v316/roof-shear.json"
+    }
+   ]
+  },
+  {
+   "source": "v317-neck-lens.yml:verify",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v317-neck-lens.yml",
+    "code/neck_lens_v317.py",
+    "code/polygon_orbit_census_v223.py",
+    "research/v317-neck-lens.md",
+    "results/v317/**",
+    "tests/test_neck_lens_v317.py"
+   ],
+   "timeout_minutes": 30,
+   "commands": [
+    {
+     "run": "python code/neck_lens_v317.py | diff - results/v317/neck-lens.json"
+    }
+   ]
+  },
+  {
+   "source": "v318-v322-spectral.yml:verify",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v318-v322-spectral.yml",
+    "code/spectral_noncollapse_v318_v322.py",
+    "research/v318-v322-support-free-spectral.md",
+    "tests/test_spectral_noncollapse_v318_v322.py"
+   ],
+   "timeout_minutes": 30,
+   "commands": [
+    {
+     "run": "python code/spectral_noncollapse_v318_v322.py"
+    }
+   ]
+  },
+  {
+   "source": "v323-v327-cap-winding.yml:verify",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v323-v327-cap-winding.yml",
+    "code/cap_winding_v323_v327.py",
+    "research/v323-v327-cap-winding.md",
+    "tests/test_cap_winding_v323_v327.py"
+   ],
+   "timeout_minutes": 30,
+   "commands": [
+    {
+     "run": "python code/cap_winding_v323_v327.py"
+    }
+   ]
+  },
+  {
+   "source": "v328-v330-windows.yml:verify",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v328-v330-windows.yml",
+    "code/angular_windows_v328_v330.py",
+    "research/v328-v330-windows-ellipses-spirals.md",
+    "results/v328-v330/**",
+    "tests/test_angular_windows_v328_v330.py"
+   ],
+   "timeout_minutes": 30,
+   "commands": [
+    {
+     "run": "python code/angular_windows_v328_v330.py | diff - results/v328-v330/windows-ellipses-spirals.json"
+    }
+   ]
+  },
+  {
+   "source": "v331-residue-census.yml:verify",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v331-residue-census.yml",
+    "code/angular_windows_v328_v330.py",
+    "code/floer_actions_v331.py",
+    "code/floer_grading_v331.py",
+    "code/floer_parity_v331.py",
+    "code/polygon_orbit_census_v223.py",
+    "code/residue_census_v331.py",
+    "research/v331-residue-census.md",
+    "results/v331/**",
+    "tests/test_floer_actions_v331.py",
+    "tests/test_floer_grading_v331.py",
+    "tests/test_floer_parity_v331.py",
+    "tests/test_residue_census_v331.py"
+   ],
+   "timeout_minutes": 30,
+   "commands": [
+    {
+     "run": "python code/residue_census_v331.py | diff - results/v331/census.json"
+    },
+    {
+     "run": "python code/floer_parity_v331.py | diff - results/v331/parity.json"
+    },
+    {
+     "run": "python code/floer_actions_v331.py | diff - results/v331/actions.json"
+    },
+    {
+     "run": "python code/floer_grading_v331.py | diff - results/v331/grading.json"
+    }
+   ]
+  },
+  {
+   "source": "v334-terrain-gluing.yml:verify",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v334-terrain-gluing.yml",
+    "code/polygon_orbit_census_v223.py",
+    "code/residue_census_v331.py",
+    "code/terrain_gluing_v334.py",
+    "research/v334-two-terrain-gluing.md",
+    "results/v334/**",
+    "tests/test_terrain_gluing_v334.py"
+   ],
+   "timeout_minutes": 30,
+   "commands": [
+    {
+     "run": "python code/terrain_gluing_v334.py | diff - results/v334/witnesses.json"
+    }
+   ]
+  },
+  {
+   "source": "v335-even-loop-fragility.yml:verify",
+   "kind": "python",
+   "paths": [
+    ".github/workflows/v335-even-loop-fragility.yml",
+    "code/even_loop_fragility_v335.py",
+    "code/terrain_gluing_v334.py",
+    "research/v335-even-loop-and-fragility.md",
+    "results/v335/**",
+    "tests/test_even_loop_fragility_v335.py"
+   ],
+   "timeout_minutes": 30,
+   "commands": [
+    {
+     "run": "python code/even_loop_fragility_v335.py | diff - results/v335/report.json"
+    }
+   ]
+  }
+ ]
+}

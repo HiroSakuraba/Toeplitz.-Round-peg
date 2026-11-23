@@ -14,7 +14,7 @@
 
 ## Integration and controls
 
-All five versions share the [pure-standard-library exact verifier](../code/relative_rectangle_v269_v273.py), [31 independent tests](../tests/test_relative_rectangle_v269_v273.py) and a [dedicated workflow](../.github/workflows/v269-v273-relative-rectangle.yml).
+All five versions share the [pure-standard-library exact verifier](../code/relative_rectangle_v269_v273.py), [31 independent tests](../tests/test_relative_rectangle_v269_v273.py) and a [dedicated workflow](../ci/replays.json).
 
 The code uses rational arithmetic to verify the restricted ellipse and polygon examples, source/target group symmetries and geometric degenerations. The spectral countermodel's universal claims are analytic trigonometric identities in v270; any floating-point sampling is regression only, **not proof**.
 
