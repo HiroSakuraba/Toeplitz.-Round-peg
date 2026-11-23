@@ -10,7 +10,7 @@ import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "code"))
 try:
-    from incircle_disk_v343 import inradius, named_shapes, random_star, regular_polygon, row, union_polygon
+    from incircle_disk_v343 import inradius, inradius_interval, named_shapes, random_star, regular_polygon, row, union_polygon
     from robust_squares_v336 import terrain_polygon
     from terrain_gluing_v334 import edges_through, terrain_i
     HAVE_NUMPY = True
@@ -37,9 +37,9 @@ class IncircleReading(unittest.TestCase):
         rng = random.Random(3)
         for _ in range(25):
             hs = [rng.randint(1, 7) for _ in range(rng.randint(2, 7))]
-            i, (r, _) = terrain_i(hs), inradius(terrain_polygon(hs))
-            self.assertLessEqual(i/2, r+1e-7)
-            self.assertLessEqual(math.sqrt(2)*r, i+1e-7)
+            i, (lo, hi, _) = terrain_i(hs), inradius_interval(terrain_polygon(hs))
+            self.assertLessEqual(i/2, hi)
+            self.assertLessEqual(math.sqrt(2)*lo, i)
 
 
 @needs_numpy
@@ -48,6 +48,22 @@ class Inradius(unittest.TestCase):
         P = regular_polygon(12)
         R = max(math.hypot(float(x), float(y)) for x, y in P)
         self.assertAlmostEqual(inradius(P)[0], R*math.cos(math.pi/12), places=2)   # rational rounding 1e-3
+
+    def test_narrow_triangle_is_bracketed(self):
+        # review finding on PR #97: the old pattern search stopped at 0.230972 here
+        P = [(Q(0), Q(0)), (Q(10), Q(3)), (Q(10), Q(7, 2))]
+        a, b, c = math.hypot(10, 3), 0.5, math.hypot(10, 3.5)
+        true = (10*0.5/2)/((a+b+c)/2)
+        lo, hi, _ = inradius_interval(P)
+        self.assertLessEqual(lo, true+1e-12)
+        self.assertGreaterEqual(hi, true-1e-12)
+        self.assertLess(hi-lo, 1e-5)
+
+    def test_thin_rectangle(self):
+        # review finding on PR #97: aspect ratio above 320 used to leave the initial grid empty
+        lo, hi, _ = inradius_interval([(Q(0), Q(0)), (Q(1000), Q(0)), (Q(1000), Q(1)), (Q(0), Q(1))])
+        self.assertLessEqual(lo, 0.5)
+        self.assertGreaterEqual(hi, 0.5)
 
     def test_union_witness(self):
         r, _ = inradius(named_shapes()["v334 glued witness A"])

@@ -10,8 +10,8 @@ i/2, we have i/sqrt2 <= sqrt2 * r <= i, so the disk version implies Conjecture 3
 on the v338 interior case by Theorem 338.1.
 
 The test compares the v336 robust estimate (minimum largest square over seeded perturbations, an
-upper estimate of the robust size) with sqrt2 * r, where r is computed numerically (grid search
-refined by a pattern search; the distance is exact for each point).
+upper estimate of the robust size) with sqrt2 * r, using a certified upper bound on r from a
+branch-and-bound over square cells (the signed distance is 1-Lipschitz).
 """
 from fractions import Fraction as Q
 from multiprocessing import Pool
@@ -28,8 +28,9 @@ from terrain_gluing_v334 import column_maps, interior_square, polygon, terrain_i
 
 # ---------------------------------------------------------------- inradius
 
-def _dist_inside(V, pts):
-    """Distance to the boundary for points inside the polygon V (float array), -1 outside."""
+def _signed_dist(V, pts):
+    """Signed distance to the boundary of the polygon V (float array): positive inside, negative
+    outside. It is 1-Lipschitz, which the branch-and-bound below relies on."""
     A, B = V, np.roll(V, -1, axis=0)
     d = B-A
     rel = pts[:, None, :]-A[None]
@@ -40,32 +41,51 @@ def _dist_inside(V, pts):
     with np.errstate(divide="ignore", invalid="ignore"):
         xi = A[None, :, 0]+(y-A[None, :, 1])*(B[None, :, 0]-A[None, :, 0])/(B[None, :, 1]-A[None, :, 1])
     inside = (cross & (x < xi)).sum(1) % 2 == 1
-    return np.where(inside, dist, -1.0)
+    return np.where(inside, dist, -dist)
 
 
-def inradius(P, grid=160):
-    """(r, centre) of the largest disk inside the polygon P, to about 1e-9 relative accuracy."""
+def _signed_dist_chunked(V, C, chunk=20000):
+    return np.concatenate([_signed_dist(V, C[k:k+chunk]) for k in range(0, len(C), chunk)]) if len(C) else np.zeros(0)
+
+
+def inradius_interval(P, rel_tol=1e-6, max_cells=200000, max_rounds=60):
+    """Certified bounds (r_lo, r_hi, centre) on the inradius of the polygon P, up to floating point.
+
+    Branch and bound on square cells: the signed distance is 1-Lipschitz, so a cell of side s with
+    centre value d cannot contain a point of value above d + s/sqrt2. r_lo is attained at a centre;
+    r_hi bounds the value on every cell not yet discarded, so it stays valid if the search stops
+    early (cell cap, for instance on a long plateau of optimal centres in a thin polygon). The
+    initial cells are sized from the shorter side of the bounding box."""
     V = np.array([[float(x), float(y)] for x, y in P])
     lo, hi = V.min(0), V.max(0)
-    h = float((hi-lo).max())/grid
-    xs = np.arange(lo[0]+h/2, hi[0], h)
-    ys = np.arange(lo[1]+h/2, hi[1], h)
-    G = np.array([(x, y) for x in xs for y in ys])
-    D = _dist_inside(V, G)
-    best = (-1.0, None)
-    for k in np.argsort(-D)[:12]:
-        c, r, step = G[k].copy(), D[k], h
-        while step > 1e-10*h*grid:
-            moves = c+step*np.array([[1, 0], [-1, 0], [0, 1], [0, -1], [1, 1], [1, -1], [-1, 1], [-1, -1]])
-            dm = _dist_inside(V, moves)
-            j = int(np.argmax(dm))
-            if dm[j] > r:
-                c, r = moves[j], dm[j]
-            else:
-                step /= 2
-        if r > best[0]:
-            best = (float(r), (float(c[0]), float(c[1])))
-    return best
+    ext = hi-lo
+    s = float(ext.min())/4
+    nx, ny = int(math.ceil(ext[0]/s)), int(math.ceil(ext[1]/s))
+    C = np.array([(lo[0]+(a+0.5)*s, lo[1]+(b+0.5)*s) for a in range(nx) for b in range(ny)])
+    best, centre = -math.inf, None
+    for _ in range(max_rounds):
+        D = _signed_dist_chunked(V, C)
+        k = int(np.argmax(D))
+        if D[k] > best:
+            best, centre = float(D[k]), (float(C[k, 0]), float(C[k, 1]))
+        ub = D+s/math.sqrt(2)
+        tol = rel_tol*max(best, 1e-300)
+        keep = ub > best+tol
+        if not keep.any():
+            return best, best+tol, centre
+        if s/math.sqrt(2) <= tol or 4*int(keep.sum()) > max_cells:
+            return best, float(ub[keep].max()), centre
+        C = C[keep]
+        s /= 2
+        q = s/2
+        C = np.concatenate([C+[dx, dy] for dx in (-q, q) for dy in (-q, q)])
+    return best, float(ub.max()), centre
+
+
+def inradius(P):
+    """(r, centre): the certified lower bound of `inradius_interval` and where it is attained."""
+    r_lo, _, c = inradius_interval(P)
+    return r_lo, c
 
 
 # ---------------------------------------------------------------- shapes
@@ -147,9 +167,11 @@ def named_shapes():
 # ---------------------------------------------------------------- experiment
 
 def row(P, i=None, seeds=range(12)):
-    r, c = inradius(P)
+    r, r_hi, c = inradius_interval(P)
     exact, robust, _ = robust_estimate(P, list(seeds))
-    out = {"r": r, "centre": c, "M": exact, "robust": robust, "disk_ratio": robust/(math.sqrt(2)*r)}
+    # the ratio uses the certified upper bound on r, so an inradius error cannot hide a violation
+    out = {"r": r, "r_upper": r_hi, "centre": c, "M": exact, "robust": robust,
+           "disk_ratio": robust/(math.sqrt(2)*r_hi)}
     if i is not None:
         out.update({"i": i, "i_over_r": i/r})
     return out
