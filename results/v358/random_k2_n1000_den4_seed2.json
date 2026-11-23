@@ -1,0 +1,30 @@
+{
+ "name": "random_k2_n1000_den4_seed2",
+ "shapes": 1000,
+ "levels": {
+  "closed-form": 403,
+  "theorem": 584,
+  "traced": 12,
+  "transverse": 1
+ },
+ "kinds": {
+  "anchored-floor-floor-mirror": 1,
+  "anchored-floor-roof": 50,
+  "anchored-floor-roof-mirror": 36,
+  "anchored-floor-wall": 19,
+  "anchored-floor-wall-mirror": 18,
+  "anchored-wall-wall": 22,
+  "anchored-wall-wall-mirror": 9,
+  "end-plateau-v351": 11,
+  "end-tower-v351": 404,
+  "floor-wall": 5,
+  "interior-slot-v338": 169,
+  "odd-component": 12,
+  "regular-square": 1,
+  "roof-slide": 209,
+  "wall-floor": 9,
+  "wall-pair": 25
+ },
+ "misses": [],
+ "seconds": 0.5
+}

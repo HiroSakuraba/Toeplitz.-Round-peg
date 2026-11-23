@@ -1,0 +1,20 @@
+{
+ "name": "exhaustive_k5_W13_H5",
+ "shapes": 51100,
+ "levels": {
+  "closed-form": 21962,
+  "theorem": 29129,
+  "traced": 9
+ },
+ "kinds": {
+  "end-plateau-v351": 43,
+  "end-tower-v351": 1,
+  "floor-slide": 16,
+  "interior-slot-v338": 29085,
+  "odd-component": 9,
+  "roof-slide": 21716,
+  "wall-pair": 230
+ },
+ "misses": [],
+ "seconds": 80.5
+}
