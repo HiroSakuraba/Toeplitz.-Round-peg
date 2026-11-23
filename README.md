@@ -219,7 +219,7 @@ See the [November literature review](research/2026-11-literature-and-v212-plan.m
 - [Counterexample-exclusion profile](research/v230-counterexample-exclusion-profile.md): separates rectifiable/finite-variation/Liouville-regular classes from genuine irregular benchmarks and triages the v206–v229 backlog, without labeling an uninspected finite-coil model 'open'.
 - [Exact standard-library benchmark](code/irregular_spiral_frontier_v230.py) and [14 local tests](tests/test_irregular_spiral_frontier_v230.py): verify exact rational threshold and quantitative inequalities, **not** the transcendental Poincaré–Miranda face signs.
 - [Recovered v99–v102 source material](related/power-spiral-v99-v102/): original handoffs, v99 exact verifier, **historical flawed v100 verifier**, `iv101.py` (not fully outward-rounded; see audit), independent `verify_v101_arb.py`, hashes, and a new strict Arb fail-closed adapter. The missing corrected Decimal face driver is **not** represented as recovered.
-- [Separate v230 Arb workflow](.github/workflows/v230-spiral-arb.yml): installs `python-flint`/mpmath and checks original file SHA256, v99, and **all eight corrected v101 Arb faces**. The Arb dependency was unavailable locally, so CI must actually pass before describing this verification as freshly reproduced.
+- [v230 Arb replay](ci/replays.json) (entry `v230-spiral-arb.yml`, run by the [CI workflow](.github/workflows/ci.yml)): installs `python-flint`/mpmath and checks original file SHA256, v99, and **all eight corrected v101 Arb faces**. The Arb dependency was unavailable locally, so CI must actually pass before describing this verification as freshly reproduced.
 
 **Unrestricted Toeplitz remains open.** The recovered power-spiral theorem is a special-case constructive benchmark; a protected-square mechanism for arbitrary `C0` Jordan curves is still missing.
 
@@ -429,7 +429,7 @@ See the [November literature review](research/2026-11-literature-and-v212-plan.m
 - **v271:** [All 24 labelings / six C4 sectors / three D4 classes](research/v271-six-sector-equivariant-ledger.md), exact residual equivariance, **and a complete two-branch rectangle solution on one four-edge cell of an actual nonconvex Jordan polygon**, including a positive-dimensional square branch. This is not yet a whole-curve atlas.
 - **v272:** [Rectangle degeneration trichotomy](research/v272-degeneration-trichotomy-and-shrinkout.md) and selected shrinking squares on rational simple Jordan polygons approximating the unit square.
 - **v273:** [Exact ellipse rectangle-angle formulas and sharp positive-radius floors](research/v273-ellipse-angle-continuation.md), together with a conditional protected-angle compactness criterion.
-- [Exact standard-library code](code/relative_rectangle_v269_v273.py), [31 regression tests](tests/test_relative_rectangle_v269_v273.py), and [dedicated CI](.github/workflows/v269-v273-relative-rectangle.yml).
+- [Exact standard-library code](code/relative_rectangle_v269_v273.py), [31 regression tests](tests/test_relative_rectangle_v269_v273.py), and [CI replays](ci/replays.json).
 
 **Limit:** This tranche does **not** prove a universal relative Euler/degree class, a filtered Floer nonescape theorem, a full geometric sector atlas, or the unrestricted Toeplitz conjecture. The next target is a compactified rectangle/binormal relative class that survives generic perturbations **and** cannot escape through total four-corner collapse.
 

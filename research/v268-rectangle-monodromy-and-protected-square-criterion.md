@@ -417,7 +417,7 @@ Proving these would turn the **relative interval** example into a substantive al
 
 New source: [`code/rectangle_monodromy_v268.py`](../code/rectangle_monodromy_v268.py).  
 New tests: [`tests/test_rectangle_monodromy_v268.py`](../tests/test_rectangle_monodromy_v268.py).  
-Dedicated workflow: [`v268-rectangle-monodromy.yml`](../.github/workflows/v268-rectangle-monodromy.yml).
+Dedicated workflow: [`v268-rectangle-monodromy.yml`](../ci/replays.json).
 
 ```sh
 python code/rectangle_monodromy_v268.py

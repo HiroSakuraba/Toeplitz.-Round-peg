@@ -126,7 +126,7 @@ python -m unittest discover -s tests -v
 python code/periodic_square_cert_v213.py
 ```
 
-The suite covers exact affine systems (including rank 0 and rank-deficient positive-dimensional families), both orientations, singleton parameter windows, periodic graph subdivisions, the v212 connector obstruction, exact non-square proofs on marked windows, tall-height lift bounds, the new deck-lift obstruction, 14 planted periodic squares with prescribed deck data, randomized planted line-segment configurations, and transverse persistence under randomly chosen rational PL vertical perturbations. CI reuses `.github/workflows/v212-exact.yml` and runs the entire test discovery suite.
+The suite covers exact affine systems (including rank 0 and rank-deficient positive-dimensional families), both orientations, singleton parameter windows, periodic graph subdivisions, the v212 connector obstruction, exact non-square proofs on marked windows, tall-height lift bounds, the new deck-lift obstruction, 14 planted periodic squares with prescribed deck data, randomized planted line-segment configurations, and transverse persistence under randomly chosen rational PL vertical perturbations. CI (now `.github/workflows/ci.yml`, formerly `v212-exact.yml`) runs the entire test discovery suite.
 
 ## What is **not** proved and next target
 

@@ -1,0 +1,67 @@
+name: CI
+# One workflow for the whole archive. It replaces the per-version workflows:
+# - tests: the full unit-test suite, with every optional dependency installed and the strict flags set,
+#   so numeric, sympy and Arb tests fail instead of skipping when something is missing;
+# - replays: the replay commands of ci/replays.json (script --check runs, recorded-output diffs,
+#   checksum checks), each kept behind the file filter of the workflow it came from;
+# - sage-replays: the SageMath-in-Docker replays from the same manifest.
+# Pull requests and pushes to main run the replays whose files changed; the weekly schedule and a
+# manual run replay everything.
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '17 6 * * 1'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r ci/requirements.txt
+      - run: python -m unittest discover -s tests -v
+        env:
+          REQUIRE_NUMERIC_DEPS: '1'
+          REQUIRE_SPIRAL_AUDIT_DEPS: '1'
+
+  replays:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r ci/requirements.txt
+      - id: select
+        run: bash ci/select.sh
+        env:
+          EVENT: ${{ github.event_name }}
+          BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+      - run: python ci/run_replays.py --kind python ${{ steps.select.outputs.args }}
+
+  sage-replays:
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - id: select
+        run: bash ci/select.sh
+        env:
+          EVENT: ${{ github.event_name }}
+          BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+      - run: python3 ci/run_replays.py --kind sage ${{ steps.select.outputs.args }}
