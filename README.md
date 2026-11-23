@@ -1,7 +1,7 @@
 # Toeplitz square-peg research
 
 **Research program:** Benjamin John Schulz (GitHub: HiroSakuraba)  
-**Status as of 2026-11-23:** Research in progress (latest integrated version: **v351**). Exact square-census, relative-degree, parity and winding certificates have been proved for selected polygonal and rough families; the general square-peg conjecture for arbitrary Jordan curves is **not proved** here.
+**Status as of 2026-11-23:** Research in progress (latest integrated version: **v352**). Exact square-census, relative-degree, parity and winding certificates have been proved for selected polygonal and rough families; the general square-peg conjecture for arbitrary Jordan curves is **not proved** here.
 
 The [Toeplitz square-peg problem](https://en.wikipedia.org/wiki/Inscribed_square_problem) asks whether every Jordan curve contains four distinct vertices of a nondegenerate Euclidean square. This is a versioned research archive of constructive half-square approaches, local certificates, geometric obstructions, analytic energy methods, and supporting computation.
 
@@ -9,6 +9,7 @@ The [Toeplitz square-peg problem](https://en.wikipedia.org/wiki/Inscribed_square
 
 Entries marked *analytic* are paper arguments that depend on cited preprints; only the computations named in the entry are machine-checked. The other entries pair their arguments with exact replays of the stated examples and certificates.
 
+- **[v352: the disk bound for every rectangular roof notch](research/v352-all-rectangular-roof-notches.md)** completes the narrow-notch case. At a critical height the sliding squares join rotating squares along the notch wall. Their combined degree stays odd through single and simultaneous corner collisions. A separate rotation interval covers the square outer box.
 - **[v351: one rectangular roof notch](research/v351-one-rectangular-roof-notch.md)** computes the inradius at every notch width and proves the robust disk bound whenever the notch is wider than the material beneath it is high. An exact corner collision shows why direct L transfer can fail; a separate full-height square survives.
 - **[v350: inward tilts and monotone frontiers](research/v350-inward-tilts-and-monotone-frontiers.md)** completes the six-sided tilted-L family. Sliding an interior disk to the bottom-left corner forces the selected square to span its diameter. The same argument covers continuous monotone frontiers with interior anchor contacts.
 - **[v349: the disk bound for every outward-tilted L](research/v349-all-outward-tilted-L.md)** completes the positive-slope family. Two separately robust squares cover disks above the ledge and disks reaching into the lower arm when the anchor square falls short of the outer span.
