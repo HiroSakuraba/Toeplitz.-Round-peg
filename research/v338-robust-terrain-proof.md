@@ -1,16 +1,16 @@
-# v337. Robust terrain squares: the interior case is proved, and global parity is not enough
+# v338. Robust terrain squares: the interior case is proved, and global parity is not enough
 
 Benjamin John Schulz · November 2026
 
-[v336](v336-robust-terrain-squares.md) conjectured that every grid terrain carries a robust inscribed square of side at least i/√2, where i is the side of its largest interior axis-aligned square. This note starts the proof for single terrains.
+[v336](v336-robust-terrain-squares.md) conjectured that every grid terrain carries a robust inscribed square of side at least i/√2, where i is the side of its largest interior axis-aligned square. This note starts the proof for single terrains. It complements [v337](v337-terrain-component-degree.md), which settles two fixtures exactly: the robust size of (2, 7) and of the v334 glued witness A is exactly i/√2.
 
 **Findings.**
-1. **Theorem 337.1 (proved).** Suppose some largest interior square has a column of height less than i on each side. Then every registered perturbation of size ε < δ ≤ 1/8 carries a square of side at least i − 4δ. So the robust size is at least i, which beats 1/√2. The proof applies v316's bent-base theorem to the perturbed curve. In this case the v336 corner squares play no role.
+1. **Theorem 338.1 (proved).** Suppose some largest interior square has a column of height less than i on each side. Then every registered perturbation of size ε < δ ≤ 1/8 carries a square of side at least i − 4δ. So the robust size is at least i, which beats 1/√2. The proof applies v316's bent-base theorem to the perturbed curve. In this case the v336 corner squares play no role.
 2. **Cutoff parity.** N_σ, the number of squares of side greater than σ, has a parity that does not change under small perturbations, as long as σ is not the side of a square of the exact terrain. When that parity is odd, a robust square of side greater than σ exists. Across 282 terrains, 6 perturbations each, the parity agreed at every admissible σ, and the total count was always odd.
-3. **Parity alone cannot prove the conjecture.** It certifies i/√2 on 279 of the 282 terrains. On the other three, every admissible cutoff at or above i/√2 has even parity, although their robust ratios are 1.12, 1.33 and 1.70. A proof therefore needs marked degrees on chosen arcs, as in Theorem 337.1, rather than the total square count.
-4. **What remains is the end-wall case.** Here the excursion starts or ends on an end wall. It covers 252 of the 282 sampled terrains, including the sharp example (2, 7).
+3. **Parity alone cannot prove the conjecture.** It certifies i/√2 on 279 of the 282 terrains. On the other three, every admissible cutoff at or above i/√2 has even parity, although their robust ratios are 1.12, 1.33 and 1.70. A proof therefore needs marked degrees on chosen arcs, as in Theorem 338.1, rather than the total square count.
+4. **What remains is the end-wall case.** Here the excursion starts or ends on an end wall. It covers 252 of the 282 sampled terrains, including the sharp example (2, 7), which v337 settles exactly.
 
-## Theorem 337.1: interior excursions
+## Theorem 338.1: interior excursions
 
 Fix a terrain with integer heights H(0), …, H(W−1), a largest interior square on the columns [a, a+i), and a height h just below i. v316's excursion leaves the roof at the wall x = l and returns at x = r.
 - l − 1 is the last column left of the square with H < i.
@@ -33,7 +33,7 @@ The theorem does not reach the end-wall case. There one end of A lies on an end 
 
 ## Cutoff parity
 
-**Lemma 337.2 (sketch).** Let γ be a Jordan polygon and σ > 0 a number that is not the side of any inscribed square of γ. Then all generic polygons sufficiently close to γ have the same parity of N_σ.
+**Lemma 338.2 (sketch).** Let γ be a Jordan polygon and σ > 0 a number that is not the side of any inscribed square of γ. Then all generic polygons sufficiently close to γ have the same parity of N_σ.
 
 *Sketch.* Squares of side at least σ/2 on curves converging to γ converge to squares of γ. So close enough to γ no curve has a square of side exactly σ. Join two nearby generic polygons by a generic path inside that neighbourhood. Along such a path squares are born and die in pairs, and a square vertex passing a polygon vertex does not change the count's parity. This is the mechanism behind the odd square count of generic curves, and no square crosses side σ. The transversality details for polygons are not written out here, so the lemma is used as a working tool.
 
@@ -41,7 +41,7 @@ The theorem does not reach the end-wall case. There one end of A lies on an end 
 
 | Case | Terrains | Lowest robust M/i | Lowest parity-certified ratio | Below 1/√2 |
 | --- | ---: | ---: | ---: | ---: |
-| Interior (Theorem 337.1) | 30 | 1.0001 | 0.7071 | 0 |
+| Interior (Theorem 338.1) | 30 | 1.0001 | 0.7071 | 0 |
 | End wall | 252 | 0.70705 | 0.4714 | 3 |
 
 On all 282 terrains the parity at every gap was the same for all 6 perturbations, and every perturbation had an odd total number of squares.
@@ -51,17 +51,23 @@ On all 282 terrains the parity at every gap was the same for all 6 perturbations
 - **(5, 1, 7, 4, 6, 4), i = 4.** The only gap above i/√2 = 2.83 has even parity. The robust ratio is 1.12.
 - **(4, 3, 1, 6, 3, 8), i = 3.** Exact families cover every side from √2 to 4, so no admissible cutoff exists there, and the gaps above 4 have even parity. The robust ratio is 1.33.
 
-In the first example the robust squares come in pairs that a larger, but still continuous, deformation could cancel. A small perturbation does not cancel them, but parity cannot see them. Even on interior terrains parity certifies less than Theorem 337.1 proves: for (1, 3, 3, 1, 4, 2) it gives only i/√2.
+In the first example the robust squares come in pairs that a larger, but still continuous, deformation could cancel. A small perturbation does not cancel them, but parity cannot see them. Even on interior terrains parity certifies less than Theorem 338.1 proves: for (1, 3, 3, 1, 4, 2) it gives only i/√2.
 
 ## What is left
 
-The conjecture for single terrains is now reduced to the end-wall case: every largest interior square has, on at least one side, no lower column before the end wall. The sharp example (2, 7) belongs here. There the exact squares with one vertex on the base, one on each wall and one on the roof form a family from the diamond, of side √2, to the corner square, of side 2. A perturbation keeps one end or the other, so a marked degree over this whole family, with arcs whose endpoints avoid it, is the natural candidate. Two steps remain.
-- Choose the four arcs for a general end-wall terrain so that the exact zero set stays off the arc endpoints.
-- Show that the degree is odd and that every zero has side at least i/√2.
+The conjecture for single terrains is now reduced to the end-wall case: every largest interior square has, on at least one side, no lower column before the end wall.
+
+[v337](v337-terrain-component-degree.md) supplies the method for this case on two fixtures. On (2, 7), the exact squares with one vertex on the base, one on each wall and one on the roof form a single family. It runs from the diamond, of side √2, to the corner square, of side 2. A perturbation can keep either end, and v337 shows that the whole family has odd degree in an isolating neighbourhood. v337 also gives a four-contact lemma: base, two walls and a roof step, all met in the interiors of their segments. That lemma certifies a robust square of side at least w/√2 directly.
+
+Two steps remain for a general end-wall terrain.
+- Select a large-square component whose contacts stay off arc endpoints, as v337 does by hand, or a four-contact configuration.
+- Show that its degree is odd and that its squares have side at least i/√2.
+
+The three terrains where parity fails show that the selection has to be local: the global count can be even while such a component survives.
 
 ## Replay
 
-    python code/robust_parity_v337.py      # the sampled experiment, about 80 seconds on 4 cores
-    python -m unittest discover -s tests -p 'test_robust_parity_v337.py' -v
+    python code/robust_parity_v338.py      # the sampled experiment, about 80 seconds on 4 cores
+    python -m unittest discover -s tests -p 'test_robust_parity_v338.py' -v
 
-[Recorded output](../results/v337/parity.json). The experiment is seeded and recorded, but not replayed in CI. The square searches are the v334 ones, which are seeded and heuristic.
+[Recorded output](../results/v338/parity.json). The experiment is seeded and recorded, but not replayed in CI. The square searches are the v334 ones, which are seeded and heuristic.

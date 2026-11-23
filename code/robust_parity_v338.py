@@ -1,8 +1,8 @@
-"""v337: toward Conjecture 336.1 for single terrains.
+"""v338: toward Conjecture 336.1 for single terrains.
 
 Two tools.
 
-1. Interior excursions (Theorem 337.1). For a grid terrain with interior side i, choose a largest
+1. Interior excursions (Theorem 338.1). For a grid terrain with interior side i, choose a largest
    interior square [a, a+i] x [0, i]. The v316 excursion at height h just below i leaves the roof at
    the wall x = l, where l - 1 is the last column left of the square with height < i, and returns at
    x = r, where r is the first column right of it with height < i. If no such column exists, l = 0

@@ -1,4 +1,4 @@
-"""v337 interior-excursion theorem and cutoff parity. Needs numpy (the v331 square search); set
+"""v338 interior-excursion theorem and cutoff parity. Needs numpy (the v331 square search); set
 REQUIRE_NUMERIC_DEPS=1 to make a missing numpy a failure instead of a skip."""
 from fractions import Fraction as Q
 from pathlib import Path
@@ -8,7 +8,7 @@ import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "code"))
 try:
-    from robust_parity_v337 import (bent_base_check, certified_cutoff, excursion_walls, exact_side_ranges,
+    from robust_parity_v338 import (bent_base_check, certified_cutoff, excursion_walls, exact_side_ranges,
                                     interior_case, largest_square_positions, side_gaps, square_sides)
     from robust_squares_v336 import perturb, terrain_polygon
     from terrain_gluing_v334 import largest_square, terrain_i
