@@ -1,0 +1,26 @@
+name: v342 unmarked components
+on:
+  pull_request:
+    paths:
+      - 'code/*v342.py'
+      - 'code/polygon_component_v341.py'
+      - 'code/terrain_component_degree_v337.py'
+      - 'code/polygon_orbit_census_v223.py'
+      - 'results/v341/component-certificates.csv'
+      - 'results/v342/**'
+      - 'research/v342-unmarked-components-and-square-frames.md'
+      - 'tests/test_quotient_component_v342.py'
+      - '.github/workflows/v342-unmarked-components.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  replay:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'numpy>=1.26,<3' 'sympy==1.14.0'
+      - run: python -m unittest discover -s tests -p 'test_quotient_component_v342.py' -v
