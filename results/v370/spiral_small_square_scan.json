@@ -1,0 +1,225 @@
+{
+ "description": "Exact small-square counts (transverse, side < s) on symmetric double-spiral drawings, straight connector, 24 vertices per turn, theta0 = 3; aligned/reversed/crossed sectors relative to the curve orientation.",
+ "rows": [
+  {
+   "a": 0.5,
+   "depth": 2,
+   "n": 53,
+   "degenerate": 0,
+   "1/10": {
+    "aligned": 1,
+    "reversed": 1,
+    "crossed": 0
+   },
+   "1/20": {
+    "aligned": 0,
+    "reversed": 0,
+    "crossed": 0
+   },
+   "1/40": {
+    "aligned": 0,
+    "reversed": 0,
+    "crossed": 0
+   },
+   "sec": 1.3
+  },
+  {
+   "a": 0.5,
+   "depth": 3,
+   "n": 77,
+   "degenerate": 0,
+   "1/10": {
+    "aligned": 9,
+    "reversed": 9,
+    "crossed": 0
+   },
+   "1/20": {
+    "aligned": 5,
+    "reversed": 5,
+    "crossed": 0
+   },
+   "1/40": {
+    "aligned": 0,
+    "reversed": 0,
+    "crossed": 0
+   },
+   "sec": 3.0
+  },
+  {
+   "a": 0.5,
+   "depth": 4,
+   "n": 101,
+   "degenerate": 0,
+   "1/10": {
+    "aligned": 34,
+    "reversed": 34,
+    "crossed": 4
+   },
+   "1/20": {
+    "aligned": 29,
+    "reversed": 29,
+    "crossed": 0
+   },
+   "1/40": {
+    "aligned": 0,
+    "reversed": 0,
+    "crossed": 0
+   },
+   "sec": 8.1
+  },
+  {
+   "a": 0.5,
+   "depth": 5,
+   "n": 125,
+   "degenerate": 0,
+   "1/10": {
+    "aligned": 60,
+    "reversed": 60,
+    "crossed": 54
+   },
+   "1/20": {
+    "aligned": 53,
+    "reversed": 53,
+    "crossed": 2
+   },
+   "1/40": {
+    "aligned": 9,
+    "reversed": 9,
+    "crossed": 0
+   },
+   "sec": 19.4
+  },
+  {
+   "a": 0.5,
+   "depth": 6,
+   "n": 149,
+   "degenerate": 0,
+   "1/10": {
+    "aligned": 87,
+    "reversed": 87,
+    "crossed": 146
+   },
+   "1/20": {
+    "aligned": 78,
+    "reversed": 78,
+    "crossed": 40
+   },
+   "1/40": {
+    "aligned": 33,
+    "reversed": 33,
+    "crossed": 0
+   },
+   "sec": 39.6
+  },
+  {
+   "a": 0.5,
+   "depth": 7,
+   "n": 173,
+   "degenerate": 0,
+   "1/10": {
+    "aligned": 132,
+    "reversed": 132,
+    "crossed": 202
+   },
+   "1/20": {
+    "aligned": 104,
+    "reversed": 104,
+    "crossed": 88
+   },
+   "1/40": {
+    "aligned": 57,
+    "reversed": 57,
+    "crossed": 0
+   },
+   "sec": 73.7
+  },
+  {
+   "a": 0.5,
+   "depth": 8,
+   "n": 197,
+   "degenerate": 0,
+   "1/10": {
+    "aligned": 209,
+    "reversed": 209,
+    "crossed": 260
+   },
+   "1/20": {
+    "aligned": 159,
+    "reversed": 159,
+    "crossed": 138
+   },
+   "1/40": {
+    "aligned": 81,
+    "reversed": 81,
+    "crossed": 2
+   },
+   "sec": 137.2
+  },
+  {
+   "a": 1.0,
+   "depth": 2,
+   "n": 53,
+   "degenerate": 0,
+   "1/10": {
+    "aligned": 1,
+    "reversed": 1,
+    "crossed": 0
+   },
+   "1/20": {
+    "aligned": 0,
+    "reversed": 0,
+    "crossed": 0
+   },
+   "1/40": {
+    "aligned": 0,
+    "reversed": 0,
+    "crossed": 0
+   },
+   "sec": 3.1
+  },
+  {
+   "a": 1.0,
+   "depth": 3,
+   "n": 77,
+   "degenerate": 0,
+   "1/10": {
+    "aligned": 2,
+    "reversed": 2,
+    "crossed": 4
+   },
+   "1/20": {
+    "aligned": 1,
+    "reversed": 1,
+    "crossed": 0
+   },
+   "1/40": {
+    "aligned": 0,
+    "reversed": 0,
+    "crossed": 0
+   },
+   "sec": 23.6
+  },
+  {
+   "a": 1.0,
+   "depth": 4,
+   "n": 101,
+   "degenerate": 0,
+   "1/10": {
+    "aligned": 3,
+    "reversed": 3,
+    "crossed": 10
+   },
+   "1/20": {
+    "aligned": 1,
+    "reversed": 1,
+    "crossed": 2
+   },
+   "1/40": {
+    "aligned": 1,
+    "reversed": 1,
+    "crossed": 0
+   },
+   "sec": 133.1
+  }
+ ]
+}
