@@ -59,21 +59,30 @@ def in_cone(points):
     return all(x > abs(y) for x, y in points if (x, y) != (0, 0))
 
 
-def _singular_meets_box(m11, m12, r1, m21, m22, r2):
-    """For a singular 2x2 system in (t, w), whether it has a solution with 0 <= t, w <= 1."""
+def _singular_t_range(m11, m12, r1, m21, m22, r2):
+    """For a singular 2x2 system in (t, w), the closed range of t over solutions with 0 <= t, w <= 1,
+    or None if there are none."""
     rows = [(m11, m12, r1), (m21, m22, r2)]
-    live = [r for r in rows if r[0] != 0 or r[1] != 0]
     if any(r[0] == 0 and r[1] == 0 and r[2] != 0 for r in rows):
-        return False
+        return None
+    live = [r for r in rows if r[0] != 0 or r[1] != 0]
     if not live:
-        return True
+        return (Q(0), Q(1))
     a, b, c = live[0]
     for a2, b2, c2 in live[1:]:
         # rows are proportional (det = 0); consistent only if right-hand sides match the ratio
         if (a2 * c - a * c2) != 0 or (b2 * c - b * c2) != 0:
-            return False
-    values = [a * t + b * w for t in (0, 1) for w in (0, 1)]
-    return min(values) <= c <= max(values)
+            return None
+    if b == 0:
+        t = c / a
+        return (t, t) if 0 <= t <= 1 else None
+    # w = (c - a t) / b must lie in [0, 1]
+    ends = sorted([c / a, (c - b) / a]) if a != 0 else None
+    if a == 0:
+        w = c / b
+        return (Q(0), Q(1)) if 0 <= w <= 1 else None
+    lo, hi = max(Q(0), ends[0]), min(Q(1), ends[1])
+    return (lo, hi) if lo <= hi else None
 
 
 def symmetric_chords(arm, max_u=None):
@@ -93,8 +102,16 @@ def symmetric_chords(arm, max_u=None):
             m21, m22, r2 = dy + 2 * dx, -ey, c[1] - a[1] - 2 * a[0]
             det = m11 * m22 - m12 * m21
             if det == 0:
-                if _singular_meets_box(m11, m12, r1, m21, m22, r2):
-                    raise ArithmeticError("degenerate chord family: an edge and a sheared edge overlap")
+                rng = _singular_t_range(m11, m12, r1, m21, m22, r2)
+                if rng is not None:
+                    xs = sorted(a[0] + t * dx for t in rng)
+                    top = max_u
+                    if xs[0] == xs[1]:
+                        hit = xs[0] > 0 and (top is None or xs[0] < top)
+                    else:
+                        hit = max(xs[0], Q(0)) < (xs[1] if top is None else min(xs[1], top))
+                    if hit:
+                        raise ArithmeticError("degenerate chord family: an edge and a sheared edge overlap")
                 continue
             t = (r1 * m22 - m12 * r2) / det
             w = (m11 * r2 - r1 * m21) / det

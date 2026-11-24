@@ -47,6 +47,18 @@ class ConeArms(unittest.TestCase):
         self.assertEqual((total['aligned'] - len(small['aligned'])) % 2, 1)
 
 
+class DegenerateChords(unittest.TestCase):
+    def test_overlapping_edges_raise_only_inside_the_cutoff(self):
+        q = lambda pts: [tuple(map(Q, p)) for p in pts]
+        with self.assertRaises(ArithmeticError):
+            symmetric_chords(q([(1, 0), (1, 2)]))
+        with self.assertRaises(ArithmeticError):
+            symmetric_chords(q([(0, 0), (1, 0), (1, 3)]))
+        self.assertEqual(symmetric_chords(q([(0, 0), (1, 0), (1, 3)]), max_u=Q(1, 2)), [])
+        with self.assertRaises(ArithmeticError):
+            symmetric_chords(q([(0, 0), (1, 0), (1, 3)]), max_u=Q(2))
+
+
 class OutsideTheCone(unittest.TestCase):
     def test_one_symmetric_chord_makes_one_small_sector_odd(self):
         cases = [([('23/100', '-1/20'), ('19/50', '-9/50'), ('19/100', '3/50'), ('2/25', '7/25')], 'aligned'),
