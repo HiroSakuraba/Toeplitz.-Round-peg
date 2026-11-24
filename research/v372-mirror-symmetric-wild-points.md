@@ -5,7 +5,7 @@
 A reflection reverses both the arc and the square's orientation, so it keeps every small square in its own sector. Pairs then cancel within each sector. The only unpaired squares are those symmetric about the mirror, and they correspond to chords of a single arm. If each arm stays inside a 90° cone around the perpendicular to the mirror, no such chord exists, and the point cannot absorb the odd aligned parity.
 
 **Results.**
-1. **Reduction (Lemma 372.1).** At a mirror-symmetric wild point, the small aligned degree has the parity of the number of small mirror-symmetric aligned squares, and likewise for reversed. Mirror-symmetric squares are exactly the chords $P\mapsto P+(0,2x_P)$ of one arm.
+1. **Reduction (Lemma 372.1).** At a mirror-symmetric wild point with no small mirror-symmetric squares, both small sector degrees are even. When those squares are isolated, each small sector degree equals their degree mod 2, which is their number when they are finitely many and transverse. Mirror-symmetric squares are exactly the chords $P\mapsto P+(0,2x_P)$ of one arm.
 2. **Cone points (Theorem 372.2).** Suppose a Jordan curve is polygonal away from $p$, and near $p$ it is an arc symmetric under a reflection through $p$, with each arm inside the open 45° cone about the perpendicular to the mirror. Then it inscribes a square of explicit size. Inside the cone the arms may curl arbitrarily.
 3. **Several wild points (Theorem 372.3).** Finitely many wild points, each of half-turn or mirror-cone type, can be combined.
 4. **(H3) is automatic.** In Theorem 370.2 the drawing can be cut at the last exit of an arm from a small ball, so hypothesis (H3) is not needed.
@@ -22,15 +22,20 @@ A point of an arm on the axis would be fixed by $\rho$, so it would lie on both 
 
 **Drawings without (H3).** For small $r$, let $a$ be the last point of arm one in $\bar B(p,r)$, going outward. Replace the subarc of $\alpha$ between $\rho(a)$ and $a$ by $[\rho(a),p]\cup[p,a]$. The outer remainder of the arm lies outside $\bar B(p,r)$ except at $a$, and the new piece lies inside. So the result $D_r$ is a Jordan polygon, mirror-symmetric in $B(p,R)$, and $D_r\to\gamma$ uniformly as $r\to0$. The same cut, with the segment $[a,-a]$, gives the drawings of Theorem 370.2 without assuming (H3).
 
-**Lemma 372.1.** Let $s$ be such that every square of side below $s$ on $D_r$ lies in $B(p,R)$, and suppose no square has side exactly $s$. Then:
-- the small aligned degree of $D_r$ is congruent to the number of small aligned squares $Q$ with $\rho(Q)=Q$, and likewise for reversed;
-- such squares are exactly those with corners $(\pm u,y)$ and $(\pm u,y+2u)$, where $P=(u,y)$ and $S(P)=(u,y+2u)$ both lie on the right half of $D_r\cap B(p,R)$, and $S(x,y)=(x,y+2x)$.
+**Lemma 372.1.** Let $s$ be such that every square of side below $s$ on $D_r$ lies in $B(p,R)$, and suppose no square has side exactly $s$. Let $F$ be the set of small zeros fixed by $\rho$. Then:
+- if $F=\varnothing$, both small sector degrees of $D_r$ are even;
+- more generally, if $F$ has a $\rho$-invariant neighbourhood $N$ whose boundary carries no zero, each small sector degree is congruent to the degree of $G$ over $N$ in that sector. When $F$ is a finite set of transverse squares, that degree is their number;
+- the fixed squares are exactly those with corners $(\pm u,y)$ and $(\pm u,y+2u)$, where $P=(u,y)$ and $S(P)=(u,y+2u)$ both lie on the right half of $D_r\cap B(p,R)$, and $S(x,y)=(x,y+2x)$.
 
-*Proof.* $\rho$ maps the local arc to itself and reverses its direction, so it reverses the order in which a square's corners occur. It also reverses the square's orientation. The two reversals cancel, so $\rho$ maps small aligned squares to small aligned squares, and reversed to reversed. Away from symmetric squares the involution is free, and an equivariant perturbation near the zero set pairs the zeros. So each small sector degree has the parity of its symmetric squares.
+Isolation can fail. Take the right arm $(0,0)\to(3,0)\to(3,4)\to(1,4)$ and its mirror image. The fixed square with corners $(\pm2,0)$, $(\pm2,4)$ lies inside a continuum of horizontally translated inscribed squares, which are not fixed. Then no such $N$ exists, and the lemma says nothing.
+
+*Proof.* $\rho$ maps the local arc to itself and reverses its direction, so it reverses the order in which a square's corners occur. It also reverses the square's orientation. The two reversals cancel, so $\rho$ maps small aligned rows to small aligned rows, and reversed to reversed, with the residual transformed by a linear isomorphism. Away from $N$ (all of the small region when $F=\varnothing$), the involution acts freely near the zero set. So an equivariant generic perturbation there has its zeros in free pairs, and the degree there is even.
 
 A square symmetric about the $y$-axis has the axis either as a diagonal or as a midline. As a diagonal, two corners would lie on the axis, which meets the local arc only at $p$. As a midline, the square is axis-aligned, with the corners described. ∎
 
-This turns a four-corner question into a two-point question about one arm. On polygons the chords are found exactly, by solving a $2\times2$ system for each pair of edges.
+The cone theorem below uses only the case $F=\varnothing$, where no regularity or isolation is needed.
+
+This turns a four-corner question into a two-point question about one arm. On polygons the chords are found exactly, by solving a $2\times2$ system for each pair of edges. Where an edge and a sheared edge overlap within the requested range of $u$, chords can form a continuum, and the checker raises an error instead of reporting a count.
 
 ## Cone points
 
