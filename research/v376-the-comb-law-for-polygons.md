@@ -2,13 +2,13 @@
 
 [v375](v375-the-comb-law.md) proved the comb law for smooth spiral arcs. The theorems that use it, 370.2 and 374.3, need curves that are polygonal away from the wild point. This note carries the law over to polygons inscribed in the arcs. The cost is one error term: how far an edge sags away from the arc it spans.
 
-The same error term answers a question raised in review. A fixed number of vertices per turn eventually makes the drawing cross itself, because the edges sag by more than the gap between turns. The comb law with sag gives a simple rule: refine the mesh so the sag stays below the turn spacing. Then the polygon is simple and obeys the comb law at every depth.
+The same error term answers a question raised in review. A fixed number of vertices per turn eventually makes the drawing cross itself, because the edges sag by more than the gap between turns. The comb law with sag gives a simple rule: refine the mesh so the sag stays below the turn spacing. Then the polygon is simple and obeys the comb law at every depth, provided the vertex rounding also shrinks with the turn spacing.
 
 **Results.**
 1. **Sag bound (Lemma 376.0).** Every point of an edge spanning $\Delta\Theta$ in lifted angle lies within $h=\frac{\Delta\Theta^2}8\sup|\gamma''|+\nu$ of the arc, where $\nu$ is the vertex rounding.
 2. **Polygonal comb law (Theorem 376.1).** For a square of side $t$ on the polygon, $t\ge d_g(\rho^*)-2h$, where $\rho^*$ is the smallest radius of the corresponding points on the arc. The smallness conditions are those of v375, with $t$ replaced by $t+\sqrt2h$ and an extra $2\mu$ (twice the mesh) in the straightness condition.
 3. **Confinement and simplicity (Corollaries 376.2, 376.3).** Every small square has a corner within $d_g^{-1}(t+2h)+h$. An inscribed polygon whose edges all satisfy $2h<d_g$ is simple.
-4. **Mesh rule (Corollary 376.4).** Both hold at every depth if the mesh shrinks like $r^{1/(2a)}$. At 24 vertices per turn the criterion first fails at depth 28 (symmetric) and 24 (asymmetric). The asymmetric drawing actually crosses itself somewhere between depths 70 and 75.
+4. **Mesh rule (Corollary 376.4).** Both hold at every depth if the mesh shrinks like $r^{1/(2a)}$ and the vertex rounding like $r^{1+1/a}$ (exact vertices suffice). At 24 vertices per turn the criterion first fails at depth 28 (symmetric) and 24 (asymmetric). The asymmetric drawing actually crosses itself somewhere between depths 70 and 75.
 5. **Exact checks:**
    - on the depth-4 drawings, every corner lies within $h$ of its arc point, and $h$ is within 7–10% of the true largest sag;
    - on the eight v374 drawings, 414 of the 464 small squares meet the hypotheses, and every square with corners on the arms (448) satisfies the bound;
@@ -38,13 +38,13 @@ For the drawings, $\mu=\pi/12$, $\nu<10^{-7}$, and the sag is about $\mu^2r/8$, 
 
 **Theorem 376.1.** Let $Q$ be a square of side $t$ with corners $x_i$ on edges $e_i$ of $P$, and let $x_i^*$ be their arc points from Lemma 376.0. Put
 $$h=\max_ih_{e_i},\qquad \rho^*=\min_i|x_i^*|,\qquad t'=t+\sqrt2h,$$
-and let $\omega$ bound the angle by which rounding turns any edge, so $\omega\le\arcsin(2\nu/\text{edge length})$. Suppose the v375 conditions hold with $t'$ in place of $t$ and the straightness condition strengthened to
-$$\big(\eta(t',\rho^*)+2\mu\big)(1+\varepsilon_1)+\tau+\omega<\frac\pi2.$$
+and let $\omega$ bound the angle by which rounding turns any edge, in either direction, so $\omega\le\arcsin(2\nu/\text{edge length})$. Suppose the v375 conditions hold with $t'$ in place of $t$ and the straightness condition strengthened to
+$$\big(\eta(t',\rho^*)+2\mu\big)(1+\varepsilon_1)+\tau+2\omega<\frac\pi2.$$
 Then $t\ge d_g(\rho^*)-2h$.
 
 *Proof.* Run the proof of Theorem 375.1 on the arc points, with neighbours defined through them. The arc points are at most $\sqrt2t+2h=\sqrt2t'$ apart, so Lemma 375.A applies with $t'$. Two corners whose arc points are not neighbours therefore satisfy $|x_i-x_j|\ge|x_i^*-x_j^*|-2h\ge d_g(\rho^*)-2h$.
 
-For Lemma 375.B, three pairwise-neighbour corners have arc points in a $\Theta$-window of length at most $\eta(t',\rho^*)$. Their edges span $\Theta$-ranges of length at most $\mu$ that contain those points, so all edges between two of the corners lie within a window of length $\eta+2\mu$. The vector from one corner to another along $P$ is a sum of positive multiples of edge vectors. Each edge vector is a chord of the arc over its range, turned by at most $\omega$. So it points into the tangent cone of the arc over the window, widened by $\omega$. As in v375, that cone has opening less than $\pi/2$, so no two such vectors are perpendicular. The rest of the proof is unchanged. ∎
+For Lemma 375.B, three pairwise-neighbour corners have arc points in a $\Theta$-window of length at most $\eta(t',\rho^*)$. Their edges span $\Theta$-ranges of length at most $\mu$ that contain those points, so all edges between two of the corners lie within a window of length $\eta+2\mu$. The vector from one corner to another along $P$ is a sum of positive multiples of edge vectors. Each edge vector is a chord of the arc over its range, turned by at most $\omega$. So it points into the tangent cone of the arc over the window, widened by $\omega$ on each side. That widened cone has opening less than $(\eta+2\mu)(1+\varepsilon_1)+\tau+2\omega<\pi/2$, so no two such vectors are perpendicular. The rest of the proof is unchanged. ∎
 
 **Localization.** Nothing in either proof uses the arc beyond the largest radius met by the corners' edges. So $K_R$, $\varepsilon_1$ and $\tau$ may be evaluated at that radius $R'$ instead of $R$. The checks below do this, and the same holds for Theorem 375.1.
 
@@ -60,7 +60,7 @@ For Lemma 375.B, three pairwise-neighbour corners have arc points in a $\Theta$-
 
 **Corollary 376.4 (mesh rule).** To leading order $h\approx\mu^2r/8$ and $d_g\approx agr^{1+1/a}$. So $2h\le\theta\,d_g$ holds when
 $$\mu\lesssim2\sqrt{\theta\,g\,a}\;r^{1/(2a)}.$$
-A mesh that shrinks like $r^{1/(2a)}$ ($\propto r$ for $a=1/2$) keeps both corollaries at every depth, with confinement radius $d_g^{-1}(t)(1+O(\theta))$. A fixed mesh does not. Near $p$ the turn spacing $\propto r^{1+1/a}$ falls below the sag $\propto r$, and then the edges of neighbouring turns can cross.
+The rounding term counts too: $h\ge\nu$ while $d_g(r)\to0$, so a fixed rounding $\nu$ eventually breaks $2h<d_g$ however fine the mesh. A mesh that shrinks like $r^{1/(2a)}$ ($\propto r$ for $a=1/2$), with exact vertices or rounding $\nu(r)\le\theta\,d_g(r)/4$, keeps both corollaries at every depth, with confinement radius $d_g^{-1}(t)(1+O(\theta))$. With the drawings' fixed rounding $\nu<10^{-7}$ and $\theta=\frac12$, the rounding part stays within budget while $d_g(r)\ge4\times10^{-7}$. In the asymmetric case that means $r\gtrsim0.007$, or depth up to about 7000, far beyond anything computed here. (This was pointed out in review.) A fixed mesh does not. Near $p$ the turn spacing $\propto r^{1+1/a}$ falls below the sag $\propto r$, and then the edges of neighbouring turns can cross.
 
 **At 24 vertices per turn** ($\mu=\pi/12$, $a=1/2$), the criterion $2h<d_g$ first fails at depth 28 for $\varphi=0$ and at depth 24 for the asymmetric $\varphi$. The criterion is only sufficient. The asymmetric drawing is still simple at depth 70 by bisection, and it crosses itself by depth 75, as found in review: edges 830 and 959 cross. The symmetric drawing is still simple at depth 75. Its two arms have vertices on common rays, which this argument does not use.
 

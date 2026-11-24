@@ -80,7 +80,7 @@ def analyse_square(entry, edges, nu, V, lam, a=0.5, s_mesh=pi / 12):
     eps1 = KR * L
     tau = atan(KR / (1 - eps1))
     eta = (pi / sqrt(2) + sqrt(2) * L) * tp / rho_star
-    ok = KR <= 0.25 and eps1 < 1 and eta <= pi / 4 and (eta + 2 * s_mesh) * (1 + eps1) + tau + om < pi / 2
+    ok = KR <= 0.25 and eps1 < 1 and eta <= pi / 4 and (eta + 2 * s_mesh) * (1 + eps1) + tau + 2 * om < pi / 2
     bound = spacing_bound(rho_star, a, g) - 2 * h
     return dict(t=t, h=h, rho_star=rho_star, bound=bound, eta=eta, ok=ok, holds=t >= bound,
                 min_corner=min(sqrt(float(p[0]) ** 2 + float(p[1]) ** 2) for p in pts))
