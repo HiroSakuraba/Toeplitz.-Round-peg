@@ -2,13 +2,13 @@
 
 v370 and v372 handle a wild point with a symmetry (a half-turn or a mirror), v371 extends them to curves joined to such a point without passing a square of side $s$, and v373 shows what such a path must sweep through. A generic wild point has no symmetry. The obvious plan is to deform it into a symmetric one and carry the protection back along the deformation.
 
-This note shows that half of the plan works and pins down exactly where the other half fails. The deformation always exists, and if it is made small enough it cannot change anything at a fixed cutoff $s$. But Theorem 370.2 only protects cutoffs whose small squares sit deep inside the symmetric ball. Near a spiral point the small squares of side $s$ do not sit near the point. They fill a comb out to radius about $s^{a/(1+a)}$, far larger than $s$. So the plan closes exactly when a curve's "invisibility radius" at cutoff $s$ beats that comb radius, and nothing we know forces this.
+This note shows that half of the plan works and pins down exactly where the other half fails. The deformation always exists, and if it is made small enough it cannot change anything at a fixed cutoff $s$. But "small enough" means smaller than $s/\sqrt2$, while Theorem 370.2 only protects cutoffs whose small squares sit deep inside a symmetric ball of radius well above $s$. So blanket invisibility can never reach the protected scale, and the symmetrizing path itself must be shown to pass no square of side $s$. Near a spiral point that is a real obstacle: the small squares of side $s$ fill a comb out to radius about $s^{a/(1+a)}$, far larger than $s$, and a path that symmetrizes out to that radius rotates the comb.
 
 **Results.**
 1. **Gap path (Lemma 374.1).** Near a point where the curve is two radially monotone arms, the angular gap between the arms can be moved to $\pi$ through Jordan curves. The end of the path is half-turn symmetric near the point, and the path can be confined to any small ball.
-2. **Local invisibility (Lemma 374.2).** If a Jordan curve has no square of side $s$, then every curve that differs from it only inside a small enough ball around $p$ has none either. So a small deformation at $p$ keeps the large degrees at cutoff $s$.
-3. **Reduction (Theorem 374.3).** An asymmetric two-arm point inscribes a square as soon as, for one cutoff $s$, the curve symmetrized inside a ball of radius $\varepsilon$ has all its squares of side below $s$ deep inside that ball while $\varepsilon$ is still below the invisibility radius at $s$.
-4. **Comb law (Claim 374.4, heuristic, checked exactly).** For two spiral arms $r=\theta^{-a}$ with gap $\pi\pm\varphi$, small squares of side below $s$ reach out to radius $r_{\rm comb}(s)\approx\big(s/(a\,g)\big)^{a/(1+a)}$ with $g=\pi-|\varphi|$. So the reduction needs an invisibility radius of order $s^{a/(1+a)}$, which is much larger than $s$.
+2. **Local invisibility (Lemma 374.2).** If a Jordan curve has no square of side $s$, then every curve that differs from it only inside a small enough ball around $p$ has none either. So a small deformation at $p$ keeps the large degrees at cutoff $s$. But the ball always has radius at most $s/\sqrt2$.
+3. **Reduction (Theorem 374.3).** An asymmetric two-arm point inscribes a square as soon as, for one cutoff $s$, the curve symmetrized inside a ball of radius $\varepsilon$ has all its squares of side below $s$ deep inside that ball, and the symmetrizing path passes no square of side exactly $s$. Lemma 374.2 cannot supply the second condition, because it only works below $s/\sqrt2$ and the first condition needs $\varepsilon>8\sqrt2\,s/7$.
+4. **Comb law (Claim 374.4, heuristic, checked exactly).** For two spiral arms $r=\theta^{-a}$ with gap $\pi\pm\varphi$, small squares of side below $s$ reach out to radius $r_{\rm comb}(s)\approx\big(s/(a\,g)\big)^{a/(1+a)}$ with $g=\pi-|\varphi|$. So the reduction needs a symmetrizing path of radius about $s^{a/(1+a)}$, much larger than $s$, that passes no square of side $s$.
 5. **Exact checks:**
    - on eight spiral drawings, symmetric and asymmetric, the outermost small square sits within 2% of the predicted comb radius;
    - along an exact gap path at cutoff $1/20$, protection is lost and regained; both events are aligned squares at radius $6.4\,s$, which is the comb radius, not the wild point.
@@ -41,19 +41,23 @@ The convex-combination step is the whole point of radial monotonicity: it lets t
 
 Nothing is assumed about $\gamma'$ inside the ball, so the lemma covers every deformation supported there, including the gap path of Lemma 374.1 with $\varepsilon'<\varepsilon_{\rm inv}(s)$. By the path principle (Corollary 371.2), such a deformation keeps both large degrees at cutoff $s$.
 
-The radius $\varepsilon_{\rm inv}(s)$ is not quantitative. It is at most the distance from $p$ to the free corner of any near-square of side $s$ with three corners on $\gamma$, and it can be tiny.
+**The ball is always small.** Because nothing is assumed inside the ball, $\varepsilon_{\rm inv}(s)\le s/\sqrt2$: a larger ball contains the circle of radius $s/\sqrt2$ about $p$, which is a closed curve in $\gamma\cup B(p,\varepsilon)$ with an inscribed square of side $s$. The radius can also be much smaller. It is at most the distance from $p$ to the free corner of any near-square of side $s$ with three corners on $\gamma$. (This bound and its consequence below were pointed out in review.)
 
 ## The reduction
 
-**Theorem 374.3.** Let $p$ be a two-arm point of $\gamma$. Suppose that for some $s>0$ and some $\varepsilon'<\min(R,\varepsilon_{\rm inv}(s))$, with $\varepsilon<\varepsilon'$, the curve $\gamma_1$ of Lemma 374.1 satisfies $s\le s_0(\gamma_1)$, where $s_0$ is the threshold of Theorem 370.2 at radius $\varepsilon$. (In particular, every square of side below $s$ on $\gamma_1$ or on its drawings has a corner in $B(p,\varepsilon/8)$.) Then $\gamma$ inscribes a square of side at least $s$.
+**Theorem 374.3.** Let $p$ be a two-arm point of $\gamma$, let $0<\varepsilon<\varepsilon'\le R$, and let $\gamma_\lambda$ be the gap path of Lemma 374.1. Suppose that for some $s>0$:
+- **(a) confinement:** $s\le s_0(\gamma_1)$, where $s_0$ is the threshold of Theorem 370.2 at radius $\varepsilon$ (so every square of side below $s$ on $\gamma_1$ or on its drawings has a corner in $B(p,\varepsilon/8)$, and $\varepsilon/8+s\sqrt2<\varepsilon$);
+- **(b) path invisibility:** no curve $\gamma_\lambda$ has an inscribed square of side exactly $s$.
 
-*Proof.* If $\gamma$ has a square of side $s$ we are done. Otherwise $\varepsilon_{\rm inv}(s)$ is defined. Every curve on the gap path lies in $\gamma\cup B(p,\varepsilon')$, so by Lemma 374.2 none has a square of side $s$. The curve $\gamma_1$ satisfies Theorem 370.2 at radius $\varepsilon$: (H1) because it is polygonal away from $p$, (H2) by construction, and (H3) is automatic (v372, item 4). Since $s\le s_0(\gamma_1)$, Corollary 371.3 says that every Jordan curve joined to $\gamma_1$ without passing a square of side $s$ inscribes a square of side greater than $s$. The gap path, run backwards, is such a join to $\gamma$. ∎
+Then $\gamma$ inscribes a square of side greater than $s$.
 
-So the asymmetric case reduces to one inequality between two radii at a single cutoff:
-- the **confinement radius**: how far out the squares of side below $s$ reach on the symmetrized curve; Theorem 370.2 needs this below $\varepsilon/8$;
-- the **invisibility radius** $\varepsilon_{\rm inv}(s)$ of the original curve.
+*Proof.* The curve $\gamma_1$ satisfies Theorem 370.2 at radius $\varepsilon$: (H1) because it is polygonal away from $p$, (H2) by construction, and (H3) is automatic (v372, item 4). Since $s\le s_0(\gamma_1)$, Corollary 371.3 says that every Jordan curve joined to $\gamma_1$ without passing a square of side $s$ inscribes a square of side greater than $s$. The gap path, run backwards, is such a join to $\gamma$. ∎
 
-If $8\,r_{\rm conf}(s)<\varepsilon_{\rm inv}(s)$ for one $s$, the point inscribes a square.
+Condition (a) forces $\varepsilon>8\sqrt2\,s/7\approx1.6\,s$. Lemma 374.2 gives (b) only when $\varepsilon'<\varepsilon_{\rm inv}(s)\le s/\sqrt2\approx0.71\,s$. So the two never meet, and (b) has to be proved for the particular path, not deduced from blanket invisibility. If $\gamma$ itself has a square of side $s$ there is nothing to prove, so (b) is a statement about the squares that the symmetrization creates and destroys.
+
+So the asymmetric case reduces to a question about one path at one cutoff:
+- the **confinement radius**: how far out the squares of side below $s$ reach on the symmetrized curve; (a) needs $\varepsilon$ at least $8$ times this;
+- **path invisibility**: does symmetrizing out to that radius pass a square of side exactly $s$?
 
 ## The comb law
 
@@ -77,9 +81,9 @@ $$r_{\rm comb}(s)\approx\Big(\frac{s}{a\,g}\Big)^{a/(1+a)},\qquad g=\pi-|\varphi
 
 Every outermost centre is within 2% of the prediction. The ratio centre/side grows as $s$ shrinks, as $s^{-1/(1+a)}=s^{-2/3}$ predicts. No square lies in the crossed sector.
 
-**What this means for the reduction.** For a spiral point, $r_{\rm conf}(s)\approx r_{\rm comb}(s)$, so Theorem 374.3 needs
-$$\varepsilon_{\rm inv}(s)\gtrsim 8\Big(\frac{s}{a\,g}\Big)^{a/(1+a)},$$
-that is, an invisibility radius larger than $s$ by a factor growing like $s^{-1/(1+a)}$. A curve can miss squares of side $s$ by much less than that. So the deformation that symmetrizes the point is visible at exactly the cutoffs that Theorem 370.2 would protect.
+**What this means for the reduction.** For a spiral point, $r_{\rm conf}(s)\approx r_{\rm comb}(s)$, so Theorem 374.3 needs a symmetrizing path supported out to radius
+$$\varepsilon\gtrsim 8\Big(\frac{s}{a\,g}\Big)^{a/(1+a)},$$
+larger than $s$ by a factor growing like $s^{-1/(1+a)}$, that passes no square of side $s$. On that scale the path rotates whole turns of the comb, which is exactly where squares of side near $s$ live. The next section shows that the plain gap path does pass such squares.
 
 ## Where the events happen
 
@@ -97,7 +101,7 @@ These are depth-truncated polygons, so they are not counterexamples: every curve
 ## What would close asymmetric points
 
 Theorem 374.3 isolates two ways forward:
-- **A quantitative invisibility radius.** Show that if $\gamma$ has no square of side $s$, then near-squares of side $s$ with a corner near $p$ stay away from $p$ by at least $C\,r_{\rm comb}(s)$. This is a "near-square forces a square" statement at the comb scale.
+- **A path that passes no side-$s$ square.** Find a symmetrizing path supported out to $C\,r_{\rm comb}(s)$ along which squares of side $s$ cannot appear, or appear in pairs that keep the parity, perhaps by choosing the cutoff $s$ between the side lengths that the comb produces. Blanket invisibility (Lemma 374.2) cannot do this, since it stops at $s/\sqrt2$.
 - **A deformation that leaves the comb alone.** Instead of rotating whole turns, change the curve only below the pass spacing, so the confinement radius of the deformed region is set by the deformation, not by the comb.
 
 Either would make two-arm points as tractable as the symmetric ones. Points whose arms are not radially monotone need a different gap path altogether.
