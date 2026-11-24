@@ -1,0 +1,607 @@
+{
+ "near_squares": [
+  {
+   "lam": 0,
+   "s": 0.05,
+   "spacing": 0.0001963495408493621,
+   "found": 0,
+   "free_corner_over_spacing": [],
+   "max_residual": null
+  },
+  {
+   "lam": 0,
+   "s": 0.02,
+   "spacing": 1.2566370614359175e-05,
+   "found": 2,
+   "free_corner_over_spacing": [
+    0.476,
+    0.476
+   ],
+   "max_residual": 5.203772776693036e-13
+  },
+  {
+   "lam": 0,
+   "s": 0.01,
+   "spacing": 1.5707963267948969e-06,
+   "found": 2,
+   "free_corner_over_spacing": [
+    0.38,
+    0.38
+   ],
+   "max_residual": 1.7240595627176955e-12
+  },
+  {
+   "lam": 1,
+   "s": 0.05,
+   "spacing": 0.00017134954084936212,
+   "found": 1,
+   "free_corner_over_spacing": [
+    0.528
+   ],
+   "max_residual": 2.5248363949738167e-14
+  },
+  {
+   "lam": 1,
+   "s": 0.02,
+   "spacing": 1.0966370614359175e-05,
+   "found": 2,
+   "free_corner_over_spacing": [
+    0.479,
+    0.545
+   ],
+   "max_residual": 2.5461092939913693e-13
+  },
+  {
+   "lam": 1,
+   "s": 0.01,
+   "spacing": 1.3707963267948969e-06,
+   "found": 2,
+   "free_corner_over_spacing": [
+    0.569,
+    0.317
+   ],
+   "max_residual": 1.0120205412729784e-12
+  }
+ ],
+ "near_squares_note": "nearest comb cell to p, n_theta=20000; a=1/2, phi=lam*0.4*sin(5 log(1/r))",
+ "depth_scan": [
+  {
+   "phi": "osc0.4w5",
+   "s": "1/16",
+   "d5": [
+    1,
+    68,
+    62,
+    31
+   ],
+   "t5": 14.1,
+   "d7": [
+    1,
+    129,
+    127,
+    142
+   ],
+   "t7": 43.2
+  },
+  {
+   "phi": "osc0.4w5",
+   "s": "1/20",
+   "d5": [
+    1,
+    59,
+    53,
+    6
+   ],
+   "t5": 10.9,
+   "d7": [
+    1,
+    108,
+    104,
+    105
+   ],
+   "t7": 30.3
+  },
+  {
+   "phi": "osc0.4w5",
+   "s": "1/24",
+   "d5": [
+    0,
+    49,
+    46,
+    0
+   ],
+   "t5": 9.3,
+   "d7": [
+    0,
+    96,
+    95,
+    74
+   ],
+   "t7": 25.0
+  },
+  {
+   "phi": "osc0.4w5",
+   "s": "1/28",
+   "d5": [
+    1,
+    39,
+    39,
+    0
+   ],
+   "t5": 8.4,
+   "d7": [
+    1,
+    85,
+    87,
+    43
+   ],
+   "t7": 22.1
+  },
+  {
+   "phi": "osc0.4w5",
+   "s": "1/32",
+   "d5": [
+    1,
+    27,
+    31,
+    0
+   ],
+   "t5": 7.7,
+   "d7": [
+    1,
+    73,
+    79,
+    17
+   ],
+   "t7": 19.8
+  },
+  {
+   "phi": "osc0.4w5",
+   "s": "1/36",
+   "d5": [
+    1,
+    17,
+    25,
+    0
+   ],
+   "t5": 7.6,
+   "d7": [
+    1,
+    63,
+    73,
+    12
+   ],
+   "t7": 19.1
+  },
+  {
+   "phi": "osc1.0w5",
+   "s": "1/16",
+   "d5": [
+    0,
+    69,
+    60,
+    45
+   ],
+   "t5": 27.6,
+   "d7": [
+    0,
+    134,
+    141,
+    170
+   ],
+   "t7": 77.0
+  },
+  {
+   "phi": "osc1.0w5",
+   "s": "1/20",
+   "d5": [
+    0,
+    65,
+    52,
+    14
+   ],
+   "t5": 24.7,
+   "d7": [
+    1,
+    112,
+    110,
+    127
+   ],
+   "t7": 67.0
+  },
+  {
+   "phi": "osc1.0w5",
+   "s": "1/24",
+   "d5": [
+    0,
+    57,
+    46,
+    0
+   ],
+   "t5": 23.0,
+   "d7": [
+    0,
+    103,
+    96,
+    92
+   ],
+   "t7": 60.9
+  },
+  {
+   "phi": "osc1.0w5",
+   "s": "1/28",
+   "d5": [
+    1,
+    46,
+    40,
+    0
+   ],
+   "t5": 21.0,
+   "d7": [
+    0,
+    91,
+    88,
+    57
+   ],
+   "t7": 57.6
+  },
+  {
+   "phi": "osc1.0w5",
+   "s": "1/32",
+   "d5": [
+    1,
+    29,
+    35,
+    0
+   ],
+   "t5": 20.9,
+   "d7": [
+    1,
+    73,
+    83,
+    18
+   ],
+   "t7": 56.2
+  },
+  {
+   "phi": "osc1.0w5",
+   "s": "1/36",
+   "d5": [
+    0,
+    13,
+    30,
+    0
+   ],
+   "t5": 20.5,
+   "d7": [
+    0,
+    57,
+    78,
+    0
+   ],
+   "t7": 58.9
+  },
+  {
+   "phi": "osc1.0w1",
+   "s": "1/16",
+   "d5": [
+    0,
+    49,
+    80,
+    56
+   ],
+   "t5": 28.2,
+   "d7": [
+    0,
+    103,
+    152,
+    213
+   ],
+   "t7": 93.1
+  },
+  {
+   "phi": "osc1.0w1",
+   "s": "1/20",
+   "d5": [
+    1,
+    37,
+    71,
+    22
+   ],
+   "t5": 29.9,
+   "d7": [
+    0,
+    87,
+    120,
+    168
+   ],
+   "t7": 114.9
+  },
+  {
+   "phi": "osc1.0w1",
+   "s": "1/24",
+   "d5": [
+    1,
+    27,
+    63,
+    10
+   ],
+   "t5": 25.0,
+   "d7": [
+    1,
+    76,
+    110,
+    111
+   ],
+   "t7": 96.7
+  },
+  {
+   "phi": "osc1.0w1",
+   "s": "1/28",
+   "d5": [
+    1,
+    19,
+    55,
+    0
+   ],
+   "t5": 26.5,
+   "d7": [
+    0,
+    68,
+    101,
+    69
+   ],
+   "t7": 92.0
+  },
+  {
+   "phi": "osc1.0w1",
+   "s": "1/32",
+   "d5": [
+    1,
+    9,
+    47,
+    0
+   ],
+   "t5": 27.1,
+   "d7": [
+    1,
+    57,
+    93,
+    37
+   ],
+   "t7": 88.8
+  },
+  {
+   "phi": "osc1.0w1",
+   "s": "1/36",
+   "d5": [
+    0,
+    0,
+    41,
+    0
+   ],
+   "t5": 23.6,
+   "d7": [
+    1,
+    47,
+    87,
+    24
+   ],
+   "t7": 84.1
+  },
+  {
+   "phi": "osc2.0w1",
+   "s": "1/16",
+   "d5": "nonadjacent polygon edges 0 and 122 intersect",
+   "t5": 0.0,
+   "d7": "nonadjacent polygon edges 0 and 170 intersect",
+   "t7": 0.0
+  },
+  {
+   "phi": "osc2.0w1",
+   "s": "1/20",
+   "d5": "nonadjacent polygon edges 0 and 122 intersect",
+   "t5": 0.0,
+   "d7": "nonadjacent polygon edges 0 and 170 intersect",
+   "t7": 0.0
+  },
+  {
+   "phi": "osc2.0w1",
+   "s": "1/24",
+   "d5": "nonadjacent polygon edges 0 and 122 intersect",
+   "t5": 0.0,
+   "d7": "nonadjacent polygon edges 0 and 170 intersect",
+   "t7": 0.0
+  },
+  {
+   "phi": "osc2.0w1",
+   "s": "1/28",
+   "d5": "nonadjacent polygon edges 0 and 122 intersect",
+   "t5": 0.0,
+   "d7": "nonadjacent polygon edges 0 and 170 intersect",
+   "t7": 0.0
+  },
+  {
+   "phi": "osc2.0w1",
+   "s": "1/32",
+   "d5": "nonadjacent polygon edges 0 and 122 intersect",
+   "t5": 0.0,
+   "d7": "nonadjacent polygon edges 0 and 170 intersect",
+   "t7": 0.0
+  },
+  {
+   "phi": "osc2.0w1",
+   "s": "1/36",
+   "d5": "nonadjacent polygon edges 0 and 122 intersect",
+   "t5": 0.0,
+   "d7": "nonadjacent polygon edges 0 and 170 intersect",
+   "t7": 0.0
+  },
+  {
+   "phi": "const0.7",
+   "s": "1/16",
+   "d5": [
+    1,
+    54,
+    78,
+    50
+   ],
+   "t5": 29.4,
+   "d7": [
+    0,
+    109,
+    150,
+    173
+   ],
+   "t7": 104.3
+  },
+  {
+   "phi": "const0.7",
+   "s": "1/20",
+   "d5": [
+    1,
+    42,
+    70,
+    21
+   ],
+   "t5": 27.9,
+   "d7": [
+    0,
+    92,
+    123,
+    133
+   ],
+   "t7": 94.3
+  },
+  {
+   "phi": "const0.7",
+   "s": "1/24",
+   "d5": [
+    0,
+    30,
+    61,
+    10
+   ],
+   "t5": 26.6,
+   "d7": [
+    1,
+    79,
+    109,
+    81
+   ],
+   "t7": 88.2
+  },
+  {
+   "phi": "const0.7",
+   "s": "1/28",
+   "d5": [
+    0,
+    20,
+    53,
+    0
+   ],
+   "t5": 24.4,
+   "d7": [
+    1,
+    69,
+    101,
+    37
+   ],
+   "t7": 85.4
+  },
+  {
+   "phi": "const0.7",
+   "s": "1/32",
+   "d5": [
+    0,
+    9,
+    46,
+    0
+   ],
+   "t5": 23.3,
+   "d7": [
+    0,
+    57,
+    94,
+    2
+   ],
+   "t7": 80.3
+  },
+  {
+   "phi": "const0.7",
+   "s": "1/36",
+   "d5": [
+    0,
+    0,
+    39,
+    0
+   ],
+   "t5": 23.9,
+   "d7": [
+    0,
+    48,
+    87,
+    0
+   ],
+   "t7": 79.8
+  },
+  {
+   "phi": "const2.0",
+   "s": "1/16",
+   "d5": "nonadjacent polygon edges 0 and 122 intersect",
+   "t5": 0.0,
+   "d7": "nonadjacent polygon edges 0 and 170 intersect",
+   "t7": 0.0
+  },
+  {
+   "phi": "const2.0",
+   "s": "1/20",
+   "d5": "nonadjacent polygon edges 0 and 122 intersect",
+   "t5": 0.0,
+   "d7": "nonadjacent polygon edges 0 and 170 intersect",
+   "t7": 0.0
+  },
+  {
+   "phi": "const2.0",
+   "s": "1/24",
+   "d5": "nonadjacent polygon edges 0 and 122 intersect",
+   "t5": 0.0,
+   "d7": "nonadjacent polygon edges 0 and 170 intersect",
+   "t7": 0.0
+  },
+  {
+   "phi": "const2.0",
+   "s": "1/28",
+   "d5": "nonadjacent polygon edges 0 and 122 intersect",
+   "t5": 0.0,
+   "d7": "nonadjacent polygon edges 0 and 170 intersect",
+   "t7": 0.0
+  },
+  {
+   "phi": "const2.0",
+   "s": "1/32",
+   "d5": "nonadjacent polygon edges 0 and 122 intersect",
+   "t5": 0.0,
+   "d7": "nonadjacent polygon edges 0 and 170 intersect",
+   "t7": 0.0
+  },
+  {
+   "phi": "const2.0",
+   "s": "1/36",
+   "d5": "nonadjacent polygon edges 0 and 122 intersect",
+   "t5": 0.0,
+   "d7": "nonadjacent polygon edges 0 and 170 intersect",
+   "t7": 0.0
+  }
+ ],
+ "depth_scan_note": "large graceful parity, small aligned, small reversed, crossed at depths 5 and 7; lam=1; drawings rejected by the simplicity check are recorded as errors",
+ "near_squares_neighbour_cell": {
+  "lam": 0,
+  "s": 0.05,
+  "start": "p + d(s)",
+  "free_corner_over_spacing": [
+   1.163,
+   1.016
+  ]
+ }
+}
