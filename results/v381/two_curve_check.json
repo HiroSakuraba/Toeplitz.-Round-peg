@@ -1,0 +1,132 @@
+{
+ "existence_at_stationary_gaps": {
+  "0.3,1.0": {
+   "stationary": 10,
+   "minima": 5,
+   "maxima": 5,
+   "windows_with_zero": 10,
+   "zeros": 10,
+   "polished": 10,
+   "certified_minima": 5,
+   "certified_maxima": 0
+  },
+  "0.5,3.0": {
+   "stationary": 30,
+   "minima": 15,
+   "maxima": 15,
+   "windows_with_zero": 28,
+   "zeros": 28,
+   "polished": 28,
+   "certified_minima": 15,
+   "certified_maxima": 13
+  },
+  "0.7,2.0": {
+   "stationary": 20,
+   "minima": 10,
+   "maxima": 10,
+   "windows_with_zero": 20,
+   "zeros": 20,
+   "polished": 20,
+   "certified_minima": 10,
+   "certified_maxima": 0
+  },
+  "0.0,1.0": {
+   "stationary": 0,
+   "minima": 0,
+   "maxima": 0,
+   "windows_with_zero": 0,
+   "zeros": 0,
+   "polished": 0,
+   "certified_minima": 0,
+   "certified_maxima": 0
+  },
+  "0.2,2.0": {
+   "stationary": 0,
+   "minima": 0,
+   "maxima": 0,
+   "windows_with_zero": 0,
+   "zeros": 0,
+   "polished": 0,
+   "certified_minima": 0,
+   "certified_maxima": 0
+  }
+ },
+ "localization_on_v380_aligned_squares": {
+  "0.3,1.0": {
+   "pass_gaps": {
+    "1": 26,
+    "3": 20,
+    "5": 11,
+    "7": 3,
+    "9": 1,
+    "11": 1
+   },
+   "aligned": 62,
+   "localization_holds": 62,
+   "max_dg_minus_residual_over_bound": 0.9941245731495183,
+   "max_H_residual": 1.218675882430631e-09
+  },
+  "0.5,3.0": {
+   "pass_gaps": {
+    "1": 72,
+    "2": 71,
+    "3": 44,
+    "4": 35,
+    "5": 13,
+    "6": 2,
+    "7": 3,
+    "8": 2,
+    "11": 1
+   },
+   "aligned": 243,
+   "localization_holds": 243,
+   "max_dg_minus_residual_over_bound": 1.0000000000392424,
+   "max_H_residual": 2.1221806680666797e-08
+  },
+  "0.7,2.0": {
+   "pass_gaps": {
+    "1": 50,
+    "2": 52,
+    "3": 36,
+    "4": 37,
+    "5": 10,
+    "6": 11,
+    "7": 3,
+    "8": 1,
+    "9": 1,
+    "10": 1,
+    "12": 1
+   },
+   "aligned": 203,
+   "localization_holds": 203,
+   "max_dg_minus_residual_over_bound": 1.000000000027057,
+   "max_H_residual": 1.6717233595250208e-08
+  }
+ },
+ "polygon_drawings_H_zeros_vs_exact": {
+  "0,1/20": {
+   "aligned_exact": 56,
+   "predicted": 56,
+   "exact_matched": 56,
+   "predicted_unmatched": 0
+  },
+  "1,1/20": {
+   "aligned_exact": 62,
+   "predicted": 62,
+   "exact_matched": 62,
+   "predicted_unmatched": 0
+  },
+  "0,1/30": {
+   "aligned_exact": 60,
+   "predicted": 60,
+   "exact_matched": 60,
+   "predicted_unmatched": 0
+  }
+ },
+ "notes": {
+  "family": "r(Theta)=Theta^(-1/2)(1+(kappa/Theta) sin(omega Theta)), half-turn symmetric; key kappa,omega",
+  "existence": "stationary points of the radial gap r(T)-r(T+pi) for T in [8,40]; frame window +-0.6 rad, bottom-left positions within +-3 gaps; certified = explicit sign test of Corollary 381.2",
+  "localization": "aligned squares from the v380 search (6000 seeds); holds = |gap change| <= bound + |H residual|",
+  "polygons": "v374 drawings; frames at 96 angles per turn, pass gaps 1-3; matched by centre within 1e-7"
+ }
+}
