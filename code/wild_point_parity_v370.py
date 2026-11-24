@@ -60,14 +60,20 @@ def connector(P, kind):
     raise ValueError(kind)
 
 
-def drawing(a, theta0, half_turns, per_turn, kind='straight', scale=1.0, outer=Q(2)):
+def drawing(a, theta0, half_turns, per_turn, kind='straight', scale=1.0, outer=Q(2), twist=0.0):
     """Vertex list of the depth-`half_turns` drawing, counterclockwise or clockwise as it falls.
     Returns (vertices, groups) where groups names index ranges: 'arm1', 'conn', 'arm2', 'outer'."""
     theta1 = theta0 + half_turns * pi
     A = arm(a, theta0, theta1, per_turn, scale)
     inner = A[-1]
-    conn = connector(inner, kind)
-    B = [(-x, -y) for x, y in reversed(A)]                  # arm two, from the centre outward
+    if twist:
+        # arm two is arm one turned by pi + twist (exact rational rotation); the connector is a chord
+        c, sn = _unit(pi + twist)
+        B = [(c * x - sn * y, sn * x + c * y) for x, y in reversed(A)]
+        conn = [inner, B[0]]
+    else:
+        conn = connector(inner, kind)
+        B = [(-x, -y) for x, y in reversed(A)]              # arm two, from the centre outward
     z0 = A[0]
     r0 = (z0[0] ** 2 + z0[1] ** 2)
     R = outer
