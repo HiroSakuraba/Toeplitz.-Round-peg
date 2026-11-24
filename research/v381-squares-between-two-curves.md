@@ -50,7 +50,7 @@ So Principle 380.2 is now a theorem: aligned squares exist where the gap rises a
 
 The explicit test is conservative at gap maxima of the gentler wobbles: $H$ changes sign there, but the worst-case bound $B$ is too large to certify it. In the strongest wobble the two uncertified maxima also have no zero inside the window. Those squares are too large for it.
 
-**Localization.** For each aligned square from v380's search, put the frame on the two turns it straddles. These are neighbours for 148 of the 508, and 2 to 12 turns apart for the rest. Then compare the gap change across the square with $B$. All 508 satisfy $|\Delta|\le B+|H|$, where $|H|\le2\times10^{-8}$ is the residual left by sampling. The largest ratio $(|\Delta|-|H|)/B$ is $1+4\times10^{-11}$. So the bound is attained: on these curves $f_2'$ is monotone across each square, and the variation bound is exact.
+**Localization.** For each aligned square from v380's search, put the frame on the two turns it straddles. These are neighbours for 148 of the 508, and 2 to 12 turns apart for the rest. Then compare the gap change across the square with $B$. All 508 satisfy $|\Delta|\le B+|H|$, where $|H|$, at most about $2\times10^{-8}$, is the residual left by sampling. The largest ratio $(|\Delta|-|H|)/B$ is $1+4\times10^{-11}$. So the bound is attained: on these curves $f_2'$ is monotone across each square, and the variation bound is exact.
 
 **Polygons.** For the drawings ($\lambda=0,1$ at $s=1/20$ depth 4, and $\lambda=0$ at $s=1/30$ depth 5), $H$ is computed exactly on the piecewise-linear turns. Frames are placed at 96 angles per turn, for turn gaps 1–3. The zeros with side below $s$ coincide with the exact aligned squares from the square counter: 56/56, 62/62 and 60/60, with nothing extra.
 
