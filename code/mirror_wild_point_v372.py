@@ -59,9 +59,27 @@ def in_cone(points):
     return all(x > abs(y) for x, y in points if (x, y) != (0, 0))
 
 
+def _singular_meets_box(m11, m12, r1, m21, m22, r2):
+    """For a singular 2x2 system in (t, w), whether it has a solution with 0 <= t, w <= 1."""
+    rows = [(m11, m12, r1), (m21, m22, r2)]
+    live = [r for r in rows if r[0] != 0 or r[1] != 0]
+    if any(r[0] == 0 and r[1] == 0 and r[2] != 0 for r in rows):
+        return False
+    if not live:
+        return True
+    a, b, c = live[0]
+    for a2, b2, c2 in live[1:]:
+        # rows are proportional (det = 0); consistent only if right-hand sides match the ratio
+        if (a2 * c - a * c2) != 0 or (b2 * c - b * c2) != 0:
+            return False
+    values = [a * t + b * w for t in (0, 1) for w in (0, 1)]
+    return min(values) <= c <= max(values)
+
+
 def symmetric_chords(arm, max_u=None):
     """Exact chords of the polyline `arm` (in x > 0) of the form P, P + (0, 2 x_P), with u = x_P > 0.
-    Returns sorted list of (u, P)."""
+    Returns sorted list of (u, P). Raises ArithmeticError when an edge and a sheared edge overlap,
+    where chords may form a continuum; absence is certified only when nothing is raised."""
     segs = list(zip(arm, arm[1:]))
     out = set()
     for a, b in segs:
@@ -75,6 +93,8 @@ def symmetric_chords(arm, max_u=None):
             m21, m22, r2 = dy + 2 * dx, -ey, c[1] - a[1] - 2 * a[0]
             det = m11 * m22 - m12 * m21
             if det == 0:
+                if _singular_meets_box(m11, m12, r1, m21, m22, r2):
+                    raise ArithmeticError("degenerate chord family: an edge and a sheared edge overlap")
                 continue
             t = (r1 * m22 - m12 * r2) / det
             w = (m11 * r2 - r1 * m21) / det
