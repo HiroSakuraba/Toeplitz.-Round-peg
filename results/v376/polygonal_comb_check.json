@@ -1,0 +1,153 @@
+{
+ "theorem": "376.1",
+ "mesh": "pi/12 in Theta (24 vertices per turn)",
+ "phi": "lam*0.4*sin(5*log(1/r))",
+ "L": "2*lam",
+ "L2": "lam*sqrt(104)",
+ "star_check_depth4_s_1_20": {
+  "0": {
+   "corners": 224,
+   "max_dist_over_h": 0.898,
+   "edge_true_dev_over_h_max": 0.93
+  },
+  "1": {
+   "corners": 248,
+   "max_dist_over_h": 0.891,
+   "edge_true_dev_over_h_max": 0.905
+  }
+ },
+ "simplicity_criterion_first_failure_depth": {
+  "0": 28,
+  "1": 24
+ },
+ "uniform_mesh_largest_simple_depth_lam1_by_bisection": 70,
+ "refined_mesh": {
+  "rule": "mu(Theta)=(pi/12)*sqrt(3/Theta)",
+  "max_2h_over_dg_to_depth_100": {
+   "0": 0.0652,
+   "1": 0.1454
+  },
+  "simple_depths_lam1": [
+   75,
+   100
+  ],
+  "vertices": {
+   "75": 10827,
+   "100": 16597
+  }
+ },
+ "drawings": [
+  {
+   "s": "1/20",
+   "depth": 4,
+   "lam": 0,
+   "squares": 58,
+   "off_arms": 2,
+   "hypotheses_ok": 56,
+   "holds_all": true,
+   "holds_where_ok": true,
+   "min_margin": 1.5998,
+   "max_h": 0.003315,
+   "max_eta": 0.408,
+   "nu": 3.1993849294709335e-08
+  },
+  {
+   "s": "1/20",
+   "depth": 4,
+   "lam": 1,
+   "squares": 64,
+   "off_arms": 2,
+   "hypotheses_ok": 34,
+   "holds_all": true,
+   "holds_where_ok": true,
+   "min_margin": 1.8626,
+   "max_h": 0.004638,
+   "max_eta": 0.975,
+   "nu": 7.625183904365522e-08
+  },
+  {
+   "s": "1/25",
+   "depth": 4,
+   "lam": 0,
+   "squares": 34,
+   "off_arms": 2,
+   "hypotheses_ok": 32,
+   "holds_all": true,
+   "holds_where_ok": true,
+   "min_margin": 1.5998,
+   "max_h": 0.002988,
+   "max_eta": 0.352,
+   "nu": 3.1993849294709335e-08
+  },
+  {
+   "s": "1/25",
+   "depth": 4,
+   "lam": 1,
+   "squares": 42,
+   "off_arms": 2,
+   "hypotheses_ok": 34,
+   "holds_all": true,
+   "holds_where_ok": true,
+   "min_margin": 1.8626,
+   "max_h": 0.003943,
+   "max_eta": 0.829,
+   "nu": 7.625183904365522e-08
+  },
+  {
+   "s": "1/30",
+   "depth": 5,
+   "lam": 0,
+   "squares": 62,
+   "off_arms": 2,
+   "hypotheses_ok": 60,
+   "holds_all": true,
+   "holds_where_ok": true,
+   "min_margin": 1.5932,
+   "max_h": 0.002778,
+   "max_eta": 0.317,
+   "nu": 3.199384913509109e-08
+  },
+  {
+   "s": "1/30",
+   "depth": 5,
+   "lam": 1,
+   "squares": 68,
+   "off_arms": 2,
+   "hypotheses_ok": 66,
+   "holds_all": true,
+   "holds_where_ok": true,
+   "min_margin": 1.7111,
+   "max_h": 0.003405,
+   "max_eta": 0.731,
+   "nu": 7.625183904365522e-08
+  },
+  {
+   "s": "1/40",
+   "depth": 6,
+   "lam": 0,
+   "squares": 66,
+   "off_arms": 2,
+   "hypotheses_ok": 64,
+   "holds_all": true,
+   "holds_where_ok": true,
+   "min_margin": 1.5936,
+   "max_h": 0.002437,
+   "max_eta": 0.262,
+   "nu": 3.199384913509109e-08
+  },
+  {
+   "s": "1/40",
+   "depth": 6,
+   "lam": 1,
+   "squares": 70,
+   "off_arms": 2,
+   "hypotheses_ok": 68,
+   "holds_all": true,
+   "holds_where_ok": true,
+   "min_margin": 1.6648,
+   "max_h": 0.0029,
+   "max_eta": 0.621,
+   "nu": 7.625183904365522e-08
+  }
+ ]
+}
