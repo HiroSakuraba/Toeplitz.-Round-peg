@@ -1,0 +1,172 @@
+{
+ "phi": "0.4*sin(5*log(1/r))",
+ "a": 0.5,
+ "theta0": 3.0,
+ "per_turn": 24,
+ "comb_scan": [
+  {
+   "s": "1/20",
+   "depth": 4,
+   "lam": "0",
+   "inner": 0.2535,
+   "n": 58,
+   "aligned": 29,
+   "reversed": 29,
+   "crossed": 0,
+   "max_center_radius": 0.3127,
+   "comb_radius": 0.3169,
+   "max_center_over_side": 6.25,
+   "large_graceful_parity": 1
+  },
+  {
+   "s": "1/20",
+   "depth": 4,
+   "lam": "1",
+   "inner": 0.2535,
+   "n": 64,
+   "aligned": 35,
+   "reversed": 29,
+   "crossed": 0,
+   "max_center_radius": 0.3286,
+   "comb_radius": 0.3258,
+   "max_center_over_side": 6.57,
+   "large_graceful_parity": 1
+  },
+  {
+   "s": "1/25",
+   "depth": 4,
+   "lam": "0",
+   "inner": 0.2535,
+   "n": 34,
+   "aligned": 17,
+   "reversed": 17,
+   "crossed": 0,
+   "max_center_radius": 0.2906,
+   "comb_radius": 0.2942,
+   "max_center_over_side": 7.27,
+   "large_graceful_parity": 1
+  },
+  {
+   "s": "1/25",
+   "depth": 4,
+   "lam": "1",
+   "inner": 0.2535,
+   "n": 42,
+   "aligned": 22,
+   "reversed": 20,
+   "crossed": 0,
+   "max_center_radius": 0.3009,
+   "comb_radius": 0.2969,
+   "max_center_over_side": 7.52,
+   "large_graceful_parity": 1
+  },
+  {
+   "s": "1/30",
+   "depth": 5,
+   "lam": "0",
+   "inner": 0.2312,
+   "n": 62,
+   "aligned": 31,
+   "reversed": 31,
+   "crossed": 0,
+   "max_center_radius": 0.2755,
+   "comb_radius": 0.2769,
+   "max_center_over_side": 8.27,
+   "large_graceful_parity": 1
+  },
+  {
+   "s": "1/30",
+   "depth": 5,
+   "lam": "1",
+   "inner": 0.2312,
+   "n": 68,
+   "aligned": 33,
+   "reversed": 35,
+   "crossed": 0,
+   "max_center_radius": 0.279,
+   "comb_radius": 0.2782,
+   "max_center_over_side": 8.37,
+   "large_graceful_parity": 1
+  },
+  {
+   "s": "1/40",
+   "depth": 6,
+   "lam": "0",
+   "inner": 0.2139,
+   "n": 66,
+   "aligned": 33,
+   "reversed": 33,
+   "crossed": 0,
+   "max_center_radius": 0.2492,
+   "comb_radius": 0.2515,
+   "max_center_over_side": 9.97,
+   "large_graceful_parity": 1
+  },
+  {
+   "s": "1/40",
+   "depth": 6,
+   "lam": "1",
+   "inner": 0.2139,
+   "n": 70,
+   "aligned": 29,
+   "reversed": 41,
+   "crossed": 0,
+   "max_center_radius": 0.2556,
+   "comb_radius": 0.257,
+   "max_center_over_side": 10.22,
+   "large_graceful_parity": 1
+  }
+ ],
+ "gap_path_s_1_20_depth_4": {
+  "lam_parity": {
+   "0": [
+    1,
+    29,
+    29
+   ],
+   "1/4": [
+    1,
+    31,
+    27
+   ],
+   "1/2": [
+    0,
+    32,
+    27
+   ],
+   "3/4": [
+    1,
+    33,
+    27
+   ],
+   "1": [
+    1,
+    35,
+    29
+   ]
+  },
+  "note": "[large graceful parity, small aligned, small reversed]",
+  "events": [
+   {
+    "bracket": [
+     "2567/8192",
+     "5135/16384"
+    ],
+    "square_side_lo": 0.0500003,
+    "square_side_hi": 0.0499998,
+    "sector": "aligned",
+    "center_over_side": 6.4
+   },
+   {
+    "bracket": [
+     "4975/8192",
+     "9951/16384"
+    ],
+    "square_side_lo": 0.0500003,
+    "square_side_hi": 0.0499999,
+    "sector": "aligned",
+    "center_over_side": 6.4
+   }
+  ]
+ }
+}
