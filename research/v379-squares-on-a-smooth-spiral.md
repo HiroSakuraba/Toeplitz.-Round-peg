@@ -15,7 +15,7 @@ So $j$ has the sign of $n_1n_3$, and $j=0$ only for squares aligned with the tur
 $$r_{\rm smooth}(t)=\Big(\frac{(2+1/a)\,t^2}{2\pi a}\Big)^{a/(2a+1)}(1+o(1)),$$
 which is $(4t^2/\pi)^{1/4}$ for $a=1/2$, and far inside $\rho(t)$.
 5. **Exact and numerical checks:**
-   - 200 inscribed squares on the smooth spiral, found by Newton's method: none aligned, all with $jn_1n_3>0$, none more than 0.7% beyond $r_{\rm smooth}$, all within $0.64\,\rho(t)$. For squares with $t/r<0.15$ the predicted radius is accurate to a median 0.5%;
+   - 200 inscribed squares on the smooth spiral, found by Newton's method: none aligned, all with $jn_1n_3>0$, none more than 0.7% beyond $r_{\rm smooth}$, all within $0.64\,\rho(t)$. The predicted radius is accurate only to first order in $t/r$. It depends on which corner is labelled $A$: labels with $n_1n_3<0$ do well, labels with $n_1n_3>0$ are off by about $1.3\,t/r$. (Corrected in [v382](v382-tilted-squares-exist.md); an earlier version quoted a median 0.5% from 7 squares.);
    - all 186 small squares of the three symmetric v374 drawings lie beyond $r_{\rm smooth}$, and every one has a corner within 10% of an edge's length from a polygon vertex (about half within 2%).
 
 ## The identity
@@ -44,7 +44,7 @@ The rule is a resonance condition. On a comb of straight, evenly spaced lines, s
 $$t^2=\pi^2K^2r^2(n_1^2+n_3^2)(1+O(\cdot))\ \ge\ 2\pi^2K^2r^2n_1n_3\ \ge\ \frac{2\pi K(r)\,r^2}{2+1/a}(1-o(1)).$$
 Inverting gives $r_{\rm smooth}(t)$ above. Since $\frac{2a}{2a+1}>\frac a{1+a}$, this is far inside $\rho(t)$ as $t\to0$.
 
-**The lower half.** For the smooth spiral the correct statement is now the existence of squares at the resonant radii. The numerics show them where predicted: for example $(n_1,n_3,j)=(2,3,1)$ predicts centre radius $0.1629$ and side $0.0245$, and Newton finds a square with centre at $0.1621$ and side $0.0232$. Squares near the minimal side exist whenever $n_1\approx n_3$ can be chosen. Proving existence at each resonance would take an implicit-function argument around the broken family. That is not done here.
+**The lower half.** For the smooth spiral the correct statement is now the existence of squares at the resonant radii. The numerics show them where predicted: for example the label $(n_1,n_3,j)=(-2,3,-1)$ predicts centre radius $0.1629$, and Newton finds a square with that label at centre $0.1621$ and side $0.0232$. (An earlier version gave this label as $(2,3,1)$; the square with label $(2,3,1)$ sits at $0.136$, see v382.) Squares near the minimal side exist whenever $n_1\approx n_3$ can be chosen. Existence at each resonance is proved, along explicit branches, in [v382](v382-tilted-squares-exist.md).
 
 ## Why the drawings looked different
 
