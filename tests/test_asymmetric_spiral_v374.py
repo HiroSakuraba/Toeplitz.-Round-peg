@@ -7,7 +7,7 @@ import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "code"))
 from asymmetric_spiral_v374 import (  # noqa: E402
-    asymmetric_drawing, comb_radius, default_phi, large_graceful_parity, radius_over_side)
+    assert_jordan, asymmetric_drawing, comb_radius, default_phi, large_graceful_parity, radius_over_side)
 from polygon_orbit_census_v223 import pt, validate_jordan_polygon  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -27,6 +27,14 @@ class GapPath(unittest.TestCase):
             A, B = V[:n], V[n:2 * n]
             # arm two is arm one turned vertex by vertex: the radii agree exactly
             self.assertEqual([x * x + y * y for x, y in A], [x * x + y * y for x, y in reversed(B)])
+
+    def test_deep_drawings_are_rejected_when_chords_cross(self):
+        V = asymmetric_drawing(75)
+        with self.assertRaises(ValueError):
+            assert_jordan(V)
+        with self.assertRaises(ValueError):
+            large_graceful_parity(V, S)
+        assert_jordan(asymmetric_drawing(75, Q(0)))
 
     def test_parity_along_the_gap_path(self):
         expected = {Q(0): (1, 29, 29), Q(1, 2): (0, 32, 27), Q(1): (1, 35, 29)}

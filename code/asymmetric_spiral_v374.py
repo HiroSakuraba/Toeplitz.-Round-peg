@@ -1,13 +1,41 @@
 """v374: radially monotone wild points without symmetry.
 
 Arm two is arm one turned, vertex by vertex, by pi + phi(r), where phi depends on the radius. The gap
-path scales phi by lambda in [0, 1]: lambda = 0 is the half-turn-symmetric v370 drawing, and every
-drawing on the path keeps both arms radially monotone with angular gap in (0, 2 pi), hence Jordan.
+path scales phi by lambda in [0, 1]: lambda = 0 is the half-turn-symmetric v370 drawing. Turned vertices keep
+their radii and a positive angular gap, but the chords between them can cross once the turn spacing is below
+the chord sagitta (the default drawing is not simple at depth 75), so parity counts check simplicity first.
 """
 from fractions import Fraction as Q
 from math import hypot, log, pi, sin, sqrt, tan
 
+import numpy as np
+
+from polygon_orbit_census_v223 import _intersect, pt
 from wild_point_parity_v370 import DEN, _unit, arm, sector_counts
+
+
+def assert_jordan(V):
+    """Exact simplicity check: float bounding boxes prune pairs, `_intersect` decides the rest exactly.
+
+    With a fixed number of vertices per turn, chords of neighbouring turns eventually cross once the turn
+    spacing drops below the chord sagitta (for the defaults this happens before depth 75), so every
+    parity computation checks simplicity first.
+    """
+    P = [pt(*p) for p in V]
+    n = len(P)
+    if len(set(P)) != n:
+        raise ValueError('repeated vertex')
+    A = np.array([[float(x), float(y)] for x, y in V])
+    B = np.roll(A, -1, axis=0)
+    lo, hi = np.minimum(A, B) - 1e-9, np.maximum(A, B) + 1e-9
+    for i in range(n):
+        m = np.all(lo[i + 2:] <= hi[i], axis=1) & np.all(hi[i + 2:] >= lo[i], axis=1)
+        for j in (np.nonzero(m)[0] + i + 2):
+            if i == 0 and j == n - 1:
+                continue
+            if _intersect(P[i], P[(i + 1) % n], P[j], P[(j + 1) % n]):
+                raise ValueError(f'nonadjacent polygon edges {i} and {j} intersect')
+    return V
 
 
 def default_phi(r):
@@ -32,6 +60,7 @@ def asymmetric_drawing(depth, lam=Q(1), phi=default_phi, a=0.5, theta0=3.0, per_
 
 
 def large_graceful_parity(V, s):
+    assert_jordan(V)
     counts, degenerate, squares = sector_counts(V, s)
     if degenerate:
         raise ArithmeticError("degenerate small-square candidate")
