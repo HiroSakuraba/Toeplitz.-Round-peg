@@ -42,7 +42,9 @@ def corner_radii(entry):
 
 def check_drawing(V, s, a=0.5, g=pi):
     """For every square of side below s: (side, min corner radius, rho(side))."""
+    from asymmetric_spiral_v374 import assert_jordan
     from wild_point_parity_v370 import sector_counts
+    assert_jordan(V)
     _, degenerate, squares = sector_counts(V, Q(s))
     if degenerate:
         raise ArithmeticError("degenerate small-square candidate")
