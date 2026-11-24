@@ -6,7 +6,7 @@ Can successively placed folds stop every [v366](v366-sweeps-read-from-the-curve.
 1. **Attacks move parity sideways.** A bump that carries the boundary across the fourth corner at a locus end kills that certificate. It makes the neighbouring triple across the attacked face odd instead. The certificate on the union of the two neighbours keeps degree one and its clearance, because its outer faces were never touched.
 2. **Attacking the best certificate** for seven stages alternates the parity between two neighbouring triples. The shared face's clearance falls by a factor of about 0.45 per stage, from 0.095 to 0.00076. The union certificate keeps clearance 0.0772 throughout.
 3. **Attacking the most robust certificate** for eleven stages never empties the set. The number of certificates rises from 20 to as many as 78. The best side floor rises from 1.40 to 2.57, because the bumps complete near-squares of the decagon. The best margin falls from 0.095 to 0.017.
-4. **Greedy pushing** moves the parity through five triples at a total bump size of 0.245. It then stops, because any further move would bring two stretches within one bin. The union of every visited bin still certifies, with unchanged clearance 0.211.
+4. **Greedy pushing** moves the parity through five triples at a total bump size of 0.245. It then stops at its parity check: the remaining separated move, across the union box's outer face, does not transfer parity. That one bump, about 0.42 in registered distance, destroys the union certificate, which until then had kept its clearance of 0.211. 64 other certificates survive it.
 
 At every stage of every run, some certificate had its stretches separated by at least one empty bin, and its side floor stayed at or above 1.4006. What the adversary can drive to zero is the clearance of the faces it attacks.
 
@@ -51,11 +51,13 @@ The large floors are real. After four bumps the polygon has an exact square of s
 $$
 (7,3,10)\to(7,2,10)\to(6,2,10)\to(6,2,11)\to(6,1,11)\to(6,1,12),
 $$
-with costs $0.095$, $0.077$, $0.025$, $0.0025$ and $0.045$, totalling $0.245$. Here the parity can no longer move without bringing stretches within one bin. The union triple, bins $\{6,7\}$, $\{1,2,3\}$, $\{10,11,12\}$, has degree one before and after. Its clearance is exactly the same rational number, about 0.211, and the number of squares inside it grew from 1 to 11.
+with costs $0.095$, $0.077$, $0.025$, $0.0025$ and $0.045$, totalling $0.245$. The union triple, bins $\{6,7\}$, $\{1,2,3\}$, $\{10,11,12\}$, has degree one before and after. Its clearance is exactly the same rational number, about 0.211, and the number of squares inside it grew from 1 to 11.
+
+The run stops because of parity, not separation. From $(6,1,12)$ the locus still has an end on the face toward $(5,1,12)$, and that triple keeps the required gaps. That end lies on the union box's outer face, with clearance 0.211. The bump across it is simple, and its registered distance is about 0.42. After it, $(5,1,12)$, $(6,1,12)$, the union triple, and the union widened to bin 5 all have degree zero. 64 other certificates remain, with best side floor about 2.29. An attack on an outer face of the union box does not move its parity; it destroys it. [v368](v368-certificate-margin-and-one-stage-criterion.md) shows that any redraw that changes the union's degree must exceed its margin, about 0.025 here.
 
 ## What this says about the noncollapse question
 
-In this family, folds placed against the certificates do not make them retreat into smaller stretches. Parity is conserved on unions of stretches, and an attack only pushes it across faces of a fixed bin grid. The danger is different. Each attacked face's clearance can be driven geometrically to zero. To collapse, the adversary must close a gap by pushing the parity across every bin in between, and each crossing costs a bump comparable to the clearance there.
+In this family, folds placed against the certificates do not make them retreat into smaller stretches. Attacks on inner faces only push parity across a fixed bin grid, and parity is conserved on unions of stretches. The danger is different. Each attacked face's clearance can be driven geometrically to zero, and a bump at an outer face of a union box, comparable to its clearance there, can destroy that family's parity outright. In every run, other separated certificates survived.
 
 A proof along these lines would need a lower bound, valid at every depth, on the clearance at the outer faces of some union box whose stretches stay separated. The circle shows that such a bound can fail for a particular target. On near-circles the clearance is proportional to the distance from quarter-turn symmetry (v366). The natural next test is an adversary that keeps pushing across outer faces with a fixed total bump budget. Bounding how many bins it can cross would show whether separation survives.
 
