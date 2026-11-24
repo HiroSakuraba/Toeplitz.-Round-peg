@@ -115,7 +115,7 @@ def clear_squared_cutoff(band, patch_groups):
     return None
 
 
-def triangle(mask):
+def triangle(mask, width=WIDTH, error=EPS):
     """Four disjoint trapezoidal graph edits. Bit order follows the square."""
     if not 0 <= mask < 16:
         raise ValueError("invalid edit mask")
@@ -126,34 +126,37 @@ def triangle(mask):
         if mask & (1 << i):
             cx,cy = CENTERS[i]
             for k, active in ((-2,0),(-1,1),(1,1),(2,0)):
-                vertices.append(pt(cx+k*WIDTH*tangent[0]+active*EPS*shift[0],
-                                   cy+k*WIDTH*tangent[1]+active*EPS*shift[1]))
+                vertices.append(pt(cx+k*width*tangent[0]+active*error*shift[0],
+                                   cy+k*width*tangent[1]+active*error*shift[1]))
         if endpoint:
             vertices.append(pt(*endpoint))
     return validate_jordan_polygon(vertices)
 
 
-def moving_square(mask, time=Q(1)):
+def moving_square(mask, time=Q(1), error=EPS):
     """The four central parallel pieces determine the square exactly."""
     t = Q(time)
     if not 0 <= t <= 1 or not 0 <= mask < 16:
         raise ValueError("invalid motion")
     a,b,c,d = [int(bool(mask & (1 << i))) for i in range(4)]
-    u = (12+t*EPS*(a+3*b+3*c+3*d))/7
-    v = t*EPS*(a-b)
-    y = -a*t*EPS
-    x = v+(y+u)/3-d*t*EPS
+    u = (12+t*error*(a+3*b+3*c+3*d))/7
+    v = t*error*(a-b)
+    y = -a*t*error
+    x = v+(y+u)/3-d*t*error
     return ((x,y),(x+u,y+v),(x+u-v,y+u+v),(x-v,y+u)), u*u+v*v
 
 
-def cutoff_chart_cover():
+def cutoff_chart_cover(cutoff=CUTOFF, error=EPS, width=WIDTH, upper_cutoff=None):
     """Enclose every cutoff square on the swept triangle, including its connectors."""
+    upper_cutoff = cutoff if upper_cutoff is None else upper_cutoff
+    if not 0 < cutoff <= upper_cutoff or not 0 < error < width:
+        raise ValueError("invalid side band or edit dimensions")
     survivors = []
     for lines in product(range(3),repeat=4):
         if len(set(lines)) == 1:
-            # A strip |normal.p-level| <= 3 EPS has projection width 6 EPS.
+            # A strip |normal.p-level| <= 3 error has projection width 6 error.
             # A square projects to at least its side on every unit direction.
-            if 6*EPS >= CUTOFF:
+            if 6*error >= cutoff:
                 raise ArithmeticError("single strip could contain a cutoff square")
             continue
         system = []
@@ -164,18 +167,18 @@ def cutoff_chart_cover():
         columns = [_solve(system,[int(i==j) for i in range(4)]) for j in range(4)]
         if base is None:
             raise ArithmeticError("unexpected singular mixed chart")
-        errors = [3*EPS*sum(abs(x) for x in row) for row in zip(*columns)]
+        errors = [3*error*sum(abs(x) for x in row) for row in zip(*columns)]
         lower = sum(max(0,abs(base[j])-errors[j])**2 for j in (2,3))
         upper = sum((abs(base[j])+errors[j])**2 for j in (2,3))
-        if not lower <= CUTOFF**2 <= upper:
+        if lower > upper_cutoff**2 or upper < cutoff**2:
             continue
         # Even allowing independent errors, all corners stay on the central
-        # portions: the connectors have at least WIDTH-EPS x displacement.
+        # portions: the connectors have at least width-error x displacement.
         for rx,ry in COORDS:
             center = tuple(sum(q*t for q,t in zip(row,base)) for row in (rx,ry))
             if center not in CENTERS:
                 raise ArithmeticError("unexpected cutoff location")
-            if sum(abs(q)*e for q,e in zip(rx,errors)) >= WIDTH-EPS:
+            if sum(abs(q)*e for q,e in zip(rx,errors)) >= width-error:
                 raise ArithmeticError("cutoff might touch a connector")
         survivors.append(lines)
     return tuple(survivors)

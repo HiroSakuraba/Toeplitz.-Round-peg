@@ -1,7 +1,7 @@
 # Toeplitz square-peg research
 
 **Research program:** Benjamin John Schulz (GitHub: HiroSakuraba)  
-**Status as of 2026-11-23:** Research in progress (latest integrated version: **v363**). Exact square-census, relative-degree, parity and winding certificates have been proved for selected polygonal and rough families; the general square-peg conjecture for arbitrary Jordan curves is **not proved** here.
+**Status as of 2026-11-23:** Research in progress (latest integrated version: **v364**). Exact square-census, relative-degree, parity and winding certificates have been proved for selected polygonal and rough families; the general square-peg conjecture for arbitrary Jordan curves is **not proved** here.
 
 The [Toeplitz square-peg problem](https://en.wikipedia.org/wiki/Inscribed_square_problem) asks whether every Jordan curve contains four distinct vertices of a nondegenerate Euclidean square. This is a versioned research archive of constructive half-square approaches, local certificates, geometric obstructions, analytic energy methods, and supporting computation.
 
@@ -9,6 +9,7 @@ The [Toeplitz square-peg problem](https://en.wikipedia.org/wiki/Inscribed_square
 
 Entries marked *analytic* are paper arguments that depend on cited preprints; only the computations named in the entry are machine-checked. The other entries pair their arguments with exact replays of the stated examples and certificates.
 
+- **[v364: sweeping the fourth corner across the target](research/v364-three-patch-fourth-corner-sweep.md)** proves a three-patch parity transfer through a change of inside/outside sign. A triangle rules out the static inference, and a sloping-roof replay handles a pair creation and a pair loss without following a single crossing.
 - **[v363: how disjoint edits change square parity](research/v363-cutoff-parity-under-disjoint-edits.md)** proves that the cutoff count modulo two has interaction order at most four, and an exact triangle attains order four. A rational selector excludes joint patch contacts by size. An asymmetric four-bay family pairs all distant crossings at a cutoff read from its end walls.
 - **[v362: a change of starting corner prevents collapse](research/v362-relabeling-path-noncollapse.md)** proves that a path of increasingly accurate squares returning with a different first corner forces a genuine limiting square on any registered Jordan target. A circle has this mechanism and a noncircular ellipse rules it out. An exact vertex-grid search finds paths on symmetric and perturbed octagons.
 - **[v361: finding three traversals on an unmarked boundary](research/v361-blind-three-window-selection.md)** automatically certifies side greater than 8.47 across six contact-exchange examples, including folded arcs. A round circle rules out a universal three-window selection theorem.
