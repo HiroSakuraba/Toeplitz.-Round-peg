@@ -1,0 +1,148 @@
+{
+ "theorem": "375.1",
+ "a": 0.5,
+ "theta0": 3.0,
+ "per_turn": 24,
+ "phi": "lam*0.4*sin(5*log(1/r))",
+ "g": "pi-0.4*lam",
+ "L": "2*lam",
+ "lemma_A_sampling": {
+  "0": 1.0754,
+  "1": 1.1268,
+  "note": "min |w-z|/d_g(r_min) over ~2.77M non-neighbour pairs at distance < 0.08 on the continuous arcs, 7 turns, 6000 samples per arm"
+ },
+ "outermost_square_s_1_20_depth_4": {
+  "0": {
+   "side": 0.04858,
+   "min_corner": 0.2894,
+   "rho": 0.3222
+  },
+  "1": {
+   "side": 0.04995,
+   "min_corner": 0.3032,
+   "rho": 0.3414
+  }
+ },
+ "drawings": [
+  {
+   "s": "1/20",
+   "depth": 4,
+   "lam": 0,
+   "g": 3.1416,
+   "L": 0.0,
+   "squares": 58,
+   "violations": 0,
+   "worst_ratio": 0.9223,
+   "worst_side": 0.03037,
+   "worst_min_corner": 0.2523,
+   "rho_at_s": 0.3255,
+   "eta_at_s": 0.341,
+   "hypotheses_ok": true
+  },
+  {
+   "s": "1/20",
+   "depth": 4,
+   "lam": 1,
+   "g": 2.7416,
+   "L": 2.0,
+   "squares": 64,
+   "violations": 0,
+   "worst_ratio": 0.9049,
+   "worst_side": 0.02862,
+   "worst_min_corner": 0.2542,
+   "rho_at_s": 0.3415,
+   "eta_at_s": 0.739,
+   "hypotheses_ok": true
+  },
+  {
+   "s": "1/25",
+   "depth": 4,
+   "lam": 0,
+   "g": 3.1416,
+   "L": 0.0,
+   "squares": 34,
+   "violations": 0,
+   "worst_ratio": 0.9223,
+   "worst_side": 0.03037,
+   "worst_min_corner": 0.2523,
+   "rho_at_s": 0.301,
+   "eta_at_s": 0.295,
+   "hypotheses_ok": true
+  },
+  {
+   "s": "1/25",
+   "depth": 4,
+   "lam": 1,
+   "g": 2.7416,
+   "L": 2.0,
+   "squares": 42,
+   "violations": 0,
+   "worst_ratio": 0.9049,
+   "worst_side": 0.02862,
+   "worst_min_corner": 0.2542,
+   "rho_at_s": 0.3157,
+   "eta_at_s": 0.64,
+   "hypotheses_ok": true
+  },
+  {
+   "s": "1/30",
+   "depth": 5,
+   "lam": 0,
+   "g": 3.1416,
+   "L": 0.0,
+   "squares": 62,
+   "violations": 0,
+   "worst_ratio": 0.9355,
+   "worst_side": 0.02227,
+   "worst_min_corner": 0.23,
+   "rho_at_s": 0.2825,
+   "eta_at_s": 0.262,
+   "hypotheses_ok": true
+  },
+  {
+   "s": "1/30",
+   "depth": 5,
+   "lam": 1,
+   "g": 2.7416,
+   "L": 2.0,
+   "squares": 68,
+   "violations": 0,
+   "worst_ratio": 0.9439,
+   "worst_side": 0.01919,
+   "worst_min_corner": 0.231,
+   "rho_at_s": 0.2962,
+   "eta_at_s": 0.568,
+   "hypotheses_ok": true
+  },
+  {
+   "s": "1/40",
+   "depth": 6,
+   "lam": 0,
+   "g": 3.1416,
+   "L": 0.0,
+   "squares": 66,
+   "violations": 0,
+   "worst_ratio": 0.945,
+   "worst_side": 0.01724,
+   "worst_min_corner": 0.2128,
+   "rho_at_s": 0.2558,
+   "eta_at_s": 0.217,
+   "hypotheses_ok": true
+  },
+  {
+   "s": "1/40",
+   "depth": 6,
+   "lam": 1,
+   "g": 2.7416,
+   "L": 2.0,
+   "squares": 70,
+   "violations": 0,
+   "worst_ratio": 0.9723,
+   "worst_side": 0.01412,
+   "worst_min_corner": 0.2142,
+   "rho_at_s": 0.2681,
+   "eta_at_s": 0.471,
+   "hypotheses_ok": true
+  }
+ ]
+}
