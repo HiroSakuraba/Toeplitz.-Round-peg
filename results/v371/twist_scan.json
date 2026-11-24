@@ -1,0 +1,413 @@
+{
+ "description": "Exact small-square counts on twisted double spirals (arm two = arm one turned by pi + twist), radii theta^(-1/2), 24 vertices per turn, theta0 = 3, chord connector.",
+ "rows": [
+  {
+   "twist": 0.001,
+   "depth": 2,
+   "n": 53,
+   "degenerate": 0,
+   "1/20": {
+    "aligned": 0,
+    "reversed": 0,
+    "crossed": 0
+   },
+   "1/40": {
+    "aligned": 0,
+    "reversed": 0,
+    "crossed": 0
+   },
+   "sec": 2.0
+  },
+  {
+   "twist": 0.001,
+   "depth": 3,
+   "n": 77,
+   "degenerate": 0,
+   "1/20": {
+    "aligned": 5,
+    "reversed": 5,
+    "crossed": 0
+   },
+   "1/40": {
+    "aligned": 0,
+    "reversed": 0,
+    "crossed": 0
+   },
+   "sec": 3.6
+  },
+  {
+   "twist": 0.001,
+   "depth": 4,
+   "n": 101,
+   "degenerate": 0,
+   "1/20": {
+    "aligned": 29,
+    "reversed": 29,
+    "crossed": 0
+   },
+   "1/40": {
+    "aligned": 0,
+    "reversed": 0,
+    "crossed": 0
+   },
+   "sec": 6.9
+  },
+  {
+   "twist": 0.001,
+   "depth": 5,
+   "n": 125,
+   "degenerate": 0,
+   "1/20": {
+    "aligned": 53,
+    "reversed": 53,
+    "crossed": 2
+   },
+   "1/40": {
+    "aligned": 9,
+    "reversed": 9,
+    "crossed": 0
+   },
+   "sec": 12.7
+  },
+  {
+   "twist": 0.001,
+   "depth": 6,
+   "n": 149,
+   "degenerate": 0,
+   "1/20": {
+    "aligned": 78,
+    "reversed": 78,
+    "crossed": 40
+   },
+   "1/40": {
+    "aligned": 33,
+    "reversed": 33,
+    "crossed": 0
+   },
+   "sec": 22.0
+  },
+  {
+   "twist": 0.001,
+   "depth": 7,
+   "n": 173,
+   "degenerate": 0,
+   "1/20": {
+    "aligned": 104,
+    "reversed": 104,
+    "crossed": 88
+   },
+   "1/40": {
+    "aligned": 57,
+    "reversed": 57,
+    "crossed": 0
+   },
+   "sec": 36.1
+  },
+  {
+   "twist": 0.01,
+   "depth": 2,
+   "n": 53,
+   "degenerate": 0,
+   "1/20": {
+    "aligned": 0,
+    "reversed": 0,
+    "crossed": 0
+   },
+   "1/40": {
+    "aligned": 0,
+    "reversed": 0,
+    "crossed": 0
+   },
+   "sec": 2.2
+  },
+  {
+   "twist": 0.01,
+   "depth": 3,
+   "n": 77,
+   "degenerate": 0,
+   "1/20": {
+    "aligned": 5,
+    "reversed": 1,
+    "crossed": 0
+   },
+   "1/40": {
+    "aligned": 0,
+    "reversed": 0,
+    "crossed": 0
+   },
+   "sec": 3.6
+  },
+  {
+   "twist": 0.01,
+   "depth": 4,
+   "n": 101,
+   "degenerate": 0,
+   "1/20": {
+    "aligned": 29,
+    "reversed": 23,
+    "crossed": 0
+   },
+   "1/40": {
+    "aligned": 0,
+    "reversed": 0,
+    "crossed": 0
+   },
+   "sec": 7.5
+  },
+  {
+   "twist": 0.01,
+   "depth": 5,
+   "n": 125,
+   "degenerate": 0,
+   "1/20": {
+    "aligned": 53,
+    "reversed": 47,
+    "crossed": 2
+   },
+   "1/40": {
+    "aligned": 9,
+    "reversed": 9,
+    "crossed": 0
+   },
+   "sec": 12.9
+  },
+  {
+   "twist": 0.01,
+   "depth": 6,
+   "n": 149,
+   "degenerate": 0,
+   "1/20": {
+    "aligned": 78,
+    "reversed": 74,
+    "crossed": 40
+   },
+   "1/40": {
+    "aligned": 33,
+    "reversed": 35,
+    "crossed": 0
+   },
+   "sec": 22.1
+  },
+  {
+   "twist": 0.01,
+   "depth": 7,
+   "n": 173,
+   "degenerate": 0,
+   "1/20": {
+    "aligned": 104,
+    "reversed": 100,
+    "crossed": 88
+   },
+   "1/40": {
+    "aligned": 57,
+    "reversed": 59,
+    "crossed": 0
+   },
+   "sec": 36.7
+  },
+  {
+   "twist": 0.1,
+   "depth": 2,
+   "n": 53,
+   "degenerate": 0,
+   "1/20": {
+    "aligned": 0,
+    "reversed": 0,
+    "crossed": 0
+   },
+   "1/40": {
+    "aligned": 0,
+    "reversed": 0,
+    "crossed": 0
+   },
+   "sec": 2.3
+  },
+  {
+   "twist": 0.1,
+   "depth": 3,
+   "n": 77,
+   "degenerate": 0,
+   "1/20": {
+    "aligned": 4,
+    "reversed": 9,
+    "crossed": 0
+   },
+   "1/40": {
+    "aligned": 0,
+    "reversed": 0,
+    "crossed": 0
+   },
+   "sec": 4.6
+  },
+  {
+   "twist": 0.1,
+   "depth": 4,
+   "n": 101,
+   "degenerate": 0,
+   "1/20": {
+    "aligned": 28,
+    "reversed": 33,
+    "crossed": 0
+   },
+   "1/40": {
+    "aligned": 0,
+    "reversed": 0,
+    "crossed": 0
+   },
+   "sec": 9.4
+  },
+  {
+   "twist": 0.1,
+   "depth": 5,
+   "n": 125,
+   "degenerate": 0,
+   "1/20": {
+    "aligned": 52,
+    "reversed": 57,
+    "crossed": 2
+   },
+   "1/40": {
+    "aligned": 8,
+    "reversed": 14,
+    "crossed": 0
+   },
+   "sec": 16.5
+  },
+  {
+   "twist": 0.1,
+   "depth": 6,
+   "n": 149,
+   "degenerate": 0,
+   "1/20": {
+    "aligned": 77,
+    "reversed": 82,
+    "crossed": 40
+   },
+   "1/40": {
+    "aligned": 32,
+    "reversed": 38,
+    "crossed": 0
+   },
+   "sec": 28.7
+  },
+  {
+   "twist": 0.1,
+   "depth": 7,
+   "n": 173,
+   "degenerate": 0,
+   "1/20": {
+    "aligned": 102,
+    "reversed": 108,
+    "crossed": 88
+   },
+   "1/40": {
+    "aligned": 56,
+    "reversed": 62,
+    "crossed": 0
+   },
+   "sec": 35.9
+  },
+  {
+   "twist": 0.5,
+   "depth": 2,
+   "n": 53,
+   "degenerate": 0,
+   "1/20": {
+    "aligned": 0,
+    "reversed": 0,
+    "crossed": 0
+   },
+   "1/40": {
+    "aligned": 0,
+    "reversed": 0,
+    "crossed": 0
+   },
+   "sec": 4.4
+  },
+  {
+   "twist": 0.5,
+   "depth": 3,
+   "n": 77,
+   "degenerate": 0,
+   "1/20": {
+    "aligned": 0,
+    "reversed": 16,
+    "crossed": 0
+   },
+   "1/40": {
+    "aligned": 0,
+    "reversed": 0,
+    "crossed": 0
+   },
+   "sec": 11.4
+  },
+  {
+   "twist": 0.5,
+   "depth": 4,
+   "n": 101,
+   "degenerate": 0,
+   "1/20": {
+    "aligned": 21,
+    "reversed": 40,
+    "crossed": 0
+   },
+   "1/40": {
+    "aligned": 0,
+    "reversed": 1,
+    "crossed": 0
+   },
+   "sec": 26.9
+  },
+  {
+   "twist": 0.5,
+   "depth": 5,
+   "n": 125,
+   "degenerate": 0,
+   "1/20": {
+    "aligned": 45,
+    "reversed": 64,
+    "crossed": 7
+   },
+   "1/40": {
+    "aligned": 0,
+    "reversed": 25,
+    "crossed": 0
+   },
+   "sec": 45.5
+  },
+  {
+   "twist": 0.5,
+   "depth": 6,
+   "n": 149,
+   "degenerate": 0,
+   "1/20": {
+    "aligned": 70,
+    "reversed": 88,
+    "crossed": 70
+   },
+   "1/40": {
+    "aligned": 21,
+    "reversed": 49,
+    "crossed": 0
+   },
+   "sec": 44.3
+  },
+  {
+   "twist": 0.5,
+   "depth": 7,
+   "n": 173,
+   "degenerate": 0,
+   "1/20": {
+    "aligned": 95,
+    "reversed": 114,
+    "crossed": 162
+   },
+   "1/40": {
+    "aligned": 45,
+    "reversed": 73,
+    "crossed": 15
+   },
+   "sec": 96.4
+  }
+ ]
+}

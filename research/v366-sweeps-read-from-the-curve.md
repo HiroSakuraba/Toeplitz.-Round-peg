@@ -24,7 +24,7 @@ Let $L$ be the zero set of the first two coordinates. For a polygon it is a unio
 
 Where $L$ touches an outer face and returns, the two piece ends there cancel. A chart met at a single point contributes twice. Uniformly small registered redraws change $F$ uniformly, so the degree persists while $\partial\mathcal B$ stays zero-free. The side bound holds because $P,Q$ and $Q,R$ are adjacent and $P,R$ are opposite. ∎
 
-The checker also counts independently the boundary crossings of $D$ along every piece of $L$. Each one is an exact square on the polygon. It rejects any triple where this count's parity disagrees with the end count. Collinear overlaps, rank-deficient charts and pieces lying in an outer face all make the triple inconclusive. The distance from $D$ to the boundary at the outer ends is reported as the *clearance*. It sets the scale of redraws the certificate can tolerate, but it is not a proved tolerance. A quantitative bound needs the margin of $F$ over all of $\partial\mathcal B$.
+The checker also counts independently the boundary crossings of $D$ along every piece of $L$. Each one is an exact square on the polygon. It rejects any triple where this count's parity disagrees with the end count. Collinear overlaps, rank-deficient charts and pieces lying in an outer face all make the triple inconclusive. The distance from $D$ to the boundary at the outer ends is reported as the *clearance*. It sets the scale of redraws the certificate can tolerate, but it is not a proved tolerance. [v368](v368-certificate-margin-and-one-stage-criterion.md) defines the margin of $F$ over all of $\partial\mathcal B$, proves the tolerance and computes it exactly.
 
 ## Search
 
