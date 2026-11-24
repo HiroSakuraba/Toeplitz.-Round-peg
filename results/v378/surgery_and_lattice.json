@@ -1,0 +1,628 @@
+{
+ "surgery_trials": [
+  {
+   "edge": 27,
+   "swept": 1,
+   "swept_graceful": 1,
+   "predicted_flip": 1,
+   "actual_flip": 1,
+   "near_in_ball": 1,
+   "kind": "targeted"
+  },
+  {
+   "edge": 77,
+   "swept": 1,
+   "swept_graceful": 1,
+   "predicted_flip": 1,
+   "actual_flip": 1,
+   "near_in_ball": 1,
+   "kind": "targeted"
+  },
+  {
+   "edge": 78,
+   "swept": 1,
+   "swept_graceful": 1,
+   "predicted_flip": 1,
+   "actual_flip": 1,
+   "near_in_ball": 1,
+   "kind": "targeted"
+  },
+  {
+   "edge": 31,
+   "swept": 1,
+   "swept_graceful": 1,
+   "predicted_flip": 1,
+   "actual_flip": 1,
+   "near_in_ball": 1,
+   "kind": "targeted"
+  },
+  {
+   "edge": 64,
+   "swept": 1,
+   "swept_graceful": 1,
+   "predicted_flip": 1,
+   "actual_flip": 1,
+   "near_in_ball": 1,
+   "kind": "targeted"
+  },
+  {
+   "edge": 28,
+   "swept": 1,
+   "swept_graceful": 1,
+   "predicted_flip": 1,
+   "actual_flip": 1,
+   "near_in_ball": 1,
+   "kind": "targeted"
+  },
+  {
+   "edge": 77,
+   "swept": 1,
+   "swept_graceful": 1,
+   "predicted_flip": 1,
+   "actual_flip": 1,
+   "near_in_ball": 1,
+   "kind": "targeted"
+  },
+  {
+   "edge": 63,
+   "swept": 1,
+   "swept_graceful": 1,
+   "predicted_flip": 1,
+   "actual_flip": 1,
+   "near_in_ball": 1,
+   "kind": "targeted"
+  },
+  {
+   "edge": 63,
+   "swept": 1,
+   "swept_graceful": 1,
+   "predicted_flip": 1,
+   "actual_flip": 1,
+   "near_in_ball": 1,
+   "kind": "targeted"
+  },
+  {
+   "edge": 21,
+   "swept": 1,
+   "swept_graceful": 1,
+   "predicted_flip": 1,
+   "actual_flip": 1,
+   "near_in_ball": 1,
+   "kind": "targeted"
+  },
+  {
+   "edge": 21,
+   "swept": 1,
+   "swept_graceful": 1,
+   "predicted_flip": 1,
+   "actual_flip": 1,
+   "near_in_ball": 1,
+   "kind": "targeted"
+  },
+  {
+   "edge": 64,
+   "swept": 1,
+   "swept_graceful": 1,
+   "predicted_flip": 1,
+   "actual_flip": 1,
+   "near_in_ball": 1,
+   "kind": "targeted"
+  },
+  {
+   "edge": 30,
+   "swept": 1,
+   "swept_graceful": 1,
+   "predicted_flip": 1,
+   "actual_flip": 1,
+   "near_in_ball": 1,
+   "kind": "targeted"
+  },
+  {
+   "edge": 27,
+   "swept": 1,
+   "swept_graceful": 1,
+   "predicted_flip": 1,
+   "actual_flip": 1,
+   "near_in_ball": 1,
+   "kind": "targeted"
+  },
+  {
+   "edge": 28,
+   "swept": 1,
+   "swept_graceful": 1,
+   "predicted_flip": 1,
+   "actual_flip": 1,
+   "near_in_ball": 1,
+   "kind": "targeted"
+  },
+  {
+   "edge": 56,
+   "swept": 0,
+   "swept_graceful": 0,
+   "predicted_flip": 0,
+   "actual_flip": 0,
+   "near_in_ball": 0,
+   "kind": "random"
+  },
+  {
+   "edge": 55,
+   "swept": 0,
+   "swept_graceful": 0,
+   "predicted_flip": 0,
+   "actual_flip": 0,
+   "near_in_ball": 0,
+   "kind": "random"
+  },
+  {
+   "edge": 81,
+   "swept": 0,
+   "swept_graceful": 0,
+   "predicted_flip": 0,
+   "actual_flip": 0,
+   "near_in_ball": 0,
+   "kind": "random"
+  },
+  {
+   "edge": 51,
+   "swept": 0,
+   "swept_graceful": 0,
+   "predicted_flip": 0,
+   "actual_flip": 0,
+   "near_in_ball": 0,
+   "kind": "random"
+  },
+  {
+   "edge": 17,
+   "swept": 0,
+   "swept_graceful": 0,
+   "predicted_flip": 0,
+   "actual_flip": 0,
+   "near_in_ball": 0,
+   "kind": "random"
+  },
+  {
+   "edge": 74,
+   "swept": 0,
+   "swept_graceful": 0,
+   "predicted_flip": 0,
+   "actual_flip": 0,
+   "near_in_ball": 0,
+   "kind": "random"
+  },
+  {
+   "edge": 74,
+   "swept": 0,
+   "swept_graceful": 0,
+   "predicted_flip": 0,
+   "actual_flip": 0,
+   "near_in_ball": 0,
+   "kind": "random"
+  },
+  {
+   "edge": 92,
+   "swept": 0,
+   "swept_graceful": 0,
+   "predicted_flip": 0,
+   "actual_flip": 0,
+   "near_in_ball": 0,
+   "kind": "random"
+  },
+  {
+   "edge": 64,
+   "swept": 0,
+   "swept_graceful": 0,
+   "predicted_flip": 0,
+   "actual_flip": 0,
+   "near_in_ball": 0,
+   "kind": "random"
+  },
+  {
+   "edge": 60,
+   "swept": 0,
+   "swept_graceful": 0,
+   "predicted_flip": 0,
+   "actual_flip": 0,
+   "near_in_ball": 0,
+   "kind": "random"
+  },
+  {
+   "edge": 31,
+   "swept": 0,
+   "swept_graceful": 0,
+   "predicted_flip": 0,
+   "actual_flip": 0,
+   "near_in_ball": 0,
+   "kind": "random"
+  },
+  {
+   "edge": 38,
+   "swept": 0,
+   "swept_graceful": 0,
+   "predicted_flip": 0,
+   "actual_flip": 0,
+   "near_in_ball": 0,
+   "kind": "random"
+  },
+  {
+   "edge": 37,
+   "swept": 1,
+   "swept_graceful": 0,
+   "predicted_flip": 0,
+   "actual_flip": 0,
+   "near_in_ball": 1,
+   "kind": "crossed single",
+   "lam": 1,
+   "s": "1/20"
+  },
+  {
+   "edge": 71,
+   "swept": 1,
+   "swept_graceful": 0,
+   "predicted_flip": 0,
+   "actual_flip": 0,
+   "near_in_ball": 1,
+   "kind": "crossed single",
+   "lam": 1,
+   "s": "1/20"
+  },
+  {
+   "edge": 21,
+   "swept": 2,
+   "swept_graceful": 2,
+   "predicted_flip": 0,
+   "actual_flip": 0,
+   "near_in_ball": 2,
+   "kind": "pair",
+   "lam": 1,
+   "s": "1/20",
+   "sectors": [
+    "reversed",
+    "reversed"
+   ]
+  },
+  {
+   "edge": 63,
+   "swept": 2,
+   "swept_graceful": 2,
+   "predicted_flip": 0,
+   "actual_flip": 0,
+   "near_in_ball": 2,
+   "kind": "pair",
+   "lam": 1,
+   "s": "1/20",
+   "sectors": [
+    "reversed",
+    "reversed"
+   ]
+  },
+  {
+   "edge": 32,
+   "swept": 2,
+   "swept_graceful": 2,
+   "predicted_flip": 0,
+   "actual_flip": 0,
+   "near_in_ball": 2,
+   "kind": "pair",
+   "lam": 0,
+   "s": "1/20",
+   "sectors": [
+    "aligned",
+    "aligned"
+   ]
+  },
+  {
+   "edge": 64,
+   "swept": 2,
+   "swept_graceful": 2,
+   "predicted_flip": 0,
+   "actual_flip": 0,
+   "near_in_ball": 2,
+   "kind": "pair",
+   "lam": 0,
+   "s": "1/20",
+   "sectors": [
+    "reversed",
+    "reversed"
+   ]
+  },
+  {
+   "edge": 71,
+   "swept": 1,
+   "swept_graceful": 0,
+   "predicted_flip": 0,
+   "actual_flip": 0,
+   "near_in_ball": 3,
+   "kind": "crossed single",
+   "lam": 1,
+   "s": "1/25"
+  },
+  {
+   "edge": 71,
+   "swept": 1,
+   "swept_graceful": 0,
+   "predicted_flip": 0,
+   "actual_flip": 0,
+   "near_in_ball": 3,
+   "kind": "crossed single",
+   "lam": 1,
+   "s": "1/25"
+  },
+  {
+   "edge": 71,
+   "swept": 1,
+   "swept_graceful": 0,
+   "predicted_flip": 0,
+   "actual_flip": 0,
+   "near_in_ball": 2,
+   "kind": "crossed single",
+   "lam": 1,
+   "s": "1/25"
+  },
+  {
+   "edge": 72,
+   "swept": 1,
+   "swept_graceful": 0,
+   "predicted_flip": 0,
+   "actual_flip": 0,
+   "near_in_ball": 2,
+   "kind": "crossed single",
+   "lam": 1,
+   "s": "1/25"
+  },
+  {
+   "edge": 73,
+   "swept": 1,
+   "swept_graceful": 0,
+   "predicted_flip": 0,
+   "actual_flip": 0,
+   "near_in_ball": 1,
+   "kind": "crossed single",
+   "lam": 1,
+   "s": "1/25"
+  },
+  {
+   "edge": 27,
+   "swept": 2,
+   "swept_graceful": 2,
+   "predicted_flip": 0,
+   "actual_flip": 0,
+   "near_in_ball": 2,
+   "kind": "pair",
+   "lam": 1,
+   "s": "1/25",
+   "sectors": [
+    "reversed",
+    "reversed"
+   ]
+  },
+  {
+   "edge": 27,
+   "swept": 3,
+   "swept_graceful": 3,
+   "predicted_flip": 1,
+   "actual_flip": 1,
+   "near_in_ball": 3,
+   "kind": "pair",
+   "lam": 1,
+   "s": "1/25",
+   "sectors": [
+    "reversed",
+    "reversed"
+   ]
+  },
+  {
+   "edge": 27,
+   "swept": 2,
+   "swept_graceful": 2,
+   "predicted_flip": 0,
+   "actual_flip": 0,
+   "near_in_ball": 2,
+   "kind": "pair",
+   "lam": 1,
+   "s": "1/25",
+   "sectors": [
+    "reversed",
+    "reversed"
+   ]
+  },
+  {
+   "edge": 28,
+   "swept": 2,
+   "swept_graceful": 2,
+   "predicted_flip": 0,
+   "actual_flip": 0,
+   "near_in_ball": 2,
+   "kind": "pair",
+   "lam": 1,
+   "s": "1/25",
+   "sectors": [
+    "reversed",
+    "reversed"
+   ]
+  }
+ ],
+ "surgery_note": "drawing asymmetric_drawing(4, lam); bumps replace a piece of one edge by two segments through an apex; parity from exact small-square counts (Lemma 370.1)",
+ "lattice": [
+  {
+   "lam": 0,
+   "s": 0.02,
+   "M": 2,
+   "count": 2,
+   "predicted": 1.27,
+   "graceful": 0,
+   "graceful_iff_BD_on_different_arms": true
+  },
+  {
+   "lam": 0,
+   "s": 0.02,
+   "M": 4,
+   "count": 6,
+   "predicted": 5.09,
+   "graceful": 2,
+   "graceful_iff_BD_on_different_arms": true
+  },
+  {
+   "lam": 0,
+   "s": 0.02,
+   "M": 8,
+   "count": 22,
+   "predicted": 20.37,
+   "graceful": 12,
+   "graceful_iff_BD_on_different_arms": true
+  },
+  {
+   "lam": 0,
+   "s": 0.02,
+   "M": 16,
+   "count": 82,
+   "predicted": 81.49,
+   "graceful": 44,
+   "graceful_iff_BD_on_different_arms": true
+  },
+  {
+   "lam": 0,
+   "s": 0.02,
+   "M": 32,
+   "count": 322,
+   "predicted": 325.95,
+   "graceful": 160,
+   "graceful_iff_BD_on_different_arms": true
+  },
+  {
+   "lam": 0,
+   "s": 0.01,
+   "M": 2,
+   "count": 2,
+   "predicted": 1.27,
+   "graceful": 2,
+   "graceful_iff_BD_on_different_arms": true
+  },
+  {
+   "lam": 0,
+   "s": 0.01,
+   "M": 4,
+   "count": 4,
+   "predicted": 5.09,
+   "graceful": 4,
+   "graceful_iff_BD_on_different_arms": true
+  },
+  {
+   "lam": 0,
+   "s": 0.01,
+   "M": 8,
+   "count": 20,
+   "predicted": 20.37,
+   "graceful": 8,
+   "graceful_iff_BD_on_different_arms": true
+  },
+  {
+   "lam": 0,
+   "s": 0.01,
+   "M": 16,
+   "count": 82,
+   "predicted": 81.49,
+   "graceful": 38,
+   "graceful_iff_BD_on_different_arms": true
+  },
+  {
+   "lam": 0,
+   "s": 0.01,
+   "M": 32,
+   "count": 326,
+   "predicted": 325.95,
+   "graceful": 164,
+   "graceful_iff_BD_on_different_arms": true
+  },
+  {
+   "lam": 1,
+   "s": 0.02,
+   "M": 2,
+   "count": 2,
+   "predicted": 1.27,
+   "graceful": 0,
+   "graceful_iff_BD_on_different_arms": true
+  },
+  {
+   "lam": 1,
+   "s": 0.02,
+   "M": 4,
+   "count": 4,
+   "predicted": 5.09,
+   "graceful": 0,
+   "graceful_iff_BD_on_different_arms": true
+  },
+  {
+   "lam": 1,
+   "s": 0.02,
+   "M": 8,
+   "count": 20,
+   "predicted": 20.37,
+   "graceful": 12,
+   "graceful_iff_BD_on_different_arms": true
+  },
+  {
+   "lam": 1,
+   "s": 0.02,
+   "M": 16,
+   "count": 82,
+   "predicted": 81.49,
+   "graceful": 44,
+   "graceful_iff_BD_on_different_arms": true
+  },
+  {
+   "lam": 1,
+   "s": 0.02,
+   "M": 32,
+   "count": 326,
+   "predicted": 325.95,
+   "graceful": 162,
+   "graceful_iff_BD_on_different_arms": true
+  },
+  {
+   "lam": 1,
+   "s": 0.01,
+   "M": 2,
+   "count": 2,
+   "predicted": 1.27,
+   "graceful": 2,
+   "graceful_iff_BD_on_different_arms": true
+  },
+  {
+   "lam": 1,
+   "s": 0.01,
+   "M": 4,
+   "count": 4,
+   "predicted": 5.09,
+   "graceful": 4,
+   "graceful_iff_BD_on_different_arms": true
+  },
+  {
+   "lam": 1,
+   "s": 0.01,
+   "M": 8,
+   "count": 19,
+   "predicted": 20.37,
+   "graceful": 7,
+   "graceful_iff_BD_on_different_arms": true
+  },
+  {
+   "lam": 1,
+   "s": 0.01,
+   "M": 16,
+   "count": 83,
+   "predicted": 81.49,
+   "graceful": 38,
+   "graceful_iff_BD_on_different_arms": true
+  },
+  {
+   "lam": 1,
+   "s": 0.01,
+   "M": 32,
+   "count": 326,
+   "predicted": 325.95,
+   "graceful": 165,
+   "graceful_iff_BD_on_different_arms": true
+  }
+ ],
+ "lattice_note": "near-squares of side s with |A| <= M K(s) s on the continuous arcs, all 8 arm triples; prediction 2|1-2c| M^2/pi with c = 2^(-1/(2a)-1)"
+}
