@@ -1,0 +1,244 @@
+{
+ "note": "half-turn spiral r = Theta^(-a)(1 + (kappa/Theta) sin(omega Theta)), a = 1/2; plain spiral is kappa = 0. Window W <= 1 throughout.",
+ "thresholds": {
+  "0.25": {
+   "adjacent": 1.077332171510123,
+   "kappa1": 0.718,
+   "three_one": 4.749445201279002,
+   "overall": 4.749445201279002
+  },
+  "0.5": {
+   "adjacent": 2.447388424936451,
+   "kappa1": 0.756,
+   "three_one": 6.779174960699059,
+   "overall": 6.779174960699059
+  },
+  "0.75": {
+   "adjacent": 4.1315152629715355,
+   "kappa1": 0.7989999999999999,
+   "three_one": 8.821985811900813,
+   "overall": 8.821985811900813
+  },
+  "1.0": {
+   "adjacent": 6.171809798136061,
+   "kappa1": 0.8340000000000001,
+   "three_one": 10.871377238872814,
+   "overall": 10.871377238872814
+  },
+  "1.5": {
+   "adjacent": 11.492623112632646,
+   "kappa1": 0.885,
+   "three_one": 14.980066339183535,
+   "overall": 14.980066339183535
+  },
+  "2.0": {
+   "adjacent": 18.84406525290174,
+   "kappa1": 0.9179999999999999,
+   "three_one": 19.095374711486002,
+   "overall": 19.095374711486002
+  }
+ },
+ "side_limit_211": {
+  "0.25": 0.0896292080978057,
+  "0.5": 0.13421907449244486,
+  "1.0": 0.1785412699280223,
+  "2.0": 0.21374848807885957
+ },
+ "adjacent_margin": [
+  {
+   "L": 6.78,
+   "n": 1,
+   "q_lower": 0.8443534911772228,
+   "q_upper": 0.6943801652131031
+  },
+  {
+   "L": 6.78,
+   "n": 2,
+   "q_lower": 0.8327646527503583,
+   "q_upper": 0.4596166618169964
+  },
+  {
+   "L": 6.78,
+   "n": 3,
+   "q_lower": 0.8327646527503583,
+   "q_upper": 0.3326632058599639
+  },
+  {
+   "L": 10.0,
+   "n": 1,
+   "q_lower": 0.8905716580253226,
+   "q_upper": 0.7658029336312265
+  },
+  {
+   "L": 10.0,
+   "n": 2,
+   "q_lower": 0.879120807045386,
+   "q_upper": 0.5552390209934506
+  },
+  {
+   "L": 10.0,
+   "n": 3,
+   "q_lower": 0.8703781776439351,
+   "q_upper": 0.42614258199282423
+  },
+  {
+   "L": 30.0,
+   "n": 1,
+   "q_lower": 0.9614442816075869,
+   "q_upper": 0.9046539382758065
+  },
+  {
+   "L": 30.0,
+   "n": 2,
+   "q_lower": 0.9570087838018468,
+   "q_upper": 0.7897405365728114
+  },
+  {
+   "L": 30.0,
+   "n": 3,
+   "q_lower": 0.9527615015179183,
+   "q_upper": 0.6972502146569844
+  },
+  {
+   "L": 100.0,
+   "n": 1,
+   "q_lower": 0.9881906310793955,
+   "q_upper": 0.9690168094823707
+  },
+  {
+   "L": 100.0,
+   "n": 2,
+   "q_lower": 0.986776118825038,
+   "q_upper": 0.9263715696024711
+  },
+  {
+   "L": 100.0,
+   "n": 3,
+   "q_lower": 0.9853823621653948,
+   "q_upper": 0.886765012534988
+  }
+ ],
+ "random_search": {
+  "0.0,1.0": {
+   "counts": {
+    "1-1-1-1": 66,
+    "2-1-1 diagonal": 11
+   },
+   "flag_residual_max": 6.537218277880987e-16,
+   "W_max": 0.7082564145038053,
+   "floor_min": 9.214619508132612,
+   "aligned": 0,
+   "aligned_inside_bounds": 0,
+   "aligned_one_minus_Q_max": null,
+   "aligned_band_max": null
+  },
+  "0.2,2.0": {
+   "counts": {
+    "2-1-1 diagonal": 20,
+    "1-1-1-1": 59
+   },
+   "flag_residual_max": 6.265097362389779e-16,
+   "W_max": 0.7157047400179266,
+   "floor_min": 8.598824995606888,
+   "aligned": 0,
+   "aligned_inside_bounds": 0,
+   "aligned_one_minus_Q_max": null,
+   "aligned_band_max": null
+  },
+  "0.3,1.0": {
+   "counts": {
+    "2-2 adjacent": 65,
+    "1-1-1-1": 267,
+    "2-1-1 diagonal": 71,
+    "2-1-1 adjacent": 1
+   },
+   "flag_residual_max": 8.47729466009952e-16,
+   "W_max": 0.7372531384284,
+   "floor_min": 4.964935953259586,
+   "aligned": 65,
+   "aligned_inside_bounds": 65,
+   "aligned_one_minus_Q_max": 0.002861997014425577,
+   "aligned_band_max": 0.0054813198739898095
+  },
+  "0.5,3.0": {
+   "counts": {
+    "2-2 adjacent": 239,
+    "1-1-1-1": 569,
+    "2-1-1 diagonal": 194,
+    "2-1-1 adjacent": 11
+   },
+   "flag_residual_max": 9.208072944319678e-16,
+   "W_max": 0.7289200600651922,
+   "floor_min": 3.6197346065115283,
+   "aligned": 239,
+   "aligned_inside_bounds": 239,
+   "aligned_one_minus_Q_max": 0.007272849944811144,
+   "aligned_band_max": 0.012696906602899016
+  },
+  "0.7,2.0": {
+   "counts": {
+    "2-2 adjacent": 210,
+    "2-1-1 diagonal": 18,
+    "1-1-1-1": 114,
+    "2-1-1 adjacent": 2
+   },
+   "flag_residual_max": 7.076028664152004e-16,
+   "W_max": 0.725759781863119,
+   "floor_min": 5.485135742622983,
+   "aligned": 210,
+   "aligned_inside_bounds": 210,
+   "aligned_one_minus_Q_max": 0.006620206609732393,
+   "aligned_band_max": 0.011620070638467817
+  }
+ },
+ "labelled_search": {
+  "0.0,1.0": {
+   "4": {
+    "seeds": 600,
+    "solutions": 0
+   },
+   "3-1": {
+    "seeds": 600,
+    "solutions": 0
+   },
+   "2-2 diagonal": {
+    "seeds": 600,
+    "solutions": 0
+   },
+   "2-2 adjacent": {
+    "seeds": 600,
+    "solutions": 0
+   },
+   "2-1-1 adjacent": {
+    "seeds": 600,
+    "solutions": 0
+   }
+  },
+  "0.5,3.0": {
+   "4": {
+    "seeds": 600,
+    "solutions": 0
+   },
+   "3-1": {
+    "seeds": 600,
+    "solutions": 0
+   },
+   "2-2 diagonal": {
+    "seeds": 600,
+    "solutions": 0
+   },
+   "2-2 adjacent": {
+    "seeds": 600,
+    "solutions": 143
+   },
+   "2-1-1 adjacent": {
+    "seeds": 600,
+    "solutions": 0
+   }
+  }
+ },
+ "v382_patterns": {
+  "2-1-1 diagonal": 115,
+  "1-1-1-1": 692
+ }
+}
