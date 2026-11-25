@@ -18,9 +18,10 @@ $$L(\gamma_1,s)\equiv1+\#\{\text{graceful squares whose side passes }s\text{ as 
 3. **Sides barely move.** Along the whole path, a square's side changes by a median $0.05\%$ ($s_0=0.01$) and $0.2\%$ ($s_0=0.02$), and at most $6\%$ and $18\%$. On smooth arms, rotating arm two mostly slides it along itself. This is unlike v374's polygon drawings, where kink squares at the comb radius made the events.
 4. **But there are very many squares.**
    - Two independent searches with 1 500 seeds each, for squares at $\lambda=0$ with side in $[0.9,1.6]\,s_0$, overlap in **0** of 65 and 52 pairs at $s_0=0.01$, and in **5** of 86 and 84 at $s_0=0.02$.
-   - Capture–recapture puts the population at about 1 400 pairs at $s_0=0.02$, and at least about 3 400 at $s_0=0.01$.
-   - With the measured moves, that is roughly 20–28 graceful events at a typical cutoff.
-5. **The parity looks random.** Within the combined census at $s_0=0.02$ (165 pairs, 58 graceful), $51\%$ of cutoffs see an odd number of graceful events and only $23\%$ see none. Since the census is far from complete, the true share with no event is smaller still.
+   - Directly observed: 117 distinct pairs (71 with both legs complete) at $s_0=0.01$, and 165 (129 complete) at $s_0=0.02$.
+   - A capture–recapture *heuristic* puts the population at about 1 400 pairs at $s_0=0.02$. It assumes every pair is equally likely to be found, which random Newton searches need not satisfy. At $s_0=0.01$ there is no overlap, so it gives no estimate at all. The product of the sample sizes, about 3 400, is a scale, not a lower bound.
+   - With the measured moves, the heuristic population gives roughly 20–28 graceful events at a typical cutoff.
+5. **The parity looks random, in the sample.** Within the combined census at $s_0=0.02$ (165 pairs, 58 graceful), $51\%$ of cutoffs see an odd number of graceful events and only $23\%$ see none. This is a property of the sample. A sample's parity says nothing certain about the full population's, and discrete continuation can miss crossings between samples.
 6. **Partners always share a sector.** All 282 found pairs have both partners graceful or both crossed, as v370's pairing requires. This check exposed a tie bug in the sector rule, fixed in v378's and v386's code: float keys like $10^{18}-\Theta$ round to $10^{18}$. v378's tests and v386's results are unchanged. v388's graceful counts moved slightly and were updated there.
 
 ## Setting
@@ -43,12 +44,12 @@ Fix a pair with common side $t_0$ at $\lambda=0$ and end sides $t_1,t_2$ at $\la
 
 Pairing at $\lambda=0$ is therefore no help once the twist splits the partners. The parity becomes the number of partner windows $(t_1,t_2)$ containing $s$. These windows are tiny, but there are on the order of a thousand of them per window of sides, so they overlap many times. Fold-born pairs, which appear together at one side and then separate, behave the same way.
 
-| $s_0$ | pairs found (A, B, overlap) | population | graceful share | median move | expected graceful events at a cutoff | odd share in census |
-|---|---|---|---|---|---|---|
-| 0.01 | 65, 52, 0 | $\gtrsim3\,400$ | 35 / 71 | 0.05% | ≈ 28 | 16% (census very incomplete) |
-| 0.02 | 86, 84, 5 | ≈ 1 400 | 58 / 129 | 0.2% | ≈ 20 | 51% |
+| $s_0$ | pairs found (A, B, overlap) | distinct pairs observed (complete) | population (heuristic) | graceful share | median move | expected graceful events at a cutoff (heuristic) | odd share in census |
+|---|---|---|---|---|---|---|---|
+| 0.01 | 65, 52, 0 | 117 (71) | none (no overlap; size-product scale 3 380) | 35 / 71 | 0.05% | ≈ 28 | 16% (census very incomplete) |
+| 0.02 | 86, 84, 5 | 165 (129) | ≈ 1 400 | 58 / 129 | 0.2% | ≈ 20 | 51% |
 
-The expected count is (population) × (graceful share) × 2 × (mean graceful move) / (band width). The mean move is much larger than the median, because a few legs move by 10–20%. With some twenty roughly independent windows at each cutoff, the parity is close to a fair coin.
+The expected count is (population) × (graceful share) × 2 × (mean graceful move) / (band width), with the heuristic population. Pairs are matched between runs by their side rounded to $10^{-9}$. That can merge two squares but never split one, so the overlaps are upper bounds on the true overlaps. The mean move is much larger than the median, because a few legs move by 10–20%. With some twenty roughly independent windows at each cutoff, the parity is close to a fair coin.
 
 ## What this means for the path condition
 
@@ -58,6 +59,10 @@ The expected count is (population) × (graceful share) × 2 × (mean graceful mo
 
 ## Caveats
 
-The census is a sample: population estimates come from two runs, and partial legs are excluded. Its conclusions are statistical: no pairing, many squares, coin-flip parity. They are robust to the incompleteness, because more squares only add more windows. Only the twist $0.4\sin(5\log(1/r))$ was tested.
+The census is a sample: population estimates come from two runs, and partial legs are excluded, which can bias it. The population and event-rate figures are heuristics. What the census shows directly is evidence *against* pairwise cancellation: partners split, and many distinct pairs exist. That is not a proof that the complete event count fails to cancel. Only the twist $0.4\sin(5\log(1/r))$ was tested.
+
+## Review corrections
+
+An external review (F7) noted that the capture–recapture figures were presented too strongly. The output fields are renamed accordingly: `lincoln_petersen_heuristic`, `population_scale_heuristic`, `zero_overlap_scale_heuristic` and `estimated_events_per_cutoff_heuristic`, with the values unchanged. The misnamed `population_lower_bound` is dropped, and the directly observed pair counts with completeness are reported. The conclusions are restated as evidence against pairwise cancellation.
 
 [Code](../code/event_census_v389.py) · [Tests](../tests/test_event_census_v389.py) · [Data](../results/v389/event_census.json)

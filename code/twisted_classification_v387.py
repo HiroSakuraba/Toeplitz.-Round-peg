@@ -101,7 +101,10 @@ def aligned_margin_leading(n, W, Phi, L, a=0.5, odd="outer"):
 
 
 def aligned_threshold(W, Phi, L, a=0.5, n_max=400, grid=2500):
-    """Largest floor at which the aligned bound fails, over n <= n_max and all parity cases (grid check)."""
+    """Largest floor at which the aligned bound fails, over n <= n_max and all parity cases.
+
+    Sampled diagnostic: finitely many offsets and a grid of floors. It does not certify the threshold for all
+    offsets or for lifts between grid points."""
     worst = 0.0
     floors = np.geomspace(0.5, 1e9, grid)
     for n in range(1, n_max + 1):
@@ -120,7 +123,9 @@ def aligned_threshold(W, Phi, L, a=0.5, n_max=400, grid=2500):
 # ---------------------------------------------------------------- one pass: convexity of the twisted arm
 
 def arm_two_curvature_ok(Theta, phi, dphi, d2phi, a=0.5):
-    """Sign of the curvature of arm two r = Theta^-a at polar angle theta = Theta + pi + phi(r) (positive = convex)."""
+    """Sign of the curvature of arm two r = Theta^-a at polar angle theta = Theta + pi + phi(r) (positive = convex).
+
+    Evaluated at sampled lifts by the checks; that is evidence, not a bound for all lifts or twists."""
     r = Theta ** (-a)
     dr = -a * Theta ** (-a - 1)
     d2r = a * (a + 1) * Theta ** (-a - 2)
@@ -223,7 +228,9 @@ def twisted_labelled_search(lam, phi, patterns, n_seeds=200, seed=0, Th_range=(1
 # ---------------------------------------------------------------- completeness of v382's families
 
 def on_branch(Z, a=0.5, tol=1e-7):
-    """Is this plain-spiral square the v382 branch square of its label? Returns (label, ok)."""
+    """Is this plain-spiral square the v382 branch square of its label? Returns (label, ok).
+
+    Tests only the given (found) root; it cannot rule out roots that no search reached."""
     from smooth_cores_v386 import choose_A
     from tilted_squares_v382 import three_corners
     lifts = [abs(z) ** (-1 / a) for z in Z]

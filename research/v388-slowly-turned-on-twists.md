@@ -6,12 +6,12 @@ The second of three follow-ups. [v386](v386-smooth-cores.md) found that on smoot
 1. **Graceful confinement radius.** On twisted smooth arms with $|\varphi|\le\Phi$ and $|r\varphi'|\le L$, every graceful square of side $t$ has a corner within
 $$r_g(t)=\max\Big(r_{\rm smooth}(t)\,(1-\Phi/\pi)^{-a/(2a+1)},\ \big(L\,t/c_L\big)^{a/(1+a)}\Big),\qquad c_L=\frac{(2a+1)\pi^2}{2\sqrt2},$$
    to leading order (Proposition 386.5, with the classification of v387).
-2. **Symmetric window, smooth arms (Theorem 388.1).** Suppose:
+2. **Symmetric window, smooth arms (Theorem 388.1, asymptotic and conditional).** Assume hypothesis (R) below: the leading-order confinement holds up to a factor $1+\eta$ for graceful squares of side below some $s_0(a,\Phi,L,\eta)$, on the curve and on its smooth-cap truncations. Suppose:
    - the twist vanishes on $[\rho,\varepsilon]$;
    - outside, it has size at most $\Phi$ and gradient at most $L$;
-   - for some cutoff, $8\,r_g(s)\le\varepsilon$ and $\rho<\min(s/2,\eta^*(s))$.
+   - for some cutoff $s<s_0$, $8(1+\eta)\,r_g(s)\le\varepsilon$ and $\rho<\min(s/2,\eta^*(s))$.
 
-   Then the point inscribes a square of side greater than $s$.
+   Then the point inscribes a square of side greater than $s$. v386 derives $r_g$ to leading order only, so (R) is an assumption here, not a proved bound.
 3. **What the gradient costs (Corollary 388.2).** Take the largest allowed cutoff.
    - If $L$ is below a crossover $L^*\asymp(\varepsilon/8)^{1/(2a)}$ (about $1.05\,\varepsilon$ for $a=1/2$), it is $s\asymp\varepsilon^{(2a+1)/(2a)}$, and the window may start as deep as $\rho\asymp\varepsilon^{(1+1/a)(2a+1)/(2a)}$. That is $\varepsilon^6$ for $a=1/2$, against $\varepsilon^9$ for polygonal arms (v385).
    - For larger $L$ it is $s\asymp\varepsilon^{(1+a)/a}/L$, giving $\rho\asymp\varepsilon^9/L^3$. Same exponent as polygons, but a better constant.
@@ -32,11 +32,13 @@ $$r_g(t)=\max\Big(r_{\rm smooth}(t)\,(1-\Phi/\pi)^{-a/(2a+1)},\ \big(L\,t/c_L\bi
 - Theorem 386.4 needs every graceful square of side below $s$ on $\gamma_1$, and on its smooth-cap truncations, to have a corner in $B(p,\varepsilon/8)$. Squares inside the symmetric ball obey Theorem 386.2. Squares reaching into the twisted part obey Proposition 386.5, whose pattern constraints v387 supplies in the range considered. Both give a corner within $r_g(s)\le\varepsilon/8$.
 - Theorem 386.4, which is Theorem 374.3 on smooth arms, finishes the proof. ∎
 
-The leading-order form of $r_g$ is the same level of precision as v386's Proposition 386.5. The explicit inequalities behind it are written out there.
+**Hypothesis (R).** For some $\eta>0$ and $s_0>0$, every graceful square of side $t<s_0$, on $\gamma_1$ and on its smooth-cap truncations, has a corner within $(1+\eta)\,r_g(t)$ of $p$. v386's Theorem 386.2 and Proposition 386.5 give this as $s_0\to0$ for each fixed $\eta$, *if* their remainders are $o(1)$ uniformly over the classification range of v387. v386 argues that, but bounds neither the remainders nor $s_0$. So Theorem 388.1 is proved given (R), and the proof's third step uses (R) in place of the exact bound $r_g(s)\le\varepsilon/8$.
+
+An explicit error-enlarged radius with verified scale thresholds would make the theorem unconditional. The exponents below would survive; the constants might not.
 
 ## Corollary 388.2
 
-$r_g$ increases with $t$, so the best cutoff is the largest $s$ with $8r_g(s)\le\varepsilon$, and $\rho_{\max}(\varepsilon)=\min(s/2,\eta^*(s))$. For $a=1/2$ and $\Phi=0.4$:
+$r_g$ increases with $t$, so the best cutoff is the largest $s$ with $8r_g(s)\le\varepsilon$, and $\rho_{\max}(\varepsilon)=\min(s/2,\eta^*(s))$. The table uses the leading-order $r_g$ (that is, $\eta\to0$), and needs $\varepsilon$ small enough for (R); its constants are leading-order values, while the exponents are what the asymptotics give. For $a=1/2$ and $\Phi=0.4$:
 
 | $\varepsilon$ | $L$ | best $s$ | $\rho_{\max}$ (smooth) | $\rho_{\max}$ (polygons, v385) | $\log\rho_{\max}/\log\varepsilon$ |
 |---|---|---|---|---|---|
@@ -67,5 +69,9 @@ Every graceful square sits within the plain spiral's smooth radius. The largest,
 - **A new class of protected points:** smooth two-arm points that are symmetric on one window and whose twist outside it turns on slowly. For a slow enough twist, the window may start at $\varepsilon^6$ (for $a=1/2$), not $\varepsilon^9$.
 - **The data suggest more.** Graceful squares on twisted smooth arms behaved exactly like the symmetric spiral's, even at three times v374's twist. If that holds in general, the gradient term is an artifact of the proof, and the path condition's reach on smooth arms is $r_{\rm smooth}(s)$ whatever the twist.
 - **Still open:** points twisted at every scale, with no symmetric window. There the path itself creates and destroys graceful squares of side $s$, which is the subject of the third follow-up.
+
+## Review corrections
+
+An external review (F5) noted that the first version used v386's leading-order radius $r_g$ as an exact finite-scale inequality. Theorem 388.1 is now stated given an explicit hypothesis (R), with the enlargement factor $1+\eta$ and the scale threshold $s_0$ named but not computed. Corollary 388.2's table is marked as leading-order.
 
 [Code](../code/slow_twist_v388.py) · [Tests](../tests/test_slow_twist_v388.py) · [Data](../results/v388/slow_twist_check.json)

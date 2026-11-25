@@ -290,14 +290,23 @@ def run_checks(path=None, n_seeds=1500):
         full = [p for p in both["pairs"] if all(l["lam_hi"] == 1.0 for l in p["legs"])]
         moves = [abs(l["sides"][-1] - l["sides"][0]) for p in full for l in p["legs"] if l["sector"] == "graceful"]
         width = (both["band"][1] - both["band"][0]) * s0
+        # Heuristics only. Lincoln-Petersen assumes every pair is equally likely to be found by a random Newton
+        # search, which is not established (attraction basins differ); with no overlap it gives no estimate, and the
+        # product of the sample sizes is a scale, not a lower bound. Pairs are matched across runs by their side
+        # rounded to 1e-9, which can merge two squares but not split one, so the overlap is an upper bound on the
+        # true overlap.
         N_est = len(ka) * len(kb) / ov if ov else None
-        lower = len(ka) * len(kb) / max(1, ov)          # with no overlap: a lower bound in expectation
-        mean_events = 2 * lower * (sAB["graceful_pairs"] / max(1, sAB["full_pairs"])) * float(np.mean(moves)) / width \
+        scale = len(ka) * len(kb) / max(1, ov)
+        mean_events = 2 * scale * (sAB["graceful_pairs"] / max(1, sAB["full_pairs"])) * float(np.mean(moves)) / width \
             if moves else None
         res[str(s0)] = dict(run_A=sA, run_B=sB, combined=sAB, overlap=ov, pairs_A=len(ka), pairs_B=len(kb),
-                            lincoln_petersen=N_est, population_lower_bound=lower,
+                            distinct_pairs_observed=sAB["pairs"], complete_pairs_observed=sAB["full_pairs"],
+                            incomplete_pairs_observed=sAB["pairs"] - sAB["full_pairs"],
+                            lincoln_petersen_heuristic=N_est,
+                            zero_overlap_scale_heuristic=None if ov else scale,
+                            population_scale_heuristic=scale,
                             mean_graceful_move=float(np.mean(moves)) if moves else None,
-                            estimated_events_per_cutoff=mean_events,
+                            estimated_events_per_cutoff_heuristic=mean_events,
                             example_pairs=[dict(t0=p["t0"], legs=[dict(sector=l["sector"], t_end=l["sides"][-1],
                                                                        lam_hi=l["lam_hi"], centre=l["centre"])
                                                                   for l in p["legs"]]) for p in full[:20]])
