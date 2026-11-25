@@ -196,7 +196,10 @@ def small_squares(V, s, touching=None, tol=1e-9):
                     else:
                         M[:, 2:4, 3] = d
                 det = np.linalg.det(M)
-                good = np.abs(det) > 1e-14
+                # scale-relative test: det is a product of four edge-vector columns, so an absolute cutoff
+                # would discard every candidate on short edges (edges of length 1e-5 give det ~ 1e-20)
+                scale = np.prod(np.linalg.norm(Dirs, axis=2), axis=1)
+                good = np.abs(det) > 1e-12 * scale
                 u = np.full((T, 4), np.nan)
                 if good.any():
                     u[good] = np.linalg.solve(M[good], -c[good][..., None])[..., 0]
