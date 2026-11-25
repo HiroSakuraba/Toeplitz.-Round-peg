@@ -1,0 +1,17 @@
+{
+ "plain": {
+  "squares": 81,
+  "partner_same_label": 0,
+  "nondegenerate": 81,
+  "degree_signs": {
+   "-1": 50,
+   "1": 31
+  },
+  "min_conditioning": 6.986491713877516e-05
+ },
+ "uniqueness": {
+  "squares": 73,
+  "distinct_labels": 73,
+  "on_branch": 73
+ }
+}
