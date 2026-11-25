@@ -15,7 +15,7 @@ $$r_g(t)=\max\Big(r_{\rm smooth}(t)\,(1-\Phi/\pi)^{-a/(2a+1)},\ \big(L\,t/c_L\bi
 3. **What the gradient costs (Corollary 388.2).** Take the largest allowed cutoff.
    - If $L$ is below a crossover $L^*\asymp(\varepsilon/8)^{1/(2a)}$ (about $1.05\,\varepsilon$ for $a=1/2$), it is $s\asymp\varepsilon^{(2a+1)/(2a)}$, and the window may start as deep as $\rho\asymp\varepsilon^{(1+1/a)(2a+1)/(2a)}$. That is $\varepsilon^6$ for $a=1/2$, against $\varepsilon^9$ for polygonal arms (v385).
    - For larger $L$ it is $s\asymp\varepsilon^{(1+a)/a}/L$, giving $\rho\asymp\varepsilon^9/L^3$. Same exponent as polygons, but a better constant.
-4. **Checks.** Newton searches find graceful squares on smooth twisted arms at one, two and three times v374's twist (13, 9 and 15 of them).
+4. **Checks.** Newton searches find graceful squares on smooth twisted arms at one, two and three times v374's twist (15, 8 and 15 of them).
    - Every one lies inside $r_g$: largest ratio $0.81$, $0.61$, $0.53$.
    - In fact every one lies inside even the **plain** spiral's $r_{\rm smooth}$ (largest ratio $0.91$, $0.79$, $1.000$).
    - The crossed squares of the same searches reach $1.40$–$1.53$ times $r_{\rm smooth}$.
@@ -56,11 +56,11 @@ v386's search was aimed at $j\approx0$, where crossed squares live. Here a rando
 
 | $\lambda$ | squares | graceful | max $r_{\min}/r_g$ (graceful) | max $r_{\min}/r_{\rm smooth}$, graceful | same, crossed |
 |---|---|---|---|---|---|
-| 1 | 32 | 13 | 0.81 | 0.91 | 1.40 |
-| 2 | 24 | 9 | 0.61 | 0.79 | 1.51 |
+| 1 | 32 | 15 | 0.81 | 0.91 | 1.40 |
+| 2 | 24 | 8 | 0.61 | 0.79 | 1.51 |
 | 3 | 42 | 15 | 0.53 | 1.000 | 1.53 |
 
-Every graceful square sits within the plain spiral's smooth radius. The largest, at $\lambda=3$, is at $0.99997$, essentially on it. The crossed squares go well beyond. So in this sample even the gradient term of $r_g$ is never needed, and $r_g$ looks conservative. The sample is small: 37 graceful squares, from 9 000 seeds.
+Every graceful square sits within the plain spiral's smooth radius. The largest, at $\lambda=3$, is at $0.99995$, essentially on it. The crossed squares go well beyond. So in this sample even the gradient term of $r_g$ is never needed, and $r_g$ looks conservative. The sample is small: 38 graceful squares, from 9 000 seeds.
 
 ## What this changes
 

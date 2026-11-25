@@ -184,14 +184,14 @@
  "graceful": {
   "1.0": {
    "squares": 32,
-   "graceful": 13,
+   "graceful": 15,
    "max_ratio_graceful": 0.8096182384364206,
    "max_plain_ratio_graceful": 0.9105140683065438,
    "max_plain_ratio_crossed": 1.3955482780305206
   },
   "2.0": {
    "squares": 24,
-   "graceful": 9,
+   "graceful": 8,
    "max_ratio_graceful": 0.6141172862604433,
    "max_plain_ratio_graceful": 0.7888872479642004,
    "max_plain_ratio_crossed": 1.5074828748544402
@@ -200,7 +200,7 @@
    "squares": 42,
    "graceful": 15,
    "max_ratio_graceful": 0.5320024977586181,
-   "max_plain_ratio_graceful": 0.9999718241500635,
+   "max_plain_ratio_graceful": 0.9999481395754143,
    "max_plain_ratio_crossed": 1.528728352609969
   }
  }
