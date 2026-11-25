@@ -397,8 +397,9 @@ def identity_levels(et_I, mt_I, kap_I, s, q_bar, Phi, L, signs, a=A_EXP):
     return dict(N_lo=(1 - slack).a, N_hi=(1 + slack).b, R_lo=R.a, R_hi=R.b)
 
 
-def certify_levels(Phi, L, c, j0, deltas=DELTAS, a=A_EXP):
-    """Certify the region of every odd label with |j| >= j0 and min offset >= c |j| (any max offset, any signs)."""
+def certify_levels(Phi, L, c, j0, deltas=DELTAS, a=A_EXP, deltas_lo=None):
+    """Certify the region of every odd label with |j| >= j0 and min offset >= c |j| (any max offset, any signs).
+    deltas_lo (optional) restricts the lower wall's widths (used by v394 to keep s_lo >= 1/4)."""
     et, kap = 1 / c, 1 / j0
     ET, KAP = _I(0, et), _I(0, kap)
     pj0 = iv.pi * j0
@@ -410,7 +411,7 @@ def certify_levels(Phi, L, c, j0, deltas=DELTAS, a=A_EXP):
         return float((pj0 / (pj0 - Phi) * (1 + _I(d))).b)
 
     los = []
-    for d in deltas:
+    for d in (deltas_lo if deltas_lo is not None else deltas):
         s_lo = s_lo_of(d)
         Q = side_bound_levels(et, kap, s_lo, Phi, L, a)
         ok = Q is not None and all(
