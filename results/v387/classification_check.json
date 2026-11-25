@@ -1,0 +1,69 @@
+{
+ "profile": {
+  "Phi": 0.4,
+  "L": 2.0,
+  "L2": 12.0
+ },
+ "criteria": {
+  "0.2": {
+   "W1": 0.6006683381899207,
+   "diagonal": true,
+   "three_one_outside": true,
+   "three_one_inside_from": 3.087661819228456,
+   "ratio_211": 1.3740155367202733,
+   "aligned_margin_n1": 2.2061279473032727,
+   "aligned_from": 2.3061422269979825
+  },
+  "0.3": {
+   "W1": 0.9022627395589524,
+   "diagonal": true,
+   "three_one_outside": true,
+   "three_one_inside_from": 6.408785528415981,
+   "ratio_211": 1.19490025225348,
+   "aligned_margin_n1": 1.9478521625414604,
+   "aligned_from": 2.4417735270196776
+  },
+  "0.4": {
+   "W1": 1.20538729427091,
+   "diagonal": true,
+   "three_one_outside": true,
+   "three_one_inside_from": 21.266630694783355,
+   "ratio_211": 1.062504227339852,
+   "aligned_margin_n1": 1.685684340254813,
+   "aligned_from": 2.585381719936448
+  }
+ },
+ "arm_two_convex_from": 3.0,
+ "aligned_margin_vs_L": {
+  "0": 2.9478521625414604,
+  "1": 2.4478521625414604,
+  "2": 1.9478521625414604,
+  "3": 1.4478521625414604,
+  "4": 0.9478521625414604,
+  "5": 0.44785216254146043,
+  "6": -0.05214783745853957
+ },
+ "labelled_lam1": {
+  "4": 0,
+  "3-1": 0,
+  "2-2 diagonal": 0,
+  "2-2 adjacent": 0,
+  "2-1-1 adjacent": 0
+ },
+ "labelled_steep_aligned": {
+  "solutions": 0
+ },
+ "random_lam1": {
+  "counts": {
+   "1-1-1-1": 34,
+   "2-1-1 diagonal": 8
+  },
+  "W_max": 0.40442066370744384,
+  "t_over_Z_max": 0.2915937967191229,
+  "floor_min": 6.356882193291366
+ },
+ "v382_completeness": {
+  "squares": 81,
+  "on_branch": 81
+ }
+}
