@@ -49,8 +49,13 @@ class Results(unittest.TestCase):
             c = v["combined"]
             self.assertEqual(c["partners_same_sector"], c["pairs"])
             self.assertLess(c["move_median"], 0.01)
-            self.assertGreater(v["population_lower_bound"], 1000)
-            self.assertGreater(v["estimated_events_per_cutoff"], 10)
+            self.assertEqual(v["distinct_pairs_observed"], c["pairs"])
+            self.assertEqual(v["complete_pairs_observed"] + v["incomplete_pairs_observed"], c["pairs"])
+            self.assertNotIn("population_lower_bound", v)          # the product of sample sizes is not a bound
+            if v["overlap"] == 0:
+                self.assertIsNone(v["lincoln_petersen_heuristic"])
+            self.assertGreater(v["population_scale_heuristic"], 1000)
+            self.assertGreater(v["estimated_events_per_cutoff_heuristic"], 10)
         self.assertGreater(d["0.02"]["combined"]["odd_fraction"], 0.3)
 
 

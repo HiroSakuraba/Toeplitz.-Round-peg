@@ -19,7 +19,7 @@ $$\pi j+\Delta\theta=(2a+1)\,\frac{\zeta^{2a+1}}{\xi^{2a+2}}\,\delta_B\delta_D\q
    With a twist, $\pi j$ becomes $\pi j-\Sigma^*$, where $\Sigma^*$ is the alternating sum of the twist over the corners on arm two.
 2. **Smooth confinement, rigorous (Theorem 386.2).** On the plain half-turn spiral, in v383's range, every square of side $t$ with $t\le0.2\,|Z|$ satisfies one of two explicit inequalities. Both force
 $$t\ \ge\ c_2\,r^{1+1/(2a)}\,(1-o(1)),\qquad c_2=a\sqrt{2\pi/(2a+1)},$$
-   where $r$ is its smallest corner radius. That is, every corner set reaches within $r_{\rm smooth}(t)=(t/c_2)^{2a/(2a+1)}$ of the point. This is v379's Corollary 379.4, now a theorem. Squares with $t>0.2|Z|$ have a corner within $6t\ll r_{\rm smooth}(t)$.
+   where $r$ is its smallest corner radius. The two inequalities are exact. The displayed consequence is asymptotic: the $(1-o(1))$ is an unquantified remainder, so for each $\eta>0$ it holds with $1-\eta$ below some radius $r_0(\eta)$ that is not computed here. So, to leading order, every corner set reaches within $r_{\rm smooth}(t)=(t/c_2)^{2a/(2a+1)}$ of the point. This is v379's Corollary 379.4, now a theorem. Squares with $t>0.2|Z|$ have a corner within $6t\ll r_{\rm smooth}(t)$.
 3. **Smooth cores in Theorem 370.2 (Lemma 386.3, Theorem 386.4).** Every $C^2$ Jordan curve has sector degrees $(1,0)$ below its smallest square, and $L=1+$(small graceful) as for polygons. So Theorems 370.2 and 374.3 hold with "polygonal away from $p$" replaced by "$C^2$ away from $p$". Their confinement condition (a) needs only the **graceful** small squares inside the symmetric ball. Crossed ones never enter the parity.
 4. **What the twist does (Proposition 386.5).** On twisted smooth arms there are two cases:
    - **Crossed squares can escape through the twist's size.** These have one diagonal pair of corners on each arm. Their effective level is $2\varphi/\pi$, so near a zero of $\varphi$ they come out to the comb scale.
@@ -139,9 +139,13 @@ The two smallest sit beside the zero at $r=e^{-4\pi/5}=0.081$, with side $\sqrt2
 
 ## What this changes
 
-- **v379's smooth comb law is proved,** in v383's range: $t\ge c_2r^{1+1/(2a)}(1-o(1))$, with the constant attained to within 6%.
+- **v379's smooth comb law is proved asymptotically,** in v383's range: $t\ge c_2r^{1+1/(2a)}(1-o(1))$, with the constant attained to within 6%. The remainder is not bounded explicitly.
 - **Theorems 370.2 and 374.3 now allow smooth arms,** and their confinement condition concerns graceful squares only. For a symmetric smooth core the path condition need only reach $8\,r_{\rm smooth}(s)\sim s^{2a/(2a+1)}$, not $8\rho(s)\sim s^{a/(1+a)}$.
 - **For twisted points, the twist's gradient is what matters.** Its size only creates crossed squares. Its gradient $L$ lets graceful squares out to about $(Ls)^{a/(1+a)}$. So the path condition's reach is governed by how fast the asymmetry varies across scales. v374's events at the comb radius are what a steep twist predicts.
 - **Open:** whether the graceful events of a steep twist cancel. A census of graceful squares on twisted smooth arms, aimed at resonances rather than at $j\approx0$, is the next measurement.
+
+## Review corrections
+
+An external review (F5) noted that the confinement radii here are leading-order: Theorem 386.2's consequence carries a $(1-o(1))$, and Proposition 386.5's $r_g$ is stated "to leading order". They are now labelled asymptotic. v388, which used $r_g$ as an exact finite-scale inequality, is restated accordingly.
 
 [Code](../code/smooth_cores_v386.py) · [Tests](../tests/test_smooth_cores_v386.py) · [Data](../results/v386/smooth_check.json)

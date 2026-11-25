@@ -13,16 +13,16 @@ This note closes the first for twisted arms, with explicit hypotheses, and gives
 
    The aligned case also picks up the twist's slope: on arm two, $dR/d\theta=-a\Theta^{-a-1}/(1+\mu)$ with $|\mu|\le aL/\Theta$. So it needs the margin
 $$(2a+1)(\pi-\Phi-W)\ >\ T(W)\,a\,(\pi+\Phi+W)+aL .$$
-   For v374's twist $\varphi=0.4\sin(5\log(1/r))$ ($\Phi=0.4$, $L=2$), with $a=1/2$ and $W=0.3$ (so $t\le0.21|Z|$), every condition holds once the lift is at least $6.41$, that is radius $\le0.39$. So:
+   For v374's twist $\varphi=0.4\sin(5\log(1/r))$ ($\Phi=0.4$, $L=2$), with $a=1/2$ and $W=0.3$ (so $t\le0.21|Z|$), a grid computation finds every condition holding once the lift is at least $6.41$, that is radius $\le0.39$. The computation samples pass offsets $n\le400$ and lifts on a 2 500-point grid up to $10^9$. So the threshold is a **sampled diagnostic, not a certified bound**: a proof needs inequalities uniform in $n$ and in the lift, with a controlled tail. Granting the threshold:
    - no small square there has its corners on one or two passes;
    - the pattern 2-1-1 adjacent is excluded for $t\le0.126|Z|$;
    - what is left is 1-1-1-1 and 2-1-1 diagonal, as on the plain spiral.
 2. **Steep twists break it.** The aligned margin is $2.95-0.5L$ at $W=0.3$, so the argument stops at $L\approx5.9$. This is the same gradient effect v386 found for graceful squares.
-3. **v382's families are complete, numerically (Proposition 387.2).** Every square found by an independent search on the plain spiral has a corner whose two neighbours are off its pass. At that corner's lift, v382's three-corner solve, started both from the square itself and from the generic guess, returns exactly that square. So each found square is the branch square of its label. This held for 81 of 81 squares.
+3. **v382's families are complete, numerically (Proposition 387.2; evidence, not a completeness proof).** Every square found by an independent search on the plain spiral has a corner whose two neighbours are off its pass. At that corner's lift, v382's three-corner solve, started both from the square itself and from the generic guess, returns exactly that square. So each found square is the branch square of its label. This held for 81 of 81 squares. The check only tests roots that a search found: it cannot exclude roots no search reached, so it supports uniqueness (U0) without proving it.
 4. **Checks on twisted arms:**
    - Newton's method with prescribed one- or two-pass labels, 300 seeds for each of five patterns: no solution;
    - a random search finds 42 squares, all of pattern 1-1-1-1 or 2-1-1 diagonal;
-   - arm two is convex at every lift checked from 3 to $10^8$;
+   - arm two is convex at every lift sampled from 3 to $10^8$ (sampled evidence, not a bound for all twists);
    - at three times the twist ($\Phi=1.2$, $L=6$), where the criterion no longer applies, the prescribed-label search still finds no aligned squares. So the criterion looks conservative.
 
 ## Lifts on twisted arms
@@ -74,5 +74,9 @@ A proof would show that the two-equation map $(\theta,t)\mapsto(\Phi(B)-\Phi(A),
 - **v386's twisted bounds now rest on a proved classification** for twists of moderate gradient. That covers v374's default profile in the radius range above.
 - **The gradient limit appears twice.** The aligned exclusion fails at about $L\approx5.9$, and v386's graceful confinement degrades as $(Ls)^{a/(1+a)}$. Both say the same thing: a twist that varies quickly across scales is where new squares can come from.
 - **Open:** a written proof of uniqueness (Proposition 387.2), and of the monotone aligned threshold.
+
+## Review corrections
+
+An external review (F6) noted that the threshold $6.41$, the convexity check and the branch check are all finite samples. They are now labelled as diagnostics. The analytic content of Theorem 387.1, the substitutions $\pi\to\pi-\Phi$ and $W\to W_1$ and the margin inequality, is unchanged. What is not certified is the numerical threshold at which the margin holds for every offset and every lift.
 
 [Code](../code/twisted_classification_v387.py) · [Tests](../tests/test_twisted_classification_v387.py) · [Data](../results/v387/classification_check.json)
