@@ -1,17 +1,27 @@
 {
  "plain": {
+  "configurations": 324,
   "squares": 81,
+  "max_residual": 1.0039968856290216e-11,
+  "partner_is_zero_of_partner_label": 324,
   "partner_same_label": 0,
-  "nondegenerate": 81,
+  "nondegenerate": 324,
   "degree_signs": {
-   "-1": 50,
-   "1": 31
+   "-1": 162,
+   "1": 162
   },
-  "min_conditioning": 6.986491713877516e-05
+  "min_conditioning": 0.04865960331871135,
+  "max_side_over_A": 0.8332351149262226,
+  "in_small_square_domain": 322
  },
  "uniqueness": {
   "squares": 73,
-  "distinct_labels": 73,
+  "anchored_labels": 292,
+  "labels_shared_by_two_squares": 0,
   "on_branch": 73
+ },
+ "chart": {
+  "anchored_jump": 1.8599166651256382e-10,
+  "absolute_jump": 6.283185307179593
  }
 }
