@@ -196,12 +196,13 @@ def lattice_sector(arms, z, s, lam, a=0.5):
     the wild point comes next, then arm two runs outward. The free corner A sits at the wild point."""
     Ks = a * s ** (1 + 1 / a)
     x, y = Ks * z[0], Ks * z[1]
-    big = 1e18
-    keys = [big / 2]
+    # (block, position): arm one with Theta increasing, then the wild point, then arm two with Theta decreasing.
+    # (Float keys big - Theta round to big and tie whenever two corners are on arm two.)
+    keys = [(1, 0.0)]
     for which, arm in zip('BCD', (arms[0], arms[2], arms[1])):
         X, Y = {'B': (s + x, y), 'D': (x, s + y), 'C': (s + x, s + y)}[which]
         Th = np.hypot(X, Y) ** (-1 / a)
-        keys.append(Th if arm == 1 else big - Th)
+        keys.append((0, Th) if arm == 1 else (2, -Th))
     order = sorted(range(4), key=lambda i: keys[i])
     k = order.index(0)
     cyc = tuple(order[k:] + order[:k])
