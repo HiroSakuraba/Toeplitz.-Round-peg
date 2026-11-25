@@ -207,11 +207,12 @@ def effective_bound_holds(d_tw, Z, a=0.5):
 def sector_two_arm(ks, Z, a=0.5):
     """'graceful' or 'crossed' on the two-arm arc: arm one (even passes) runs inward with Theta increasing, then the
     wild point, then arm two (odd passes) outward. Theta = rho^(-1/a) on both arms."""
-    big = 1e18
     keys = []
     for k, z in zip(ks, Z):
         Th = abs(z) ** (-1 / a)
-        keys.append(Th if k % 2 == 0 else big - Th)
+        # (arm, position): arm one first with Theta increasing, then arm two with Theta decreasing.
+        # (A float key big - Theta would round to big and tie for Theta << big.)
+        keys.append((0, Th) if k % 2 == 0 else (1, -Th))
     order = sorted(range(4), key=lambda i: keys[i])
     m = order.index(0)
     cyc = tuple(order[m:] + order[:m])
