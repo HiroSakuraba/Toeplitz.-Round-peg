@@ -1,0 +1,2126 @@
+[
+ {
+  "model": "sparse",
+  "s": "1/60",
+  "twisted": true,
+  "flattenable": [
+   4,
+   5,
+   6,
+   7
+  ],
+  "kept": [
+   2,
+   3
+  ],
+  "separated": true,
+  "full": {
+   "ks": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "parity": 0,
+   "counts": {
+    "aligned": 191,
+    "reversed": 210,
+    "crossed": 124
+   },
+   "domains": {
+    "7": {
+     "aligned": 30,
+     "reversed": 36,
+     "crossed": 10
+    },
+    "6": {
+     "aligned": 30,
+     "reversed": 36,
+     "crossed": 10
+    },
+    "5": {
+     "aligned": 30,
+     "reversed": 36,
+     "crossed": 10
+    },
+    "4": {
+     "aligned": 30,
+     "reversed": 36,
+     "crossed": 10
+    },
+    "3": {
+     "aligned": 44,
+     "reversed": 41,
+     "crossed": 50
+    },
+    "2": {
+     "aligned": 27,
+     "reversed": 25,
+     "crossed": 34
+    }
+   }
+  },
+  "kept_only": {
+   "ks": [
+    2,
+    3
+   ],
+   "parity": 0,
+   "counts": {
+    "aligned": 71,
+    "reversed": 66,
+    "crossed": 84
+   },
+   "domains": {
+    "3": {
+     "aligned": 44,
+     "reversed": 41,
+     "crossed": 50
+    },
+    "2": {
+     "aligned": 27,
+     "reversed": 25,
+     "crossed": 34
+    }
+   }
+  },
+  "singles": {
+   "2": {
+    "ks": [
+     2
+    ],
+    "parity": 1,
+    "counts": {
+     "aligned": 27,
+     "reversed": 25,
+     "crossed": 34
+    },
+    "domains": {
+     "2": {
+      "aligned": 27,
+      "reversed": 25,
+      "crossed": 34
+     }
+    }
+   },
+   "3": {
+    "ks": [
+     3
+    ],
+    "parity": 0,
+    "counts": {
+     "aligned": 44,
+     "reversed": 41,
+     "crossed": 50
+    },
+    "domains": {
+     "3": {
+      "aligned": 44,
+      "reversed": 41,
+      "crossed": 50
+     }
+    }
+   }
+  },
+  "additive_prediction": 0
+ },
+ {
+  "model": "sparse",
+  "s": "1/120",
+  "twisted": true,
+  "flattenable": [
+   5,
+   6,
+   7
+  ],
+  "kept": [
+   2,
+   3,
+   4
+  ],
+  "separated": true,
+  "full": {
+   "ks": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "parity": 0,
+   "counts": {
+    "aligned": 213,
+    "reversed": 230,
+    "crossed": 147
+   },
+   "domains": {
+    "7": {
+     "aligned": 30,
+     "reversed": 36,
+     "crossed": 10
+    },
+    "6": {
+     "aligned": 30,
+     "reversed": 36,
+     "crossed": 10
+    },
+    "5": {
+     "aligned": 30,
+     "reversed": 36,
+     "crossed": 10
+    },
+    "4": {
+     "aligned": 66,
+     "reversed": 72,
+     "crossed": 74
+    },
+    "3": {
+     "aligned": 32,
+     "reversed": 27,
+     "crossed": 36
+    },
+    "2": {
+     "aligned": 25,
+     "reversed": 23,
+     "crossed": 7
+    }
+   }
+  },
+  "kept_only": {
+   "ks": [
+    2,
+    3,
+    4
+   ],
+   "parity": 0,
+   "counts": {
+    "aligned": 123,
+    "reversed": 122,
+    "crossed": 117
+   },
+   "domains": {
+    "4": {
+     "aligned": 66,
+     "reversed": 72,
+     "crossed": 74
+    },
+    "3": {
+     "aligned": 32,
+     "reversed": 27,
+     "crossed": 36
+    },
+    "2": {
+     "aligned": 25,
+     "reversed": 23,
+     "crossed": 7
+    }
+   }
+  },
+  "singles": {
+   "2": {
+    "ks": [
+     2
+    ],
+    "parity": 1,
+    "counts": {
+     "aligned": 25,
+     "reversed": 23,
+     "crossed": 7
+    },
+    "domains": {
+     "2": {
+      "aligned": 25,
+      "reversed": 23,
+      "crossed": 7
+     }
+    }
+   },
+   "3": {
+    "ks": [
+     3
+    ],
+    "parity": 0,
+    "counts": {
+     "aligned": 32,
+     "reversed": 27,
+     "crossed": 36
+    },
+    "domains": {
+     "3": {
+      "aligned": 32,
+      "reversed": 27,
+      "crossed": 36
+     }
+    }
+   },
+   "4": {
+    "ks": [
+     4
+    ],
+    "parity": 1,
+    "counts": {
+     "aligned": 66,
+     "reversed": 72,
+     "crossed": 74
+    },
+    "domains": {
+     "4": {
+      "aligned": 66,
+      "reversed": 72,
+      "crossed": 74
+     }
+    }
+   }
+  },
+  "additive_prediction": 0
+ },
+ {
+  "model": "sparse",
+  "s": "1/240",
+  "twisted": true,
+  "flattenable": [
+   5,
+   6,
+   7
+  ],
+  "kept": [
+   2,
+   3,
+   4
+  ],
+  "separated": true,
+  "full": {
+   "ks": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "parity": 1,
+   "counts": {
+    "aligned": 168,
+    "reversed": 176,
+    "crossed": 114
+   },
+   "domains": {
+    "7": {
+     "aligned": 30,
+     "reversed": 36,
+     "crossed": 10
+    },
+    "6": {
+     "aligned": 30,
+     "reversed": 36,
+     "crossed": 10
+    },
+    "5": {
+     "aligned": 30,
+     "reversed": 36,
+     "crossed": 10
+    },
+    "4": {
+     "aligned": 44,
+     "reversed": 41,
+     "crossed": 50
+    },
+    "3": {
+     "aligned": 27,
+     "reversed": 25,
+     "crossed": 34
+    },
+    "2": {
+     "aligned": 7,
+     "reversed": 2,
+     "crossed": 0
+    }
+   }
+  },
+  "kept_only": {
+   "ks": [
+    2,
+    3,
+    4
+   ],
+   "parity": 1,
+   "counts": {
+    "aligned": 78,
+    "reversed": 68,
+    "crossed": 84
+   },
+   "domains": {
+    "4": {
+     "aligned": 44,
+     "reversed": 41,
+     "crossed": 50
+    },
+    "3": {
+     "aligned": 27,
+     "reversed": 25,
+     "crossed": 34
+    },
+    "2": {
+     "aligned": 7,
+     "reversed": 2,
+     "crossed": 0
+    }
+   }
+  },
+  "singles": {
+   "2": {
+    "ks": [
+     2
+    ],
+    "parity": 0,
+    "counts": {
+     "aligned": 7,
+     "reversed": 2,
+     "crossed": 0
+    },
+    "domains": {
+     "2": {
+      "aligned": 7,
+      "reversed": 2,
+      "crossed": 0
+     }
+    }
+   },
+   "3": {
+    "ks": [
+     3
+    ],
+    "parity": 1,
+    "counts": {
+     "aligned": 27,
+     "reversed": 25,
+     "crossed": 34
+    },
+    "domains": {
+     "3": {
+      "aligned": 27,
+      "reversed": 25,
+      "crossed": 34
+     }
+    }
+   },
+   "4": {
+    "ks": [
+     4
+    ],
+    "parity": 0,
+    "counts": {
+     "aligned": 44,
+     "reversed": 41,
+     "crossed": 50
+    },
+    "domains": {
+     "4": {
+      "aligned": 44,
+      "reversed": 41,
+      "crossed": 50
+     }
+    }
+   }
+  },
+  "additive_prediction": 1
+ },
+ {
+  "model": "sparse",
+  "s": "1/480",
+  "twisted": true,
+  "flattenable": [
+   6,
+   7
+  ],
+  "kept": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "separated": true,
+  "full": {
+   "ks": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "parity": 0,
+   "counts": {
+    "aligned": 183,
+    "reversed": 194,
+    "crossed": 137
+   },
+   "domains": {
+    "7": {
+     "aligned": 30,
+     "reversed": 36,
+     "crossed": 10
+    },
+    "6": {
+     "aligned": 30,
+     "reversed": 36,
+     "crossed": 10
+    },
+    "5": {
+     "aligned": 66,
+     "reversed": 72,
+     "crossed": 74
+    },
+    "4": {
+     "aligned": 32,
+     "reversed": 27,
+     "crossed": 36
+    },
+    "3": {
+     "aligned": 25,
+     "reversed": 23,
+     "crossed": 7
+    }
+   }
+  },
+  "kept_only": {
+   "ks": [
+    2,
+    3,
+    4,
+    5
+   ],
+   "parity": 0,
+   "counts": {
+    "aligned": 123,
+    "reversed": 122,
+    "crossed": 117
+   },
+   "domains": {
+    "5": {
+     "aligned": 66,
+     "reversed": 72,
+     "crossed": 74
+    },
+    "4": {
+     "aligned": 32,
+     "reversed": 27,
+     "crossed": 36
+    },
+    "3": {
+     "aligned": 25,
+     "reversed": 23,
+     "crossed": 7
+    }
+   }
+  },
+  "singles": {
+   "2": {
+    "ks": [
+     2
+    ],
+    "parity": 1,
+    "counts": {
+     "aligned": 0,
+     "reversed": 0,
+     "crossed": 0
+    },
+    "domains": {}
+   },
+   "3": {
+    "ks": [
+     3
+    ],
+    "parity": 1,
+    "counts": {
+     "aligned": 25,
+     "reversed": 23,
+     "crossed": 7
+    },
+    "domains": {
+     "3": {
+      "aligned": 25,
+      "reversed": 23,
+      "crossed": 7
+     }
+    }
+   },
+   "4": {
+    "ks": [
+     4
+    ],
+    "parity": 0,
+    "counts": {
+     "aligned": 32,
+     "reversed": 27,
+     "crossed": 36
+    },
+    "domains": {
+     "4": {
+      "aligned": 32,
+      "reversed": 27,
+      "crossed": 36
+     }
+    }
+   },
+   "5": {
+    "ks": [
+     5
+    ],
+    "parity": 1,
+    "counts": {
+     "aligned": 66,
+     "reversed": 72,
+     "crossed": 74
+    },
+    "domains": {
+     "5": {
+      "aligned": 66,
+      "reversed": 72,
+      "crossed": 74
+     }
+    }
+   }
+  },
+  "additive_prediction": 0
+ },
+ {
+  "model": "sparse",
+  "s": "1/60",
+  "twisted": false,
+  "flattenable": [
+   4,
+   5,
+   6,
+   7
+  ],
+  "kept": [
+   2,
+   3
+  ],
+  "separated": true,
+  "full": {
+   "ks": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "parity": 1,
+   "counts": {
+    "aligned": 124,
+    "reversed": 124,
+    "crossed": 96
+   },
+   "domains": {
+    "7": {
+     "aligned": 16,
+     "reversed": 16,
+     "crossed": 8
+    },
+    "6": {
+     "aligned": 16,
+     "reversed": 16,
+     "crossed": 8
+    },
+    "5": {
+     "aligned": 16,
+     "reversed": 16,
+     "crossed": 8
+    },
+    "4": {
+     "aligned": 16,
+     "reversed": 16,
+     "crossed": 8
+    },
+    "3": {
+     "aligned": 35,
+     "reversed": 35,
+     "crossed": 38
+    },
+    "2": {
+     "aligned": 25,
+     "reversed": 25,
+     "crossed": 26
+    }
+   }
+  },
+  "kept_only": {
+   "ks": [
+    2,
+    3
+   ],
+   "parity": 1,
+   "counts": {
+    "aligned": 60,
+    "reversed": 60,
+    "crossed": 64
+   },
+   "domains": {
+    "3": {
+     "aligned": 35,
+     "reversed": 35,
+     "crossed": 38
+    },
+    "2": {
+     "aligned": 25,
+     "reversed": 25,
+     "crossed": 26
+    }
+   }
+  },
+  "singles": {
+   "2": {
+    "ks": [
+     2
+    ],
+    "parity": 1,
+    "counts": {
+     "aligned": 25,
+     "reversed": 25,
+     "crossed": 26
+    },
+    "domains": {
+     "2": {
+      "aligned": 25,
+      "reversed": 25,
+      "crossed": 26
+     }
+    }
+   },
+   "3": {
+    "ks": [
+     3
+    ],
+    "parity": 1,
+    "counts": {
+     "aligned": 35,
+     "reversed": 35,
+     "crossed": 38
+    },
+    "domains": {
+     "3": {
+      "aligned": 35,
+      "reversed": 35,
+      "crossed": 38
+     }
+    }
+   }
+  },
+  "additive_prediction": 1
+ },
+ {
+  "model": "sparse",
+  "s": "1/120",
+  "twisted": false,
+  "flattenable": [
+   5,
+   6,
+   7
+  ],
+  "kept": [
+   2,
+   3,
+   4
+  ],
+  "separated": true,
+  "full": {
+   "ks": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "parity": 1,
+   "counts": {
+    "aligned": 135,
+    "reversed": 135,
+    "crossed": 96
+   },
+   "domains": {
+    "7": {
+     "aligned": 16,
+     "reversed": 16,
+     "crossed": 8
+    },
+    "6": {
+     "aligned": 16,
+     "reversed": 16,
+     "crossed": 8
+    },
+    "5": {
+     "aligned": 16,
+     "reversed": 16,
+     "crossed": 8
+    },
+    "4": {
+     "aligned": 38,
+     "reversed": 38,
+     "crossed": 44
+    },
+    "3": {
+     "aligned": 26,
+     "reversed": 26,
+     "crossed": 28
+    },
+    "2": {
+     "aligned": 23,
+     "reversed": 23,
+     "crossed": 0
+    }
+   }
+  },
+  "kept_only": {
+   "ks": [
+    2,
+    3,
+    4
+   ],
+   "parity": 1,
+   "counts": {
+    "aligned": 87,
+    "reversed": 87,
+    "crossed": 72
+   },
+   "domains": {
+    "4": {
+     "aligned": 38,
+     "reversed": 38,
+     "crossed": 44
+    },
+    "3": {
+     "aligned": 26,
+     "reversed": 26,
+     "crossed": 28
+    },
+    "2": {
+     "aligned": 23,
+     "reversed": 23,
+     "crossed": 0
+    }
+   }
+  },
+  "singles": {
+   "2": {
+    "ks": [
+     2
+    ],
+    "parity": 1,
+    "counts": {
+     "aligned": 23,
+     "reversed": 23,
+     "crossed": 0
+    },
+    "domains": {
+     "2": {
+      "aligned": 23,
+      "reversed": 23,
+      "crossed": 0
+     }
+    }
+   },
+   "3": {
+    "ks": [
+     3
+    ],
+    "parity": 1,
+    "counts": {
+     "aligned": 26,
+     "reversed": 26,
+     "crossed": 28
+    },
+    "domains": {
+     "3": {
+      "aligned": 26,
+      "reversed": 26,
+      "crossed": 28
+     }
+    }
+   },
+   "4": {
+    "ks": [
+     4
+    ],
+    "parity": 1,
+    "counts": {
+     "aligned": 38,
+     "reversed": 38,
+     "crossed": 44
+    },
+    "domains": {
+     "4": {
+      "aligned": 38,
+      "reversed": 38,
+      "crossed": 44
+     }
+    }
+   }
+  },
+  "additive_prediction": 1
+ },
+ {
+  "model": "sparse",
+  "s": "1/240",
+  "twisted": false,
+  "flattenable": [
+   5,
+   6,
+   7
+  ],
+  "kept": [
+   2,
+   3,
+   4
+  ],
+  "separated": true,
+  "full": {
+   "ks": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "parity": 1,
+   "counts": {
+    "aligned": 109,
+    "reversed": 109,
+    "crossed": 88
+   },
+   "domains": {
+    "7": {
+     "aligned": 16,
+     "reversed": 16,
+     "crossed": 8
+    },
+    "6": {
+     "aligned": 16,
+     "reversed": 16,
+     "crossed": 8
+    },
+    "5": {
+     "aligned": 16,
+     "reversed": 16,
+     "crossed": 8
+    },
+    "4": {
+     "aligned": 35,
+     "reversed": 35,
+     "crossed": 38
+    },
+    "3": {
+     "aligned": 25,
+     "reversed": 25,
+     "crossed": 26
+    },
+    "2": {
+     "aligned": 1,
+     "reversed": 1,
+     "crossed": 0
+    }
+   }
+  },
+  "kept_only": {
+   "ks": [
+    2,
+    3,
+    4
+   ],
+   "parity": 1,
+   "counts": {
+    "aligned": 61,
+    "reversed": 61,
+    "crossed": 64
+   },
+   "domains": {
+    "4": {
+     "aligned": 35,
+     "reversed": 35,
+     "crossed": 38
+    },
+    "3": {
+     "aligned": 25,
+     "reversed": 25,
+     "crossed": 26
+    },
+    "2": {
+     "aligned": 1,
+     "reversed": 1,
+     "crossed": 0
+    }
+   }
+  },
+  "singles": {
+   "2": {
+    "ks": [
+     2
+    ],
+    "parity": 1,
+    "counts": {
+     "aligned": 1,
+     "reversed": 1,
+     "crossed": 0
+    },
+    "domains": {
+     "2": {
+      "aligned": 1,
+      "reversed": 1,
+      "crossed": 0
+     }
+    }
+   },
+   "3": {
+    "ks": [
+     3
+    ],
+    "parity": 1,
+    "counts": {
+     "aligned": 25,
+     "reversed": 25,
+     "crossed": 26
+    },
+    "domains": {
+     "3": {
+      "aligned": 25,
+      "reversed": 25,
+      "crossed": 26
+     }
+    }
+   },
+   "4": {
+    "ks": [
+     4
+    ],
+    "parity": 1,
+    "counts": {
+     "aligned": 35,
+     "reversed": 35,
+     "crossed": 38
+    },
+    "domains": {
+     "4": {
+      "aligned": 35,
+      "reversed": 35,
+      "crossed": 38
+     }
+    }
+   }
+  },
+  "additive_prediction": 1
+ },
+ {
+  "model": "sparse",
+  "s": "1/480",
+  "twisted": false,
+  "flattenable": [
+   6,
+   7
+  ],
+  "kept": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "separated": true,
+  "full": {
+   "ks": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "parity": 1,
+   "counts": {
+    "aligned": 119,
+    "reversed": 119,
+    "crossed": 88
+   },
+   "domains": {
+    "7": {
+     "aligned": 16,
+     "reversed": 16,
+     "crossed": 8
+    },
+    "6": {
+     "aligned": 16,
+     "reversed": 16,
+     "crossed": 8
+    },
+    "5": {
+     "aligned": 38,
+     "reversed": 38,
+     "crossed": 44
+    },
+    "4": {
+     "aligned": 26,
+     "reversed": 26,
+     "crossed": 28
+    },
+    "3": {
+     "aligned": 23,
+     "reversed": 23,
+     "crossed": 0
+    }
+   }
+  },
+  "kept_only": {
+   "ks": [
+    2,
+    3,
+    4,
+    5
+   ],
+   "parity": 1,
+   "counts": {
+    "aligned": 87,
+    "reversed": 87,
+    "crossed": 72
+   },
+   "domains": {
+    "5": {
+     "aligned": 38,
+     "reversed": 38,
+     "crossed": 44
+    },
+    "4": {
+     "aligned": 26,
+     "reversed": 26,
+     "crossed": 28
+    },
+    "3": {
+     "aligned": 23,
+     "reversed": 23,
+     "crossed": 0
+    }
+   }
+  },
+  "singles": {
+   "2": {
+    "ks": [
+     2
+    ],
+    "parity": 1,
+    "counts": {
+     "aligned": 0,
+     "reversed": 0,
+     "crossed": 0
+    },
+    "domains": {}
+   },
+   "3": {
+    "ks": [
+     3
+    ],
+    "parity": 1,
+    "counts": {
+     "aligned": 23,
+     "reversed": 23,
+     "crossed": 0
+    },
+    "domains": {
+     "3": {
+      "aligned": 23,
+      "reversed": 23,
+      "crossed": 0
+     }
+    }
+   },
+   "4": {
+    "ks": [
+     4
+    ],
+    "parity": 1,
+    "counts": {
+     "aligned": 26,
+     "reversed": 26,
+     "crossed": 28
+    },
+    "domains": {
+     "4": {
+      "aligned": 26,
+      "reversed": 26,
+      "crossed": 28
+     }
+    }
+   },
+   "5": {
+    "ks": [
+     5
+    ],
+    "parity": 1,
+    "counts": {
+     "aligned": 38,
+     "reversed": 38,
+     "crossed": 44
+    },
+    "domains": {
+     "5": {
+      "aligned": 38,
+      "reversed": 38,
+      "crossed": 44
+     }
+    }
+   }
+  },
+  "additive_prediction": 1
+ },
+ {
+  "model": "self-similar",
+  "s": "1/64",
+  "twisted": false,
+  "big": [
+   2,
+   3
+  ],
+  "cluster": [
+   4,
+   5,
+   6,
+   7,
+   8
+  ],
+  "flattenable": [
+   6,
+   7,
+   8
+  ],
+  "full": {
+   "ks": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "parity": 1,
+   "counts": {
+    "aligned": 104,
+    "reversed": 104,
+    "crossed": 48
+   },
+   "domains": {
+    "8": {
+     "aligned": 16,
+     "reversed": 16,
+     "crossed": 8
+    },
+    "7": {
+     "aligned": 16,
+     "reversed": 16,
+     "crossed": 8
+    },
+    "6": {
+     "aligned": 16,
+     "reversed": 16,
+     "crossed": 8
+    },
+    "5": {
+     "aligned": 16,
+     "reversed": 16,
+     "crossed": 8
+    },
+    "4": {
+     "aligned": 16,
+     "reversed": 16,
+     "crossed": 8
+    },
+    "3": {
+     "aligned": 13,
+     "reversed": 13,
+     "crossed": 6
+    },
+    "2": {
+     "aligned": 11,
+     "reversed": 11,
+     "crossed": 2
+    }
+   }
+  },
+  "cluster_only": {
+   "ks": [
+    4,
+    5,
+    6,
+    7,
+    8
+   ],
+   "parity": 1,
+   "counts": {
+    "aligned": 80,
+    "reversed": 80,
+    "crossed": 40
+   },
+   "domains": {
+    "8": {
+     "aligned": 16,
+     "reversed": 16,
+     "crossed": 8
+    },
+    "7": {
+     "aligned": 16,
+     "reversed": 16,
+     "crossed": 8
+    },
+    "6": {
+     "aligned": 16,
+     "reversed": 16,
+     "crossed": 8
+    },
+    "5": {
+     "aligned": 16,
+     "reversed": 16,
+     "crossed": 8
+    },
+    "4": {
+     "aligned": 16,
+     "reversed": 16,
+     "crossed": 8
+    }
+   }
+  },
+  "singles": {
+   "2": {
+    "ks": [
+     2
+    ],
+    "parity": 1,
+    "counts": {
+     "aligned": 11,
+     "reversed": 11,
+     "crossed": 2
+    },
+    "domains": {
+     "2": {
+      "aligned": 11,
+      "reversed": 11,
+      "crossed": 2
+     }
+    }
+   },
+   "3": {
+    "ks": [
+     3
+    ],
+    "parity": 1,
+    "counts": {
+     "aligned": 13,
+     "reversed": 13,
+     "crossed": 6
+    },
+    "domains": {
+     "3": {
+      "aligned": 13,
+      "reversed": 13,
+      "crossed": 6
+     }
+    }
+   }
+  },
+  "additive_prediction": 1,
+  "probe": {
+   "dropped": 5,
+   "parity_without": 1
+  }
+ },
+ {
+  "model": "self-similar",
+  "s": "1/64",
+  "twisted": false,
+  "kind": "interaction",
+  "big": [
+   2,
+   3
+  ],
+  "cluster": [
+   4,
+   5,
+   6,
+   7,
+   8
+  ],
+  "flattenable": [
+   6,
+   7,
+   8
+  ],
+  "hard": [
+   4,
+   5
+  ],
+  "joint": {
+   "ks": [
+    4,
+    5
+   ],
+   "parity": 1,
+   "counts": {
+    "aligned": 32,
+    "reversed": 32,
+    "crossed": 16
+   },
+   "domains": {
+    "5": {
+     "aligned": 16,
+     "reversed": 16,
+     "crossed": 8
+    },
+    "4": {
+     "aligned": 16,
+     "reversed": 16,
+     "crossed": 8
+    }
+   }
+  },
+  "singles": {
+   "4": {
+    "ks": [
+     4
+    ],
+    "parity": 1,
+    "counts": {
+     "aligned": 16,
+     "reversed": 16,
+     "crossed": 8
+    },
+    "domains": {
+     "4": {
+      "aligned": 16,
+      "reversed": 16,
+      "crossed": 8
+     }
+    }
+   },
+   "5": {
+    "ks": [
+     5
+    ],
+    "parity": 1,
+    "counts": {
+     "aligned": 16,
+     "reversed": 16,
+     "crossed": 8
+    },
+    "domains": {
+     "5": {
+      "aligned": 16,
+      "reversed": 16,
+      "crossed": 8
+     }
+    }
+   }
+  },
+  "additive_prediction": 1,
+  "straddling": null
+ },
+ {
+  "model": "self-similar",
+  "s": "1/76",
+  "twisted": false,
+  "kind": "interaction",
+  "big": [
+   2,
+   3,
+   4
+  ],
+  "cluster": [
+   5,
+   6,
+   7,
+   8
+  ],
+  "flattenable": [
+   5,
+   6,
+   7,
+   8
+  ],
+  "hard": [],
+  "joint": {
+   "ks": [],
+   "parity": 1,
+   "counts": {
+    "aligned": 0,
+    "reversed": 0,
+    "crossed": 0
+   },
+   "domains": {}
+  },
+  "singles": {},
+  "additive_prediction": 1,
+  "straddling": null
+ },
+ {
+  "model": "self-similar",
+  "s": "1/91",
+  "twisted": false,
+  "kind": "interaction",
+  "big": [
+   2,
+   3,
+   4
+  ],
+  "cluster": [
+   5,
+   6,
+   7,
+   8
+  ],
+  "flattenable": [
+   7,
+   8
+  ],
+  "hard": [
+   5,
+   6
+  ],
+  "joint": {
+   "ks": [
+    5,
+    6
+   ],
+   "parity": 1,
+   "counts": {
+    "aligned": 32,
+    "reversed": 32,
+    "crossed": 16
+   },
+   "domains": {
+    "6": {
+     "aligned": 16,
+     "reversed": 16,
+     "crossed": 8
+    },
+    "5": {
+     "aligned": 16,
+     "reversed": 16,
+     "crossed": 8
+    }
+   }
+  },
+  "singles": {
+   "5": {
+    "ks": [
+     5
+    ],
+    "parity": 1,
+    "counts": {
+     "aligned": 16,
+     "reversed": 16,
+     "crossed": 8
+    },
+    "domains": {
+     "5": {
+      "aligned": 16,
+      "reversed": 16,
+      "crossed": 8
+     }
+    }
+   },
+   "6": {
+    "ks": [
+     6
+    ],
+    "parity": 1,
+    "counts": {
+     "aligned": 16,
+     "reversed": 16,
+     "crossed": 8
+    },
+    "domains": {
+     "6": {
+      "aligned": 16,
+      "reversed": 16,
+      "crossed": 8
+     }
+    }
+   }
+  },
+  "additive_prediction": 1,
+  "straddling": null
+ },
+ {
+  "model": "self-similar",
+  "s": "1/108",
+  "twisted": false,
+  "kind": "interaction",
+  "big": [
+   2,
+   3,
+   4
+  ],
+  "cluster": [
+   5,
+   6,
+   7,
+   8
+  ],
+  "flattenable": [
+   7,
+   8
+  ],
+  "hard": [
+   5,
+   6
+  ],
+  "joint": {
+   "ks": [
+    5,
+    6
+   ],
+   "parity": 1,
+   "counts": {
+    "aligned": 32,
+    "reversed": 32,
+    "crossed": 16
+   },
+   "domains": {
+    "6": {
+     "aligned": 16,
+     "reversed": 16,
+     "crossed": 8
+    },
+    "5": {
+     "aligned": 16,
+     "reversed": 16,
+     "crossed": 8
+    }
+   }
+  },
+  "singles": {
+   "5": {
+    "ks": [
+     5
+    ],
+    "parity": 1,
+    "counts": {
+     "aligned": 16,
+     "reversed": 16,
+     "crossed": 8
+    },
+    "domains": {
+     "5": {
+      "aligned": 16,
+      "reversed": 16,
+      "crossed": 8
+     }
+    }
+   },
+   "6": {
+    "ks": [
+     6
+    ],
+    "parity": 1,
+    "counts": {
+     "aligned": 16,
+     "reversed": 16,
+     "crossed": 8
+    },
+    "domains": {
+     "6": {
+      "aligned": 16,
+      "reversed": 16,
+      "crossed": 8
+     }
+    }
+   }
+  },
+  "additive_prediction": 1,
+  "straddling": null
+ },
+ {
+  "model": "self-similar",
+  "s": "1/128",
+  "twisted": false,
+  "kind": "interaction",
+  "big": [
+   2,
+   3,
+   4
+  ],
+  "cluster": [
+   5,
+   6,
+   7,
+   8
+  ],
+  "flattenable": [
+   7,
+   8
+  ],
+  "hard": [
+   5,
+   6
+  ],
+  "joint": {
+   "ks": [
+    5,
+    6
+   ],
+   "parity": 1,
+   "counts": {
+    "aligned": 32,
+    "reversed": 32,
+    "crossed": 16
+   },
+   "domains": {
+    "6": {
+     "aligned": 16,
+     "reversed": 16,
+     "crossed": 8
+    },
+    "5": {
+     "aligned": 16,
+     "reversed": 16,
+     "crossed": 8
+    }
+   }
+  },
+  "singles": {
+   "5": {
+    "ks": [
+     5
+    ],
+    "parity": 1,
+    "counts": {
+     "aligned": 16,
+     "reversed": 16,
+     "crossed": 8
+    },
+    "domains": {
+     "5": {
+      "aligned": 16,
+      "reversed": 16,
+      "crossed": 8
+     }
+    }
+   },
+   "6": {
+    "ks": [
+     6
+    ],
+    "parity": 1,
+    "counts": {
+     "aligned": 16,
+     "reversed": 16,
+     "crossed": 8
+    },
+    "domains": {
+     "6": {
+      "aligned": 16,
+      "reversed": 16,
+      "crossed": 8
+     }
+    }
+   }
+  },
+  "additive_prediction": 1,
+  "straddling": null
+ },
+ {
+  "model": "self-similar",
+  "s": "1/64",
+  "twisted": true,
+  "kind": "interaction",
+  "big": [
+   2,
+   3
+  ],
+  "cluster": [
+   4,
+   5,
+   6,
+   7,
+   8
+  ],
+  "flattenable": [
+   6,
+   7,
+   8
+  ],
+  "hard": [
+   4,
+   5
+  ],
+  "joint": {
+   "ks": [
+    4,
+    5
+   ],
+   "parity": 1,
+   "counts": {
+    "aligned": 60,
+    "reversed": 72,
+    "crossed": 20
+   },
+   "domains": {
+    "5": {
+     "aligned": 30,
+     "reversed": 36,
+     "crossed": 10
+    },
+    "4": {
+     "aligned": 30,
+     "reversed": 36,
+     "crossed": 10
+    }
+   }
+  },
+  "singles": {
+   "4": {
+    "ks": [
+     4
+    ],
+    "parity": 1,
+    "counts": {
+     "aligned": 30,
+     "reversed": 36,
+     "crossed": 10
+    },
+    "domains": {
+     "4": {
+      "aligned": 30,
+      "reversed": 36,
+      "crossed": 10
+     }
+    }
+   },
+   "5": {
+    "ks": [
+     5
+    ],
+    "parity": 1,
+    "counts": {
+     "aligned": 30,
+     "reversed": 36,
+     "crossed": 10
+    },
+    "domains": {
+     "5": {
+      "aligned": 30,
+      "reversed": 36,
+      "crossed": 10
+     }
+    }
+   }
+  },
+  "additive_prediction": 1,
+  "straddling": null
+ },
+ {
+  "model": "self-similar",
+  "s": "1/76",
+  "twisted": true,
+  "kind": "interaction",
+  "big": [
+   2,
+   3,
+   4
+  ],
+  "cluster": [
+   5,
+   6,
+   7,
+   8
+  ],
+  "flattenable": [
+   5,
+   6,
+   7,
+   8
+  ],
+  "hard": [],
+  "joint": {
+   "ks": [],
+   "parity": 1,
+   "counts": {
+    "aligned": 0,
+    "reversed": 0,
+    "crossed": 0
+   },
+   "domains": {}
+  },
+  "singles": {},
+  "additive_prediction": 1,
+  "straddling": null
+ },
+ {
+  "model": "self-similar",
+  "s": "1/91",
+  "twisted": true,
+  "kind": "interaction",
+  "big": [
+   2,
+   3,
+   4
+  ],
+  "cluster": [
+   5,
+   6,
+   7,
+   8
+  ],
+  "flattenable": [
+   7,
+   8
+  ],
+  "hard": [
+   5,
+   6
+  ],
+  "joint": {
+   "ks": [
+    5,
+    6
+   ],
+   "parity": 1,
+   "counts": {
+    "aligned": 60,
+    "reversed": 72,
+    "crossed": 20
+   },
+   "domains": {
+    "6": {
+     "aligned": 30,
+     "reversed": 36,
+     "crossed": 10
+    },
+    "5": {
+     "aligned": 30,
+     "reversed": 36,
+     "crossed": 10
+    }
+   }
+  },
+  "singles": {
+   "5": {
+    "ks": [
+     5
+    ],
+    "parity": 1,
+    "counts": {
+     "aligned": 30,
+     "reversed": 36,
+     "crossed": 10
+    },
+    "domains": {
+     "5": {
+      "aligned": 30,
+      "reversed": 36,
+      "crossed": 10
+     }
+    }
+   },
+   "6": {
+    "ks": [
+     6
+    ],
+    "parity": 1,
+    "counts": {
+     "aligned": 30,
+     "reversed": 36,
+     "crossed": 10
+    },
+    "domains": {
+     "6": {
+      "aligned": 30,
+      "reversed": 36,
+      "crossed": 10
+     }
+    }
+   }
+  },
+  "additive_prediction": 1,
+  "straddling": null
+ },
+ {
+  "model": "self-similar",
+  "s": "1/108",
+  "twisted": true,
+  "kind": "interaction",
+  "big": [
+   2,
+   3,
+   4
+  ],
+  "cluster": [
+   5,
+   6,
+   7,
+   8
+  ],
+  "flattenable": [
+   7,
+   8
+  ],
+  "hard": [
+   5,
+   6
+  ],
+  "joint": {
+   "ks": [
+    5,
+    6
+   ],
+   "parity": 1,
+   "counts": {
+    "aligned": 60,
+    "reversed": 72,
+    "crossed": 20
+   },
+   "domains": {
+    "6": {
+     "aligned": 30,
+     "reversed": 36,
+     "crossed": 10
+    },
+    "5": {
+     "aligned": 30,
+     "reversed": 36,
+     "crossed": 10
+    }
+   }
+  },
+  "singles": {
+   "5": {
+    "ks": [
+     5
+    ],
+    "parity": 1,
+    "counts": {
+     "aligned": 30,
+     "reversed": 36,
+     "crossed": 10
+    },
+    "domains": {
+     "5": {
+      "aligned": 30,
+      "reversed": 36,
+      "crossed": 10
+     }
+    }
+   },
+   "6": {
+    "ks": [
+     6
+    ],
+    "parity": 1,
+    "counts": {
+     "aligned": 30,
+     "reversed": 36,
+     "crossed": 10
+    },
+    "domains": {
+     "6": {
+      "aligned": 30,
+      "reversed": 36,
+      "crossed": 10
+     }
+    }
+   }
+  },
+  "additive_prediction": 1,
+  "straddling": null
+ },
+ {
+  "model": "self-similar",
+  "s": "1/128",
+  "twisted": true,
+  "kind": "interaction",
+  "big": [
+   2,
+   3,
+   4
+  ],
+  "cluster": [
+   5,
+   6,
+   7,
+   8
+  ],
+  "flattenable": [
+   7,
+   8
+  ],
+  "hard": [
+   5,
+   6
+  ],
+  "joint": {
+   "ks": [
+    5,
+    6
+   ],
+   "parity": 1,
+   "counts": {
+    "aligned": 60,
+    "reversed": 72,
+    "crossed": 20
+   },
+   "domains": {
+    "6": {
+     "aligned": 30,
+     "reversed": 36,
+     "crossed": 10
+    },
+    "5": {
+     "aligned": 30,
+     "reversed": 36,
+     "crossed": 10
+    }
+   }
+  },
+  "singles": {
+   "5": {
+    "ks": [
+     5
+    ],
+    "parity": 1,
+    "counts": {
+     "aligned": 30,
+     "reversed": 36,
+     "crossed": 10
+    },
+    "domains": {
+     "5": {
+      "aligned": 30,
+      "reversed": 36,
+      "crossed": 10
+     }
+    }
+   },
+   "6": {
+    "ks": [
+     6
+    ],
+    "parity": 1,
+    "counts": {
+     "aligned": 30,
+     "reversed": 36,
+     "crossed": 10
+    },
+    "domains": {
+     "6": {
+      "aligned": 30,
+      "reversed": 36,
+      "crossed": 10
+     }
+    }
+   }
+  },
+  "additive_prediction": 1,
+  "straddling": null
+ }
+]
