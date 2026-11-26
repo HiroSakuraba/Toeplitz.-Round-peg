@@ -50,21 +50,35 @@ def walls(Phi, j, delta):
     return pj / (pj + Phi) * (1 - _I(delta)), pj / (pj - Phi) * (1 + _I(delta))
 
 
+def _slopes(L):
+    """L is the twist's slope bound |r phi'|, or (v395) a pair (L, L1) adding a common angular deviation e1 of both
+    arms with |r e1'| <= L1. A common deviation enters only through differences between corners."""
+    return (float(L[0]), float(L[1])) if isinstance(L, (tuple, list)) else (float(L), 0.0)
+
+
 def e_side(q, Phi, L):
-    """Lift deviation of B or D (|B - A| = q |A|): its angle from A plus the twist difference."""
-    return _asin_up(q) + _maxI(Phi, -L * iv.log(1 - q))
+    """Lift deviation of B or D (|B - A| = q |A|): its angle from A, the twist difference (<= Phi if one of them is on
+    arm one, <= L |log(|B|/|A|)| otherwise) and the common deviation's difference (<= L1 |log(|B|/|A|)|)."""
+    Lt, L1 = _slopes(L)
+    lg = -iv.log(1 - q)
+    return _asin_up(q) + _maxI(Phi, Lt * lg) + L1 * lg
 
 
 def e_all(q, Phi, L):
     """Lift deviation of any corner (worst is C, |C - A| = sqrt 2 q |A|)."""
+    Lt, L1 = _slopes(L)
     s2q = iv.sqrt(2) * q
-    return _asin_up(s2q) + _maxI(Phi, -L * iv.log(1 - s2q))
+    lg = -iv.log(1 - s2q)
+    return _asin_up(s2q) + _maxI(Phi, Lt * lg) + L1 * lg
 
 
 def side_terms(q, Phi, L):
-    """Upper enclosures of e (all corners), osc and d at side bound q."""
+    """Upper enclosures of e (all corners), osc and d at side bound q. osc bounds the twist sum beyond Phi:
+    L log((1+u)/(1-u)) for the twist, plus 2 L1 log((1+u)/(1-u)) for the common deviation, whose signed sum over the
+    corners e1(A) + e1(C) - e1(B) - e1(D) is at most two differences."""
+    Lt, L1 = _slopes(L)
     u = (q / iv.sqrt(2)) / (1 - q / iv.sqrt(2))
-    osc = L * iv.log((1 + u) / (1 - u))
+    osc = (Lt + 2 * L1) * iv.log((1 + u) / (1 - u))
     z = q * q / (1 - q) ** 2
     return e_all(q, Phi, L), osc, _asin_up(z)
 
