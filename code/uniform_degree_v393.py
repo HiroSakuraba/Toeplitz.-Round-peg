@@ -39,11 +39,13 @@ def I(x, y=None):
 # ----------------------------------------------------------------------------------------------------------------
 
 class D:
+    """Interval with an optional gradient in (s, U, V). g is None for constants and in value-only evaluations
+    (psi_box), which skips all derivative work; arithmetic treats None as a zero gradient."""
     __slots__ = ("v", "g")
 
     def __init__(self, v, g=None):
         self.v = v if isinstance(v, type(I(0))) else I(v)
-        self.g = g if g is not None else (I(0), I(0), I(0))
+        self.g = g
 
     @staticmethod
     def var(x, k):
@@ -56,12 +58,18 @@ class D:
 
     def __add__(self, o):
         o = self._c(o)
+        if self.g is None and o.g is None:
+            return D(self.v + o.v)
+        if o.g is None:
+            return D(self.v + o.v, self.g)
+        if self.g is None:
+            return D(self.v + o.v, o.g)
         return D(self.v + o.v, tuple(a + b for a, b in zip(self.g, o.g)))
 
     __radd__ = __add__
 
     def __neg__(self):
-        return D(-self.v, tuple(-a for a in self.g))
+        return D(-self.v, None if self.g is None else tuple(-a for a in self.g))
 
     def __sub__(self, o):
         return self + (-self._c(o))
@@ -71,21 +79,39 @@ class D:
 
     def __mul__(self, o):
         o = self._c(o)
-        return D(self.v * o.v, tuple(a * o.v + self.v * b for a, b in zip(self.g, o.g)))
+        v = self.v * o.v
+        if self.g is None and o.g is None:
+            return D(v)
+        if o.g is None:
+            return D(v, tuple(a * o.v for a in self.g))
+        if self.g is None:
+            return D(v, tuple(self.v * b for b in o.g))
+        return D(v, tuple(a * o.v + self.v * b for a, b in zip(self.g, o.g)))
 
     __rmul__ = __mul__
 
     def __truediv__(self, o):
         o = self._c(o)
         q = self.v / o.v
-        return D(q, tuple((a - q * b) / o.v for a, b in zip(self.g, o.g)))
+        if self.g is None and o.g is None:
+            return D(q)
+        ga = self.g if self.g is not None else (I(0), I(0), I(0))
+        gb = o.g if o.g is not None else (I(0), I(0), I(0))
+        return D(q, tuple((a - q * b) / o.v for a, b in zip(ga, gb)))
 
     def __rtruediv__(self, o):
         return self._c(o) / self
 
 
+def d_sq(x):
+    """x^2 with the tight interval square (never negative), unlike x * x."""
+    v = x.v ** 2
+    return D(v) if x.g is None else D(v, tuple(2 * x.v * a for a in x.g))
+
+
 def d_atan(x):
-    return D(iv.atan2(x.v, I(1)), tuple(a / (1 + x.v * x.v) for a in x.g))
+    v = iv.atan2(x.v, I(1))
+    return D(v) if x.g is None else D(v, tuple(a / (1 + x.v * x.v) for a in x.g))
 
 
 # ----------------------------------------------------------------------------------------------------------------
@@ -106,10 +132,104 @@ def hhat1(x, y, eps):
     return (2 * x * n2 - (4 * x * x - n2) * (2 * x + eps * n2)) / (1 + 2 * eps * x + eps * eps * n2)
 
 
+_HULL_CACHE = {}
+
+
+def _hull_pow(rho, k, p):
+    """Enclosure of (1 + t rho)^(-(p + k)) over t in [0, 1] (rho an interval with 1 + rho > 0). Memoized on the
+    endpoints (K, G and H ask for the same hull_4)."""
+    lo = min(1.0, float((1 + rho).a))
+    hi = max(1.0, float((1 + rho).b))
+    if lo <= 0:
+        raise ValueError("rho too negative")
+    key = (lo, hi, k, float(p.a) if hasattr(p, "a") else float(p), float(p.b) if hasattr(p, "b") else float(p))
+    out = _HULL_CACHE.get(key)
+    if out is None:
+        if len(_HULL_CACHE) > 200000:
+            _HULL_CACHE.clear()
+        out = _HULL_CACHE[key] = I(lo, hi) ** (-(p + k))
+    return out
+
+
+def _G_value(rho, p):
+    """Enclosure of G(rho) = (K(rho) - 1) / rho to second order: G = int_0^1 K'(u rho) du with
+    K'(sigma) = -(p+2)/3 + sigma int_0^1 K''(v sigma) dv and K'' in (p+2)(p+3)/6 hull_4, so
+    G in -(p+2)/3 + rho (p+2)(p+3)/12 hull_4 (width O(rho^2) instead of O(rho))."""
+    return -(p + 2) / 3 + rho * (p + 2) * (p + 3) / 12 * _hull_pow(rho, 4, p)
+
+
+def d_K(rho, p):
+    """K(rho) = 2 int_0^1 (1 - t)(1 + t rho)^(-p-2) dt, so that (1 + rho)^(-p) = 1 - p rho + p(p+1)/2 rho^2 K(rho)
+    exactly (Taylor with integral remainder). Value 1 + rho G(rho); K'(rho) = -2(p+2) int (1-t) t (1 + t rho)^(-p-3) dt
+    lies in -(p+2)/3 hull_3 (positive weights, mean value)."""
+    v = 1 + rho.v * _G_value(rho.v, p)
+    if rho.g is None:
+        return D(v)
+    dk = -(p + 2) / 3 * _hull_pow(rho.v, 3, p)
+    return D(v, tuple(dk * g for g in rho.g))
+
+
+def d_G(rho, p):
+    """G(rho) = (K(rho) - 1) / rho = int_0^1 K'(u rho) du (value: _G_value), with
+    G'(rho) = int_0^1 u K''(u rho) du in (p+2)(p+3)/12 hull_4 (K'' = 2(p+2)(p+3) int (1-t) t^2 (1+t rho)^(-p-4) dt)."""
+    v = _G_value(rho.v, p)
+    if rho.g is None:
+        return D(v)
+    dg = (p + 2) * (p + 3) / 12 * _hull_pow(rho.v, 4, p)
+    return D(v, tuple(dg * g for g in rho.g))
+
+
+def d_H(rho, p):
+    """H(rho) = (G(rho) + (p+2)/3) / rho = int int u K2(u v rho) dv du (K2, K3: second and third derivatives of K):
+    value in (p+2)(p+3)/12 hull_4, and H'(rho) = int int u^2 v K3(u v rho) in -(p+2)(p+3)(p+4)/60 hull_5
+    (K3 = -2(p+2)(p+3)(p+4) int (1-t) t^3 (1 + t rho)^(-p-5) dt)."""
+    v = (p + 2) * (p + 3) / 12 * _hull_pow(rho.v, 4, p)
+    if rho.g is None:
+        return D(v)
+    dh = -(p + 2) * (p + 3) * (p + 4) / 60 * _hull_pow(rho.v, 5, p)
+    return D(v, tuple(dh * g for g in rho.g))
+
+
+def t_terms(u, v, ec, p):
+    """hhat1(u, v, ec) = p(p+1) (T0 + ec T1) exactly, with T0 = 2 u v^2 - (4p+2)/3 u^3 (the ec = 0 part) and
+    T1 = 2u^2 (2u lin H + G |w|^2) + 2u |w|^2 lin G + |w|^4 K / 2, lin = 2u + ec |w|^2, rho = ec lin
+    (from G = -(p+2)/3 + rho H and K = 1 + rho G)."""
+    n2 = u * u + v * v
+    lin = 2 * u + ec * n2
+    rho = ec * lin
+    if float((1 + rho.v).a) <= 0:
+        # ec appears twice in ec * lin, and with ec an interval the enclosure of 1 + rho can reach 0 while the true
+        # value doesn't; the same quantity written as |1 + w|^2 = (1 + ec u)^2 + (ec v)^2 is never negative and much
+        # tighter. (Used only as a fallback, so evaluations where the first form works are unchanged.)
+        rho = d_sq(1 + ec * u) + d_sq(ec * v) - 1
+    K, G, H = d_K(rho, p), d_G(rho, p), d_H(rho, p)
+    T0 = 2 * u * v * v - D((4 * p + 2) / 3) * u * u * u
+    T1 = 2 * u * u * (2 * u * lin * H + G * n2) + 2 * u * n2 * lin * G + n2 * n2 * K / 2
+    return n2, T0, T1
+
+
+def hhat_general(x, y, eps, p):
+    """For w = eps (x + i y) and any exponent (p = 1/(2a)): h = |1 + w|^(-1/a) - 1 + (1/a) Re w = eps^2 hhat with
+    hhat = Q + eps hhat1, Q = -p |omega|^2 + 2p(p+1) x^2, rho = eps (2x + eps |omega|^2),
+    hhat1 = 2p(p+1) x^2 G(rho)(2x + eps |omega|^2) + p(p+1)/2 (4x |omega|^2 + eps |omega|^4) K(rho)."""
+    n2 = x * x + y * y
+    lin = 2 * x + eps * n2
+    rho = eps * lin
+    K = d_K(rho, p)
+    G = d_G(rho, p)
+    P = D(p)                       # mpmath intervals refuse dual operands on the left
+    P1 = D(p * (p + 1))
+    Q = -1 * P * n2 + 2 * P1 * x * x
+    h1 = 2 * P1 * x * x * G * lin + P1 * (4 * x * n2 + eps * n2 * n2) * K / 2
+    return Q, h1
+
+
 def psi(s, U, V, eps, r, sig1, sig3, b_is_min, j, a=A_EXP):
     """Psi at (s, U, V) (D numbers or intervals) for parameters eps, r (intervals), the signs and which corner (B or D)
-    carries the smaller offset."""
-    assert a == 0.5
+    carries the smaller offset. a = 1/2 (a float) uses the closed forms below; any other a (a float or an interval,
+    v396) uses the integral-remainder forms of psi_general, whose limit system is the same."""
+    if not (isinstance(a, float) and a == 0.5):
+        return psi_general(s, U, V, eps, r, sig1, sig3, b_is_min, j, a)
     wrap = lambda z: z if isinstance(z, D) else D(z)   # mpmath intervals refuse foreign operands
     s, U, V, eps, r = wrap(s), wrap(U), wrap(V), wrap(eps), wrap(r)
     t1, t3 = (r, D(1)) if b_is_min else (D(1), r)
@@ -139,6 +259,49 @@ def psi(s, U, V, eps, r, sig1, sig3, b_is_min, j, a=A_EXP):
     darg = d_atan(eps * eps * zi / (1 + eps * eps * zr))
     sj = 1 if j > 0 else -1
     eq3 = (sig1 * sig3) * s * U * V + s * (2 * a + 1) * eps * hd1 / (j * j * r) - darg / (PI * aj) - sj
+    return eqB, eqD, eq3
+
+
+def psi_general(s, U, V, eps, r, sig1, sig3, b_is_min, j, a):
+    """Psi for any exponent a (float or interval), arranged so the exponent appears without interval dependency:
+      * the scale c = a|j|/(2a+1) is factored out: w = ec (xh + i yh), ec = eps c, xh = -sig1 t1 U, yh = sig3 t3 V,
+        and eps^2 hhat(x, y, eps) = ec^2 hhat(xh, yh, ec);
+      * hhat = Q + ec hhat1 with a Q = -|w|^2/2 + (1+p) xh^2 and a hhat1 = (1+p)/2 (T0 + ec T1) (t_terms), using
+        a p = 1/2 and a p(p+1) = (2a+1)/(4a);
+      * in R_C - R_B - R_D the quadratic parts cancel to sig1 sig3 s U V, and the cubic parts T0 cancel to the
+        polynomial S = 2(xh^3 - yh^3) + (4p+6) xh yh (xh - yh), with prefactor (a^2/(2a+1)) p(p+1) = 1/4 exactly:
+        eq3 = sig1 sig3 sUV + s ec [S + ec (T1(C) - T1(B) - T1(D))] / (4r) - Delta arg / (pi |j|) - sign j."""
+    wrap = lambda z: z if isinstance(z, D) else D(z)
+    s, U, V, eps, r = wrap(s), wrap(U), wrap(V), wrap(eps), wrap(r)
+    aI = a if isinstance(a, type(I(0))) else I(a)
+    p = 1 / (2 * aI)
+    t1, t3 = (r, D(1)) if b_is_min else (D(1), r)
+    aj = abs(j)
+    ec = eps * D(aI * aj / (2 * aI + 1))
+    xh = -sig1 * t1 * U
+    yh = sig3 * t3 * V
+    PI = D(iv.pi)
+    P1h = D((1 + p) / 2)
+    n2B, T0B, T1B = t_terms(xh, yh, ec, p)
+    n2D, T0D, T1D = t_terms(-1 * yh, xh, ec, p)
+    n2C, T0C, T1C = t_terms(xh - yh, xh + yh, ec, p)
+    aQB = -1 * n2B / 2 + D(1 + p) * xh * xh
+    aQD = -1 * n2D / 2 + D(1 + p) * yh * yh
+    eqB = s * U - 1 + s * ec * (aQB + ec * P1h * (T0B + ec * T1B)) / (sig1 * t1) \
+        - r * eps * d_atan(ec * yh / (1 + ec * xh)) / (PI * sig1 * t1)
+    eqD = s * V - 1 + s * ec * (aQD + ec * P1h * (T0D + ec * T1D)) / (sig3 * t3) \
+        - r * eps * d_atan(ec * xh / (1 - ec * yh)) / (PI * sig3 * t3)
+    S = 2 * (xh * xh * xh - yh * yh * yh) + D(4 * p + 6) * xh * yh * (xh - yh)
+    w2r, w2i = xh * xh - yh * yh, 2 * xh * yh
+    nr, ni = w2i, -1 * w2r
+    pr = (1 + ec * xh) * (1 - ec * yh) - (ec * yh) * (ec * xh)
+    pim = (1 + ec * xh) * (ec * xh) + (ec * yh) * (1 - ec * yh)
+    den = pr * pr + pim * pim
+    zr = (nr * pr + ni * pim) / den
+    zi = (ni * pr - nr * pim) / den
+    darg = d_atan(ec * ec * zi / (1 + ec * ec * zr))
+    sj = 1 if j > 0 else -1
+    eq3 = (sig1 * sig3) * s * U * V + s * ec * (S + ec * (T1C - T1B - T1D)) / (4 * r) - darg / (PI * aj) - sj
     return eqB, eqD, eq3
 
 
@@ -214,8 +377,13 @@ def localize(region, box, par, max_boxes=200000):
             return False, n
         if _inside(sub, box):
             continue
-        P = psi_box(sub, par)
-        if any(p.a > 0 or p.b < 0 for p in P):
+        try:
+            P = psi_box(sub, par)
+        except ValueError:
+            # the general-exponent remainder needs 1 + rho > 0 on the whole box; a box too large for that
+            # enclosure cannot be excluded, so it is split like any other undecided box
+            P = None
+        if P is not None and any(p.a > 0 or p.b < 0 for p in P):
             continue
         ends = [(float(sub[i].a), float(sub[i].b)) for i in range(3)]
         w = [b - a for a, b in ends]
