@@ -1,0 +1,36 @@
+{
+ "j": -1,
+ "s_tail": 1.5000000000000004,
+ "tail_certified": true,
+ "Q0": 2.386448164878914,
+ "patterns": {
+  "1,-1,True": {
+   "certified": true,
+   "pieces": 3,
+   "boxes": 46093,
+   "seconds": 547.8,
+   "failures": []
+  },
+  "1,-1,False": {
+   "certified": true,
+   "pieces": 5,
+   "boxes": 134963,
+   "seconds": 640.2,
+   "failures": []
+  },
+  "-1,1,True": {
+   "certified": true,
+   "pieces": 5,
+   "boxes": 131841,
+   "seconds": 615.7,
+   "failures": []
+  },
+  "-1,1,False": {
+   "certified": true,
+   "pieces": 3,
+   "boxes": 46047,
+   "seconds": 442.8,
+   "failures": []
+  }
+ }
+}
